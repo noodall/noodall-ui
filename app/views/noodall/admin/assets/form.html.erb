@@ -1,0 +1,12 @@
+<% content_for :header,  javascript_include_tag('admin/assets') if @asset.new_record? %>
+<% content_for :header, javascript_include_tag( 'admin/asset_edit' ) unless @asset.new_record? %>
+
+
+<h1><%= @asset.new_record? ? 'New' : 'Editing' %> Asset</h1>
+
+<a class="tooltip" href="/cms_help.pdf">&nbsp;</a>
+
+  <%= render 'form' %>
+
+<%= javascript_tag('setUpPlupload()') if @asset.new_record?  %>
+

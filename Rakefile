@@ -5,12 +5,13 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "noodall-ui"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Noodall Rails User Interface}
+    gem.description = %Q{Noodall Rails User Interface. Requires Noodall Core}
     gem.email = "steve@wearebeef.co.uk"
-    gem.homepage = "http://github.com/stengland/noodall-ui"
+    gem.homepage = "http://github.com/beef/noodall-ui"
     gem.authors = ["Steve England"]
-    gem.add_development_dependency "rspec", ">= 1.2.9"
+    gem.add_dependency('noodal-ui')
+    gem.add_development_dependency "rspec", ">= 2.0.0.beta.22"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
@@ -18,15 +19,9 @@ rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
 end
 
-require 'spec/rake/spectask'
-Spec::Rake::SpecTask.new(:spec) do |spec|
-  spec.libs << 'lib' << 'spec'
-  spec.spec_files = FileList['spec/**/*_spec.rb']
-end
+RSpec::Core::RakeTask.new(:spec)
 
-Spec::Rake::SpecTask.new(:rcov) do |spec|
-  spec.libs << 'lib' << 'spec'
-  spec.pattern = 'spec/**/*_spec.rb'
+RSpec::Core::RakeTask.new(:rcov) do |spec|
   spec.rcov = true
 end
 

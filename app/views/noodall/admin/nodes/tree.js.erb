@@ -1,0 +1,2 @@
+$('#tree-browser').html( "<%= escape_javascript(render :partial => 'branch', :locals => { :nodes => Node.roots(@options), :options => @options }) %>" );
+$('#tree-browser ol.tree ol').hide();

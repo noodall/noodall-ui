@@ -1,0 +1,144 @@
+<a class="tooltip" href="/cms_help.pdf">&nbsp;</a>
+
+<% content_for :header, javascript_include_tag( 'tiny_mce/jquery.tinymce', 'admin/tiny_mce_config', 'admin/nodes', 'admin/assets' ) %>
+
+
+<h1>Editing Content</h1>
+<p>* Required Fields</p>
+
+<% form_for(:node, @node, :url => admin_node_path(@node), :html => {:method => :put, :id => "node-form"}) do |f| %>
+  <%= f.error_messages %>
+
+<div id="main-form">
+
+  <p>
+    <span class="tooltip" title="Enter a title for this page">&nbsp;</span>
+    <%= f.label :title, 'Title *' %><br/>
+    <span class="input-wrap"><%= f.text_field :title %></span>
+  </p>
+
+  <%= render :partial => @node.class.name.underscore, :locals => { :f => f }  %>
+
+  <p>
+    <span class="tooltip" title="Enter a short summary of this content.">&nbsp;</span>
+    <%= f.label :description, "Short Description" %><br/>
+    <span class="input-wrap"><%= f.text_area :description, :class => 'description' %></span>
+  </p>
+
+  <p>
+    <span class="tooltip" title="Enter a comma seperated list of keywords to describe this content."website,launch,event\"">&nbsp;</span>
+    <%= f.label :keywords, "Keywords" %><br/>
+    <span class="input-wrap"><%= f.text_field :keywords %></span>
+  </p>
+
+  <p>
+    <span class="tooltip" title="Enter a custom url or leave it as the default value shown.">&nbsp;</span>
+    <%= f.label :permalink, 'Page Url' %><br/>
+    <span class="input-wrap"><%= f.text_field :permalink %></span>
+  </p>
+
+</div>
+
+  <div class="fixed-form">
+    <div id="buttons">
+      <%= f.submit 'Publish', :class => 'publish', :name => 'node[publish]' if can_publish?(@node) %>
+      <%= f.submit 'Draft', :name => 'node[hide]', :class => 'draft' %>
+      <%= link_to 'Cancel', admin_nodes_path, :class => 'cancel'  %>
+    </div>
+
+<% if can_publish?(@node) %>
+    <!-- Advanced Publishing Options -->
+    <div class="show-advanced">
+      <fieldset>
+        <legend class="advanced">Advanced</legend>
+        <div id="advanced">
+          <p class="published">
+            <%= f.label :published_at, "Publish at" %><br/>
+            <span class="input-wrap"><%= f.datetime_select :published_at, :include_blank => true  %></span>
+          </p>
+
+          <p class="published">
+            <%= f.label :published_to, "Publish until" %><br/>
+            <%
+              # Remove select for far future dates
+              @node.published_to = nil unless @node.published_to.nil? or @node.published_to < 5.years.from_now
+            %>
+            <span class="input-wrap"><%= f.datetime_select :published_to, :include_blank => true %></span>
+          </p>
+
+          <p>
+            <span class="node-mover">Parent Content</span>
+            <span class="input-wrap" id="parent-title">
+            <%= @node.root? ? "Root" : @node.parent.title %>
+            <a href="#" class="edit-item">Edit</a>
+            </span>
+            <%= f.hidden_field :parent, :value => @node.parent_id %>
+            <%= hidden_field_tag :parent_types, @node.class.parent_classes.join(','), :disabled => true %>
+          </p>
+
+
+<% if current_user.admin? -%>
+          <fieldset>
+            <span class="tooltip" title="User Permissions">&nbsp;</span>
+            <legend>User Permission</legend>
+            <span class="input-wrap">
+              <table>
+              <thead>
+                <tr>
+                  <th width="85">Action</th>
+                  <th width="90%">Groups</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th><%= f.label :updatable_groups_list, "Update" %></th>
+                  <td><%= f.text_field :updatable_groups_list, :class => "groups-completer" %></td>
+                </tr>
+                <tr>
+                  <th><%= f.label :publishable_groups_list, "Publish" %></th>
+                  <td><%= f.text_field :publishable_groups_list, :class => "groups-completer" %></td>
+                </tr>
+                <tr>
+                  <th><%= f.label :destroyable_groups_list, "Delete" %></th>
+                  <td><%= f.text_field :destroyable_groups_list, :class => "groups-completer" %></td>
+                </tr>
+              </tbody>
+            </table>
+            </span>
+          </fieldset>
+<% end -%>
+        </div>
+      </fieldset>
+    </div>
+<% end -%>
+  </div>
+
+  <div id="sub-form">
+
+<h2>Page Modules</h2>
+
+<span class="tooltip" title="Please choose where you would like to place each module">&nbsp;</span>
+
+<%= yield :component_table %>
+<% if can_publish?(@node) %>
+<%= link_to "Change Template", change_template_admin_node_path(@node), :class => 'change' %>
+<% end -%>
+<div id="modules-list">
+<!-- Component lightbox related stuff -->
+  <ol id="slot-list">
+<%
+ Component.possible_slots.each do |type|
+   @node.class.send("#{type}_slots_count").to_i.times do |index| %>
+    <li>
+      <%= slot_link(@node,type,index) %>
+      <%= slot_form(@node,type,index) %>
+    </li>
+
+<%   end
+ end %>
+  </ol>
+  </div>
+
+  </div>
+
+<% end %>

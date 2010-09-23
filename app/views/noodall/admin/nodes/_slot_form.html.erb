@@ -1,0 +1,16 @@
+<div class="component_form_wrap">
+  <div id="<%= type %>_component_form_<%= index %>" class="component_form <%= type %>-slot">
+      <p class="select_component">
+        <%= label_tag "#{ slot_name }_type", "Select the type of component." %>
+        <span class="input-wrap"><%= select_tag "#{ slot_name }_type", options, :class => 'component-selector' %></span>
+      </p>
+      <div id="<%= type %>_component_form_<%= index %>_detail" class="component_form_detail">
+        <%= render :partial => "admin/components/#{ component.class.name.underscore.downcase }", :locals => {:component => component, :slot_name => slot_name } unless component.nil? %>
+      </div>
+      <div class="component_buttons">
+        <span class="button form-save" href="#" title="Set this information and close.">Save</span>
+        <span class="button form-delete" href="#" title="Remove information and close.">Delete</span>
+        <span class="button form-reset" href="#" title="Reset information to last saved state">Cancel</span>
+      </div>
+  </div>
+</div>

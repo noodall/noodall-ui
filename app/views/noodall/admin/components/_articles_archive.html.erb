@@ -1,0 +1,17 @@
+<% fields_for :node do |f| %>
+<%   f.fields_for slot_name, component do |f| %>
+      <%= f.hidden_field :_type %>
+      <%= error_messages_for :object => component %>
+
+      <p>
+        <%= f.label :title %><br />
+        <span class="input-wrap"><%= f.text_field :title %></span>
+      </p>
+
+      <p>
+        <%= f.label :articles_list_id %><br />
+        <span class="input-wrap"><%= f.select :articles_list_id, component.class.article_list_options %></span>
+      </p>
+
+<%   end
+   end %>

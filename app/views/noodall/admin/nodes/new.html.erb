@@ -1,0 +1,30 @@
+<a class="tooltip" href="/cms_help.pdf">&nbsp;</a>
+
+<h1>New Content<%= " under '#{@parent.title}'" unless @parent.nil? %></h1>
+<p>* Required Fields</p>
+
+<% form_for(:node, @node, :url => admin_nodes_path) do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field :parent, :value => @node.parent_id %>
+
+<div id="main-form">
+  <p>
+    <span class="tooltip" title="Enter a title for this page">&nbsp;</span>
+    <%= f.label :title, 'Title *' %><br/>
+    <span class="input-wrap"><%= f.text_field :title %></span>
+  </p>
+  <fieldset class="template">
+    <legend>Select a template *</legend>
+<% for template_name in @template_names -%>
+    <label>
+       <%= template_name %> <%= f.radio_button :template, template_name, :checked => (template_name == @template_names.first) %><br/>
+       <%= image_tag "admin/templates/#{template_name.parameterize}.gif", :title => template_name %>
+    </label>
+<% end -%>
+  </fieldset>
+  <p class="fixed-form">
+    <span><%= f.submit 'Create', :class => 'create' %> <%= link_to 'Cancel', admin_nodes_path, :class => 'cancel'  %></span>
+  </p>
+<% end %>
+
+</div>

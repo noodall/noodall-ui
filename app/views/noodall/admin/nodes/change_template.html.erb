@@ -1,0 +1,38 @@
+<a class="tooltip" href="/cms_help.pdf">&nbsp;</a>
+
+<h1>Change Template</h1>
+
+<% form_for(:node, @node, :url => admin_node_path(@node), :html => {:method => :put, :id => "node-form"}) do |f| %>
+  <%= f.error_messages %>
+
+<div id="main-form">
+
+  <p>Changing a page's template removes all information like modules that will not fit in the new page template.</p>
+  <p><strong>This change cannot be undone!</strong></p>
+
+  <fieldset class="template">
+    <legend>Select a template *</legend>
+<% for template_name in @template_names.reject{|t| t == @node.class.name.titleize } -%>
+    <label>
+       <%= template_name %> <%= f.radio_button :template, template_name %><br/>
+       <%= image_tag "admin/templates/#{template_name.parameterize}.gif", :title => template_name %>
+    </label><br/>
+<% end -%>
+  </fieldset>
+
+
+  <div id="templates">
+    <span id="current-label">Current</span>
+    <span id="new-label">New</span><br /><br />
+    <%= image_tag "admin/templates/#{@node.template.parameterize}.gif", :title => @node.template %>
+  </div>
+</div>
+
+  <div class="fixed-form">
+    <div id="buttons">
+      <%= f.submit 'Change', :class => 'change', :name => 'commit' %>
+      <%= link_to 'Cancel', admin_node_path(@node), :class => 'cancel'  %>
+    </div>
+  </div>
+
+<% end %>

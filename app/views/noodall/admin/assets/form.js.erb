@@ -1,0 +1,2 @@
+$('#asset-browser').html( "<%= escape_javascript(render 'form') %>" )
+<%= "setUpPlupload();" if @asset.new_record? %>

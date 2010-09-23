@@ -1,0 +1,28 @@
+<%= render 'menu' %>
+<div id="browser-list">
+<ul>
+  <% @assets.each do |asset| %>
+    <li class="file <%=cycle('one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten' )%>" title="<%= h( asset.title ) %>">
+      <div class="file-detail">
+        <span class="file-title"><%= h( asset.title ) %></span>
+        
+        <%= (asset.image? or asset.video?) ? image_tag( asset.url('100x100#', :jpg)  ) : asset_icon(asset) %>
+      </div>
+      
+      <%= link_to 'Show', admin_asset_path(asset, :readonly => readonly), :class => 'show button', :title => 'View this asset' %>
+      <%= link_to 'Add', asset.url, :class => 'add button', :title => 'Add this asset' %>
+    </li>
+  <% end %>
+  </ul>
+  <%= will_paginate(@assets, :previous_label => 'Previous', :next_label => 'Next') %>
+</div>
+<div id="tags">
+  <h2>Tags</h2>
+  <ul>
+<% for tag in @tags %>
+    <li><%= link_to "#{h( tag.name )} (#{tag.count})", :tag => tag.name  %></li>
+<% end -%>
+  </ul>
+  <%= link_to 'All Tags', admin_asset_tags_path(controller.action_name) %>
+</div>
+

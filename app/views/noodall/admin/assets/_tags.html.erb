@@ -1,0 +1,13 @@
+<%= render 'menu' %>
+<div id="all-tags">
+<% @tag_groups.each do |letter, tags| %>
+  <div class="tags">
+  <h2><%= letter.upcase %></h2>
+  <ul>
+  <% for tag in tags %>
+    <li><%= link_to "#{h( tag.name )} (#{tag.count})", :action => params[:asset_type], :tag => tag.name  %></li>
+  <% end -%>
+  </ul>
+  </div>
+<% end -%>
+</div>

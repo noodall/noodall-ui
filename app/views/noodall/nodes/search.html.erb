@@ -1,0 +1,14 @@
+<h1>Search results for <span class="term"><%= h params[:q] %></span></h1>
+
+<%= will_paginate(@nodes, :previous_label => 'Previous', :next_label => 'Next') %>
+
+<dl id="search-results">
+  <% for node in @nodes -%>
+  <dt><%= link_to h(node.title), node_path(node) %></dt>
+  <dd class="<%= "with-description" unless node.description.blank? %>">
+    <%= h(node.description) %>
+  </dd>
+  <% end -%>
+</dl>
+
+<%= will_paginate(@nodes, :previous_label => 'Previous', :next_label => 'Next') %>

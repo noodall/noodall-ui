@@ -1,0 +1,26 @@
+<% fields_for :node do |f| %>
+<%   f.fields_for slot_name, component do |c| %>
+<div class="multi-file-component">
+  <%= c.hidden_field :_type %>
+  <fieldset class="multi-file-details">
+    <legend>Hero Panel</legend>
+    <p>
+      <%= c.label :title, "Title" %><br />
+      <span class="input-wrap"><%= c.text_field :title %></span>
+    </p>
+
+    <p>
+      <%= c.label :body, "Description" %><br />
+      <span class="input-wrap"><%= c.text_area :body, :rows => 4 %></span>
+    </p>
+
+    <p>
+      <%= c.label :transition %><br/>
+      <span class="input-wrap"><%= c.select :transition, HeroPanel::TRANSITIONS %></span>
+    </p>
+
+  </fieldset>
+<%= render :partial => 'admin/components/multi_file_images', :locals => { :component => component, :slot_name => slot_name } %>
+</div>
+<%   end
+   end %>

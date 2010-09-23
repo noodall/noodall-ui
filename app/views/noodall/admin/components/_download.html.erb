@@ -1,0 +1,38 @@
+<% fields_for :node do |f| %>
+<%   f.fields_for slot_name, component do |c| %>
+<div class="multi-file-component">
+      <%= c.hidden_field :_type %>
+  <fieldset class="multi-file-details">
+    <%= error_messages_for :object => component %>
+
+    <p>
+      <%= c.label :title, "Title" %><br />
+      <span class="input-wrap"><%= c.text_field :title %></span>
+    </p>
+
+  </fieldset>
+  <fieldset class="multi-file-files">
+    <legend>Files</legend>
+    <p class="add-multi-asset"><span>Add Another File</span></p>
+    <ol>
+<% component.contents.each_with_index do |content,i| %>
+      <li class="multi-file file-selectable">
+        <% unless content.asset.nil? %>
+        <span class="file-detail"><%= (content.asset.image? or content.asset.video?) ? image_tag( content.asset.url('100x100#', :jpg)  ) : asset_icon(content.asset) %></span>
+        <% end -%>
+        <span class="delete" title="Remove this file">Delete</span>
+        <span class="edit" title="Edit this file">Edit</span>
+        <div class="file-form">
+          <p>
+            <span class="select-file">Select File</span>
+            <%= hidden_field_tag "node[#{slot_name}][contents][][asset_id]", content.asset_id, :id => "node_#{slot_name}_contents_#{i}_asset_id", :class => "asset_id" %>
+          </p>
+          <p><span class="done">Done</span></p>
+        </div>
+      </li>
+<% end %>
+    </ol>
+  </fieldset>
+</div>
+<%   end
+   end %>
