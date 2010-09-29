@@ -2,8 +2,7 @@ Feature: Manage Content Tree
   In order to provide up to date information in a structured manner on the website a website editor will be able to manage the content in a tree structure
   
   Background:
-    Given I am signed in as a website editor
-    And the website has been populated with content based on the site map
+    Given the website has been populated with content based on the site map
   
   Scenario: Browse Content Tree
     Given I am on the content admin page

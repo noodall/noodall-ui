@@ -1,4 +1,4 @@
-module ComponentsHelper
+module Noodall::ComponentsHelper
 
 
   def component_row(*args)

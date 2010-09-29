@@ -1,9 +1,6 @@
 Feature: Manage assets
 In order to allow easy access to documents whilst editing a website editor will be able to easily upload, browse and modify documents
 
-  Background:
-    Given I am signed in as a website editor
-
   Scenario: Upload an Asset
     Given I am using the asset library
     When I upload a file

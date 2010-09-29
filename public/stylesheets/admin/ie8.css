@@ -1,0 +1,16 @@
+fieldset span.tooltip {
+          top:0px;
+}
+
+#form-fields fieldset span.tooltip {
+          top:5px;
+}
+
+.change_template #main-form label {
+  display:block;
+  float:none;
+}
+
+fieldset.template label img {
+top:30px;
+}

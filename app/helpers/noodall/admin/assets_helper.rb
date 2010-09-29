@@ -1,4 +1,4 @@
-module Nooodall::Admin::AssetsHelper
+module Noodall::Admin::AssetsHelper
 
   def asset_icon(asset)
     icon = case asset.file_ext

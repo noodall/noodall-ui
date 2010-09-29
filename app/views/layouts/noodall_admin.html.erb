@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<!-- START META TAGS -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="content-language" content="en" />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+<meta name="copyright" content="<%= Time.now.year %>, Beef" />
+<meta name="web-author" content="Beef (www.wearebeef.co.uk)" />
+<meta name="author" content="Beef"/>
+
+<!-- END META TAGS -->
+<title>Noodall | CMS | <%= admin_page_title %></title>
+
+<%= stylesheet_link_tag 'admin/reset', 'admin/layout', 'admin/skin', 'admin/typography', 'admin/forms', 'admin/fancybox',  :media=>'screen,tv,projection' %>
+<%= stylesheet_link_tag 'admin/print', :media=>'print' %>
+<%= stylesheet_link_tag 'admin/handheld', :media=>'handheld' %>
+<%= stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/base/jquery.ui.all.css' %>
+
+<!--[if IE 6]><link href="/stylesheets/admin/ie6.css" media="screen" rel="Stylesheet" type="text/css" /><![endif]-->
+<!--[if IE 7]><link href="/stylesheets/admin/ie.css" media="screen" rel="Stylesheet" type="text/css" /><![endif]-->
+<!--[if IE 8]><link href="/stylesheets/admin/ie8.css" media="screen" rel="Stylesheet" type="text/css" /><![endif]-->
+
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load("jquery", "1.4");
+  google.load("jqueryui", "1.8");
+</script>
+<%= javascript_include_tag 'cufon-yui', 'admin/gotham.font', 'fancybox', 'ajaxify', 'admin/application', :cache => 'admin_global' %>
+
+<%= yield :header %>
+
+</head>
+<body id="<%= self.controller_name %>" class="<%= self.action_name %>">
+  <!-- begin screen -->
+  <div id="screen">
+    <!-- begin header -->
+    <div id="header">
+      <h1><strong>Noodall</strong> Content Management System</h1>
+      <% if defined?(current_user) %>
+      <ul id="status">
+        <li><%= current_user.full_name %> is logged in</li>
+        <li><%= link_to 'Sign Out', session_path, :method => :delete  %></li>
+        <li><%= link_to 'Live Site', '/' %></li>
+      </ul>
+      <% end %>
+    </div>
+    <!-- end header -->
+    <!-- begin navigation -->
+    <ul id="topnav">
+      <li><%= link_to 'Content', noodall_admin_nodes_path %></li>
+      <li><%= link_to 'Assets', noodall_admin_assets_path %></li>
+    </ul>
+    <!-- end navigation -->
+
+    <% #flash_messages %>
+
+    <div id="content">
+        <%= yield %>
+    </div>
+
+  </div>
+  <!-- end screen -->
+  <!--[if IE]><script type="text/javascript"> Cufon.now(); </script><![endif]-->
+<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? -%>
+</body>
+</html>

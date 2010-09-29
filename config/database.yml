@@ -1,0 +1,14 @@
+development:
+  database: noodall-development
+
+test: &TEST
+  database: noodallui-test
+
+production:
+  database: noodallui-production
+
+staging:
+  database: noodallui-staging
+
+cucumber:
+  <<: *TEST

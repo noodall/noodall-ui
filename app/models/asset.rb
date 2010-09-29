@@ -1,6 +1,6 @@
 class Asset
   include MongoMapper::Document
-  plugin Tagging
+  plugin Noodall::Tagging
 
   # Set up dragonfly
   extend Dragonfly::ActiveRecordExtensions

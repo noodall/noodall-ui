@@ -1,17 +1,17 @@
-require 'rubygems'
-require 'rake'
+require 'bundler'
+Bundler.setup(:default, :development)
+require "rspec/core/rake_task"
+require "noodall-core"
 
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "noodall-ui"
     gem.summary = %Q{Noodall Rails User Interface}
-    gem.description = %Q{Noodall Rails User Interface. Requires Noodall Core}
+    gem.description = %Q{Noodall Rails User Interface Engine. Requires Noodall Core}
     gem.email = "steve@wearebeef.co.uk"
     gem.homepage = "http://github.com/beef/noodall-ui"
     gem.authors = ["Steve England"]
-    gem.add_dependency('noodal-ui')
-    gem.add_development_dependency "rspec", ">= 2.0.0.beta.22"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
@@ -38,3 +38,7 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+require File.expand_path('../config/application', __FILE__)
+
+Noodall::Application.load_tasks

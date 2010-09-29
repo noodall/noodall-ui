@@ -57,4 +57,4 @@ module NavigationHelpers
 end
 
 World(NavigationHelpers)
-World(Permalinks)
+#World(Noodall::Permalinks)

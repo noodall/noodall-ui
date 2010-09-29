@@ -1,9 +1,5 @@
 module Noodall
   class NodesController < ApplicationController
-    rescue_responses['MongoMapper::DocumentNotFound'] = :not_found
-    
-    # GET /nodes
-    # GET /nodes.xml
     def show
       if published_states_changed_since_global_update? or stale?(:last_modified => GlobalUpdateTime::Stamp.read, :public => true)
         @node = Node.find_by_permalink(params[:permalink].join('/'))

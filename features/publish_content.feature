@@ -1,9 +1,6 @@
 Feature: Publish Content
 In order to control when content is available on the website a website administrator will be able to define the time period for which content is published
 
-  Background:
-    Given I am signed in as a website editor
-
   Scenario: Publish content
     Given content exists
     When I publish the content

@@ -1,4 +1,4 @@
-module Nooodall::NodesHelper
+module Noodall::NodesHelper
 
   def paginated_articles(&block)
     options = { :per_page => 10, :page => params[:page] }

@@ -1,4 +1,4 @@
-module Nooodall::Admin::NodesHelper
+module Noodall::Admin::NodesHelper
 
   def sorted_node_tree(tree)
     nodes = []

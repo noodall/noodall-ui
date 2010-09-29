@@ -1,4 +1,4 @@
-module Nooodall::Permalinks
+module Noodall::Permalinks
   # Handy place for all the permalink methods
   def node_path(node, options = {})
     node_permalink_path node.permalink, options

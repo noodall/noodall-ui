@@ -2,9 +2,6 @@
 Feature: Change templates
   In order to change the style of a page without the need to delete it a website editor should be able to change the template of a node
 
-  Background:
-    Given I am signed in as a website andministrator
-
   Scenario: Change template
     Given a page exists using the "Page A" template
     And I am editing the content
