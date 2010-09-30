@@ -3,5 +3,5 @@ When /^I click preview$/ do
 end
 
 Then /^I should see how the content will look in the website$/ do
-  response.should have_selector('div#preview-pane')
+  response.should have_css('div#preview-pane')
 end

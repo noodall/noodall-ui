@@ -61,17 +61,17 @@ When /^a child of that content is created$/ do
 end
 
 Then(/^by default the child should have the same permissions as it's parent$/) do
-  response.should have_selector("input#node_updatable_groups_list") do |input|
+  response.should have_css("input#node_updatable_groups_list") do |input|
     input.should have_xpath("@value") do |value|
       value.should contain("Dudes")
     end
   end
-  response.should have_selector("input#node_destroyable_groups_list") do |input|
+  response.should have_css("input#node_destroyable_groups_list") do |input|
     input.should have_xpath("@value") do |value|
       value.should contain("Webbies, Dudes")
     end
   end
-  response.should have_selector("input#node_publishable_groups_list") do |input|
+  response.should have_css("input#node_publishable_groups_list") do |input|
     input.should have_xpath("@value") do |value|
       value.should contain("Dudes")
     end

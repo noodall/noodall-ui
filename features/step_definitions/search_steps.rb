@@ -16,6 +16,6 @@ end
 
 Then /^I should see a paginated list of content that matches my search term ordered by relevance$/ do
   # save_and_open_page
-  response.should have_selector('dl#search-results dt', :count => 4)
+  response.should have_css('dl#search-results dt', :count => 4)
   click_link_within( "dl#search-results dt:first", "My Extra Searchable Page" )
 end

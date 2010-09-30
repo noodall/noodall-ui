@@ -1,6 +1,5 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0'
 gem 'noodall-core' #, :path => "~/Gems/noodall-core"
 gem "thoughtbot-sortable_table", "0.0.6", :require => "sortable_table"
 gem 'bson_ext', '~> 1.0.9'
@@ -30,6 +29,8 @@ gem 'dragonfly', '~> 0.6.1'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
+  gem 'rails', '3.0.0'
+  gem 'dynamic_form'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails'
@@ -38,4 +39,6 @@ group :development, :test do
   gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
   gem 'jeweler', '~> 1.4.0'
+  gem 'factory_girl_rails'
+  gem "faker", "~> 0.3.1"
 end

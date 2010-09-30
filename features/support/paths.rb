@@ -16,11 +16,7 @@ module NavigationHelpers
       node = Node.find_by_title($1)
       node_path(node)
     when /^the content admin page$/
-      admin_nodes_path
-    when /^the open days admin page$/
-      admin_open_days_path
-    when /^the open days booking page$/
-      url_for :controller => '/bookings', :action => 'show', :category => 'Undergraduate', :only_path => true
+      noodal_admin_nodes_path
     when /^the site ?map page$/
       sitemap_path
     when /^a page that's content is in the "([^\"]*)" template$/

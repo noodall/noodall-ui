@@ -8,8 +8,8 @@ module Noodall
         @page_keywords = @node.keywords
   
         respond_to do |format|
-          format.html { render @node.class.name.underscore }
-          format.rss { render @node.class.name.underscore }
+          format.html { render "nodes/#{@node.class.name.underscore}" }
+          format.rss { render "nodes/#{@node.class.name.underscore}" }
         end
       end
     end

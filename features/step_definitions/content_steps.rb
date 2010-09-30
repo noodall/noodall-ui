@@ -11,7 +11,7 @@ Given /^content exists within a branch of the content tree$/ do
 end
 
 Then /^I should see a bread\-crumb trail available in the footer that details the content above that content in that branch$/ do
-  response.should have_selector( "div#breadcrumbs ul li", :count => 5 )
+  response.should have_css( "div#breadcrumbs ul li", :count => 5 )
 end
 
 When /^I click any content title in the bread\-crumb$/ do
@@ -26,11 +26,11 @@ Then /^I should be taken to that content$/ do
   within "#main-content h1" do |heading|
     heading.should contain "Level 2 Page"
   end
-  have_selector "div#breadcrumbs span", :count => 3
+  have_css "div#breadcrumbs span", :count => 3
 end
 
 When /^the mouse hovers over a menu item a drop down should appear with 3 levels of the branch$/ do
-  response.should have_selector('ol#nav-node-tree-root li ol li ol li')
+  response.should have_css('ol#nav-node-tree-root li ol li ol li')
 end
 
 
@@ -55,7 +55,7 @@ end
 
 Then /^I should see the language select element$/ do
   visit root_path
-  response.should have_selector("li.lang a", :count => 3)
+  response.should have_css("li.lang a", :count => 3)
 end
 
 When /^I select "([^\"]*)" from the language select element$/ do |lang|
@@ -86,7 +86,7 @@ end
 Then /^each course select element should contain the titles of content in "([^\"]*)" template in that branch$/ do |arg1|
   within "div#course-driver" do |driver|
     ['Training Courses', 'Undergraduate Study', 'Postgraduate Study'].each do |title|
-      driver.should have_selector("ul#study-#{title.parameterize}-courses li", :count => 6) # 6 as Scott has added the "Choose" li
+      driver.should have_css("ul#study-#{title.parameterize}-courses li", :count => 6) # 6 as Scott has added the "Choose" li
     end
   end
 end
@@ -99,11 +99,11 @@ end
 
 # Templates
 Then /^I should see the current branch's tree menu$/ do
-  response.should have_selector('div#supporting-content ul#sub-page-nav')
+  response.should have_css('div#supporting-content ul#sub-page-nav')
 end
 
 # Then /^I should see (\d+) module areas$/ do |count|
-#   response.should have_selector('div.component', :count => count.to_i)
+#   response.should have_css('div.component', :count => count.to_i)
 # end
 
 Given /^a (?:root )?page exists using the "([^\"]*)" template$/ do |template_title|
@@ -182,7 +182,7 @@ end
 
 
 Then /^I should not see the current branch's tree menu$/ do
-  response.should_not have_selector('div#supporting-content ul#sub-page-nav')
+  response.should_not have_css('div#supporting-content ul#sub-page-nav')
 end
 
 
@@ -190,7 +190,7 @@ end
 
 Then /^the page should be in the (.+) template$/ do |template_name|
   # Check the correct template was rendered
-  response.should have_selector "body.#{template_name.gsub(/\W/, '').underscore}"
+  response.should have_css "body.#{template_name.gsub(/\W/, '').underscore}"
 end
 
 Then /^I should see (\d+) module areas$/ do |module_count|
@@ -222,7 +222,7 @@ When /^I click the RSS link$/ do
 end
 
 Then /^I should get an RSS feed of sibling content that is in the "([^\"]*)" template$/ do |arg1|
-  response.should have_selector('rss channel')
+  response.should have_css('rss channel')
 end
 
 Given /^that page has a parent list$/ do

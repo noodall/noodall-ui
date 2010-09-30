@@ -1,14 +1,14 @@
 Given /^I am editing content$/ do
   @_content = Factory(:page_a)
-  visit admin_node_path(@_content)
+  visit noodall_admin_node_path(@_content)
 end
 
 When /^I select a module area$/ do
-  response.should have_selector('ol#slot-list')
+  page.should have_css('ol#slot-list')
 end
 
 Then /^I should be able to set the module and its content$/ do
-  response.should have_selector('select.component-selector')
+  page.should have_css('select.component-selector')
 end
 
 When /^I choose the "([^\"]+)" module$/ do |module_name|
@@ -28,7 +28,7 @@ When /^I choose the "([^\"]+)" module$/ do |module_name|
   @_content.send("#{@_slot_type}_slot_0=", Factory(module_name.gsub(' ','_').downcase.to_sym))
   @_content.save!
   # Reopen page so we can fill in the the form
-  visit admin_node_path(@_content)
+  visit noodall_admin_node_path(@_content)
 end
 
 When /^I select an image from the asset library \(optional\)$/ do
@@ -87,7 +87,7 @@ Then /^I should see the the archive$/ do
 end
 
 Then /^I should see 2 articles$/ do
-  response.should have_selector("div.news-block", :count => 2)
+  response.should have_css("div.news-block", :count => 2)
 end
 
 Then /^when I click in the more link$/ do
@@ -97,7 +97,7 @@ Then /^when I click in the more link$/ do
 end
 
 Then /^I should be taken to the url$/ do
-  response.should have_selector("div##{@_slot_type}_slot_0.general-content a[href='http://www.google.com']")
+  response.should have_css("div##{@_slot_type}_slot_0.general-content a[href='http://www.google.com']")
 end
 
 
@@ -156,7 +156,7 @@ Given /^I create a gallery in a (wide|small) slot$/ do |slot_type|
   @_content.send("#{@_slot_type}_slot_0=", Factory(:gallery))
   @_content.save!
   # Reopen page so we can fill in the the form
-  visit admin_node_path(@_content)
+  visit noodall_admin_node_path(@_content)
 end
 
 Then /^I should be able to select the gallery style from "widget" and "list"$/ do
@@ -167,7 +167,7 @@ Then /^I should be able to select the gallery style from "widget" and "list"$/ d
 end
 
 Then /^I should not be able to select the gallery style$/ do
-  response.should_not have_selector("#small_component_form_0 select#node_small_slot_0_style")
+  response.should_not have_css("#small_component_form_0 select#node_small_slot_0_style")
 end
 
 Given /^I create content with a gallery set to "([^\"]*)" style$/ do |style|
@@ -181,16 +181,16 @@ end
 
 
 Then /^I should see the gallery thumbnails in a widget$/ do
-  response.should have_selector("ul.gallery.widget li img", :count => 5)
+  response.should have_css("ul.gallery.widget li img", :count => 5)
 end
 
 Then /^I should see all the gallery thumbnails$/ do
-  response.should have_selector("ul.gallery.list li img", :count => 5)
+  response.should have_css("ul.gallery.list li img", :count => 5)
 end
 
 Then /^I enter the same for more images$/ do
   click_button "Publish"
-  visit admin_node_path(@_content)
+  visit noodall_admin_node_path(@_content)
   3.times do |i|
     within "li.multi-file:last" do
       asset = Factory(:asset)
@@ -200,7 +200,7 @@ Then /^I enter the same for more images$/ do
       fill_in "node[#{@_slot_type}_slot_0][contents][][url]", :with => 'http://www.google.com'
     end
     click_button "Publish"
-    visit admin_node_path(@_content)
+    visit noodall_admin_node_path(@_content)
   end
 end
 
@@ -209,10 +209,10 @@ Then /^I should see the (gallery thumbnails|slideshow)$/ do |type|
   @_content.send("#{@_slot_type}_slot_0").contents.should have(9).things
   case type
   when "gallery thumbnails"
-    response.should have_selector("ul.gallery li img", :count => 9)
+    response.should have_css("ul.gallery li img", :count => 9)
   when "slideshow"
     class_name = ""
-    response.should have_selector("dl.hero-panel dt img", :count => 9)
+    response.should have_css("dl.hero-panel dt img", :count => 9)
   end
 end
 
@@ -244,7 +244,7 @@ end
 
 When /^I click on the second image$/ do
   @_image = @_content.small_slot_0.contents[1]
-  response.should have_selector("ul.gallery li:nth(2) a[href='#{@_image.url}']")
+  response.should have_css("ul.gallery li:nth(2) a[href='#{@_image.url}']")
 end
 #
 Then /^I should be taken to the URL location$/ do
@@ -258,18 +258,18 @@ Then /^I select some files from the asset library$/ do
       set_hidden_field 'node[wide_slot_0][contents][][asset_id]', :to => asset.id
     end
     click_button "Publish"
-    visit admin_node_path(@_content)
+    visit noodall_admin_node_path(@_content)
   end
 end
 
 Then /^I should see the list of files$/ do
   @_content.reload
   @_content.wide_slot_0.contents.should have(8).things
-  response.should have_selector('ul#download-list li', :count => 8)
+  response.should have_css('ul#download-list li', :count => 8)
 end
 
 Then /^each file should have an icon based on file\-type$/ do
-  response.should have_selector("ul#download-list li.file-type-#{@_content.wide_slot_0.contents.first.asset.file_mime_type.parameterize}")
+  response.should have_css("ul#download-list li.file-type-#{@_content.wide_slot_0.contents.first.asset.file_mime_type.parameterize}")
 end
 
 When /^I click on a file's listing$/ do

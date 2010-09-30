@@ -39,13 +39,11 @@
     <!-- begin header -->
     <div id="header">
       <h1><strong>Noodall</strong> Content Management System</h1>
-      <% if defined?(current_user) %>
       <ul id="status">
         <li><%= current_user.full_name %> is logged in</li>
         <li><%= link_to 'Sign Out', session_path, :method => :delete  %></li>
         <li><%= link_to 'Live Site', '/' %></li>
       </ul>
-      <% end %>
     </div>
     <!-- end header -->
     <!-- begin navigation -->

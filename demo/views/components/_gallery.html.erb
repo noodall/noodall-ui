@@ -1,0 +1,24 @@
+<div id="<%= slot_code %>" class="component gallery <%= component.style %> <%= expand ? 'double' : 'single' %> <%= additional_classes %>">
+  <h2><%=h component.title %></h2>
+
+  <div class="carousel-wrap">
+    <div class="carousel">
+      <ul class="gallery <%= component.style %>">
+        <% for image in component.contents.reject{|c| c.asset.nil? } %>
+          <li>
+            <%= link_to(
+              image_tag(image.asset.url('100x100#', :jpg), :alt => h(image.description.blank? ? image.asset.description : image.description)),
+              (image.url.blank? ? image.asset.url('800x600', :jpg) : image.url),
+              :title => h(image.title.blank? ? image.asset.title : image.title),
+              :target => '_blank',
+              :rel => 'gallery',
+              :class => (image.url.blank? ? 'lightbox' : '')) %>
+          </li>
+        <% end  %>
+      </ul>
+    </div>
+  </div>
+
+  <p><%= component.body %></p>
+
+</div>

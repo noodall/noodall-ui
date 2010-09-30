@@ -58,7 +58,7 @@ Then /^I should see the child listed within the root’s children$/ do
 end
 
 Then /^I should be able to delete content$/ do
-  response.should have_selector('table tbody tr:nth(3) td') do |cells|
+  response.should have_css('table tbody tr:nth(3) td') do |cells|
     @deleted_content = cells.first.content
   end
 

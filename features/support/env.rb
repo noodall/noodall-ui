@@ -5,9 +5,10 @@
 # files.
 
 ENV["RAILS_ENV"] ||= "test"
-require File.expand_path(File.dirname(__FILE__) + '/../../fixture_rails_root/config/environment')
+require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 
 require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
+require 'cucumber/rails/rspec'
 require 'cucumber/rails/world'
 require 'cucumber/web/tableish'
 
@@ -34,10 +35,5 @@ ActionController::Base.allow_rescue = false
 
 # How to clean your database when transactions are turned off. See
 # http://github.com/bmabey/database_cleaner for more info.
-if defined?(ActiveRecord::Base)
-  begin
-    require 'database_cleaner'
-    DatabaseCleaner.strategy = :truncation
-  rescue LoadError => ignore_if_database_cleaner_not_present
-  end
-end
+require 'database_cleaner'
+DatabaseCleaner.strategy = :truncation

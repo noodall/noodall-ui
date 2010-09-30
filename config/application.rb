@@ -16,5 +16,8 @@ module Noodall
   class Application < Rails::Application
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
+
+    paths.app << 'demo'
+    paths.app.views << 'demo/views'
   end
 end

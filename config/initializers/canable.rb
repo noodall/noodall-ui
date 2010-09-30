@@ -1,0 +1,1 @@
+Canable.add(:publish, :publishable)

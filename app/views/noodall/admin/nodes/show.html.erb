@@ -17,7 +17,7 @@
     <span class="input-wrap"><%= f.text_field :title %></span>
   </p>
 
-  <%= render :partial => @node.class.name.underscore, :locals => { :f => f }  %>
+  <%= render :partial => "admin/nodes/#{@node.class.name.underscore}", :locals => { :f => f }  %>
 
   <p>
     <span class="tooltip" title="Enter a short summary of this content.">&nbsp;</span>

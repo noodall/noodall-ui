@@ -1,0 +1,47 @@
+<%= render :partial => 'body', :locals => { :f => f } %>
+
+<% content_for :component_table do %>
+<table class="component-table">
+  <tr>
+    <td rowspan="2" class="content"></td>
+    <td colspan="3"><a href="#main_component_form_0" class="slot_link">1</a></td>
+  </tr>
+  <tr>
+    <td colspan="2" rowspan="4" class="content"></td>
+    <td><a href="#small_component_form_0" class="slot_link">5</a></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><a href="#small_component_form_1" class="slot_link">6</a></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><a href="#small_component_form_2" class="slot_link">7</a></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><a href="#small_component_form_3" class="slot_link">8</a></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="2"><a href="#wide_component_form_0" class="slot_link">2</a></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="2"><a href="#wide_component_form_1" class="slot_link">3</a></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="2"><a href="#wide_component_form_2" class="slot_link">4</a></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+<% end -%>
