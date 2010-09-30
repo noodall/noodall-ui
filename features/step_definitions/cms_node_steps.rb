@@ -38,7 +38,7 @@ Then /^I should be able to create a new root$/ do
 end
 
 Then /^I should see the root listed within the roots$/ do
-  visit admin_nodes_path
+  visit noodall_admin_nodes_path
   response.should contain('New Root')
 end
 
@@ -53,7 +53,7 @@ Then /^I should be able to create a new child$/ do
 end
 
 Then /^I should see the child listed within the root’s children$/ do
-  visit admin_node_nodes_path(@_page)
+  visit noodall_admin_node_nodes_path(@_page)
   response.should contain('New Child')
 end
 
@@ -87,7 +87,7 @@ Then /^I should be able to move a child content to another parent$/ do
 end
 
 Then /^I should see the child listed within the other parent’s children$/ do
-  visit admin_node_nodes_path(@_page.children[1].id)
+  visit noodall_admin_node_nodes_path(@_page.children[1].id)
   within('tbody') do |table_body|
     table_body.should contain(@_child.title)
   end
@@ -110,7 +110,7 @@ When /^I create a new child under an ancestor in "([^"]+)" template$/ do |templa
   #create the ancester
   parent = Factory(template.to_sym)
 
-  visit admin_node_nodes_path(parent)
+  visit noodall_admin_node_nodes_path(parent)
   click_link 'New'
 end
 

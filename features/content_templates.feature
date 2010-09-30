@@ -6,13 +6,13 @@ Feature: Content Templates
     Then I should be able select a template from the following:
      | Template           |
      | Page A             |
-     | Page B             |
+     | Page C             |
 
   Scenario Outline: Create Child Content
     Given I create a new child under an ancestor in "<Ancestor Template Name>" template
     Then I should be able select a template from the "<Allowed Templates>"
 
     Examples:
-     | Ancestor Template Name | Allowed Templates                          |
-     | Page A                 | Page A                                     |
-     | Page B                 | Page A, Page B                             |
+     | Ancestor Template Name | Allowed Templates   |
+     | Page A                 | Page A, Page B      |
+     | Page C                 | Page A              |

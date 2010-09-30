@@ -12,7 +12,7 @@ Then /^I should be able select a template from the following:$/ do |table|
     choose(row['Template'])
     fill_in("Title", :with => "A title")
     click_button "Create"
-    page.should contain "#{row['Template']} 'A title' was successfully created."
+    page.should have_content "#{row['Template']} 'A title' was successfully created."
   end
 end
 
