@@ -1,3 +1,9 @@
+# Rails app stuff
+log/*.log
+tmp/**/*
+doc/api
+doc/app
+
 ## MAC OS
 .DS_Store
 
