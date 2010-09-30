@@ -3,7 +3,7 @@
 <h1>New Content<%= " under '#{@parent.title}'" unless @parent.nil? %></h1>
 <p>* Required Fields</p>
 
-<% form_for(:node, @node, :url => admin_nodes_path) do |f| %>
+<% form_for(:node, @node, :url => noodall_admin_nodes_path) do |f| %>
   <%= f.error_messages %>
   <%= f.hidden_field :parent, :value => @node.parent_id %>
 
@@ -23,7 +23,7 @@
 <% end -%>
   </fieldset>
   <p class="fixed-form">
-    <span><%= f.submit 'Create', :class => 'create' %> <%= link_to 'Cancel', admin_nodes_path, :class => 'cancel'  %></span>
+    <span><%= f.submit 'Create', :class => 'create' %> <%= link_to 'Cancel', noodall_admin_nodes_path, :class => 'cancel'  %></span>
   </p>
 <% end %>
 

@@ -6,7 +6,7 @@
 <h1>Editing Content</h1>
 <p>* Required Fields</p>
 
-<% form_for(:node, @node, :url => admin_node_path(@node), :html => {:method => :put, :id => "node-form"}) do |f| %>
+<% form_for(:node, @node, :url => noodall_admin_node_path(@node), :html => {:method => :put, :id => "node-form"}) do |f| %>
   <%= f.error_messages %>
 
 <div id="main-form">
@@ -26,7 +26,7 @@
   </p>
 
   <p>
-    <span class="tooltip" title="Enter a comma seperated list of keywords to describe this content."website,launch,event\"">&nbsp;</span>
+    <span class="tooltip" title="Enter a comma seperated list of keywords to describe this content.&quot;website,launch,event&quot;">&nbsp;</span>
     <%= f.label :keywords, "Keywords" %><br/>
     <span class="input-wrap"><%= f.text_field :keywords %></span>
   </p>
@@ -43,7 +43,7 @@
     <div id="buttons">
       <%= f.submit 'Publish', :class => 'publish', :name => 'node[publish]' if can_publish?(@node) %>
       <%= f.submit 'Draft', :name => 'node[hide]', :class => 'draft' %>
-      <%= link_to 'Cancel', admin_nodes_path, :class => 'cancel'  %>
+      <%= link_to 'Cancel', noodall_admin_nodes_path, :class => 'cancel'  %>
     </div>
 
 <% if can_publish?(@node) %>
@@ -121,13 +121,13 @@
 
 <%= yield :component_table %>
 <% if can_publish?(@node) %>
-<%= link_to "Change Template", change_template_admin_node_path(@node), :class => 'change' %>
+<%= link_to "Change Template", change_template_noodall_admin_node_path(@node), :class => 'change' %>
 <% end -%>
 <div id="modules-list">
 <!-- Component lightbox related stuff -->
   <ol id="slot-list">
 <%
- Component.possible_slots.each do |type|
+ Noodall::Component.possible_slots.each do |type|
    @node.class.send("#{type}_slots_count").to_i.times do |index| %>
     <li>
       <%= slot_link(@node,type,index) %>

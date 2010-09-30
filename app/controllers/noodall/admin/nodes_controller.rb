@@ -58,7 +58,7 @@ module Noodall
       end
 
       def create
-        template_class = params[:node].delete(:template).gsub(' ','').constantize
+        template_class = params[:node].delete(:template).to_s.gsub(' ','').constantize
         @node = template_class.new(params[:node])
         enforce_create_permission(@node)
 
@@ -68,7 +68,7 @@ module Noodall
         respond_to do |format|
           if @node.save
             flash[:notice] = "#{@node.class.name.titleize} '#{@node.title}' was successfully created."
-            format.html { redirect_to admin_node_path(@node) }
+            format.html { redirect_to noodall_admin_node_path(@node) }
             format.xml  { render :xml => @node, :status => :created, :location => @node }
           else
             format.html do
@@ -94,9 +94,9 @@ module Noodall
             flash[:notice] = "#{@node.class.name.titleize} '#{@node.title}' was successfully updated."
             format.html {
               if @node.parent.nil?
-                redirect_to admin_nodes_path
+                redirect_to noodall_admin_nodes_path
               else
-                redirect_to admin_node_nodes_path(@node.parent.id)
+                redirect_to noodall_admin_node_nodes_path(@node.parent.id)
               end
             }
             format.xml  { head :ok }
@@ -115,7 +115,7 @@ module Noodall
         flash[:notice] = "#{@node.class.name.titleize} '#{@node.title}' was successfully deleted."
 
         respond_to do |format|
-          format.html { redirect_to(admin_nodes_url) }
+          format.html { redirect_to(noodall_admin_nodes_url) }
           format.xml  { head :ok }
         end
       end

@@ -9,11 +9,11 @@ module Noodall
       def index
         options = asset_options(action_name)
 
-        @tags = Asset.tag_cloud options.merge(:limit => 10)
+        @tags = Noodall::Asset.tag_cloud options.merge(:limit => 10)
         # By default it gets the top 10 ordered by count lets order these alphbetically
         @tags.sort!{|a,b| a.name <=> b.name }
 
-        @assets = Asset.paginate options.merge( :per_page => (params[:limit] || 15), :page => params[:page], :order => sort_order )
+        @assets = Noodall::Asset.paginate options.merge( :per_page => (params[:limit] || 15), :page => params[:page], :order => sort_order )
 
         @readonly = (params[:readonly] || false)
 
@@ -27,7 +27,7 @@ module Noodall
       alias documents index
 
       def show
-        @asset = Asset.find(params[:id])
+        @asset = Noodall::Asset.find(params[:id])
         @readonly = (params[:readonly] || false)
 
         respond_to do |format|
@@ -45,7 +45,7 @@ module Noodall
         else
           @page_title = "Tags"
         end
-        tags = Asset.tag_cloud( options )
+        tags = Noodall::Asset.tag_cloud( options )
         @tag_groups = tags.group_by { |t| t.name.first }
 
         respond_to do |format|
@@ -57,7 +57,7 @@ module Noodall
 
       # renders fragment for TinyMCE insert
       def add
-        @asset = Asset.find(params[:id])
+        @asset = Noodall::Asset.find(params[:id])
         # log the asset being used
         if params[:node_id]
           @asset.log_usage(params[:node_id], "Body Copy")
@@ -66,7 +66,7 @@ module Noodall
       end
 
       def pending
-        @asset = Asset.first(:tags => nil, :offset => params[:offset], :order => "created_at DESC")
+        @asset = Noodall::Asset.first(:tags => nil, :offset => params[:offset], :order => "created_at DESC")
 
         respond_to do |format|
           format.html { render :form }
@@ -76,7 +76,7 @@ module Noodall
       end
 
       def edit
-        @asset = Asset.find(params[:id])
+        @asset = Noodall::Asset.find(params[:id])
 
         respond_to do |format|
           format.html { render :form }
@@ -86,7 +86,7 @@ module Noodall
       end
 
       def new
-        @asset = Asset.new
+        @asset = Noodall::Asset.new
 
         respond_to do |format|
           format.html { render :form }
@@ -97,7 +97,7 @@ module Noodall
 
       def create
         logger.debug  request.inspect
-        @asset = Asset.new(params[:asset])
+        @asset = Noodall::Asset.new(params[:asset])
 
         respond_to do |format|
           if @asset.save
@@ -135,7 +135,7 @@ module Noodall
         end
         # If this is the last or only chunk create asset and cleanup temp file
         if chunks == 0 or chunk + 1 == chunks
-          asset = Asset.new(:file => File.new(file_path), :description => file_name).save(:validate => false) # Saving without validation as we don't have a description or tags
+          asset = Noodall::Asset.new(:file => File.new(file_path), :description => file_name).save(:validate => false) # Saving without validation as we don't have a description or tags
           File.delete(file_path)
           render :json => {:jsonrpc => "2.0", :result =>  nil, :id => "id"}
         else
@@ -145,7 +145,7 @@ module Noodall
       end
 
       def update
-        @asset = Asset.find(params[:id])
+        @asset = Noodall::Asset.find(params[:id])
 
         respond_to do |format|
           if @asset.update_attributes(params[:asset])
@@ -173,7 +173,7 @@ module Noodall
       end
 
       def destroy
-        @asset = Asset.find(params[:id])
+        @asset = Noodall::Asset.find(params[:id])
         @asset.destroy
 
         respond_to do |format|
@@ -203,10 +203,10 @@ module Noodall
         when 'documents'
           @page_title = "Documents"
           options[:file_ext.ne] = 'flv'
-          options[:file_mime_type] = { :$not => Asset.image_reg_ex}
+          options[:file_mime_type] = { :$not => Noodall::Asset.image_reg_ex}
         else
           @page_title = "Images"
-          options[:file_mime_type] = Asset.image_reg_ex
+          options[:file_mime_type] = Noodall::Asset.image_reg_ex
         end
         if params[:tag]
           options[:tags] = params[:tag]
@@ -227,7 +227,7 @@ module Noodall
       helper_method :admin_assets_type_url
 
       def pending_count
-        @pending_count ||= Asset.count(:tags => nil)
+        @pending_count ||= Noodall::Asset.count(:tags => nil)
       end
       helper_method :pending_count
 

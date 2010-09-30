@@ -30,7 +30,7 @@ module Noodall::Admin::NodesHelper
       component.contents << Content.new
     end
 
-    options = options_for_select([''] + Component.positions_names(type), (component._type.titleize unless component.nil?))
+    options = options_for_select([''] + Noodall::Component.positions_names(type), (component._type.titleize unless component.nil?))
 
     render :partial => 'slot_form', :locals => { :type => type, :index => index, :component => component, :options => options, :slot_name => "#{ type }_slot_#{ index }" }
   end

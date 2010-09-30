@@ -13,7 +13,7 @@ module Noodall
           component.contents << Content.new
         end
 
-        @template_names = @parent.nil? ? Node.template_names : @parent.class.template_names
+        @template_names = @parent.nil? ? Noodall::Node.template_names : @parent.class.template_names
 
         render :partial => component_class.name.underscore.downcase, :layout => false, :locals => {:component => component, :slot_name => params[:slot]}
       end
