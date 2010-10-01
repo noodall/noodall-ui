@@ -52,6 +52,10 @@ maximum-scale = 1.0 retains dimensions instead of zooming in if page width < dev
     google.load("jquery", "1.4");
     google.load("swfobject", "2.2");
   </script>
+  
+  <%= javascript_include_tag 'cufon-yui', 'fancybox', 'application', :cache => "global" %>
+  
+  
 <!-- so:JavaScripts -->
 
 <%= yield :head %>
