@@ -1,22 +1,45 @@
-/* -------------- SKIN -------------- */
-/* color, background etc */
+/* -------------- LAYOUT -------------- */
+/* margin, height, width etc */
+
+/*Hidden*/
+a.skip {display:none;}
+
 /* -------------- HEADER -------------- */
+#wrapper{
+  width: 960px;
+  margin: 0 auto;
+}
+
+/* -------------- HEADER -------------- */
+
 /* -------------- NAVIGATION -------------- */
+
 /* -------------- MAIN CONTENT -------------- */
+
 /* -------------- SUPPORTING CONTENT -------------- */
+
 /* -------------- TEMPLATES -------------- */
+
 /* -------------- COMPONENTS -------------- */
+
 /* -------------- FOOTER -------------- */
+
 /* -------------- ARTICLES -------------- */
+
 /* Comments */
+
 /* Pagination */
+
 /* -------------- ERRORS -------------- */
+
 /* -------------- JQUERY and CSS3 -------------- */
-/* ------------- IMAGE REPLACEMENT  --------------- */
-/* {
-  overflow: hidden;
-  text-align: left;
+
+/* -------------- CLEARFIX -------------- */
+
+/*{
+  content: ".";
   display: block;
-  line-height:0;
-  text-indent: -1000em;
+  height: 0;
+  clear: both;
+  visibility: hidden;
 }*/

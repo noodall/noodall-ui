@@ -41,4 +41,5 @@ group :development, :test do
   gem 'jeweler', '~> 1.4.0'
   gem 'factory_girl_rails'
   gem "faker", "~> 0.3.1"
+  gem "haml"
 end

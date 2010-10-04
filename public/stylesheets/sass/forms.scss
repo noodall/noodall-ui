@@ -1,0 +1,7 @@
+/* -------------- FORMS -------------- */
+/* inputs, textareas etc */
+
+/* align checkboxes, radios, text inputs with their label - UNTESTED!
+   by: Thierry Koblentz tjkdesign.com/ez-css/css/base.css  */
+input[type="radio"] { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: bottom; *vertical-align: baseline; }
