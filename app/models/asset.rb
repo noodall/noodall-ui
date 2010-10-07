@@ -3,8 +3,8 @@ class Asset
   plugin Noodall::Tagging
 
   # Set up dragonfly
-  extend Dragonfly::ActiveRecordExtensions
-  register_dragonfly_app(:asset, Dragonfly::App[:assets])
+  extend Dragonfly::ActiveModelExtensions
+  register_dragonfly_app(:asset_accessor, Dragonfly::App[:noodall_assets])
 
   asset_accessor :file
 
@@ -34,15 +34,11 @@ class Asset
   def url(*args)
     if args.blank?
       # Use the transparent url just the file is required with no processing
-      Dragonfly::App[:static].url_for(file_uid, :format => file_ext)
+      file.url
     elsif video?
-      params = Dragonfly::App[:assets].parameters.from_args(*args)
-      params.encoding = { :offset => "#{video_thumbnail_offset}%" }
-      params.processing_options[:offset] = "#{video_thumbnail_offset}%"
-      logger.debug params.inspect
-      file.url(params)
+      file.encode(:tiff, { :offset => "#{video_thumbnail_offset}%" }).thumb(*args).url
     else
-      file.url(*args)
+      file.thumb(*args).url
     end
   end
 

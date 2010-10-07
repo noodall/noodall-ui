@@ -2,7 +2,7 @@ module Noodall
   class NodesController < ApplicationController
     def show
       if published_states_changed_since_global_update? or stale?(:last_modified => GlobalUpdateTime::Stamp.read, :public => true)
-        @node = Node.find_by_permalink(params[:permalink].join('/'))
+        @node = Node.find_by_permalink(params[:permalink])
         @page_title = @node.title
         @page_description = @node.description
         @page_keywords = @node.keywords

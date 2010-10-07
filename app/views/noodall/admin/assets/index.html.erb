@@ -17,14 +17,14 @@
   <tbody>
 <% @assets.each do |asset| %>
     <tr id="asset-<%= asset.id %>" class="<%=cycle('odd', 'even')%>">
-      <td><%= link_to h( asset.title ), edit_admin_asset_path(asset), :class => 'edit', :title => 'Edit this asset' %></td>
+      <td><%= link_to h( asset.title ), edit_noodall_admin_asset_path(asset), :class => 'edit', :title => 'Edit this asset' %></td>
       <td class="file">
         <%= (asset.image? or asset.video?) ? image_tag( asset.url('70x70', :jpg), :alt => "#{truncate(asset.file.name, :length => 80)}")  : link_to( asset_icon(asset) ) %>
-        <%= link_to 'Show', admin_asset_path(asset), :class => 'show', :title => 'View this asset' %>
+        <%= link_to 'Show', noodall_admin_asset_path(asset), :class => 'show', :title => 'View this asset' %>
       </td>
       <td><%=h asset.created_at.to_formatted_s(:short_ordinal) %></td>
       <td><%=h asset.updated_at.to_formatted_s(:short_ordinal) %></td>
-      <td class="button"><%= link_to 'Delete', admin_asset_path(asset), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this asset' %></td>
+      <td class="button"><%= link_to 'Delete', noodall_admin_asset_path(asset), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this asset' %></td>
     </tr>
 <% end %>
   </tbody>
@@ -49,7 +49,7 @@
 <% if pending_count > 0%>
 <div id="pending" class="error">
   <p><%= pluralize( pending_count, "asset" ) %> awaiting information.</p>
-  <p><%= link_to "Click here", pending_admin_assets_path %> to be taken through each asset and enter the information.</p>
+  <p><%= link_to "Click here", pending_noodall_admin_assets_path %> to be taken through each asset and enter the information.</p>
 </div>
 <% end -%>
 
@@ -60,6 +60,6 @@
     <li><%= link_to "#{h( tag.name )} (#{tag.count})", :tag => tag.name  %></li>
 <% end -%>
   </ul>
-  <%= link_to 'All Tags', admin_asset_tags_path(controller.action_name) %>
+  <%= link_to 'All Tags', noodall_admin_asset_tags_path(controller.action_name) %>
 </div>
 <%= will_paginate(@assets, :previous_label => 'Previous', :next_label => 'Next') %>

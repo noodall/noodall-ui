@@ -5,7 +5,10 @@ gem "thoughtbot-sortable_table", "0.0.6", :require => "sortable_table"
 gem 'bson_ext', '~> 1.0.9'
 gem 'rmagick',    :require => 'RMagick'
 gem 'rack-cache', :require => 'rack/cache'
-gem 'dragonfly', '~> 0.6.1'
+gem 'dragonfly', '~> 0.7.6'
+gem 'will_paginate'
+gem 'newbamboo-rvideo', '~> 0.9.6'
+gem 'open4', '~> 0.9.5'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

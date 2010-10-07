@@ -1,6 +1,7 @@
 module Noodall
   module Admin
     class AssetsController < ApplicationController
+      layout 'noodall_admin'
       include SortableTable::App::Controllers::ApplicationController
       sortable_attributes :created_at, :title, :updated_at
       protect_from_forgery :except => :plupload
@@ -9,11 +10,11 @@ module Noodall
       def index
         options = asset_options(action_name)
 
-        @tags = Noodall::Asset.tag_cloud options.merge(:limit => 10)
+        @tags = Asset.tag_cloud options.merge(:limit => 10)
         # By default it gets the top 10 ordered by count lets order these alphbetically
         @tags.sort!{|a,b| a.name <=> b.name }
 
-        @assets = Noodall::Asset.paginate options.merge( :per_page => (params[:limit] || 15), :page => params[:page], :order => sort_order )
+        @assets = Asset.paginate options.merge( :per_page => (params[:limit] || 15), :page => params[:page], :order => sort_order )
 
         @readonly = (params[:readonly] || false)
 
@@ -27,7 +28,7 @@ module Noodall
       alias documents index
 
       def show
-        @asset = Noodall::Asset.find(params[:id])
+        @asset = Asset.find(params[:id])
         @readonly = (params[:readonly] || false)
 
         respond_to do |format|
@@ -45,7 +46,7 @@ module Noodall
         else
           @page_title = "Tags"
         end
-        tags = Noodall::Asset.tag_cloud( options )
+        tags = Asset.tag_cloud( options )
         @tag_groups = tags.group_by { |t| t.name.first }
 
         respond_to do |format|
@@ -57,7 +58,7 @@ module Noodall
 
       # renders fragment for TinyMCE insert
       def add
-        @asset = Noodall::Asset.find(params[:id])
+        @asset = Asset.find(params[:id])
         # log the asset being used
         if params[:node_id]
           @asset.log_usage(params[:node_id], "Body Copy")
@@ -66,7 +67,7 @@ module Noodall
       end
 
       def pending
-        @asset = Noodall::Asset.first(:tags => nil, :offset => params[:offset], :order => "created_at DESC")
+        @asset = Asset.first(:tags => nil, :offset => params[:offset], :order => "created_at DESC")
 
         respond_to do |format|
           format.html { render :form }
@@ -76,7 +77,7 @@ module Noodall
       end
 
       def edit
-        @asset = Noodall::Asset.find(params[:id])
+        @asset = Asset.find(params[:id])
 
         respond_to do |format|
           format.html { render :form }
@@ -86,7 +87,7 @@ module Noodall
       end
 
       def new
-        @asset = Noodall::Asset.new
+        @asset = Asset.new
 
         respond_to do |format|
           format.html { render :form }
@@ -97,7 +98,7 @@ module Noodall
 
       def create
         logger.debug  request.inspect
-        @asset = Noodall::Asset.new(params[:asset])
+        @asset = Asset.new(params[:asset])
 
         respond_to do |format|
           if @asset.save
@@ -135,7 +136,7 @@ module Noodall
         end
         # If this is the last or only chunk create asset and cleanup temp file
         if chunks == 0 or chunk + 1 == chunks
-          asset = Noodall::Asset.new(:file => File.new(file_path), :description => file_name).save(:validate => false) # Saving without validation as we don't have a description or tags
+          asset = Asset.new(:file => File.new(file_path), :description => file_name).save(:validate => false) # Saving without validation as we don't have a description or tags
           File.delete(file_path)
           render :json => {:jsonrpc => "2.0", :result =>  nil, :id => "id"}
         else
@@ -145,7 +146,7 @@ module Noodall
       end
 
       def update
-        @asset = Noodall::Asset.find(params[:id])
+        @asset = Asset.find(params[:id])
 
         respond_to do |format|
           if @asset.update_attributes(params[:asset])
@@ -154,12 +155,12 @@ module Noodall
               if params[:pending] and pending_count > 0
                 flash[:notice] << " #{pending_count} assets remaining"
                 # Go to the next pending asset
-                redirect_to(pending_admin_assets_url)
+                redirect_to(pending_noodall_admin_assets_url)
               elsif params[:pending]
                 flash[:notice] = 'All assets were successfully updated.'
                 redirect_to(admin_assets_type_url(@asset))
               else
-                redirect_to(admin_asset_url(@asset))
+                redirect_to(noodall_admin_asset_url(@asset))
               end
             end
             format.js { index }
@@ -173,7 +174,7 @@ module Noodall
       end
 
       def destroy
-        @asset = Noodall::Asset.find(params[:id])
+        @asset = Asset.find(params[:id])
         @asset.destroy
 
         respond_to do |format|
@@ -182,7 +183,7 @@ module Noodall
             if params[:pending] and pending_count > 0
               flash[:notice] << " #{pending_count} assets remaining"
               # Go to the next pending asset
-              redirect_to(pending_admin_assets_url)
+              redirect_to(pending_noodall_admin_assets_url)
             else
               flash[:notice] = 'All assets were successfully updated.' if params[:pending]
               redirect_to(admin_assets_type_url(@asset))
@@ -203,10 +204,10 @@ module Noodall
         when 'documents'
           @page_title = "Documents"
           options[:file_ext.ne] = 'flv'
-          options[:file_mime_type] = { :$not => Noodall::Asset.image_reg_ex}
+          options[:file_mime_type] = { :$not => Asset.image_reg_ex}
         else
           @page_title = "Images"
-          options[:file_mime_type] = Noodall::Asset.image_reg_ex
+          options[:file_mime_type] = Asset.image_reg_ex
         end
         if params[:tag]
           options[:tags] = params[:tag]
@@ -217,17 +218,17 @@ module Noodall
 
       def admin_assets_type_url(asset)
         if asset.nil? or asset.image?
-          admin_assets_url
+          noodall_admin_assets_url
         elsif asset.video?
-          videos_admin_assets_path
+          videos_noodall_admin_assets_path
         else
-          documents_admin_assets_path
+          documents_noodall_admin_assets_path
         end
       end
       helper_method :admin_assets_type_url
 
       def pending_count
-        @pending_count ||= Noodall::Asset.count(:tags => nil)
+        @pending_count ||= Asset.count(:tags => nil)
       end
       helper_method :pending_count
 

@@ -1,11 +1,11 @@
 Given /^I am using the asset library$/ do
-  visit admin_assets_path
+  visit noodall_admin_assets_path
 end
 
 When /^I upload a file$/ do
   click_link "Upload"
   fill_in "Title", :with => "A loverly asset"
-  attach_file("File", "#{Rails.root}/public/images/rails.png", 'image/png')
+  attach_file("File", "#{Rails.root}/spec/files/beef.png")
 end
 
 When /^enter tags$/ do
@@ -15,8 +15,8 @@ When /^enter tags$/ do
 end
 
 Then /^it should appear in the asset library$/ do
-  response.should_not contain('Errors')
-  response.should contain('A loverly asset')
+  page.should_not have_content('Errors')
+  page.should have_content('A loverly asset')
 end
 
 Given /^files have been uploaded to the asset library$/ do
@@ -29,22 +29,22 @@ Given /^files have been uploaded to the asset library$/ do
 end
 
 Then /^I should be able to browse assets by content type$/ do
-  click_link_within "ul.choices", "Images"
-  response.should_not contain('Document asset')
-  response.should_not contain('Video asset')
-  click_link_within "ul.choices", "Documents"
-  response.should_not contain('Image asset')
-  response.should_not contain('Video asset')
-  click_link_within "ul.choices", "Videos"
-  response.should_not contain('Document asset')
-  response.should_not contain('Image asset')
+  within(:css, "ul.choices") { click_link "Images" }
+  page.should_not have_content('Document asset')
+  page.should_not have_content('Video asset')
+  within(:css, "ul.choices") { click_link "Documents" }
+  page.should_not have_content('Image asset')
+  page.should_not have_content('Video asset')
+  within(:css, "ul.choices") { click_link "Videos" }
+  page.should_not have_content('Document asset')
+  page.should_not have_content('Image asset')
   
 end
 
 Then /^I should be able to browse assets by tags$/ do
-  click_link_within "ul.choices", "Images"
-  click_link_within "div#tags", "RAC"
-  response.should_not contain('Image asset')
+  within(:css, "ul.choices") { click_link "Images" }
+  within(:css, "div#tags") { click_link "RAC" }
+  page.should_not have_content('Image asset')
 end
 
 When /^I click insert a file$/ do

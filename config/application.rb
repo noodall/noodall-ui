@@ -11,6 +11,7 @@ require "active_resource/railtie"
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 require 'noodall-core'
+require 'lib/noodall/permalinks'
 
 module Noodall
   class Application < Rails::Application
@@ -19,5 +20,7 @@ module Noodall
 
     paths.app << 'demo'
     paths.app.views << 'demo/views'
+
+    config.middleware.insert_after 'Rack::Lock', 'Dragonfly::Middleware', :noodall_assets, '/media'
   end
 end

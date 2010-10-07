@@ -54,12 +54,21 @@ Noodall::Application.routes.draw do
           end
         end
   
-        resources :assets, :collection => { :videos => :get, :documents => :get, :plupload => :post, :pending => :get, :tags => :get }, :member => { :add => :get }
+        resources :assets do
+          collection do
+            get :videos
+            get :documents
+            post :plupload
+            get :pending
+            get :tags
+          end
+          member do
+            get :add
+          end
+        end
         match 'assets/:asset_type/tags' => 'assets#tags', :as => :asset_tags
     # You can have the root of your site routed with "root"
     # just remember to delete public/index.html.
-    root :to => "noodall/nodes#show", :permalink => ['home']
-    match "*permalink.:format" =>  'noodall/nodes#show', :as => :node_permalink
   
     # See how all your routes lay out with "rake routes"
   
@@ -67,4 +76,6 @@ Noodall::Application.routes.draw do
     # Note: This route will make all actions in every controller accessible via GET requests.
     # match ':controller(/:action(/:id(.:format)))'
   end
+  root :to => "noodall/nodes#show", :permalink => ['home']
+  get "*permalink.:format" =>  'noodall/nodes#show', :as => :node_permalink
 end
