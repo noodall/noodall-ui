@@ -67,6 +67,7 @@ Noodall::Application.routes.draw do
           end
         end
         match 'assets/:asset_type/tags' => 'assets#tags', :as => :asset_tags
+        resources :groups
     # You can have the root of your site routed with "root"
     # just remember to delete public/index.html.
   
@@ -77,5 +78,5 @@ Noodall::Application.routes.draw do
     # match ':controller(/:action(/:id(.:format)))'
   end
   root :to => "noodall/nodes#show", :permalink => ['home']
-  get "*permalink.:format" =>  'noodall/nodes#show', :as => :node_permalink
+  match "*permalink(.:format)" =>  'noodall/nodes#show', :as => :node_permalink
 end

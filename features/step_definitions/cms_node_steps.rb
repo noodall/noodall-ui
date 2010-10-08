@@ -1,76 +1,70 @@
 Given /^the website has been populated with content based on the site map$/ do
-  seed_file = File.join(Rails.root, "db", "seeds.rb")
+  seed_file = File.join(Rails.root, "demo", "seeds.rb")
   load(seed_file)
 end
 
 When /^I click on a root$/ do
-  @_page = Node.find_by_permalink('study') # Becuase we know it has children
-  click_link_within "tr:contains('#{@_page.title}')", /\d Child/
+  @_page = Noodall::Node.roots.last
+  within("tr:last") { click_link "Children" } 
 end
 
 Then /^I should see a list the of the root’s children$/ do
   @_page.children.each do |child|
-    response.should contain(child.title)
+    page.should have_content(child.title)
   end
 end
 
 When /^I click on a child$/ do
   @_child = @_page.children.first
-  click_link_within "tr:contains('#{@_child.title}')", /\d Child/
+  within(:css, "tr:first") { click_link "Children" }
 end
 
 Then /^I should see a list of the child’s children$/ do
-  @_grandchild = @_child.children
-
-  @_grandchild.each do |gchild|
-    response.should contain(gchild.title)
+  @_child.children.each do |gchild|
+    page.should have_content(gchild.title)
   end
 end
 
 Then /^I should be able to create a new root$/ do
   click_link 'New'
 
-  fill_in :title, :with => 'New Root'
+  fill_in 'Title', :with => 'New Root'
 
   click_button 'Create'
 
-  response.should contain(' was successfully created.')
+  page.should have_content(' was successfully created.')
 end
 
 Then /^I should see the root listed within the roots$/ do
   visit noodall_admin_nodes_path
-  response.should contain('New Root')
+  page.should have_content('New Root')
 end
 
 Then /^I should be able to create a new child$/ do
   click_link 'New'
 
-  fill_in :title, :with => 'New Child'
+  fill_in 'Title', :with => 'New Child'
 
   click_button 'Create'
 
-  response.should contain(' was successfully created.')
+  page.should have_content(' was successfully created.')
 end
 
 Then /^I should see the child listed within the root’s children$/ do
   visit noodall_admin_node_nodes_path(@_page)
-  response.should contain('New Child')
+  page.should have_content('New Child')
 end
 
 Then /^I should be able to delete content$/ do
-  response.should have_css('table tbody tr:nth(3) td') do |cells|
-    @deleted_content = cells.first.content
-  end
-
-  @_deleted_node = Node.find_by_title(@deleted_content)
+  @_deleted_node = Noodall::Node.roots.last
   @_deleted_node_children = @_deleted_node.children
 
-  click_link_within('table tbody tr:nth(3)', /delete/i)
-  response.should contain("deleted")
+  within(:css, 'table tbody tr:last') { click_link "Delete" }
+  page.should have_content("deleted")
 end
 
 Then /^the content and all of it’s sub content will be removed from the website$/ do
-
+ 
   lambda { visit node_path(@_deleted_node) }.should raise_error(MongoMapper::DocumentNotFound)
 
   @_deleted_node_children.each do |child|
@@ -80,27 +74,30 @@ end
 
 Then /^I should be able to move a child content to another parent$/ do
   @_child = @_page.children.first
-  click_link_within("table tbody tr#node-#{@_child.id}", /edit/i)
+  @_new_parent = Noodall::Node.roots.first
+  within(:css, "table tbody tr#node-#{@_child.id}") { click_link "Edit" }
   # Simulates what we are now doing with JS
-  set_hidden_field 'node_parent', :to => @_page.children[2].id
+  click_link "Advanced"
+  within(:css, '#parent-title' ) { click_link "Edit" }
+  within(:css, 'ol.tree' ) { click_link @_new_parent.title }
   click_button 'Draft'
 end
 
 Then /^I should see the child listed within the other parent’s children$/ do
-  visit noodall_admin_node_nodes_path(@_page.children[1].id)
-  within('tbody') do |table_body|
-    table_body.should contain(@_child.title)
+  visit noodall_admin_node_nodes_path(@_new_parent)
+  within('tbody') do 
+    page.should have_content(@_child.title)
   end
 end
 
 Then /^I should be able change the order of the root’s children$/ do
   table = table(tableish("table tr", 'td, th'))
   title = table.hashes[2]['Title'] # 2 as zero index
-  click_link_within('table tbody tr:nth(3)', /up/i)
+  within(:css, 'table tbody tr:nth(3)') { click_link "up" }
   table = table(tableish("table tr", 'td, th'))
   table.hashes[1]['Title'].should == title
-  click_link_within('table tbody tr:nth(2)', /down/i)
-  click_link_within('table tbody tr:nth(3)', /down/i)
+  within(:css, 'table tbody tr:nth(2)' ) { click_link "down" }
+  within(:css, 'table tbody tr:nth(3)' ) { click_link "down" }
   table = table(tableish("table tr", 'td, th'))
   table.hashes[3]['Title'].should == title
 end
@@ -123,7 +120,7 @@ Then /^I should be able select a template from the "([^"]+)"$/ do |sub_template_
 end
 
 Then /^I should see a list of the roots$/ do
-  Node.roots.each do |root|
-    response.should contain(root.title)
+  Noodall::Node.roots.each do |root|
+    page.should have_content(root.title)
   end
 end

@@ -2,7 +2,7 @@ module Noodall
   module Permalinks
     # Handy place for all the permalink methods
     def node_path(node, options = {})
-      node_permalink_path node.permalink, options
+      node_permalink_path node.permalink.to_s, options
     end
   
     def node_url(node, options = {})

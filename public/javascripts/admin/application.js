@@ -121,7 +121,7 @@ $(document).ready(function() {
   $("#advanced").hide();
   $("legend.advanced").hide();
     
-  $(".show-advanced").append("<a class='advanced'>Advanced</a>");
+  $(".show-advanced").append("<a class='advanced' href='#advanced'>Advanced</a>");
 
   $(".show-advanced a.advanced").click(
   function() {

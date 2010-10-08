@@ -1,5 +1,5 @@
 class PageC < Noodall::Node
-  sub_templates PageA
+  sub_templates PageA, PageB
   root_template!
   
   main_slots 1

@@ -1,3 +1,5 @@
+require 'noodall/permalinks'
+
 module NavigationHelpers
   # Maps a name to a path. Used by the
   #
@@ -16,7 +18,7 @@ module NavigationHelpers
       node = Node.find_by_title($1)
       node_path(node)
     when /^the content admin page$/
-      noodal_admin_nodes_path
+      noodall_admin_nodes_path
     when /^the site ?map page$/
       sitemap_path
     when /^a page that's content is in the "([^\"]*)" template$/
@@ -53,4 +55,4 @@ module NavigationHelpers
 end
 
 World(NavigationHelpers)
-#World(Noodall::Permalinks)
+World(Noodall::Permalinks)
