@@ -20,7 +20,7 @@ module NavigationHelpers
     when /^the content admin page$/
       noodall_admin_nodes_path
     when /^the site ?map page$/
-      sitemap_path
+      noodall_sitemap_path
     when /^a page that's content is in the "([^\"]*)" template$/
       node = Node.first(:_type => $1.gsub(' ',''), :order => 'created_at DESC')
       node_path(node)

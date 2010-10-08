@@ -30,6 +30,6 @@ Noodall::Application.routes.draw do
     resources :groups
   end
   get "search" => "noodall/nodes#search", :as => :noodall_search
-  get "sitemap" => "noodall/nodes#sitemap", :as => :noodall_site_map
+  get "sitemap" => "noodall/nodes#sitemap", :as => :noodall_sitemap
   get "*permalink(.:format)" =>  'noodall/nodes#show', :as => :node_permalink
 end
