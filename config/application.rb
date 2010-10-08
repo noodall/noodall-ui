@@ -20,6 +20,7 @@ module Noodall
 
     paths.app << 'demo'
     paths.app.views << 'demo/views'
+    paths.config.routes 'demo/routes.rb'
 
     config.middleware.insert_after 'Rack::Lock', 'Dragonfly::Middleware', :noodall_assets, '/media'
   end
