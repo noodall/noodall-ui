@@ -71,6 +71,7 @@ GEM
       term-ansicolor (~> 1.0.5)
       trollop (~> 1.16.2)
     git (1.2.5)
+    haml (3.0.9)
     i18n (0.4.1)
     jeweler (1.4.0)
       gemcutter (>= 0.1.0)
@@ -174,6 +175,7 @@ DEPENDENCIES
   dynamic_form
   factory_girl_rails
   faker (~> 0.3.1)
+  haml
   jeweler (~> 1.4.0)
   launchy
   newbamboo-rvideo (~> 0.9.6)
