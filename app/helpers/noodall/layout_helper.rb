@@ -20,6 +20,6 @@ module Noodall::LayoutHelper
       content_tag :div, h( value ), :class => "flash #{key}"
     end
 
-    content_tag :div, flash_divs.join, :id => "flash"
+    content_tag :div, flash_divs.join.html_safe, :id => "flash"
   end 
 end

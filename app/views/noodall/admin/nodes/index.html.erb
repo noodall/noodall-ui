@@ -48,7 +48,7 @@
       </td>
       <td class="date" title="by <%= node.updater.full_name if node.updater %>"><%=h node.updated_at.to_formatted_s(:short_ordinal) %></td>
       <td class=""><%= link_to 'Show', node_path(node), :class => 'show', :title => 'View this content' if node.published? %></td>
-      <td class="date" title="<%= node.published? ? 'Published ':'Draft' %><%= node.published_at.to_formatted_s(:short_ordinal) unless node.published_at.nil? %><%= " - #{node.published_to.to_formatted_s(:short_ordinal)}" unless node.published_to.nil? %>"><%= node.published? ? '<span class="check">Published</span>' : '<span class="draft">Draft</span>' %></td>
+      <td class="date" title="<%= node.published? ? 'Published ':'Draft' %><%= node.published_at.to_formatted_s(:short_ordinal) unless node.published_at.nil? %><%= " - #{node.published_to.to_formatted_s(:short_ordinal)}" unless node.published_to.nil? %>"><%= (node.published? ? '<span class="check">Published</span>' : '<span class="draft">Draft</span>').html_safe %></td>
       <td><%= link_to 'Delete', noodall_admin_node_path(node), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this content' %></td>
     </tr>
 <% end %>
