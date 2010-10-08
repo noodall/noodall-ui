@@ -1,4 +1,5 @@
 Noodall::Application.routes.draw do
+  root :to => "noodall/nodes#show", :permalink => ['home']
   namespace 'noodall/admin', :as => 'noodall_admin', :path => 'admin' do
     resources :nodes do
       resources :nodes
@@ -28,7 +29,7 @@ Noodall::Application.routes.draw do
     match 'assets/:asset_type/tags' => 'assets#tags', :as => :asset_tags
     resources :groups
   end
-  root :to => "noodall/nodes#show", :permalink => ['home']
-  get "sitemap" => "noodall/nodes#sitemap"
+  get "search" => "noodall/nodes#search", :as => :noodall_search
+  get "sitemap" => "noodall/nodes#sitemap", :as => :noodall_site_map
   get "*permalink(.:format)" =>  'noodall/nodes#show', :as => :node_permalink
 end

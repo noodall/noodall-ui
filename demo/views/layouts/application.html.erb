@@ -98,6 +98,10 @@ maximum-scale = 1.0 retains dimensions instead of zooming in if page width < dev
       <%= yield %>
     </div>
 
+    <%= form_tag(noodall_search_path, :method => :get, :class => 'search') do %>
+      <%= text_field_tag :q, params[:q], :value => 'Enter keyword(s) here'  %>
+      <%= submit_tag 'Search' %>
+    <% end %>
     
     <div id="footer">
       <!-- so:main-navigation -->
