@@ -11,6 +11,7 @@ require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumb
 require 'cucumber/rails/rspec'
 require 'cucumber/rails/world'
 require 'cucumber/web/tableish'
+require 'cucumber/rspec/doubles'
 
 require 'capybara/rails'
 require 'capybara/cucumber'

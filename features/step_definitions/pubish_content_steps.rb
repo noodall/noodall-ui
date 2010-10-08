@@ -2,31 +2,31 @@ When /^today is "([^\"]*)"$/ do |date|
   Time.stub!(:now).and_return(date.to_time)
 end
 
-When(/^I publish the content$/) do
-  visit admin_node_path(@_content)
-  click_button('publish')
+When /^I publish the content$/ do
+  visit noodall_admin_node_path(@_content)
+  click_button('Publish')
 end
 
-When(/^I save content as draft$/) do
-  visit admin_node_path(@_content)
-  click_button('draft')
+When /^I save content as draft$/ do
+  visit noodall_admin_node_path(@_content)
+  click_button('Draft')
 end
 
-Then(/^the content should (not |)be visible on the website$/) do |is_not|
+Then /^the content should (not |)be visible on the website$/ do |is_not|
   if is_not.blank?
     visit node_path(@_content)
-    response.should be_success
+    page.should within('h1') { have_content(@_content.title) }
   else
     lambda { visit node_path(@_content) }.should raise_error(MongoMapper::DocumentNotFound)
   end
 end
 
-Given(/^I publish content between "([^\"]*)" and "([^\"]*)"$/) do |from, to|
-  visit admin_node_path(@_content), :get, :published_at => true, :published_to => true
+Given /^I publish content between "([^\"]*)" and "([^\"]*)"$/ do |from, to|
+  visit noodall_admin_node_path(@_content)
   select_datetime(from.to_time, :from => 'Publish at')
   select_datetime(to.to_time, :from => 'Publish until')
   click_button('Publish')
-  response.should contain(/was successfully updated/)
+  page.should have_content('was successfully updated')
 end
 
 
@@ -36,7 +36,7 @@ Given /^published content exists with publish to date: "([^\"]*)"$/ do |time|
 end
 
 When /^I am editing the content$/ do
-  visit admin_node_path(@_content)
+  visit noodall_admin_node_path(@_content)
 end
 
 When /^I clear the publish to date$/ do

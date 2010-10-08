@@ -6,7 +6,7 @@
 <h1>Editing Content</h1>
 <p>* Required Fields</p>
 
-<% form_for(:node, @node, :url => noodall_admin_node_path(@node), :html => {:method => :put, :id => "node-form"}) do |f| %>
+<%= form_for(:node, @node, :url => noodall_admin_node_path(@node), :html => {:method => :put, :id => "node-form"}) do |f| %>
   <%= f.error_messages %>
 
 <div id="main-form">
