@@ -30,7 +30,7 @@ GEM
     activesupport (3.0.0)
     arel (1.0.1)
       activesupport (~> 3.0.0)
-    bson (1.0.9)
+    bson (1.1)
     bson_ext (1.0.9)
     builder (2.1.2)
     canable (0.1.1)
@@ -98,11 +98,10 @@ GEM
     newbamboo-rvideo (0.9.6)
       activesupport
     nokogiri (1.4.3.1)
-    noodall-core (0.0.1)
-      canable (~> 0.1.1)
-      i18n
-      mongo_mapper (~> 0.8.4)
-      ramdiv-mongo_mapper_acts_as_tree (~> 0.1.1)
+    noodall-core (0.1.0)
+      canable (= 0.1.1)
+      mongo_mapper (= 0.8.4)
+      ramdiv-mongo_mapper_acts_as_tree (= 0.1.1)
       ruby-stemmer
     open4 (0.9.6)
     plucky (0.3.5)
