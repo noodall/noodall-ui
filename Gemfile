@@ -3,7 +3,7 @@ source 'http://gems.github.com'
 
 gem 'noodall-core' #, :path => "~/Gems/noodall-core"
 gem "thoughtbot-sortable_table", "0.0.6", :require => "sortable_table"
-gem 'bson_ext', '~> 1.0.9'
+gem 'bson_ext', '~> 1.1.0'
 gem 'rmagick',    :require => 'RMagick'
 gem 'dragonfly', '~> 0.7.6'
 gem 'will_paginate'
