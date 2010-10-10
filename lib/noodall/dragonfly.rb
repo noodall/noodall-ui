@@ -13,7 +13,7 @@ end
 app = Dragonfly::App[:noodall_assets]
 app.configure_with(:rmagick)
 app.configure_with(:rails)
-app.encoder.register(VideoThumbnailEncoder)
+#app.encoder.register(VideoThumbnailEncoder)
 app.configure do |c|
   c.datastore = Noodall::DragonflyDataStorage.new
   c.secret = '2406b0d72aaf812659babdf53eb49d4812c2cc59' unless Rails.env.test?
