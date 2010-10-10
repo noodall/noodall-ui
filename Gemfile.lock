@@ -109,8 +109,6 @@ GEM
       mongo (~> 1.0.8)
     polyglot (0.3.1)
     rack (1.2.1)
-    rack-cache (0.5.2)
-      rack (>= 0.4)
     rack-mount (0.6.13)
       rack (>= 1.0.0)
     rack-test (0.5.4)
@@ -181,7 +179,6 @@ DEPENDENCIES
   newbamboo-rvideo (~> 0.9.6)
   noodall-core
   open4 (~> 0.9.5)
-  rack-cache
   rails (= 3.0.0)
   rmagick
   rspec-rails (~> 2.0.0.beta.22)
