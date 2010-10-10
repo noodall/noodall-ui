@@ -9,6 +9,7 @@ gem 'dragonfly', '~> 0.7.6'
 gem 'will_paginate'
 gem 'newbamboo-rvideo', '~> 0.9.6'
 gem 'open4', '~> 0.9.5'
+gem 'dynamic_form'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
