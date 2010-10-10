@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+source 'http://gems.github.com'
 
 gem 'noodall-core' #, :path => "~/Gems/noodall-core"
 gem "thoughtbot-sortable_table", "0.0.6", :require => "sortable_table"
