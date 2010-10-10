@@ -5,7 +5,7 @@ test: &TEST
   database: noodallui-test
 
 production:
-  database: noodallui-production
+  uri: <%= ENV['MONGOHQ_URL'] %>
 
 staging:
   database: noodallui-staging
