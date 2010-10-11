@@ -37,7 +37,7 @@ maximum-scale = 1.0 retains dimensions instead of zooming in if page width < dev
 <meta name="Geo.Region" content="GB-BST" />
 
 <!-- so:Style Sheets -->
-  <%= stylesheet_link_tag 'reset', 'layout', 'skin', 'typography', 'forms', :media => 'screen,tv,projection', :cache => "screen" %>
+  <%= stylesheet_link_tag 'reset', 'layout', 'skin', 'typography', 'forms', :media => 'screen,tv,projection' %>
   <!--[if lte IE 8]><link href="/stylesheets/ie8.css" media="screen" rel="Stylesheet" type="text/css" /><![endif]-->
   <!--[if lte IE 7]><link href="/stylesheets/ie.css" media="screen" rel="Stylesheet" type="text/css" /><![endif]-->
 <!-- eo:Style Sheets -->
@@ -53,7 +53,7 @@ maximum-scale = 1.0 retains dimensions instead of zooming in if page width < dev
     google.load("swfobject", "2.2");
   </script>
   
-  <%= javascript_include_tag 'cufon-yui', 'fancybox', 'carousel.lite', 'application', :cache => "global" %>
+  <%= javascript_include_tag 'cufon-yui', 'fancybox', 'carousel.lite', 'application' %>
   
   
 <!-- so:JavaScripts -->
