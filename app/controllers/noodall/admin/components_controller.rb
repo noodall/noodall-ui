@@ -15,7 +15,7 @@ module Noodall
 
         @template_names = @parent.nil? ? Noodall::Node.template_names : @parent.class.template_names
 
-        render :partial => component_class.name.underscore.downcase, :layout => false, :locals => {:component => component, :slot_name => params[:slot]}
+        render :partial => "admin/components/#{component_class.name.underscore.downcase}", :layout => false, :locals => {:component => component, :slot_name => params[:slot]}
       end
     end
   end

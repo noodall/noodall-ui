@@ -35,47 +35,4 @@ module Noodall::ComponentsHelper
 
     render :partial => "components/#{component.class.name.underscore}", :locals => { :slot_code => slot_code, :component => component, :expand => expand, :additional_classes => additional_classes } unless component.nil?
   end
-
-  def response_setup(form)
-    # collect the default values together
-    defaults = {}
-    form.fields.collect{|f| defaults[f.underscored_name.to_sym] = f.default } unless form.nil? || form.fields.nil?
-
-    Response.new(defaults)
-  end
-
-  def promo_size(component, slot_code, expand = false)
-    case slot_code
-    when /^main/
-      hero_size
-    when /^wide/
-      component.node.is_a?( PageB ) ? '700x250#' : '460x150#'
-    else # Should be small
-      if expand
-        '440x300#'
-      else
-        '220x300#'
-      end
-    end
-  end
-
-  def hero_size
-    case @node
-    when Home
-      '700x400#'
-    when CoursePage
-      '700x250#'
-    when StudyLandingPage, LandingPage
-      '940x250#'
-    else
-      node_has_nav? ? '700x250#' : '940x250#'
-    end
-  end
-
-  def asset_thumbnail_from_url(url)
-    uid = url.gsub('/static/', '').gsub(/\.fl[v|4]$/, '') #Get UID from url
-    logger.debug "ASET UID #{uid}"
-    a = Asset.find_by_file_uid(uid)
-    image_tag(a.url('220x125#',  :jpg), :alt => a.description, :class => "video-thumb") unless a.nil?
-  end
 end
