@@ -17,10 +17,12 @@ In order to allow easy access to documents whilst editing a website editor will 
     Then I should be able to browse assets by content type
     And I should be able to browse assets by tags
     
-@wip @javascript
+  @javascript
   Scenario: Insert an asset
+    Given files have been uploaded to the asset library
     When I am editing content
-    And I click insert a file
-    And select a file from the asset library
-    Then the asset should appear in the content editor
+    And I click the editor "Insert Asset" button
+    And follow "Images"
+    And I click "Add" on an Asset 
+    Then the "Image" asset should appear in the content editor
 

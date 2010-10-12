@@ -47,14 +47,20 @@ Then /^I should be able to browse assets by tags$/ do
   page.should_not have_content('Image asset')
 end
 
-When /^I click insert a file$/ do
-  pending # express the regexp above with the code you wish you had
+When /^I click the editor "([^"]*)" button$/ do |button_name|
+  within('.mceToolbar') do
+    click_link button_name
+  end
 end
 
-When /^select a file from the asset library$/ do
-  pending # express the regexp above with the code you wish you had
+When /^I click "([^"]*)" on an Asset$/ do |button_name|
+  within('#browser-list ul li:first') do
+    click_link button_name
+  end
 end
 
-Then /^the asset should appear in the content editor$/ do
-  pending # express the regexp above with the code you wish you had
+Then /^the "([^"]*)" asset should appear in the content editor$/ do |asset_type|
+  within_frame('node_body_ifr') do
+    page.should have_css("#tinymce img[src^='/media/']")
+  end
 end
