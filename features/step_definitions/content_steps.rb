@@ -11,7 +11,7 @@ Given /^content exists within a branch of the content tree$/ do
 end
 
 Then /^I should see a bread\-crumb trail available in the footer that details the content above that content in that branch$/ do
-  response.should have_css( "div#breadcrumbs ul li", :count => 5 )
+  page.should have_css( "div#breadcrumbs ul li", :count => 5 )
 end
 
 When /^I click any content title in the bread\-crumb$/ do
@@ -30,7 +30,7 @@ Then /^I should be taken to that content$/ do
 end
 
 When /^the mouse hovers over a menu item a drop down should appear with 3 levels of the branch$/ do
-  response.should have_css('ol#nav-node-tree-root li ol li ol li')
+  page.should have_css('ol#nav-node-tree-root li ol li ol li')
 end
 
 
@@ -44,71 +44,19 @@ Then /^I should be taken to the site map page$/ do
   URI.parse(current_url).path.should == sitemap_path
 end
 
-# Language Driver
-
-Given /^the content titled "([^\"]*)" has the child content "([^\"]*)", "([^\"]*)" and "([^\"]*)"$/ do |content, child1, child2, child3|
-  @_content = Factory(:page_a, :title => content, :permalink => "study/international-students/about-the-college", :publish => true)
-  [child1, child2, child3].each do |lang|
-    Factory(:page_a, :title => lang, :parent => @_content, :publish => true)
-  end
-end
-
-Then /^I should see the language select element$/ do
-  visit root_path
-  response.should have_css("li.lang a", :count => 3)
-end
-
-When /^I select "([^\"]*)" from the language select element$/ do |lang|
-  click_link_within("li.lang", lang)
-end
-
-# Course Driver
-Given /^"([^\"]*)" content exists within the Foundation, Undergraduate and Postgraduate Courses branches of the content tree$/ do |arg1|
-  ['Training Courses', 'Undergraduate Study', 'Postgraduate Study'].each do |title|
-    node = Node.find_by_title(title)
-    5.times do |i|
-      Factory(:study_landing_page, :title => "#{title} School #{i+1}", :publish => true, :parent => node)
-    end
-    3.times do
-      Factory(:page_a, :publish => true, :parent => node)
-    end
-  end
-end
-
-Then /^I should see a course select element for Foundation, Undergraduate and Postgraduate Courses$/ do
-  within "div#course-driver" do |driver|
-    ['Training Courses', 'Undergraduate Study', 'Postgraduate Study'].each do |title|
-      driver.should contain(title)
-    end
-  end
-end
-
-Then /^each course select element should contain the titles of content in "([^\"]*)" template in that branch$/ do |arg1|
-  within "div#course-driver" do |driver|
-    ['Training Courses', 'Undergraduate Study', 'Postgraduate Study'].each do |title|
-      driver.should have_css("ul#study-#{title.parameterize}-courses li", :count => 6) # 6 as Scott has added the "Choose" li
-    end
-  end
-end
-
-When /^select a course name from course select element$/ do
-  @_content = Node.find_by_title('Training Courses').children.first
-  click_link_within "div#course-driver", @_content.title
-end
-
 
 # Templates
 Then /^I should see the current branch's tree menu$/ do
-  response.should have_css('div#supporting-content ul#sub-page-nav')
+  page.should have_css('div#supporting-content ul#sub-page-nav')
 end
 
 # Then /^I should see (\d+) module areas$/ do |count|
-#   response.should have_css('div.component', :count => count.to_i)
+#   page.should have_css('div.component', :count => count.to_i)
 # end
 
 Given /^a (?:root )?page exists using the "([^\"]*)" template$/ do |template_title|
   # mongo no understand! mongo sad :(
-  Node.all({:permalink => "that-#{template_title}-page"}).each{|n| n.destroy }
+  Noodall::Node.all({:permalink => "that-#{template_title}-page"}).each{|n| n.destroy }
 
   template = template_title.downcase.gsub(' ','_')
   @_content = Factory(template.to_sym, :title => "That #{template_title} page")
@@ -182,7 +130,7 @@ end
 
 
 Then /^I should not see the current branch's tree menu$/ do
-  response.should_not have_css('div#supporting-content ul#sub-page-nav')
+  page.should_not have_css('div#supporting-content ul#sub-page-nav')
 end
 
 
@@ -190,7 +138,7 @@ end
 
 Then /^the page should be in the (.+) template$/ do |template_name|
   # Check the correct template was rendered
-  response.should have_css "body.#{template_name.gsub(/\W/, '').underscore}"
+  page.should have_css "body.#{template_name.gsub(/\W/, '').underscore}"
 end
 
 Then /^I should see (\d+) module areas$/ do |module_count|
@@ -222,7 +170,7 @@ When /^I click the RSS link$/ do
 end
 
 Then /^I should get an RSS feed of sibling content that is in the "([^\"]*)" template$/ do |arg1|
-  response.should have_css('rss channel')
+  page.should have_css('rss channel')
 end
 
 Given /^that page has a parent list$/ do

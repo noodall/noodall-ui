@@ -13,6 +13,6 @@ Feature: Content Templates
     Then I should be able select a template from the "<Allowed Templates>"
 
     Examples:
-     | Ancestor Template Name | Allowed Templates   |
-     | Page A                 | Page A, Page B      |
-     | Page C                 | Page A              |
+     | Ancestor Template Name | Allowed Templates       |
+     | Page A                 | Page A, Page B, Page C  |
+     | Page C                 | Page C, Page B          |

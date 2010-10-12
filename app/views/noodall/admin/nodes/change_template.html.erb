@@ -2,7 +2,7 @@
 
 <h1>Change Template</h1>
 
-<% form_for(:node, @node, :url => admin_node_path(@node), :html => {:method => :put, :id => "node-form"}) do |f| %>
+<%= form_for(@node, :as => :node, :url => noodall_admin_node_path(@node), :html => {:method => :put, :id => "node-form"}) do |f| %>
   <%= f.error_messages %>
 
 <div id="main-form">
@@ -31,7 +31,7 @@
   <div class="fixed-form">
     <div id="buttons">
       <%= f.submit 'Change', :class => 'change', :name => 'commit' %>
-      <%= link_to 'Cancel', admin_node_path(@node), :class => 'cancel'  %>
+      <%= link_to 'Cancel', noodall_admin_node_path(@node), :class => 'cancel'  %>
     </div>
   </div>
 

@@ -1,6 +1,6 @@
 <%= render 'menu' %>
 
-<% form_for([:noodall, :admin, @asset], :html => { :multipart => true, :id => ( 'uploader' if @asset.new_record? ) } ) do |f| %>
+<%= form_for([:noodall, :admin, @asset], :html => { :multipart => true, :id => ( 'uploader' if @asset.new_record? ) } ) do |f| %>
 <div id="main-form">
   <%= f.error_messages %>
   <%= hidden_field_tag :pending, true if params[:pending] || controller.action_name == "pending" %>
