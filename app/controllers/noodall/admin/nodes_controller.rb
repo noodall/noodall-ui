@@ -23,8 +23,8 @@ module Noodall
         @options[:_type] = params[:allowed_types] if params[:allowed_types]
         if params[:not_branch]
           @options.merge!(
-            :_id => {"$ne" => BSON::ObjectID.from_string(params[:not_branch])},
-            Node.path_field => {"$ne" => BSON::ObjectID.from_string(params[:not_branch])}
+            :_id => {"$ne" => BSON::ObjectId.from_string(params[:not_branch])},
+            Node.path_field => {"$ne" => BSON::ObjectId.from_string(params[:not_branch])}
           )
         end
 
