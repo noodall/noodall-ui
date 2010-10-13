@@ -15,8 +15,7 @@ private
 
   def log_asset_use
     unless asset.nil?
-      location = self.instance_of?(Content) ? self._parent_document.class.name : self.class.name
-      asset.log_usage(_root_document.id, location)
+      asset.log_usage(_root_document.id, self.class.name)
     end
   end
 
