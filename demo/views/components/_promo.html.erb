@@ -1,5 +1,5 @@
 <div id="<%= slot_code %>" class="component promo <%= 'double' if expand %> <%= additional_classes %>">
   <h2><%= component.title %></h2>
   <p><%= component.description %></p>
-  <%= link_to(image_tag(component.asset.url(promo_size(component, slot_code, expand), :jpg)), component.link)  unless component.asset.nil? %>
+  <%= link_to(image_tag(component.asset.url('200x200#', :jpg)), component.link)  unless component.asset.nil? %>
 </div>
