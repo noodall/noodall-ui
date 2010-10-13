@@ -1,3 +1,12 @@
+PATH
+  remote: .
+  specs:
+    noodall-ui (0.0.1)
+      noodall-core
+      ruby-stemmer
+      thoughtbot-sortable_table (= 0.0.6)
+      will_paginate
+
 GEM
   remote: http://rubygems.org/
   remote: http://gems.github.com/
@@ -165,6 +174,7 @@ PLATFORMS
 
 DEPENDENCIES
   bson_ext (~> 1.1.0)
+  bundler (>= 1.0.0)
   capybara
   cucumber
   cucumber-rails
@@ -178,10 +188,12 @@ DEPENDENCIES
   launchy
   newbamboo-rvideo (~> 0.9.6)
   noodall-core
+  noodall-ui!
   open4 (~> 0.9.5)
   rails (= 3.0.0)
   rmagick
   rspec-rails (~> 2.0.0.beta.22)
+  ruby-stemmer
   spork
   thoughtbot-sortable_table (= 0.0.6)
   will_paginate
