@@ -20,6 +20,7 @@ module Noodall
           
             resources :assets do
               collection do
+                get :images
                 get :videos
                 get :documents
                 post :plupload

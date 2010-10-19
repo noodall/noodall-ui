@@ -1,13 +1,16 @@
 function setUpAssets() {
   document.write('<link rel="stylesheet" href="/stylesheets/plupload.queue.css" type="text/css" media="screen" charset="utf-8">');
   document.write('<script type="text/javascript" src="/javascripts/plupload/gears_init.js"></script>');
-  document.write('<script type="text/javascript" src="/javascripts/plupload/gears_init.js"></script>');
   document.write('<script type="text/javascript" src="http://bp.yahooapis.com/2.4.21/browserplus-min.js"></script>');
   document.write('<script type="text/javascript" src="/javascripts/plupload/plupload.full.min.js"></script>');
   document.write('<script type="text/javascript" src="/javascripts/plupload/jquery.plupload.queue.min.js"></script>');
   
   $('#asset-browser ul.choices a, #asset-browser #tags a, #asset-browser .tags a, #asset-browser a.show, #asset-browser .pagination a').live('click', function() {
-    $.get($(this).attr('href'), { allowed_types: Component.allowed_types }, null, 'script' );
+    $.get(
+      $(this).attr('href'),
+      { allowed_types: Browser.allowed_types, mode: Browser.mode },
+      Browser.after_ajax,
+      'script' );
     return false;
   });
   ajaxifyForms('form.edit_asset');
@@ -91,4 +94,5 @@ function setUpPlupload() {
     up.refresh(); // Reposition Flash/Silverlight
   });
 }
+
 setUpAssets();

@@ -2,11 +2,11 @@
 <div id="browser-list">
 <ul>
   <% @assets.each do |asset| %>
-    <li class="file <%=cycle('one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten' )%>" title="<%= h( asset.title ) %>">
-      <div class="file-detail">
+    <li class="file" title="<%= h( asset.title ) %>">
+      <div class="file-detail" id="asset-<%= asset.id %>">
         <span class="file-title"><%= h( asset.title ) %></span>
         
-        <%= (asset.image? or asset.video?) ? image_tag( asset.url('100x100#', :jpg)  ) : asset_icon(asset) %>
+        <%= (asset.image? or asset.video?) ? image_tag( asset.url('70x70#', :jpg)  ) : asset_icon(asset) %>
       </div>
       
       <%= link_to 'Show', noodall_admin_asset_path(asset, :readonly => readonly), :class => 'show button', :title => 'View this asset' %>

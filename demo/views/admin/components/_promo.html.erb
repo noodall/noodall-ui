@@ -14,7 +14,7 @@
 
   <p class="file-selectable">
     <% unless component.asset.nil? %>
-    <span class="file-detail"><%= component.asset.image? ? image_tag( component.asset.url('100x100#', :jpg)  ) : asset_icon(component.asset) %></span>
+    <span class="file-detail"><%= component.asset.image? ? image_tag( component.asset.url('70x70#', :jpg)  ) : asset_icon(component.asset) %></span>
     <% end -%>
     <span class="select-file">Select File</span>
     (<span class="types">Images</span>)

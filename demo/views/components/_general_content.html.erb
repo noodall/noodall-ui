@@ -1,6 +1,0 @@
-<div id="<%= slot_code %>" class="component general-content <%= 'double' if expand %> <%= additional_classes %>">
-  <h2><%=h component.title %></h2>
-  <%= link_to(image_tag(component.asset.url('200x108#', :jpg)), component.url)  unless component.asset.nil? %>
-  <div><%= component.body %></div>
-  <%= link_to h(component.url_text), component.url, :class => "more" %>
-</div>

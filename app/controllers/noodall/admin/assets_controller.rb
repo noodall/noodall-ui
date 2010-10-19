@@ -23,6 +23,7 @@ module Noodall
           format.xml  { render :xml => @assets }
         end
       end
+      alias images index
       alias videos index
       alias documents index
 

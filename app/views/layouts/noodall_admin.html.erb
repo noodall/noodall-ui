@@ -28,7 +28,8 @@
   google.load("jquery", "1.4.2");
   google.load("jqueryui", "1.8");
 </script>
-<%= javascript_include_tag 'cufon-yui', 'admin/gotham.font', 'fancybox', 'ajaxify', 'admin/application' %>
+<%= javascript_include_tag 'rails', 'cufon-yui', 'admin/gotham.font', 'fancybox', 'ajaxify', 'admin/application' %>
+<%= csrf_meta_tag %>
 
 <%= yield :header %>
 

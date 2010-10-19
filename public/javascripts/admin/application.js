@@ -200,7 +200,9 @@ function get_preview_html(e) {
   preview_params = $('div#content form').serializeArray();
   var preview_form = $("<form>").attr("method", "post").attr("sytle", "display:none;").attr("target", "preview-frame").attr("action", $('div#content form').attr('action') + "/preview");
   $.each(preview_params, function(i, element) {
-    if (element.name != '_method') $("<input type='hidden'>").attr("name", element.name).attr("value", element.value).appendTo(preview_form);
+    if (element.name != '_method') {
+      $("<input type='hidden'>").attr("name", element.name).attr("value", element.value).appendTo(preview_form);
+    }
   });
   preview_form.appendTo("body");
   preview_form.submit();
@@ -227,16 +229,6 @@ var Component = {
   last_slot_index: 0,
   last_slot_type: null,
   last_component_type: null,
-  allowed_types: [],
-  set_opener: function(opening_tag) {
-    Component.opener = opening_tag;
-    types_text = this.opener.siblings('.types').text();
-    if (types_text && types_text.length > 0) {
-      Component.allowed_types = types_text.toLowerCase().split(', ');
-    } else {
-      Component.allowed_types = [];
-    }
-  },
   set_slot: function(select_tag) {
     target = $(select_tag);
     Component.last_component_type = target.val();
@@ -250,11 +242,15 @@ var Component = {
     Component.slot_form_id = '#' + $(slot_link).attr('href').split('#').pop();
     Component.slot_form = $(Component.slot_form_id);
     Component.slot_reset = Component.slot_form.clone();
+
+    //trigger load events attached to any textareas (tinymce)
+    Component.slot_reset.find('textarea.lite-editor').tinymce(lite_tiny_mce_config);
   },
   reopen_slot: function(e) {
     // reopen the last form
     $.fancybox({
-      'href': Component.slot_form_id
+      'href': Component.slot_form_id,
+      'onComplete': function(){ $(Component.slot_form_id + ' textarea.lite-editor').tinymce(lite_tiny_mce_config); }
     });
   },
   reset_slot: function(e) {
@@ -273,40 +269,122 @@ var Component = {
 
     $('#' + Component.last_slot_type + '_slot_' + Component.last_slot_index + '_tag').html(Component.slot_form.find('select.component-selector').val());
     return false;
+  },
+  add_asset: function(asset_id) {
+    file_form = Component.slot_form.find('.multi-file:last').first().clone();
+    file_form.prepend(Browser.assets_to_add_html[asset_id]);
+    file_form.find('.asset_id').val(asset_id);
+    Component.slot_form.find('.multi-file-files ol li:last').before(file_form); // Before the last as the last is the hidden emtpty
+    file_form.show();
+    // Hide the file details elements
+    Component.slot_form.find('li.multi-file .file-form').hide();
+  },
+  add_all_assets: function() {
+    $.each(Browser.assets_to_add, function(i, asset_id){
+       Component.add_asset(asset_id); 
+    });
+    Component.reopen_slot();
   }
-
 };
 
-function new_form_field(type) {
-  if ($.inArray(type, ['text_field', 'select', 'radio', 'check_box']) == -1) {
-    alert('Unknown field type.');
-  } else {
-    // find an index for the new form field (largest index plus one)
-    var new_index = 0;
-    $("#form-fields input[name$='[_type]']").each(function(i, el) {
-      num = parseInt(el.id.replace(/form_fields_(\d+)__type/i, "$1"));
-      if (new_index < num) new_index = num;
-    });
-
-    $.get('/admin/fields/new/', {
-      'type': type,
-      'index': (new_index + 1)
+var Browser = {
+  assets_to_add: [],
+  assets_to_add_html: [],
+  allowed_types: [],
+  mode: 'single', // Single or Multi
+  set_opener: function(opening_tag) {
+    Browser.opener = opening_tag;
+    types_text = Browser.opener.siblings('.types').text();
+    if (types_text && types_text.length > 0) {
+      Browser.allowed_types = types_text.toLowerCase().split(', ');
+    } else {
+      Browser.allowed_types = [];
+    }
+  },
+  toggle_added_asset: function(id) {
+    id_in_array = Browser.assets_to_add.indexOf(id);
+    if (id_in_array == -1) {
+      Browser.assets_to_add.push(id);
+      Browser.assets_to_add_html[id] = $('#asset-' + asset_id ).clone();
+    } else {
+      Browser.assets_to_add.splice(id_in_array,1);
+      Browser.assets_to_add_html.splice(id_in_array,1);
+    }
+    if (Browser.mode == 'single') {
+      Browser.do_action_and_close();
+    }
+  },
+  toggle_from_link: function(e) {
+    // Get the id from the href
+    asset_id = $(this).siblings('a.show').attr('href').split('?')[0].split('/').pop();
+    $(this).toggleClass('selected');
+    Browser.toggle_added_asset(asset_id);
+    return false;
+  },
+  attach_asset: function() {
+    asset_id = Browser.assets_to_add[0];
+    if (asset_id) {
+        // Remove the current
+      $(Browser.opener).closest('.file-selectable').find('.file-detail').remove();
+      // Set the detail
+      $(Browser.opener).closest('.file-selectable').prepend(Browser.assets_to_add_html[asset_id]);
+      // Stick it in the asset_id
+      $(Browser.opener).closest('.file-selectable').find('.asset_id').val(asset_id);
+    }
+    return false;
+  },
+  close: function() {
+    Browser.before_close();
+    $('#asset-browser').removeClass(Browser.mode);
+    Browser.assets_to_add = [];
+    Browser.allowed_types = [];
+    Browser.mode = 'single';
+    Browser.after_close();
+    // Reset callbacks
+    Browser.before_close = $.noop;
+    Browser.after_close = $.noop;
+    return false;
+  },
+  open: function() {
+    // open asset lightbox
+    action = '/';
+    if (Browser.allowed_types.length > 0) {
+      action += Browser.allowed_types[0];
+    } 
+    $.get("/admin/assets" + action, {
+      allowed_types: Browser.allowed_types,
+      mode: Browser.mode,
+      readonly:true
     },
-    function(data) {
-      $('#form-fields table tbody').append(data);
-      setup_tooltips();
-    });
-  }
+    function() {
+      // reopen the opening form if you close this form
+      $.fancybox({
+        href: '#asset-browser',
+        onClosed: Browser.close
+      });
+      $('#asset-browser').addClass(Browser.mode);
+    },
+    'script');
 
-  return false;
-}
+    return false;
+  },
+  after_ajax: function() {
+    if (Browser.mode == 'multi') {
+      $.each(Browser.assets_to_add, function(i, asset_id){
+        $('#asset-' + asset_id).siblings('a.add').addClass('selected'); 
+      }); 
+    }
+  },
+  do_action_and_close: function() {
+    Browser.action();
+    Browser.close();
+  },
+  // Callback stubs to be overridden
+  before_close: $.noop,
+  after_close: $.noop,
+  action: $.noop
+};
 
-function delete_form_field(button) {
-  if (confirm('Are you sure?')) {
-    $(button).closest('tr').remove();
-  }
-  return false;
-}
 function open_component_form(e) {
   Component.set_slot(e.target);
 
@@ -334,9 +412,8 @@ function open_component_form(e) {
   function(data) {
     form_detail.html(data);
     $('#' + Component.last_slot_type + '_slot_' + Component.last_slot_index + '_tag').html(Component.last_component_type);
-    //trigger events attached to any textareas (tinymce)
-    form_detail.find('textarea').trigger('load');
     Component.slot_form.find('li.multi-file').last().hide();
+    Component.slot_form.find('textarea.lite-editor').tinymce(lite_tiny_mce_config);
   });
 };
 
@@ -348,24 +425,7 @@ function clear_component_form(e) {
   $.fancybox.close();
     //remove filled indicator
   $("table.component-table td a[href$='#" + slot_form.attr('id') + "']").removeClass('filled');
-
 }
-
-function attach_asset_browser_image(event) {
-  // Remove the current
-  $(Component.opener).closest('.file-selectable').find('.file-detail').remove();
-  // Set the detail
-  $(Component.opener).closest('.file-selectable').prepend($(this).siblings('.file-detail').clone());
-  // Get the id from the href
-  asset_id = $(this).siblings('a.show').attr('href').split('?')[0].split('/').pop();
-
-  // Stick it in the asset_id
-  $(Component.opener).closest('.file-selectable').find('.asset_id').val(asset_id);
-
-  Component.reopen_slot();
-
-  return false;
-};
 
 function detach_asset_browser_image(event) {
   form_detail = $(event.target).closest('.component_form_detail');
@@ -375,16 +435,8 @@ function detach_asset_browser_image(event) {
   } else {
 
   }
-};
-
-function add_asset(event) {
-  file_form = Component.slot_form.find('.multi-file:last').first().clone();
-  Component.slot_form.find('.multi-file-files ol li:first').before(file_form); // Before the last as the last is the hidden emtpty
-  file_form.show();
-  // Hide the file details elements
-  Component.slot_form.find('li.multi-file .file-form').hide();
-  file_form.find('.file-form').show();
 }
+
 
 // LIVE ELEMENTS
 // Comment delete buttons
@@ -408,36 +460,34 @@ $('.form-reset').live('click', Component.reset_slot);
 // the button at the bottom of every component lightbox that clears component
 $('.form-delete').live('click', clear_component_form);
 
-// Insert an asset into the component
-$('#asset-browser.component a.add').live('click', attach_asset_browser_image);
+// Cancel button
+$('#asset-browser li.cancel a').live('click', Browser.close);
 
-// Back button
-$('#asset-browser li.back a').live('click', Component.reopen_slot);
+// Action button
+$('#asset-browser li.action a').live('click', Browser.do_action_and_close);
 
-// Open the file select for component
+// Open the file select 
 $('span.select-file').live('click', function(event) {
-
-  Component.set_opener($(this));
-
-  // open asset lightbox
-  $.get("/admin/assets", {
-    allowed_types: Component.allowed_types,
-    readonly:true
-  },
-  function() {
-    // reopen the opening form if you close this form
-    $.fancybox({
-      href: '#asset-browser'
-    });
-    $('#asset-browser').attr('class', 'component');
-  },
-  'script');
-
-  event.stopImmediatePropagation();
-  return false;
+  Browser.set_opener($(this));
+  Browser.action = Browser.attach_asset;
+  Browser.open();
+});
+// After close the file select in component form reopen slot form
+$('.component_form span.select-file').live('click', function(event) {
+  Browser.after_close = Component.reopen_slot;
 });
 
-$('.add-multi-asset').live('click', add_asset);
+// Open the file select for multi file component
+$('.add-multi-asset').live('click', function(event) {
+  Browser.mode = 'multi';
+  Browser.set_opener($(this));
+  Browser.action = Component.add_all_assets;
+  Browser.after_close = Component.reopen_slot;
+  Browser.open();
+});
+
+// Mark an asset to be added an asset into the component
+$('#asset-browser a.add').live('click', Browser.toggle_from_link);
 
 // Remove multi file
 $('li.multi-file span.done').live('click', function(e) {

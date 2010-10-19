@@ -4,6 +4,7 @@ Given /^I am editing content$/ do
 end
 
 When /^(?:|I )click a "([^"]*)" component slot$/ do |slot_name|
+  @_slot_type = slot_name.downcase
   within('ol#slot-list') do
     click_link "#{slot_name} Slot"
   end
@@ -54,98 +55,21 @@ Then /^I select an image from the asset library$/ do
   end
 end
 
-Then /^I enter an image title \(optional\)$/ do
-  within "li.multi-file:last" do
-    fill_in "node[#{@_slot_type}_slot_0][contents][][title]", :with => 'Image 1'
+Then /^I add some images to from the asset library$/ do
+  5.times do |i|
+    Factory(:asset, :title => "Image #{i}")
   end
-end
-
-Then /^I enter an image description \(optional\)$/ do
-  within "li.multi-file:last" do
-    fill_in "node[#{@_slot_type}_slot_0][contents][][body]", :with => 'The First Image'
-  end
-end
-
-Then /^I enter an image URL \(optional\)$/ do
-  within "li.multi-file:last" do
-    fill_in "node[#{@_slot_type}_slot_0][contents][][url]", :with => 'http://www.google.com'
-  end
-end
-
-
-Then /^I set a link target window \(optional\)$/ do
-  within "li.multi-file:last" do
-    select "New Window", :from => "node[#{@_slot_type}_slot_0][contents][][target]"
-  end
-end
-
-Given /^I create a gallery in a (wide|small) slot$/ do |slot_type|
-  Given %q{I am editing content}
-  @_slot_type = slot_type
-  within("div.#{@_slot_type}-slot") do |form|
-    form.select "Gallery", :from => 'Select the type of component'
-  end
-  @_content.send("#{@_slot_type}_slot_0=", Factory(:gallery))
-  @_content.save!
-  # Reopen page so we can fill in the the form
-  visit admin_node_path(@_content)
-end
-
-Then /^I should be able to select the gallery style from "widget" and "list"$/ do
-  within("#wide_component_form_0 select#node_wide_slot_0_style") do |select|
-    select.should contain('widget')
-    select.should contain('list')
-  end
-end
-
-Then /^I should not be able to select the gallery style$/ do
-  response.should_not have_selector("#small_component_form_0 select#node_small_slot_0_style")
-end
-
-Given /^I create content with a gallery set to "([^\"]*)" style$/ do |style|
-  @_content = Factory(:page_a)
-  @_content.send("wide_slot_0=", Factory(:gallery, :style => style))
-  @_content.save!
-  @_slot_type = "wide"
-  # Reopen page so we can fill in the the form
-  visit node_path(@_content)
-end
-
-
-Then /^I should see the gallery thumbnails in a widget$/ do
-  response.should have_selector("ul.gallery.widget li img", :count => 5)
-end
-
-Then /^I should see all the gallery thumbnails$/ do
-  response.should have_selector("ul.gallery.list li img", :count => 5)
-end
-
-Then /^I enter the same for more images$/ do
-  click_button "Publish"
-  visit admin_node_path(@_content)
+  page.find(:css, 'span.add-multi-asset').click 
   3.times do |i|
-    within "li.multi-file:last" do
-      asset = Factory(:asset)
-      set_hidden_field "node[#{@_slot_type}_slot_0][contents][][asset_id]", :to => asset.id
-      fill_in "node[#{@_slot_type}_slot_0][contents][][title]", :with => "Image #{i+2}"
-      fill_in "node[#{@_slot_type}_slot_0][contents][][body]", :with => "The Image number #{i+2}"
-      fill_in "node[#{@_slot_type}_slot_0][contents][][url]", :with => 'http://www.google.com'
+    within "#asset-browser li:nth(#{i + 1})" do
+      click_link "Add"
     end
-    click_button "Publish"
-    visit admin_node_path(@_content)
   end
+  page.find(:css, 'li.action a').click
 end
 
-Then /^I should see the (gallery thumbnails|slideshow)$/ do |type|
-  @_content.reload
-  @_content.send("#{@_slot_type}_slot_0").contents.should have(9).things
-  case type
-  when "gallery thumbnails"
-    response.should have_selector("ul.gallery li img", :count => 9)
-  when "slideshow"
-    class_name = ""
-    response.should have_selector("dl.hero-panel dt img", :count => 9)
-  end
+Then /^I should see the gallery thumbnails$/ do
+  page.should have_css("ul.gallery li img", :count => 3)
 end
 
 
