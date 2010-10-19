@@ -1,6 +1,7 @@
 module Noodall
   module Admin
-    class NodesController < ApplicationController
+    class NodesController < BaseController
+      include Canable::Enforcers
       layout 'noodall_admin'
       before_filter :set_title
 

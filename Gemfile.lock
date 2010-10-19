@@ -1,11 +1,11 @@
 PATH
   remote: .
   specs:
-    noodall-ui (0.0.1)
+    noodall-ui (0.0.2)
       noodall-core
       ruby-stemmer
       thoughtbot-sortable_table (= 0.0.6)
-      will_paginate
+      will_paginate (~> 3.0.pre2)
 
 GEM
   remote: http://rubygems.org/
@@ -167,7 +167,7 @@ GEM
       polyglot (>= 0.3.1)
     trollop (1.16.2)
     tzinfo (0.3.23)
-    will_paginate (2.3.15)
+    will_paginate (3.0.pre2)
 
 PLATFORMS
   ruby
@@ -196,4 +196,4 @@ DEPENDENCIES
   ruby-stemmer
   spork
   thoughtbot-sortable_table (= 0.0.6)
-  will_paginate
+  will_paginate (~> 3.0.pre2)

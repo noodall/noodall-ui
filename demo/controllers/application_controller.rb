@@ -1,7 +1,6 @@
 require 'noodall-core'
 
 class ApplicationController < ActionController::Base
-  include Canable::Enforcers
   protect_from_forgery
   @@current_user = User.find_or_create_by_full_name("Demo User")
 
@@ -14,8 +13,12 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-  def session_path
+  def destroy_user_session_path
     ''
   end
-  helper_method :session_path
+  helper_method :destroy_user_session_path
+
+  def authenticate_user!
+    true
+  end
 end

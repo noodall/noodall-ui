@@ -1,6 +1,6 @@
 module Noodall
   module Admin
-    class GroupsController < ApplicationController
+    class GroupsController < BaseController
       caches_action :index, :expires_in => 1.hour
       def index
         groups = []

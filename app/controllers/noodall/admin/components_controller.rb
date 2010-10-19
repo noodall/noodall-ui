@@ -1,6 +1,6 @@
 module Noodall
   module Admin
-    class ComponentsController < ApplicationController
+    class ComponentsController < BaseController
 
       def form
         render :status => 404 if params[:type].blank?

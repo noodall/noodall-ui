@@ -1,6 +1,12 @@
+require "will_paginate"
+
 module Noodall
   class Engine < Rails::Engine
-    engine_name :noodall_ui
+
+    initializer "static assets" do |app|
+      app.middleware.use ::ActionDispatch::Static, "#{root}/public"
+    end
+    
   end
 end
 

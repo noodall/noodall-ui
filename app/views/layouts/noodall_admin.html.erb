@@ -25,7 +25,7 @@
 
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
 <script type="text/javascript">
-  google.load("jquery", "1.4");
+  google.load("jquery", "1.4.2");
   google.load("jqueryui", "1.8");
 </script>
 <%= javascript_include_tag 'cufon-yui', 'admin/gotham.font', 'fancybox', 'ajaxify', 'admin/application' %>
@@ -41,7 +41,7 @@
       <h1><strong>Noodall</strong> Content Management System</h1>
       <ul id="status">
         <li><%= current_user.full_name %> is logged in</li>
-        <li><%= link_to 'Sign Out', session_path, :method => :delete  %></li>
+        <li><%= link_to 'Sign Out', destroy_user_session_path  %></li>
         <li><%= link_to 'Live Site', '/' %></li>
       </ul>
     </div>

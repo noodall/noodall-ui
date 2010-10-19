@@ -20,6 +20,7 @@ module Noodall
 
     paths.app << 'demo'
     paths.app.views << 'demo/views'
+    paths.app.controllers << 'demo/controllers'
     paths.config.routes 'demo/routes.rb'
     paths.config.initializers << "demo/initializers"
 

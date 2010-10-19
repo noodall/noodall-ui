@@ -95,7 +95,7 @@ class Asset
     key :location, String, :required => true
     key :node_id, ObjectId, :required => true
 
-    belongs_to :node
+    belongs_to :node, :class => Noodall::Node
     embedded_in :asset
   end
 
