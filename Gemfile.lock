@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     noodall-ui (0.0.2)
+      dynamic_form
       noodall-core
-      ruby-stemmer
       thoughtbot-sortable_table (= 0.0.6)
       will_paginate (~> 3.0.pre2)
 
@@ -193,7 +193,6 @@ DEPENDENCIES
   rails (= 3.0.0)
   rmagick
   rspec-rails (~> 2.0.0.beta.22)
-  ruby-stemmer
   spork
   thoughtbot-sortable_table (= 0.0.6)
   will_paginate (~> 3.0.pre2)
