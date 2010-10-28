@@ -1,4 +1,3 @@
-require 'noodall/permalinks'
 
 module NavigationHelpers
   # Maps a name to a path. Used by the
@@ -55,4 +54,3 @@ module NavigationHelpers
 end
 
 World(NavigationHelpers)
-World(Noodall::Permalinks)
