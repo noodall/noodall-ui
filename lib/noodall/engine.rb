@@ -1,3 +1,4 @@
+require 'dynamic_form'
 require "will_paginate"
 
 module Noodall
@@ -6,7 +7,7 @@ module Noodall
     initializer "static assets" do |app|
       app.middleware.use ::ActionDispatch::Static, "#{root}/public"
     end
-    
+
   end
 end
 

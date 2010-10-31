@@ -1,5 +1,5 @@
 require 'dragonfly'
-require 'noodall/video_thumbnail_encoder'
+#require 'noodall/video_thumbnail_encoder'
 
 module Noodall
   class DragonflyDataStorage < Dragonfly::DataStorage::MongoDataStore

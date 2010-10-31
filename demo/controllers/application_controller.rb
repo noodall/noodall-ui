@@ -1,5 +1,3 @@
-require 'noodall-core'
-
 class ApplicationController < ActionController::Base
   protect_from_forgery
   @@current_user = User.find_or_create_by_full_name("Demo User")
@@ -7,7 +5,7 @@ class ApplicationController < ActionController::Base
   def self.current_user=(user)
     @@current_user = user
   end
-  
+
   def current_user
     @@current_user
   end
