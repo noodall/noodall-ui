@@ -5,7 +5,7 @@ end
 
 When /^I click on a root$/ do
   @_page = Noodall::Node.roots.last
-  within("tr:last") { click_link "Children" } 
+  within("tbody tr:last") { click_link "Children" }
 end
 
 Then /^I should see a list the of the root’s children$/ do
@@ -16,7 +16,7 @@ end
 
 When /^I click on a child$/ do
   @_child = @_page.children.first
-  within(:css, "tr:first") { click_link "Children" }
+  within(:css, "tbody tr:first") { click_link "Children" }
 end
 
 Then /^I should see a list of the child’s children$/ do
@@ -64,7 +64,7 @@ Then /^I should be able to delete content$/ do
 end
 
 Then /^the content and all of it’s sub content will be removed from the website$/ do
- 
+
   lambda { visit node_path(@_deleted_node) }.should raise_error(MongoMapper::DocumentNotFound)
 
   @_deleted_node_children.each do |child|
@@ -85,7 +85,7 @@ end
 
 Then /^I should see the child listed within the other parent’s children$/ do
   visit noodall_admin_node_nodes_path(@_new_parent)
-  within('tbody') do 
+  within('tbody') do
     page.should have_content(@_child.title)
   end
 end
