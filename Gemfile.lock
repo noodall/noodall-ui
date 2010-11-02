@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    noodall-ui (0.0.2)
+    noodall-ui (0.0.3)
       dynamic_form
       noodall-core
       thoughtbot-sortable_table (= 0.0.6)
