@@ -12,9 +12,14 @@
 <div id="main-form">
 
   <p>
-    <span class="tooltip" title="Enter a title for this page">&nbsp;</span>
+    <span class="tooltip" title="Enter a title for this page (used in page headings and titles)">&nbsp;</span>
     <%= f.label :title, 'Title *' %><br/>
     <span class="input-wrap"><%= f.text_field :title %></span>
+  </p>
+  <p>
+    <span class="tooltip" title="Enter a name for this page (used in links and navigation, defaults to title)">&nbsp;</span>
+    <%= f.label :name %><br/>
+    <span class="input-wrap"><%= f.text_field :name %></span>
   </p>
 
   <%= render :partial => "admin/nodes/#{@node.class.name.underscore}", :locals => { :f => f }  %>
