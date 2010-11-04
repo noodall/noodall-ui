@@ -4,9 +4,7 @@
 
 <h1><%= @asset.new_record? ? 'New' : 'Editing' %> Asset</h1>
 
-<a class="tooltip" href="/cms_help.pdf">&nbsp;</a>
-
-  <%= render 'form' %>
+<%= render 'form' %>
 
 <%= javascript_tag('setUpPlupload()') if @asset.new_record?  %>
 
