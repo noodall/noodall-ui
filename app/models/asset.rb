@@ -38,7 +38,7 @@ class Asset
   def url(*args)
     if args.blank?
       # Use the transparent url just the file is required with no processing
-      file.url
+      file.url(:suffix => ".#{file_ext}")
     elsif video?
       file.encode(:tiff, { :offset => "#{video_thumbnail_offset}%" }).thumb(*args).url
     else

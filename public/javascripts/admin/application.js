@@ -566,22 +566,14 @@ $('#tree-browser.link a').live('click', function(e) {
 $('span.link-asset').live('click', {readonly:true}, function(event) {
   Component.link_input = $(this).siblings('input').first();
   Component.allowed_types = [];
-  // open asset lightbox
-  $.get("/admin/assets", function() {
-    // reopen the opening form if you close this form
-    $.fancybox({
-      href: '#asset-browser'
-    });
-    $('#asset-browser').attr('class', 'link');
-  },
-  'script');
+  Browser.action = function() {
+    asset_id = Browser.assets_to_add[0]
+    Component.link_input.val($('#asset-' + asset_id).siblings('a.add').attr('href'));
+  }
+  Browser.after_close = Component.reopen_slot;
+  Browser.open();
+
 
   event.stopImmediatePropagation();
-  return false;
-});
-
-$('#asset-browser.link a.add').live('click', function(e) {
-  $(Component.link_input).val($(this).attr('href'));
-  Component.reopen_slot();
   return false;
 });

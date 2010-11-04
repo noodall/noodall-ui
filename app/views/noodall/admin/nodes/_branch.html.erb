@@ -1,7 +1,7 @@
 <ol class="tree">
 <% for node in nodes %>
   <li><%= link_to h( node.title), node_path(node), :id => "id-#{node.id}" %>
-<% unless (children = node.children(options)).empty? -%>
+<% unless (children = node.children.where(options)).empty? -%>
   <span class="expand">+</span>
   <%= render :partial => 'branch', :locals => { :nodes => children, :options => options } %>
 <% end -%>
