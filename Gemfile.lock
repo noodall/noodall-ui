@@ -41,7 +41,6 @@ GEM
     arel (1.0.1)
       activesupport (~> 3.0.0)
     bson (1.1.1)
-    bson_ext (1.1.1)
     builder (2.1.2)
     canable (0.1.1)
     capybara (0.4.0)
@@ -112,8 +111,6 @@ GEM
       activesupport (>= 2.3.4)
       jnunemaker-validatable (~> 1.8.4)
       plucky (~> 0.3.6)
-    newbamboo-rvideo (0.9.6)
-      activesupport
     nokogiri (1.4.3.1)
     noodall-core (0.3.2)
       canable (= 0.1.1)
@@ -121,7 +118,6 @@ GEM
       mongo_mapper (~> 0.8.6)
       ramdiv-mongo_mapper_acts_as_tree (~> 0.1.1)
       ruby-stemmer
-    open4 (0.9.6)
     plucky (0.3.6)
       mongo (~> 1.1)
     polyglot (0.3.1)
@@ -183,7 +179,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bson_ext (~> 1.1.0)
   bundler (>= 1.0.0)
   capybara
   cucumber
@@ -196,10 +191,8 @@ DEPENDENCIES
   haml
   jeweler (~> 1.4.0)
   launchy
-  newbamboo-rvideo (~> 0.9.6)
   noodall-core
   noodall-ui!
-  open4 (~> 0.9.5)
   rails (= 3.0.1)
   rmagick
   rspec-rails (~> 2.0.0.beta.22)

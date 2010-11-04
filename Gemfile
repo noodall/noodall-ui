@@ -5,11 +5,8 @@ gemspec
 
 # Required for running as demo rails app
 gem 'rails', '3.0.1'
-gem 'bson_ext', '~> 1.1.0'
 gem 'rmagick', :require => 'RMagick'
 gem 'dragonfly', '~> 0.7.6'
-gem 'newbamboo-rvideo', '~> 0.9.6'
-gem 'open4', '~> 0.9.5'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
