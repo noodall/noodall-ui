@@ -57,7 +57,7 @@ $(document).ready(function() {
   //video previews
   domain = window.location.href.replace(/http:\/\/([^\/]+)\/.*/i,'$1');
   var videoUrl = 'video=http://'+ domain + escape($('a.lightboxVideo').attr('href')) + '&standalone=true';
-  
+
   $('a.lightboxVideo').fancybox({
     'padding': 10,
     'autoScale': true,
@@ -120,7 +120,7 @@ $(document).ready(function() {
 
   $("#advanced").hide();
   $("legend.advanced").hide();
-    
+
   $(".show-advanced").append("<a class='advanced' href='#advanced'>Advanced</a>");
 
   $(".show-advanced a.advanced").click(
@@ -134,11 +134,11 @@ $(document).ready(function() {
       $(".show-advanced a.advanced.open").fadeIn("fast");
     }
   });
-  
-  
-  
-  
-  
+
+
+
+
+
 
   $('body#assets.index .file').click(function() {
     document.location = $(this).find("a.show").attr('href');
@@ -259,7 +259,7 @@ var Component = {
 
     // Reset
     Component.slot_form = $(Component.slot_form_id);
-    
+
     // Make file selectors sortable
     Component.slot_form.find('.multi-file-files ol').sortable({
       axis: 'y',
@@ -281,7 +281,7 @@ var Component = {
   },
   add_all_assets: function() {
     $.each(Browser.assets_to_add, function(i, asset_id){
-       Component.add_asset(asset_id); 
+       Component.add_asset(asset_id);
     });
     Component.reopen_slot();
   }
@@ -350,7 +350,7 @@ var Browser = {
     action = '/';
     if (Browser.allowed_types.length > 0) {
       action += Browser.allowed_types[0];
-    } 
+    }
     $.get("/admin/assets" + action, {
       allowed_types: Browser.allowed_types,
       mode: Browser.mode,
@@ -371,8 +371,8 @@ var Browser = {
   after_ajax: function() {
     if (Browser.mode == 'multi') {
       $.each(Browser.assets_to_add, function(i, asset_id){
-        $('#asset-' + asset_id).siblings('a.add').addClass('selected'); 
-      }); 
+        $('#asset-' + asset_id).siblings('a.add').addClass('selected');
+      });
     }
   },
   do_action_and_close: function() {
@@ -466,10 +466,11 @@ $('#asset-browser li.cancel a').live('click', Browser.close);
 // Action button
 $('#asset-browser li.action a').live('click', Browser.do_action_and_close);
 
-// Open the file select 
+// Open the file select
 $('span.select-file').live('click', function(event) {
   Browser.set_opener($(this));
   Browser.action = Browser.attach_asset;
+  Browser.after_close = $.fancybox.close;
   Browser.open();
 });
 // After close the file select in component form reopen slot form
