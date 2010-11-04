@@ -23,12 +23,16 @@ class Asset
   validates_presence_of :file, :title, :description
   validates_length_of :tags, :minimum => 3, :message => "must have at least 3 items"
 
+  # Set up video format
+  cattr_accessor :video_extensions
+  self.video_extensions = []
+
   def image?
     !(file_mime_type =~ self.class.image_reg_ex).nil?
   end
 
   def video?
-    file_ext == 'flv'
+    @@video_extensions.include?(file_ext)
   end
 
   def url(*args)
@@ -81,10 +85,6 @@ class Asset
 
     def image_extensions
       ['png','gif','jpg','jpeg']
-    end
-
-    def video_extensions
-      ['flv', 'avi', 'mpeg', 'mpg']
     end
   end
   extend ClassMethods

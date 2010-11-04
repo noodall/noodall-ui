@@ -23,9 +23,9 @@ Given /^files have been uploaded to the asset library$/ do
   20.times { Factory(:asset) }
   20.times { Factory(:document_asset) }
   20.times { Factory(:video_asset) }
-  
+
   20.times { Factory(:asset, :title => "Tagged Asset", :tags => ['RAC','lorem','dolar']) }
-  
+
 end
 
 Then /^I should be able to browse assets by content type$/ do
@@ -35,10 +35,11 @@ Then /^I should be able to browse assets by content type$/ do
   within(:css, "ul.choices") { click_link "Documents" }
   page.should_not have_content('Image asset')
   page.should_not have_content('Video asset')
-  within(:css, "ul.choices") { click_link "Videos" }
-  page.should_not have_content('Document asset')
-  page.should_not have_content('Image asset')
-  
+  if Asset.video_extensions.any?
+    within(:css, "ul.choices") { click_link "Videos" }
+    page.should_not have_content('Document asset')
+    page.should_not have_content('Image asset')
+  end
 end
 
 Then /^I should be able to browse assets by tags$/ do

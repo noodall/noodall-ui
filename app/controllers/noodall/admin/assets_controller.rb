@@ -41,7 +41,7 @@ module Noodall
       def tags
         options = { :order => '_id' } # Order by name which is _id in the map/reduce
         if params[:asset_type]
-          options.merge!(asset_options(params[:asset_type])) 
+          options.merge!(asset_options(params[:asset_type]))
           @page_title << " Tags"
         else
           @page_title = "Tags"
