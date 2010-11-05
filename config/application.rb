@@ -13,6 +13,7 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 require 'noodall-core'
 require 'lib/noodall/permalinks'
 require 'lib/noodall/ui'
+require 'lib/noodall/canable'
 
 module Noodall
   class Application < Rails::Application
