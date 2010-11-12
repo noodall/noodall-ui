@@ -1,6 +1,7 @@
 class Asset
   include MongoMapper::Document
   plugin Noodall::Tagging
+  plugin Noodall::GlobalUpdateTime
 
   # Set up dragonfly
   extend Dragonfly::ActiveModelExtensions
