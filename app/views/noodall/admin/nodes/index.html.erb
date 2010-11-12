@@ -2,18 +2,19 @@
 
 <ul class="choices">
 
-<% if !@parent.nil? -%>
-  <li><%= link_to 'New', new_noodall_admin_node_node_path(@parent), :class => 'button', :title =>  "Add content under #{@parent.title}" %></li>
-<% else  %>
+<% if @parent.nil? -%>
   <li><%= link_to 'New', new_noodall_admin_node_path, :class => 'button', :title => "Add new" %></li>
+<% else  %>
+  <li><%= link_to 'New', new_noodall_admin_node_node_path(@parent), :class => 'button', :title =>  "Add content under #{@parent.title}" %></li>
 <% end -%>
 
-<% if !@parent.nil? and @parent.parent.nil? %>
-  <li><%= link_to "Top Level", noodall_admin_nodes_path, :class => "top button" %></li>
-<% elsif !@parent.nil?  %>
+<% if !@parent.nil? and !@parent.parent.nil? %>
   <li><%= link_to "Up to #{@parent.parent.title}", noodall_admin_node_nodes_path(@parent.parent), :class => "up button" %></li>
 <% end %>
 
+<% if !@parent.nil?  %>
+  <li><%= link_to "Top Level", noodall_admin_nodes_path, :class => "top button" %></li>
+<% end %>
 
 </ul>
 
