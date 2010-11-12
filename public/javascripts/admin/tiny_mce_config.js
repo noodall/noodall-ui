@@ -34,7 +34,7 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
     editor_selector : "editor",
     theme_advanced_buttons1 : "bold,italic,underline,|,formatselect,removeformat ,|,bullist,numlist,|,link,unlink,anchor,|,outdent,indent,blockquote,|,justifyleft,justifycenter,justifyright,justifyfull",
     theme_advanced_buttons2 : "table,delete_table,col_before,col_after,row_before,row_after,delete_col,delete_row,|,code,attribs,image,media, assetbrowser,nodebrowser",
-    
+
     setup : function(ed) {
       // Add a custom button
       ed.addButton('assetbrowser', {
@@ -54,10 +54,11 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
             }
             return false;
           };
+          Browser.after_close = $.fancybox.close;
           Browser.open();
         }
       });
-      
+
       ed.addButton('nodebrowser', {
         title : 'Insert an internal link',
         image : '/images/admin/top-level_small.png',
@@ -75,35 +76,35 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
           'script');
         }
       });
-      
+
       ed.onPostProcess.add(function(ed, o) {
         if(o.save){
           // remove mce empty spans
           o.content = o.content.replace(/<span id=._mce_start. .*?>﻿<\/span>/ig, '');
         }
       });
-      
+
       // wow what a hack: insert a containing span for the page name if nothing is selected,
       // then insert the link, then remove containing span after all is good
       $('#tree-browser.tinymce li a').live('click', function(event) {
         add_url = $(this).attr('href').split('?')[0];
-        
+
         if(tinyMCE.activeEditor.selection.getContent().length === 0){
           tinyMCE.execInstanceCommand(tinyMCE.activeEditor.id, 'mceInsertRawHTML', false, '<span class="tmp_tag">' + $(this).text() + '</span>');
           spans = tinyMCE.activeEditor.dom.select('span');
-          
+
           $.each(spans, function(i, span){
             if($(span).hasClass('tmp_tag')) {
               tinyMCE.activeEditor.selection.select(span);
             }
           });
         }
-        
+
         tinyMCE.execInstanceCommand(tinyMCE.activeEditor.id, 'mceInsertLink', false, add_url, true);
         $.fancybox.close();
-        
+
         tinyMCE.activeEditor.setContent(tinyMCE.activeEditor.getContent().replace(/<span class="tmp_tag">(.*?)<\/span>/i, "$1"));
-        
+
         event.stopImmediatePropagation();
         return false;
       });
@@ -112,7 +113,7 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
 });
 
 
-    
+
 $(function() {
   $('textarea.editor').tinymce(tiny_mce_config);
 });
