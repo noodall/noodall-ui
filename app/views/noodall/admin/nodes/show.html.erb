@@ -46,7 +46,7 @@
     <div id="buttons">
       <%= f.submit 'Publish', :class => 'publish', :name => 'node[publish]' if can_publish?(@node) %>
       <%= f.submit 'Draft', :name => 'node[hide]', :class => 'draft' %>
-      <%= link_to 'Cancel', noodall_admin_nodes_path, :class => 'cancel'  %>
+      <%= link_to 'Cancel', @node.root? ? noodall_admin_nodes_path : noodall_admin_node_nodes_path(@node.parent), :class => 'cancel'  %>
     </div>
 
 <% if can_publish?(@node) %>
