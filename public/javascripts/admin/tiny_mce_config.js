@@ -12,7 +12,7 @@ lite_tiny_mce_config = {
     //"safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking",
     // Theme options
     theme_advanced_blockformats : "h2,h3,h4,p",
-    theme_advanced_buttons1 : "bold,italic,underline,|,table,delete_table,col_before,col_after,row_before,row_after,delete_col,delete_row",
+    theme_advanced_buttons1 : "bold,italic,underline,|,bullist,numlist,|,link,unlink,|,table,delete_table,col_before,col_after,row_before,row_after,delete_col,delete_row",
     theme_advanced_buttons2 : "",
     theme_advanced_buttons3 : "",
     theme_advanced_buttons4 : "",
