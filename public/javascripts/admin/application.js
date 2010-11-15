@@ -80,6 +80,7 @@ $(document).ready(function() {
   });
 
   setup_tooltips();
+
   // Template Choices
   $('.template label img').hide();
   $('.template label img').css({
@@ -89,6 +90,8 @@ $(document).ready(function() {
   $('.template input').click(function() {
     $('.template label img').hide();
     $(this).parent().children('img').fadeIn('fast');
+    var imgHeight = $(this).parent().children('img').height() + 100 ;
+    $('#main-form').css({'min-height' : imgHeight + 'px'});
   });
 
   //Field Types on form creator
