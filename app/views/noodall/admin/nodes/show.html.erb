@@ -123,7 +123,7 @@
 <span class="tooltip" title="Please choose where you would like to place each component">&nbsp;</span>
 
 <%= yield :component_table %>
-<% if can_publish?(@node) and !@node.is_a?(Home) %>
+<% if can_change_templates?(@node) %>
 <%= link_to "Change Template", change_template_noodall_admin_node_path(@node), :class => 'change' %>
 <% end -%>
 <div id="modules-list">

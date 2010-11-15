@@ -4,6 +4,9 @@ Factory.define :node do |node|
   node.published_at { Time.now }
 end
 
+Factory.define :home, :parent => :node, :class => Home do |node|
+end
+
 Factory.define :page_a, :parent => :node, :class => PageA do |node|
 end
 

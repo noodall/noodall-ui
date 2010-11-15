@@ -15,4 +15,4 @@ Feature: Content Templates
     Examples:
      | Ancestor Template Name | Allowed Templates       |
      | Page A                 | Page A, Page B, Page C  |
-     | Page C                 | Page C, Page B          |
+     | Page C                 | Page B                  |

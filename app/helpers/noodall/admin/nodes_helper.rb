@@ -32,6 +32,10 @@ module Noodall
 
         render :partial => 'slot_form', :locals => { :type => type, :index => index, :component => component, :options => options, :slot_name => "#{ type }_slot_#{ index }" }
       end
+
+      def can_change_templates?(node)
+        can_publish?(node) and !node.is_a?(Home) and (node.parent.nil? ? Node.template_names : node.parent.class.template_names).length > 1
+      end
     end
   end
 end
