@@ -23,3 +23,9 @@ Then /^I should see a tree style list that contains all content$/ do
   page.should have_css("ol#sitemap-node-tree-root li li")
 
 end
+
+
+Then /^I should see a page of xml$/ do
+  save_and_open_page
+  page.should have_xpath("//urlset")
+end

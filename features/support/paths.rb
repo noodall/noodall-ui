@@ -40,6 +40,8 @@ module NavigationHelpers
       node_path(@_content)
     when /content titled "([^\"]*)"$/
       node_path(Node.find_by_title($1))
+    when /the site map xml page/
+      noodall_sitemap_path(:xml)
     else
       begin
         page_name =~ /the (.*) page/

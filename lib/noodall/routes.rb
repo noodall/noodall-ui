@@ -33,8 +33,22 @@ module Noodall
             end
             match 'assets/:asset_type/tags' => 'assets#tags', :as => :asset_tags
             match 'components/form/:type' => 'components#form'
+            
+            resources :forms, :has_many => :form_responses
+            
+            resources :fields do
+              collection do
+                get :form
+              end
+            end
+            
+            match 'components/form/:type' => 'components#form'
+
             resources :groups
           end
+          
+          resources :forms, :has_many => :responses
+          
           get "search" => "noodall/nodes#search", :as => :noodall_search
           get "sitemap" => "noodall/nodes#sitemap", :as => :noodall_sitemap
           get "*permalink(.:format)" =>  'noodall/nodes#show', :as => :node_permalink

@@ -7,3 +7,8 @@ Feature: SITE MAP
     Given the website has been populated with content based on the site map
     When I am on the site map page
     Then I should see a tree style list that contains all content
+
+  Scenario: View Site Map XML
+    Given the website has been populated with content based on the site map
+    When I am on the site map xml page
+    Then I should see a page of xml
