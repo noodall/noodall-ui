@@ -16,11 +16,10 @@ Feature: Change templates
     And I am editing the content
     Then I should not see "Change Template"
 
-  Scenario: Cannot cahnge template as parent only allows one sub template
+  Scenario: Cannot change template as parent only allows one sub template
     Given a page exists using the "Page B" template
     And that page has a "Page C" parent
     And I am editing the content
-    Then show me the page
     Then I should not see "Change Template"
 
   Scenario: Prevent Template Change if sub content not allowed in new template
