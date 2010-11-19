@@ -1,7 +1,9 @@
-require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+require 'spec_helper'
 
-describe "NoodallUi" do
-  it "fails" do
-    fail "hey buddy, you should probably rename this file and start specing for real"
+describe Noodall::UI do
+  it "should return the defaut admin menu" do
+    Noodall::UI.menu_items.should have(2).things
+
+    Noodall::UI.menu_items['Contents'].should == :noodall_admin_nodes_path
   end
 end

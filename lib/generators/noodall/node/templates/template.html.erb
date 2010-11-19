@@ -1,0 +1,12 @@
+<h1><%%=h @node.title %></h1>
+
+<%%= @node.body.html_safe %>
+
+<% unless attributes.empty? -%>
+<dl>
+<% for attribute in attributes -%>
+  <dt><%= attribute.name.titleize %></dt>
+  <dd><%%= @node.<% attribute.name %>%></dd>
+<% end -%>
+</dl>
+<% end -%>

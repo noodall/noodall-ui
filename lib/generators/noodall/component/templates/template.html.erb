@@ -1,0 +1,11 @@
+<div id="<%%= slot_code %>" class="component promo <%%= 'double' if expand %> <%%= additional_classes %>">
+<% unless attributes.empty? %>
+  <dl>
+  <% for attribute in attributes -%>
+      <dt><%= attribute.name.titleize %></dt>
+      <dd><%%= component.<%= attribute.name %>%></dd>
+  <% end -%>
+  </dl>
+<% end -%>
+</div>
+

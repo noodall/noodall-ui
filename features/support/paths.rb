@@ -1,3 +1,4 @@
+
 module NavigationHelpers
   # Maps a name to a path. Used by the
   #
@@ -16,9 +17,9 @@ module NavigationHelpers
       node = Node.find_by_title($1)
       node_path(node)
     when /^the content admin page$/
-      noodal_admin_nodes_path
+      noodall_admin_nodes_path
     when /^the site ?map page$/
-      sitemap_path
+      noodall_sitemap_path
     when /^a page that's content is in the "([^\"]*)" template$/
       node = Node.first(:_type => $1.gsub(' ',''), :order => 'created_at DESC')
       node_path(node)
@@ -39,6 +40,8 @@ module NavigationHelpers
       node_path(@_content)
     when /content titled "([^\"]*)"$/
       node_path(Node.find_by_title($1))
+    when /the site map xml page/
+      noodall_sitemap_path(:xml)
     else
       begin
         page_name =~ /the (.*) page/
@@ -53,4 +56,3 @@ module NavigationHelpers
 end
 
 World(NavigationHelpers)
-#World(Noodall::Permalinks)

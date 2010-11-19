@@ -1,0 +1,12 @@
+<h1><%=h @node.title %></h1>
+
+<%= component(@node, 'main_slot_0') %>
+
+<div id="body"><%= @node.body.html_safe %></div>
+
+<%= component(@node, 'wide_slot_0') %>
+<%= component(@node, 'wide_slot_1') %>
+<%= component(@node, 'wide_slot_2') %>
+
+
+

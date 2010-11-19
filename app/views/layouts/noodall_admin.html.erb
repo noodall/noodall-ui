@@ -12,7 +12,7 @@
 <meta name="author" content="Beef"/>
 
 <!-- END META TAGS -->
-<title>Noodall | CMS | <%= admin_page_title %></title>
+<title><%= admin_page_title %> | <%= Noodall::UI.app_name %> <%= Noodall::UI.system_name %></title>
 
 <%= stylesheet_link_tag 'admin/reset', 'admin/layout', 'admin/skin', 'admin/typography', 'admin/forms', 'admin/fancybox',  :media=>'screen,tv,projection' %>
 <%= stylesheet_link_tag 'admin/print', :media=>'print' %>
@@ -25,10 +25,11 @@
 
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
 <script type="text/javascript">
-  google.load("jquery", "1.4");
+  google.load("jquery", "1.4.2");
   google.load("jqueryui", "1.8");
 </script>
-<%= javascript_include_tag 'cufon-yui', 'admin/gotham.font', 'fancybox', 'ajaxify', 'admin/application', :cache => 'admin_global' %>
+<%= javascript_include_tag 'rails', 'cufon-yui', 'admin/gotham.font.js', 'fancybox', 'ajaxify', 'admin/application' %>
+<%= csrf_meta_tag %>
 
 <%= yield :header %>
 
@@ -38,18 +39,17 @@
   <div id="screen">
     <!-- begin header -->
     <div id="header">
-      <h1><strong>Noodall</strong> Content Management System</h1>
+      <h1><strong><%= Noodall::UI.app_name %></strong> <%= Noodall::UI.system_name %></h1>
       <ul id="status">
         <li><%= current_user.full_name %> is logged in</li>
-        <li><%= link_to 'Sign Out', session_path, :method => :delete  %></li>
+        <li><%= link_to 'Sign Out', destroy_user_session_path  %></li>
         <li><%= link_to 'Live Site', '/' %></li>
       </ul>
     </div>
     <!-- end header -->
     <!-- begin navigation -->
     <ul id="topnav">
-      <li><%= link_to 'Content', noodall_admin_nodes_path %></li>
-      <li><%= link_to 'Assets', noodall_admin_assets_path %></li>
+      <%= admin_menu_items %>
     </ul>
     <!-- end navigation -->
 
@@ -62,6 +62,5 @@
   </div>
   <!-- end screen -->
   <!--[if IE]><script type="text/javascript"> Cufon.now(); </script><![endif]-->
-<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? -%>
 </body>
 </html>

@@ -245,8 +245,23 @@ ul.choices li.upload a  {
         background-position:0 -44px;
 }
 
+
   ul.choices li.upload a:hover  {
           background-position:-122px -44px;
+  }
+  
+  
+  ul.choices li.cancel a:hover{
+          background-position:-122px 0px;
+  }
+  
+  
+ul.choices li.action a  {
+        background-position:0 -220px;
+}
+
+  ul.choices li.action a:hover  {
+          background-position:-122px -220px;
   }
 
 ul.choices li.images a  {
@@ -377,6 +392,12 @@ a.child, a.add{
         background:url(/images/admin/add.png) no-repeat -1px -4px;
 }
 
+#asset-browser.multi a.add {
+        background:url(/images/admin/select_image.gif) no-repeat 4px;
+}
+#asset-browser.multi a.add.selected {
+        background:url(/images/admin/select_image.gif) no-repeat -22px;
+}
 a.delete:hover,
 span.delete:hover,
 a.page_up:hover,
@@ -458,7 +479,7 @@ table#node_body_tbl,
 
 .file img,
 #image img,
-.file-selectable span.file-detail {
+.file-selectable .file-detail {
         border:1px solid #c2c2c2;
         background:#e9e9e9 !important;
 }
@@ -563,7 +584,7 @@ div#flash div,
 span.done,
 table.component-table,
 #errorExplanation,
-.file-selectable span.file-detail,
+.file-selectable .file-detail,
 #pending,
 .tooltip-show {
         -webkit-border-radius: 3px;

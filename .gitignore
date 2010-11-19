@@ -4,6 +4,7 @@ tmp/**/*
 doc/api
 doc/app
 rerun.txt
+.sass-cache
 
 ## MAC OS
 .DS_Store

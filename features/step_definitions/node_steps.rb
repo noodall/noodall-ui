@@ -16,18 +16,16 @@ Then /^I should be able select a template from the following:$/ do |table|
   end
 end
 
+Then /^I should see a tree style list that contains all content$/ do
+  #Roots
+  page.should have_css("ol#sitemap-node-tree-root li:nth(#{Noodall::Node.roots.count})")
 
-Then /^I should see a tree style list that contains all content that is not in the "([^\"]+)" template$/ do |arg1|
-  ['The College', 'Student Life', 'Alumni', 'Research & Consultancy', 'Business Services', 'Conferences & Events', 'Jobs'].each do |title|
-    page.should have_css("ol#sitemap-node-tree-root li:contains(\"#{title}\")")
-  end
+  page.should have_css("ol#sitemap-node-tree-root li li")
 
-  parent = PageA.find_by_title('The College')
-  ['Virtual Tour', 'History & Heritage', 'Principal\'s Message', 'Locations', 'Staff Profiles', 'RAC in the community', 'Governance & finance'].each do |title|
-    page.should have_css("ol#sitemap-node-tree-#{parent.id.to_s} li:contains(\"#{title}\")")
-  end
+end
 
-  ['Study'].each do |title|
-    page.should have_css("ol#sitemap-node-tree-root li:contains(\"#{title}\")")
-  end
+
+Then /^I should see a page of xml$/ do
+  save_and_open_page
+  page.should have_xpath("//urlset")
 end

@@ -2,22 +2,21 @@
 
 <ul class="choices">
 
-<% if !@parent.nil? -%>
-  <li><%= link_to 'New', new_noodall_admin_node_node_path(@parent), :class => 'button', :title =>  "Add content under #{@parent.title}" %></li>
-<% else  %>
+<% if @parent.nil? -%>
   <li><%= link_to 'New', new_noodall_admin_node_path, :class => 'button', :title => "Add new" %></li>
+<% else  %>
+  <li><%= link_to 'New', new_noodall_admin_node_node_path(@parent), :class => 'button', :title =>  "Add content under #{@parent.title}" %></li>
 <% end -%>
 
-<% if !@parent.nil? and @parent.parent.nil? %>
-  <li><%= link_to "Top Level", noodall_admin_nodes_path, :class => "top button" %></li>
-<% elsif !@parent.nil?  %>
+<% if !@parent.nil? and !@parent.parent.nil? %>
   <li><%= link_to "Up to #{@parent.parent.title}", noodall_admin_node_nodes_path(@parent.parent), :class => "up button" %></li>
 <% end %>
 
+<% if !@parent.nil?  %>
+  <li><%= link_to "Top Level", noodall_admin_nodes_path, :class => "top button" %></li>
+<% end %>
 
 </ul>
-
-<a class="tooltip" href="/cms_help.pdf">&nbsp;</a>
 
 <div id="content-table">
  <table border="0" cellspacing="0" cellpadding="0" class="content">
@@ -48,7 +47,7 @@
       </td>
       <td class="date" title="by <%= node.updater.full_name if node.updater %>"><%=h node.updated_at.to_formatted_s(:short_ordinal) %></td>
       <td class=""><%= link_to 'Show', node_path(node), :class => 'show', :title => 'View this content' if node.published? %></td>
-      <td class="date" title="<%= node.published? ? 'Published ':'Draft' %><%= node.published_at.to_formatted_s(:short_ordinal) unless node.published_at.nil? %><%= " - #{node.published_to.to_formatted_s(:short_ordinal)}" unless node.published_to.nil? %>"><%= node.published? ? '<span class="check">Published</span>' : '<span class="draft">Draft</span>' %></td>
+      <td class="date" title="<%= node.published? ? 'Published ':'Draft' %><%= node.published_at.to_formatted_s(:short_ordinal) unless node.published_at.nil? %><%= " - #{node.published_to.to_formatted_s(:short_ordinal)}" unless node.published_to.nil? %>"><%= (node.published? ? '<span class="check">Published</span>' : '<span class="draft">Draft</span>').html_safe %></td>
       <td><%= link_to 'Delete', noodall_admin_node_path(node), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this content' %></td>
     </tr>
 <% end %>

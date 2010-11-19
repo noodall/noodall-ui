@@ -1,4 +1,5 @@
 module Noodall::Admin::AssetsHelper
+  include SortableTable::App::Helpers::ApplicationHelper
 
   def asset_icon(asset)
     icon = case asset.file_ext

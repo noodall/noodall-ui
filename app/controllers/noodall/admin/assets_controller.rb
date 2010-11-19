@@ -1,6 +1,6 @@
 module Noodall
   module Admin
-    class AssetsController < ApplicationController
+    class AssetsController < BaseController
       include SortableTable::App::Controllers::ApplicationController
       sortable_attributes :created_at, :title, :updated_at
       protect_from_forgery :except => :plupload
@@ -23,6 +23,7 @@ module Noodall
           format.xml  { render :xml => @assets }
         end
       end
+      alias images index
       alias videos index
       alias documents index
 
@@ -40,7 +41,7 @@ module Noodall
       def tags
         options = { :order => '_id' } # Order by name which is _id in the map/reduce
         if params[:asset_type]
-          options.merge!(asset_options(params[:asset_type])) 
+          options.merge!(asset_options(params[:asset_type]))
           @page_title << " Tags"
         else
           @page_title = "Tags"
@@ -154,12 +155,12 @@ module Noodall
               if params[:pending] and pending_count > 0
                 flash[:notice] << " #{pending_count} assets remaining"
                 # Go to the next pending asset
-                redirect_to(pending_admin_assets_url)
+                redirect_to(pending_noodall_admin_assets_url)
               elsif params[:pending]
                 flash[:notice] = 'All assets were successfully updated.'
                 redirect_to(admin_assets_type_url(@asset))
               else
-                redirect_to(admin_asset_url(@asset))
+                redirect_to(noodall_admin_asset_url(@asset))
               end
             end
             format.js { index }
@@ -182,7 +183,7 @@ module Noodall
             if params[:pending] and pending_count > 0
               flash[:notice] << " #{pending_count} assets remaining"
               # Go to the next pending asset
-              redirect_to(pending_admin_assets_url)
+              redirect_to(pending_noodall_admin_assets_url)
             else
               flash[:notice] = 'All assets were successfully updated.' if params[:pending]
               redirect_to(admin_assets_type_url(@asset))
@@ -217,11 +218,11 @@ module Noodall
 
       def admin_assets_type_url(asset)
         if asset.nil? or asset.image?
-          admin_assets_url
+          noodall_admin_assets_url
         elsif asset.video?
-          videos_admin_assets_path
+          videos_noodall_admin_assets_path
         else
-          documents_admin_assets_path
+          documents_noodall_admin_assets_path
         end
       end
       helper_method :admin_assets_type_url

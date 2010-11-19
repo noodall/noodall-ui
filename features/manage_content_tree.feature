@@ -28,13 +28,15 @@ Feature: Manage Content Tree
     Then I should be able to delete content
     And the content and all of it’s sub content will be removed from the website
   
+  Scenario: Reorder Children
+    Given I am on the content admin page
+    When I click on a root
+    Then I should be able change the order of the root’s children
+
+  @javascript
   Scenario: Move Child to another Parent
     Given I am on the content admin page
     When I click on a root
     Then I should be able to move a child content to another parent
     And I should see the child listed within the other parent’s children
   
-  Scenario: Reorder Children
-    Given I am on the content admin page
-    When I click on a root
-    Then I should be able change the order of the root’s children

@@ -1,0 +1,48 @@
+<%= render 'menu' %>
+
+<div id="show-assets">
+
+  <div id="image">
+  <% if @asset.image? or @asset.video? %>
+    <%= link_to(image_tag( @asset.url('500x400', :jpg), :alt => @asset.description, :id => "asset-#{@asset.id}" ), @asset.url, :class => ('lightboxVideo' if @asset.video?)) %>
+    <% else -%>
+    <%= link_to( asset_icon(@asset) ) %>
+  <% end -%>
+  </div>
+
+  <div id="info">
+    <h2><%=h @asset.title %></h2>
+    <p><strong>File Size:</strong> <%= number_to_human_size( @asset.file_size ) %></p>
+    <p><strong>Description:</strong> <%= @asset.description %></p>
+<% unless readonly %>
+    <p><%= link_to "Edit '#{@asset.title}'", edit_noodall_admin_asset_path(@asset), :title => "Edit '#{@asset.title}'" , :class => 'edit' %></p>
+<% end %>
+
+    <h2>Used <%= @asset.log_entries.count %> times</h2>
+    <ul id="asset-usage">
+      <% for entry in @asset.log_entries %>
+      <% unless entry.node.nil? %>
+      <li><%= link_to entry.node.title, noodall_admin_node_path(entry.node) %> - <%= entry.location %></li>
+      <% end -%>
+      <% end -%>
+    </ul>
+
+  </div>
+
+  <% if @asset.tags? %>
+  <div id="tags">
+      <h2>'<%= @asset.title %>' Tags</h2>
+      <ul>
+        <% for tag in @asset.tags %>
+          <li><%= link_to "#{h( tag )}", :tag => tag  %></li>
+        <% end -%>
+      </ul>
+  </div>
+    <% elsif !readonly -%>
+  <div id="no-tags">
+    <h2>'<%= @asset.title %>' Tags</h2>
+    <p>This asset has no tags, <%= link_to 'click here', edit_noodall_admin_asset_path(@asset), :title => 'Edit Tags' %> to add them.</p>
+  </div>
+  <% end -%>
+
+</div>

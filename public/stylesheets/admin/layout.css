@@ -534,11 +534,14 @@ a.child-no {
         clear: both;
 }
 
-.file-selectable span.file-detail {
+.file-selectable .file-detail {
   float: left;
-  width: 100px;
+  width: 70px;
   padding: 3px;
   margin-right: 5px;
+}
+.file-selectable .file-detail .file-title {
+  display: none;
 }
 
 .multi-file span.edit, .multi-file span.delete {
@@ -661,7 +664,7 @@ span.expand {
 fieldset.template label img {
   left:520px;
   position:absolute;
-  top:30px;
+  top:20px;
 }
 
 #current-label {

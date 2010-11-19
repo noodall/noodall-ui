@@ -1,9 +1,8 @@
-<a class="tooltip" href="/cms_help.pdf">&nbsp;</a>
 
 <h1>New Content<%= " under '#{@parent.title}'" unless @parent.nil? %></h1>
 <p>* Required Fields</p>
 
-<% form_for(:node, @node, :url => noodall_admin_nodes_path) do |f| %>
+<%= form_for(@node, :as => :node, :url => noodall_admin_nodes_path) do |f| %>
   <%= f.error_messages %>
   <%= f.hidden_field :parent, :value => @node.parent_id %>
 

@@ -1,10 +1,11 @@
 class Asset
   include MongoMapper::Document
   plugin Noodall::Tagging
+  plugin Noodall::GlobalUpdateTime
 
   # Set up dragonfly
-  extend Dragonfly::ActiveRecordExtensions
-  register_dragonfly_app(:asset, Dragonfly::App[:assets])
+  extend Dragonfly::ActiveModelExtensions
+  register_dragonfly_app(:asset_accessor, Dragonfly::App[:noodall_assets])
 
   asset_accessor :file
 
@@ -23,26 +24,26 @@ class Asset
   validates_presence_of :file, :title, :description
   validates_length_of :tags, :minimum => 3, :message => "must have at least 3 items"
 
+  # Set up video format
+  cattr_accessor :video_extensions
+  self.video_extensions = []
+
   def image?
     !(file_mime_type =~ self.class.image_reg_ex).nil?
   end
 
   def video?
-    file_ext == 'flv'
+    @@video_extensions.include?(file_ext)
   end
 
   def url(*args)
     if args.blank?
       # Use the transparent url just the file is required with no processing
-      Dragonfly::App[:static].url_for(file_uid, :format => file_ext)
+      file.url(:suffix => ".#{file_ext}")
     elsif video?
-      params = Dragonfly::App[:assets].parameters.from_args(*args)
-      params.encoding = { :offset => "#{video_thumbnail_offset}%" }
-      params.processing_options[:offset] = "#{video_thumbnail_offset}%"
-      logger.debug params.inspect
-      file.url(params)
+      file.encode(:tiff, { :offset => "#{video_thumbnail_offset}%" }).thumb(*args).url
     else
-      file.url(*args)
+      file.thumb(*args).url
     end
   end
 
@@ -86,10 +87,6 @@ class Asset
     def image_extensions
       ['png','gif','jpg','jpeg']
     end
-
-    def video_extensions
-      ['flv', 'avi', 'mpeg', 'mpg']
-    end
   end
   extend ClassMethods
 
@@ -99,7 +96,7 @@ class Asset
     key :location, String, :required => true
     key :node_id, ObjectId, :required => true
 
-    belongs_to :node
+    belongs_to :node, :class => Noodall::Node
     embedded_in :asset
   end
 

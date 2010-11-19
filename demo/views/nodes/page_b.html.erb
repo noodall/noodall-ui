@@ -1,19 +1,9 @@
-<div id="main-content"<%= ' class="no-nav"' unless node_has_nav? %>>
+<h1><%=h @node.title %></h1>
 
-  <h1><%=h @node.title %></h1>
+<%= component(@node, 'main_slot_0') %>
 
-  <%= component(@node, 'main_slot_0') %>
+<div id="body"><%= @node.body.html_safe %></div>
 
-  <div id="body"><%= @node.body %></div>
-
-  <%= component(@node, 'wide_slot_0') %>
-  <%= component(@node, 'wide_slot_1') %>
-  <%= component(@node, 'wide_slot_2') %>
-
-</div>
-
-<% if node_has_nav? -%>
-<div id="supporting-content">
-  <%= node_nav %>
-</div>
-<% end -%>
+<%= component(@node, 'wide_slot_0') %>
+<%= component(@node, 'wide_slot_1') %>
+<%= component(@node, 'wide_slot_2') %>

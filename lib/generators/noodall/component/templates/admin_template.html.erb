@@ -1,0 +1,12 @@
+<%%= fields_for :node do |n| %>
+  <%%=   n.fields_for slot_name, component do |f| %>
+
+    <%%= f.hidden_field :_type %>
+    <% for attribute in attributes -%>
+      <p>
+        <%%= f.label :<%= attribute.name %> %><br/>
+        <span class="input-wrap"><%%= f.<%= attribute.field_type %> :<%= attribute.name %> %></span>
+      </p>
+    <% end -%>
+<%% end
+   end %>

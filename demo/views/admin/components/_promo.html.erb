@@ -1,7 +1,5 @@
-<% fields_for :node do |n| %>
-<%   n.fields_for slot_name, component do |f| %>
-
-  <%= error_messages_for :object => component %>
+<%= fields_for :node do |n| %>
+<%=   n.fields_for slot_name, component do |f| %>
 
   <%= f.hidden_field :_type %>
 
@@ -9,10 +7,14 @@
     <%= f.label :title, "Title" %><br />
     <span class="input-wrap"><%= f.text_field :title %></span>
   </p>
+  <p>
+    <%= f.label :description %><br />
+    <span class="input-wrap"><%= f.text_area :description, :cols => 40, :rows => 4 %></span>
+  </p>
 
   <p class="file-selectable">
     <% unless component.asset.nil? %>
-    <span class="file-detail"><%= component.asset.image? ? image_tag( component.asset.url('100x100#', :jpg)  ) : asset_icon(component.asset) %></span>
+    <span class="file-detail"><%= component.asset.image? ? image_tag( component.asset.url('70x70#', :jpg)  ) : asset_icon(component.asset) %></span>
     <% end -%>
     <span class="select-file">Select File</span>
     (<span class="types">Images</span>)
@@ -20,9 +22,9 @@
   </p>
 
   <p>
-    <%= f.label :url, 'Url' %><br />
+    <%= f.label :link %><br />
     <span class="input-wrap">
-      <%= f.text_field :url %><br/>
+      <%= f.text_field :link %><br/>
       <span class="link-node">Content</span> |
       <span class="link-asset">Asset</span>
     </span>
