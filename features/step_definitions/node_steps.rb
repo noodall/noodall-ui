@@ -26,6 +26,5 @@ end
 
 
 Then /^I should see a page of xml$/ do
-  save_and_open_page
   page.should have_xpath("//urlset")
 end

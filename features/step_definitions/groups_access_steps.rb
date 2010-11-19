@@ -19,22 +19,22 @@ Then(/^only users in the "([^\"]*)" and "([^\"]*)" should be able to ([^\"]*) co
     actions.split(', ').each do |action|
       case action
       when "Update"
-        visit admin_node_path(@_content)
+        visit noodall_admin_node_path(@_content)
         click_button "Draft"
       when "create children of"
-        visit admin_node_nodes_path(@_content)
-        click_link_within ".choices", "New"
+        visit noodall_admin_node_nodes_path(@_content)
+        within(".choices") { click_link "New" }
         click_button "Create"
       when "Delete"
-        visit admin_nodes_path
-        click_link_within "tr:contains('#{@_content.title}')", "Delete"
+        visit noodall_admin_nodes_path
+        within("tr:contains('#{@_content.title}')") { click_link "Delete" }
         # REcreate for the next run
         @_content = Factory(:page_a, "destroyable_groups" => [group1, group2])
       when "Publish"
-        visit admin_node_path(@_content)
+        visit noodall_admin_node_path(@_content)
         begin
           click_button "Publish"
-        rescue Webrat::NotFoundError => e
+        rescue Capybara::ElementNotFound => e
           raise Canable::Transgression # Raise this if we can't find the button
         end
       end
@@ -44,7 +44,23 @@ Then(/^only users in the "([^\"]*)" and "([^\"]*)" should be able to ([^\"]*) co
 end
 
 Then(/^users not in the "([^\"]*)" and "([^\"]*)" should not be able to ([^\"]*) content$/) do |group1, group2, action|
-  lambda { Then %{only users in the "nongroup" and "anothergroup" should be able to #{action} content} }.should raise_error(Canable::Transgression)
+  Given %{I am signed in as a nogood}
+  case action
+  when "Update"
+    visit noodall_admin_node_path(@_content)
+    page.should have_content("You do not have permission to do that")
+  when "create children of"
+    visit noodall_admin_node_nodes_path(@_content)
+    within(".choices") { click_link "New" }
+    page.should have_content("You do not have permission to do that")
+  when "Delete"
+    visit noodall_admin_nodes_path
+    within("tr:contains('#{@_content.title}')") { click_link "Delete" }
+    page.should have_content("You do not have permission to do that")
+  when "Publish"
+    visit noodall_admin_node_path(@_content)
+    lambda { click_button "Publish" }.should raise_error(Capybara::ElementNotFound)
+  end
 end
 
 Given /^content exists with permissions set$/ do
@@ -53,25 +69,25 @@ end
 
 When /^a child of that content is created$/ do
   Given %{I am signed in as a website administrator}
-  visit admin_node_nodes_path(@_content)
-  click_link_within ".choices", "New"
+  visit noodall_admin_node_nodes_path(@_content)
+  within(".choices") { click_link "New" }
   fill_in "Title", :with => "Permeable Content"
   choose("Page A")
   click_button "Create"
 end
 
 Then(/^by default the child should have the same permissions as it's parent$/) do
-  response.should have_css("input#node_updatable_groups_list") do |input|
+  page.should have_css("input#node_updatable_groups_list") do |input|
     input.should have_xpath("@value") do |value|
       value.should contain("Dudes")
     end
   end
-  response.should have_css("input#node_destroyable_groups_list") do |input|
+  page.should have_css("input#node_destroyable_groups_list") do |input|
     input.should have_xpath("@value") do |value|
       value.should contain("Webbies, Dudes")
     end
   end
-  response.should have_css("input#node_publishable_groups_list") do |input|
+  page.should have_css("input#node_publishable_groups_list") do |input|
     input.should have_xpath("@value") do |value|
       value.should contain("Dudes")
     end
@@ -80,13 +96,18 @@ end
 
 Then /^I should be able to carry out all actions regardless of group permissions$/ do
   Given %{content exists with permissions set}
-  visit admin_node_path(@_content)
+  visit noodall_admin_node_path(@_content)
   click_button "Draft"
-  visit admin_node_nodes_path(@_content)
-  click_link_within ".choices", "New"
+  visit noodall_admin_node_nodes_path(@_content)
+  within(".choices") { click_link "New" }
   click_button "Create"
-  visit admin_node_path(@_content)
+  visit noodall_admin_node_path(@_content)
   click_button "Publish"
-  visit admin_nodes_path
-  click_link_within "tr:contains('#{@_content.title}')", "Delete"
+  visit noodall_admin_nodes_path
+  within("tr:contains('#{@_content.title}')") { click_link "Delete" }
 end
+
+Then /^I sign out$/ do
+  # express the regexp above with the code you wish you had
+end
+
