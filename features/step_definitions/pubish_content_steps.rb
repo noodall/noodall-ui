@@ -17,7 +17,8 @@ Then /^the content should (not |)be visible on the website$/ do |is_not|
     visit node_path(@_content)
     page.should within('h1') { have_content(@_content.title) }
   else
-    lambda { visit node_path(@_content) }.should raise_error(MongoMapper::DocumentNotFound)
+    visit node_path(@_content)
+    page.should have_content("The page you were looking for doesn't exist.")
   end
 end
 
