@@ -1,5 +1,7 @@
 module Noodall
   class NodesController < ApplicationController
+    rescue_from MongoMapper::DocumentNotFound, :with => :render_404
+
     def show
       if flash.any? or published_states_changed_since_global_update? or stale?(:last_modified => GlobalUpdateTime::Stamp.read, :public => true)
         permalink = params[:permalink].is_a?(String) ? params[:permalink] : params[:permalink].join('/')
@@ -14,13 +16,14 @@ module Noodall
           format.rss { render "nodes/#{@node.class.name.underscore}" }
         end
       end
+
     end
 
     def sitemap
       if stale?(:last_modified => GlobalUpdateTime::Stamp.read, :public => true)
         @page_title = 'Sitemap'
       end
-      
+
       @nodes = Node.all
     end
 
@@ -39,5 +42,14 @@ module Noodall
         true
       end
     end
+
+    def render_404(exception = nil)
+      if exception
+          logger.info "Rendering 404: #{exception.message}"
+      end
+
+      render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false
+    end
+
   end
 end
