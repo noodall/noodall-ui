@@ -15,7 +15,7 @@ end
 Then /^the content should (not |)be visible on the website$/ do |is_not|
   if is_not.blank?
     visit node_path(@_content)
-    page.should within('h1') { have_content(@_content.title) }
+    page.should within('#content h1') { have_content(@_content.title) }
   else
     visit node_path(@_content)
     page.should have_content("The page you were looking for doesn't exist.")
@@ -43,4 +43,6 @@ end
 When /^I clear the publish to date$/ do
   5.times{ |i|   select("", :from => "node[published_to(#{i+1}i)]" ) }
   click_button 'Publish'
+
+  puts "DATE: #{ @_content.published_to }"
 end

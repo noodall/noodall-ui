@@ -65,7 +65,8 @@ end
 
 Then /^the content and all of it’s sub content will be removed from the website$/ do
 
-  lambda { visit node_path(@_deleted_node) }.should raise_error(MongoMapper::DocumentNotFound)
+  visit node_path(@_deleted_node)
+  page.should have_content("The page you were looking for doesn't exist.")
 
   @_deleted_node_children.each do |child|
     lambda { visit node_path(child) }.should raise_error(MongoMapper::DocumentNotFound)
