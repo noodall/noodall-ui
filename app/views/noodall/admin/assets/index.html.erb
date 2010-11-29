@@ -39,7 +39,7 @@
 </table>
 
   <ul id="per-page-select">
-<% for quant in [10, 20, 50, 100] %>
+<% for quant in [10, 20, 50] %>
     <li<%= (quant == 10 ? ' class="first"' : '') %>><%= link_to quant, params.merge(:limit => quant)  %></li>
 <% end %>
   </ul>
