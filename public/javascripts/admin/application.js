@@ -278,6 +278,9 @@ var Component = {
     file_form.prepend(Browser.assets_to_add_html[asset_id]);
     file_form.find('.asset_id').val(asset_id);
     Component.slot_form.find('.multi-file-files ol li:last').before(file_form); // Before the last as the last is the hidden emtpty
+    // enable all form fields
+    file_form.find('input').removeAttr('disabled');
+    file_form.find('textarea').removeAttr('disabled');
     file_form.show();
     // Hide the file details elements
     Component.slot_form.find('li.multi-file .file-form').hide();
