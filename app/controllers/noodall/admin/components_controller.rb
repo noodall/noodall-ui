@@ -6,7 +6,8 @@ module Noodall
         render :status => 404 if params[:type].blank?
 
         # TODO: check for an incorrect object class name passed in
-        component_class = params[:type].classify.constantize
+        
+        component_class = params[:type].camelize.constantize
         component = component_class.new
         if component.respond_to?(:contents)
           component.contents.reject!{|c| c.asset_id.blank? }
