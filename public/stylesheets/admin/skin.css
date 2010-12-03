@@ -364,6 +364,9 @@ a.edit, span.edit {
 a.delete, span.delete {
         background:url(/images/admin/delete.png) no-repeat -1px -4px;
 }
+a.spam, span.spam {
+        background:url(/images/admin/spam.png) no-repeat -1px -4px;
+}
 a.download {
         background:url(/images/admin/download.png) no-repeat -1px -4px;
 }
@@ -404,7 +407,8 @@ a.page_up:hover,
 a.page_down:hover,
 a.child:hover,
 a.add:hover,
-a.download:hover
+a.download:hover,
+a.spam:hover
  {
         background-position: -1px -36px;
 }
@@ -636,7 +640,8 @@ a.child,
 ul.choices li a,
 a.download,
 .edit-item,
-a.change {
+a.change,
+a.spam, span.spam {
         overflow: hidden;
         text-align: left;
         display: block;
