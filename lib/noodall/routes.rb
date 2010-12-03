@@ -32,6 +32,8 @@ module Noodall
               end
             end
             match 'assets/:asset_type/tags' => 'assets#tags', :as => :asset_tags
+
+            match 'components/form/:type' => 'components#form'
             
             resources :groups
           end
