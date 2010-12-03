@@ -369,7 +369,8 @@ span.delete,
 a.show,
 a.child,
 a.add,
-a.download {
+a.download,
+a.spam,span.spam {
         width:26px;
         height:26px;
         display:block;
@@ -378,7 +379,8 @@ a.download {
 
 a.delete,
 a.show,
-a.download  {
+a.download,
+a.spam,span.spam  {
         margin:auto;
 }
 
