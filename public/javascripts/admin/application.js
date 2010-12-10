@@ -301,18 +301,11 @@ var Browser = {
   set_opener: function(opening_tag) {
     Browser.opener = opening_tag;
     var types_text = Browser.opener.siblings('.types').text();
-    console.log(Browser.opener.html());
-    console.log(Browser.opener.attr('data-file_types'));
     if (types_text && types_text.length > 0) {
-      console.log('splitting');
-      console.log(types_text.toLowerCase());
-      console.log(types_text.toLowerCase().split(', '));
       Browser.allowed_types = types_text.toLowerCase().split(', ');
     } else {
-      console.log('blank array');
       Browser.allowed_types = [];
     }
-    console.log(Browser.allowed_types);
   },
   toggle_added_asset: function(id) {
     id_in_array = Browser.assets_to_add.indexOf(id);
