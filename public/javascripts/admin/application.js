@@ -210,13 +210,13 @@ function get_preview_html(e) {
   preview_form.appendTo("body");
   preview_form.submit();
   preview_form.remove();
-};
+}
 
 function initComponentTable() {
   // Mark slots that have content as filled
   $('table.component-table td a').each(function(i, link) {
     target = '#' + this.href.split('#').pop();
-    if ($(target + ' .component_form_detail').text().replace(/[\s\t]/g, '') != "") {
+    if ($(target + ' .component_form_detail').text().replace(/[\s\t]/g, '') !== "") {
       $(this).addClass('filled');
     }
   });
@@ -300,12 +300,19 @@ var Browser = {
   mode: 'single', // Single or Multi
   set_opener: function(opening_tag) {
     Browser.opener = opening_tag;
-    types_text = Browser.opener.siblings('.types').text();
+    var types_text = Browser.opener.siblings('.types').text();
+    console.log(Browser.opener.html());
+    console.log(Browser.opener.attr('data-file_types'));
     if (types_text && types_text.length > 0) {
+      console.log('splitting');
+      console.log(types_text.toLowerCase());
+      console.log(types_text.toLowerCase().split(', '));
       Browser.allowed_types = types_text.toLowerCase().split(', ');
     } else {
+      console.log('blank array');
       Browser.allowed_types = [];
     }
+    console.log(Browser.allowed_types);
   },
   toggle_added_asset: function(id) {
     id_in_array = Browser.assets_to_add.indexOf(id);
@@ -401,7 +408,7 @@ function open_component_form(e) {
 
   table_cell = $("table.component-table td a[href$='" + Component.slot_form_id + "']");
 
-  if (Component.last_component_type == '') {
+  if (Component.last_component_type === '') {
     $('#' + Component.last_slot_type + '_slot_' + Component.last_slot_index + '_tag').html('');
     // Mark table cell as filled
     table_cell.removeClass('filled');
@@ -421,7 +428,7 @@ function open_component_form(e) {
     Component.slot_form.find('li.multi-file').last().hide();
     Component.slot_form.find('textarea.lite-editor').tinymce(lite_tiny_mce_config);
   });
-};
+}
 
 function clear_component_form(e) {
   slot_form = $(e.target).closest('div.component_form');
@@ -573,9 +580,9 @@ $('span.link-asset').live('click', {readonly:true}, function(event) {
   Component.link_input = $(this).siblings('input').first();
   Component.allowed_types = [];
   Browser.action = function() {
-    asset_id = Browser.assets_to_add[0]
+    asset_id = Browser.assets_to_add[0];
     Component.link_input.val($('#asset-' + asset_id).siblings('a.add').attr('href'));
-  }
+  };
   Browser.after_close = Component.reopen_slot;
   Browser.open();
 
