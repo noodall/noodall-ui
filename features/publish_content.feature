@@ -18,6 +18,7 @@ In order to control when content is available on the website a website administr
     When today is "5th August 2010"
     Then the content should not be visible on the website
 
+  @wip
   Scenario: Publish content for set period
     Given today is "5th August 2010"
     And published content exists with publish to date: "30th July 2010"
