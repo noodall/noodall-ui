@@ -300,7 +300,9 @@ var Browser = {
   mode: 'single', // Single or Multi
   set_opener: function(opening_tag) {
     Browser.opener = opening_tag;
-    var types_text = Browser.opener.siblings('.types').text();
+    // use the HTML5 data attribute data-file-types if it exists of look for an element
+    // with the class "types" for backwards compatibility with legacy projects
+    var types_text = Browser.opener.attr('data-file-types') || Browser.opener.siblings('.types').text();
     if (types_text && types_text.length > 0) {
       Browser.allowed_types = types_text.toLowerCase().split(', ');
     } else {
