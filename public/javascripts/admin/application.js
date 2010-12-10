@@ -222,7 +222,7 @@ function initComponentTable() {
   });
 }
 
-var Node = {
+var NoodallNode = {
   id: function() {
     return $('form#node-form').attr('action').split('/').pop();
   }
