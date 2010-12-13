@@ -2,6 +2,7 @@ module Noodall
   module Admin
     module NodesHelper
       include Noodall::Permalinks
+      include AssetsHelper
 
       def sorted_node_tree(tree)
         nodes = []
