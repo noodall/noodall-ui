@@ -7,10 +7,10 @@ module Noodall
 
       def index
         if params[:node_id].nil?
-          @nodes = Node.roots
+          @nodes = Node.roots.paginate(:per_page => 20, :page => params[:page])
         else
           @parent = Node.find(params[:node_id])
-          @nodes = @parent.children
+          @nodes = @parent.children.paginate(:per_page => 20, :page => params[:page])
         end
 
         respond_to do |format|

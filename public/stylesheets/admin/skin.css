@@ -249,13 +249,13 @@ ul.choices li.upload a  {
   ul.choices li.upload a:hover  {
           background-position:-122px -44px;
   }
-  
-  
+
+
   ul.choices li.cancel a:hover{
           background-position:-122px 0px;
   }
-  
-  
+
+
 ul.choices li.action a  {
         background-position:0 -220px;
 }
@@ -325,17 +325,17 @@ ul.choices li a:hover {
         color:#49a3e1;
 }
 
-.pagination span {
+.pagination span, .pagination em {
         color:#686666;
 }
 
-.pagination .prev_page,
+.pagination .previous_page,
 .pagination .next_page {
         background:url("/images/admin/pagination.gif") no-repeat scroll;
 
 }
 
-.pagination a.prev_page {
+.pagination a.previous_page {
         background-position:0 0;
 }
 
@@ -343,7 +343,7 @@ ul.choices li a:hover {
         background-position:-130px 0;
 }
 
-.pagination span.prev_page {
+.pagination span.previous_page {
         background-position:0 -26px;
 }
 
@@ -576,7 +576,7 @@ ul.choices li a,
 div.tags,
 #show-assets #info,
 #modules-list,
-.pagination .prev_page,
+.pagination .previous_page,
 .pagination .next_page,
 ul#topnav li a:hover,
 .file img,
@@ -635,7 +635,7 @@ a.child,
 .form-reset,
 .add-multi-asset,
 .remove,
-.pagination .prev_page,
+.pagination .previous_page,
 .pagination .next_page,
 ul.choices li a,
 a.download,

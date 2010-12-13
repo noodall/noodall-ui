@@ -17,7 +17,7 @@
 <% end %>
 
 </ul>
-
+<%= will_paginate(@nodes, :previous_label => 'Previous', :next_label => 'Next') %>
 <div id="content-table">
  <table border="0" cellspacing="0" cellpadding="0" class="content">
   <thead>
@@ -66,3 +66,4 @@
   </tfoot>
 </table>
 </div>
+<%= will_paginate(@nodes, :previous_label => 'Previous', :next_label => 'Next') %>

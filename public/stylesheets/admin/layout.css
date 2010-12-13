@@ -286,12 +286,13 @@ form#uploader {
 }
 
 .pagination span,
+.pagination em,
 .pagination a {
         padding:0 5px;
         vertical-align: middle;
 }
 
-.pagination .prev_page,
+.pagination .previous_page,
 .pagination .next_page {
         width:130px;
         height:26px;
@@ -299,7 +300,7 @@ form#uploader {
         padding:0;
 }
 
-.pagination .prev_page {
+.pagination .previous_page {
         margin-right:5px;
 }
 
