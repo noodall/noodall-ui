@@ -16,6 +16,7 @@ Feature: Groups access control
       | Update     | Update, create children of |
       | Destroy    | Delete                     |
       | Publish    | Publish                    |
+      | View       | View                       |
 
   Scenario: Inherited Permissions
     Given content exists with permissions set
