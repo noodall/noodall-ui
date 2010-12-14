@@ -4,7 +4,7 @@ source 'http://gems.github.com'
 gemspec
 
 # Required for running as demo rails app
-gem 'rails', '3.0.1'
+gem 'rails', '~> 3.0.1'
 gem 'rmagick', :require => 'RMagick'
 gem 'dragonfly', '~> 0.7.6'
 

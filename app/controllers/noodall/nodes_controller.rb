@@ -1,6 +1,6 @@
 module Noodall
   class NodesController < ApplicationController
-    rescue_from MongoMapper::DocumentNotFound, :with => :render_404
+    rescue_from MongoMapper::DocumentNotFound, ActionView::MissingTemplate, :with => :render_404
 
     def show
       if flash.any? or published_states_changed_since_global_update? or stale?(:last_modified => GlobalUpdateTime::Stamp.read, :public => true)
@@ -12,8 +12,8 @@ module Noodall
         @page_keywords = @node.keywords
 
         respond_to do |format|
-          format.html { render "nodes/#{@node.class.name.underscore}" }
-          format.rss { render "nodes/#{@node.class.name.underscore}" }
+          format.json { render :json => @node }
+          format.any { render "nodes/#{@node.class.name.underscore}" }
         end
       end
 
@@ -48,7 +48,7 @@ module Noodall
           logger.info "Rendering 404: #{exception.message}"
       end
 
-      render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false
+      render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false, :content_type => "text/html"
     end
 
   end

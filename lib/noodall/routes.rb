@@ -7,7 +7,7 @@ module Noodall
           namespace 'noodall/admin', :as => 'noodall_admin', :path => 'admin' do
             resources :nodes do
               resources :nodes
-              member do 
+              member do
                 get :change_template
                 get :move_up
                 get :move_down
@@ -17,7 +17,7 @@ module Noodall
                 get :tree
               end
             end
-          
+
             resources :assets do
               collection do
                 get :images
@@ -34,13 +34,14 @@ module Noodall
             match 'assets/:asset_type/tags' => 'assets#tags', :as => :asset_tags
 
             match 'components/form/:type' => 'components#form'
-            
+
             resources :groups
           end
-          
+
           get "search" => "noodall/nodes#search", :as => :noodall_search
           get "sitemap" => "noodall/nodes#sitemap", :as => :noodall_sitemap
-          get "*permalink(.:format)" =>  'noodall/nodes#show', :as => :node_permalink
+          get "*permalink.:format" =>  'noodall/nodes#show'
+          get "*permalink" =>  'noodall/nodes#show', :as => :node_permalink
         end
       end
     end
