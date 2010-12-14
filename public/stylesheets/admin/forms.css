@@ -232,6 +232,7 @@ p.remove span{
           left:20px;
           border:none;
           position:absolute;
+          cursor:pointer;
 }
 
 #content form .fixed-form input.update {
@@ -401,6 +402,10 @@ div#flash a {
           color:#9C3B3B;
           margin-bottom:20px;
           padding:9px;
+}
+
+a, button, input[type="select"] {
+  cursor:pointer;
 }
 
 /* -------------- JQUERY TRANSFROM -------------- */
