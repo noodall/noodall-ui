@@ -43,6 +43,4 @@ end
 When /^I clear the publish to date$/ do
   5.times{ |i|   select("", :from => "node[published_to(#{i+1}i)]" ) }
   click_button 'Publish'
-
-  puts "DATE: #{ @_content.published_to }"
 end
