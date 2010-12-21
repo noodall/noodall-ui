@@ -116,32 +116,35 @@
 <% end -%>
   </div>
 
-  <div id="sub-form">
+  <% unless @node.class.slots_count == 0 %>
+    <div id="sub-form">
 
-<h2>Page Components</h2>
+      <h2>Page Components</h2>
 
-<span class="tooltip" title="Please choose where you would like to place each component">&nbsp;</span>
+      <span class="tooltip" title="Please choose where you would like to place each component">&nbsp;</span>
 
-<%= yield :component_table %>
-<% if can_change_templates?(@node) %>
-<%= link_to "Change Template", change_template_noodall_admin_node_path(@node), :class => 'change' %>
-<% end -%>
-<div id="modules-list">
-<!-- Component lightbox related stuff -->
-  <ol id="slot-list">
-<%
- Noodall::Component.possible_slots.each do |type|
-   @node.class.send("#{type}_slots_count").to_i.times do |index| %>
-    <li>
-      <%= slot_link(@node,type,index) %>
-      <%= slot_form(@node,type,index) %>
-    </li>
+      <%= yield :component_table %>
 
-<%   end
- end %>
-  </ol>
-  </div>
+      <% if can_change_templates?(@node) %>
+        <%= link_to "Change Template", change_template_noodall_admin_node_path(@node), :class => 'change' %>
+      <% end -%>
 
-  </div>
+      <div id="modules-list">
+        <!-- Component lightbox related stuff -->
+        <ol id="slot-list">
+          <%
+            Noodall::Component.possible_slots.each do |type|
+              @node.class.send("#{type}_slots_count").to_i.times do |index| %>
+              <li>
+                <%= slot_link(@node,type,index) %>
+                <%= slot_form(@node,type,index) %>
+              </li>
+            <% end -%>
+          <% end -%>
+        </ol>
+      </div>
+
+    </div>
+  <% end -%>
 
 <% end %>
