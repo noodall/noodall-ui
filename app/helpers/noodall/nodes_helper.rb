@@ -58,7 +58,7 @@ module Noodall
     def related_content(ref_node, types =[], options = {})
       options[:_type] = {'$in' => types} unless types.empty?
 
-      nodes = ref_node.related(publish_options(options.merge(:order => 'published_at DESC')))
+      nodes = ref_node.related(options.merge(:order => 'published_at DESC', :published_at => { :$lte => Time.zone.now }, :published_to => { :$gte => Time.zone.now }))
       return if nodes.empty?
 
       content_tag('h2', 'Related Content') +
