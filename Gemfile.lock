@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    noodall-ui (0.0.18)
+    noodall-ui (0.0.19)
       dynamic_form
       noodall-core
       thoughtbot-sortable_table (= 0.0.6)
@@ -39,7 +39,7 @@ GEM
       activesupport (= 3.0.3)
     activesupport (3.0.3)
     arel (2.0.6)
-    bson (1.1.4)
+    bson (1.1.5)
     builder (2.1.2)
     canable (0.1.1)
     capybara (0.4.0)
@@ -51,7 +51,7 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (>= 0.0.27)
       xpath (~> 0.1.2)
-    celerity (0.8.5)
+    celerity (0.8.6)
     childprocess (0.1.4)
       ffi (~> 0.6.3)
     configuration (1.2.0)
@@ -63,7 +63,7 @@ GEM
       term-ansicolor (~> 1.0.5)
     cucumber-rails (0.3.2)
       cucumber (>= 0.8.0)
-    culerity (0.2.12)
+    culerity (0.2.13)
     database_cleaner (0.6.0)
     diff-lcs (1.1.2)
     dragonfly (0.7.7)
@@ -83,7 +83,7 @@ GEM
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
     git (1.2.5)
-    haml (3.0.24)
+    haml (3.0.25)
     i18n (0.5.0)
     jeweler (1.4.0)
       gemcutter (>= 0.1.0)
@@ -102,18 +102,18 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
-    mm-multi-parameter-attributes (0.1.1)
+    mm-multi-parameter-attributes (0.1.0)
       mongo_mapper
-    mongo (1.1.4)
-      bson (>= 1.1.1)
+    mongo (1.1.5)
+      bson (>= 1.1.5)
     mongo_mapper (0.8.6)
       activesupport (>= 2.3.4)
       jnunemaker-validatable (~> 1.8.4)
       plucky (~> 0.3.6)
     nokogiri (1.4.4)
-    noodall-core (0.3.6)
+    noodall-core (0.3.10)
       canable (= 0.1.1)
-      mm-multi-parameter-attributes (~> 0.1.1)
+      mm-multi-parameter-attributes (= 0.1.0)
       mongo_mapper (~> 0.8.6)
       ramdiv-mongo_mapper_acts_as_tree (~> 0.1.1)
       ruby-stemmer
