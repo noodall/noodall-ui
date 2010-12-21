@@ -3,7 +3,9 @@
 <ul class="choices">
 
 <% if @parent.nil? -%>
-  <li><%= link_to 'New', new_noodall_admin_node_path, :class => 'button', :title => "Add new" %></li>
+  <% if Noodall::Node.root_templates.any? -%>
+    <li><%= link_to 'New', new_noodall_admin_node_path, :class => 'button', :title => "Add new" %></li>
+  <% end -%>
 <% else  %>
   <li><%= link_to 'New', new_noodall_admin_node_node_path(@parent), :class => 'button', :title =>  "Add content under #{@parent.title}" %></li>
 <% end -%>
