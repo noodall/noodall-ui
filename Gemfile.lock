@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    noodall-ui (0.0.19)
+    noodall-ui (0.0.20)
       dynamic_form
       noodall-core
       thoughtbot-sortable_table (= 0.0.6)
@@ -52,7 +52,7 @@ GEM
       selenium-webdriver (>= 0.0.27)
       xpath (~> 0.1.2)
     celerity (0.8.6)
-    childprocess (0.1.4)
+    childprocess (0.1.6)
       ffi (~> 0.6.3)
     configuration (1.2.0)
     cucumber (0.10.0)
@@ -158,8 +158,8 @@ GEM
     rubyforge (2.0.4)
       json_pure (>= 1.1.7)
     rubyzip (0.9.4)
-    selenium-webdriver (0.1.1)
-      childprocess (= 0.1.4)
+    selenium-webdriver (0.1.2)
+      childprocess (~> 0.1.5)
       ffi (~> 0.6.3)
       json_pure
       rubyzip
