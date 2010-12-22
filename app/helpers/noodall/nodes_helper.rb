@@ -17,10 +17,10 @@ module Noodall
           # only recurse if there is no limit and the limit has not been exceeded and if there are child nodes
           if (level_limit.zero? || level_limit > n.path.count) && !tree[n.id.to_s].nil?
             class_name = " has-children"
-            content += list_children(tree, n, id_prefix, level_limit) + "\n"
+            content += list_children(tree, n, id_prefix, level_limit)
           end
-          content_tag('li', content, {:id => "nav-#{n.permalink.join('-')}", :class => class_name}) + "\n"
-        end.join
+          content_tag('li', content, {:id => "nav-#{n.permalink.join('-')}", :class => class_name})
+        end.join.html_safe
       end
     end
 
