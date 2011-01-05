@@ -6,7 +6,7 @@
   <% if Noodall::Node.root_templates.any? -%>
     <li><%= link_to 'New', new_noodall_admin_node_path, :class => 'button', :title => "Add new" %></li>
   <% end -%>
-<% else  %>
+<% elsif @parent.class.template_names.any?  %>
   <li><%= link_to 'New', new_noodall_admin_node_node_path(@parent), :class => 'button', :title =>  "Add content under #{@parent.title}" %></li>
 <% end -%>
 
@@ -44,7 +44,7 @@
       <td class="child">
 <% unless node.class.template_classes.blank? -%>
         <%= link_to pluralize(node.children.size, "Child"), noodall_admin_node_nodes_path(node), :title => "View content under #{h(node.title)}", :class => 'child-no' %>
-        <%= link_to 'Add', new_noodall_admin_node_node_path(node), :title => "Add content under #{h(node.title)}", :class => 'child' %>
+        <%= link_to('Add', new_noodall_admin_node_node_path(node), :title => "Add content under #{h(node.title)}", :class => 'child') if node.class.template_names.any? %>
 <% end -%>
       </td>
       <td class="date" title="by <%= node.updater.full_name if node.updater %>"><%=h node.updated_at.to_formatted_s(:short_ordinal) %></td>
