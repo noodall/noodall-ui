@@ -59,14 +59,14 @@ module Noodall
       options[:_type] = {'$in' => types} unless types.empty?
 
       nodes = ref_node.related(options.merge(:order => 'published_at DESC', :published_at => { :$lte => Time.zone.now }, :published_to => { :$gte => Time.zone.now }))
+      
       return if nodes.empty?
 
-      content_tag('h2', 'Related Content') +
-        content_tag('ul', :id => 'related-content') do
-        nodes.collect do |node|
-          content_tag('li', link_to(h(node.title), node_path(node)) + node.published_at.to_formatted_s(:short_dot))
-        end
-        end
+      content_tag('h2', 'Related Content') + content_tag('ul', :id => 'related-content') do
+          nodes.collect do |node|
+            content_tag('li', link_to(node.title, node_path(node)) + node.published_at.to_formatted_s(:short_dot))
+          end.join.html_safe
+      end
     end
   end
 end
