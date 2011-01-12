@@ -20,7 +20,7 @@ When /^(?:|I )fill in the following within the component:$/ do |fields|
   within "#fancybox-inner" do
     fields.rows_hash.each do |name, value|
       When %{I fill in "#{name}" with "#{value}"}
-    end 
+    end
   end
 end
 
@@ -28,6 +28,7 @@ When /^(?:|I )press "([^"]*)" within the component$/ do |button|
   within "#fancybox-inner" do
     click_button(button)
   end
+  sleep 3
 end
 
 When /^(?:|I )select an image from the asset library$/ do
@@ -59,7 +60,7 @@ Then /^I add some images to from the asset library$/ do
   5.times do |i|
     Factory(:asset, :title => "Image #{i}")
   end
-  page.find(:css, 'span.add-multi-asset').click 
+  page.find(:css, 'span.add-multi-asset').click
   3.times do |i|
     within "#asset-browser li:nth(#{i + 1})" do
       click_link "Add"

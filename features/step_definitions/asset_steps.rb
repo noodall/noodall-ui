@@ -55,6 +55,7 @@ When /^I click the editor "([^"]*)" button$/ do |button_name|
 end
 
 When /^I click "([^"]*)" on an Asset$/ do |button_name|
+  sleep 3
   within('#browser-list ul li:first') do
     click_link button_name
   end
