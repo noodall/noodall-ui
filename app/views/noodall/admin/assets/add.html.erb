@@ -1,8 +1,8 @@
 <% if @asset.image? %>
-<%= link_to image_tag( @asset.url('100x100#', :jpg), :alt => @asset.description, :id => "asset-#{@asset.id}" ), @asset.url('800x600', :jpg), :class => 'lightbox', :title => @asset.title %>
+<%= link_to image_tag( @asset.url('100x100#', @asset.dragonfly_extension_sym), :alt => @asset.description, :id => "asset-#{@asset.id}" ), @asset.url('800x600', @asset.dragonfly_extension_sym), :class => 'lightbox', :title => @asset.title %>
 <% elsif @asset.video? %>
 <div class="video">
-  <%= link_to image_tag( @asset.url('220x125#', :jpg), :alt => @asset.description, :id => "asset-#{@asset.id}" ), @asset.url, :class => 'lightboxVideo', :title => @asset.title %>
+  <%= link_to image_tag( @asset.url('220x125#', @asset.dragonfly_extension_sym), :alt => @asset.description, :id => "asset-#{@asset.id}" ), @asset.url, :class => 'lightboxVideo', :title => @asset.title %>
   <strong><%= @asset.title %></strong>
 </div>
 <% else -%>

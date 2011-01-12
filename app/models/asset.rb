@@ -43,10 +43,14 @@ class Asset
     elsif video?
       file.encode(:tiff, { :offset => "#{video_thumbnail_offset}%" }).thumb(*args).url
     else
-      file.thumb(*args).url
+      file.thumb(*args).url(:suffix => ".#{file_ext}")
     end
   end
 
+  def dragonfly_extension_sym
+    file_ext.gsub('jpeg','jpg').to_sym
+  end
+  
   def file_uid
     # Required to rerun the correct object for Dragonfly pending
     return Dragonfly::ActiveRecordExtensions::PendingUID.new if @file_uid == "PENDING"
