@@ -10,7 +10,7 @@ module Noodall
         @node = Node.find_by_permalink(permalink)
 
         #Check view permissions
-        enforce_view_permission(@node) if anybody_signed_in?
+        enforce_view_permission(@node)
 
         @page_title = @node.title
         @page_description = @node.description
