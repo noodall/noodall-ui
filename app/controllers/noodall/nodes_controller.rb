@@ -11,8 +11,6 @@ module Noodall
 
         #Check view permissions
         enforce_view_permission(@node) if anybody_signed_in?
-        #Set cache control to private if this page has restricted permisions
-        response.cache_control[:public] = false if @node.viewable_groups.any?
 
         @page_title = @node.title
         @page_description = @node.description
@@ -60,6 +58,17 @@ module Noodall
     def permission_denied
       flash[:error] = "You do not have permission to do that"
       redirect_to root_url
+    end
+
+    def can_view?(node)
+      if node.viewable_groups.empty?
+        # No groups then can view
+        true
+      else
+        #Set cache control to private if this page has restricted permisions
+        response.cache_control[:public] = false
+        !current_user.nil? and current_user.can_view?(node)
+      end
     end
   end
 end
