@@ -19,4 +19,8 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     true
   end
+
+  def anybody_signed_in?
+    true
+  end
 end

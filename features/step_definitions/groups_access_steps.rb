@@ -2,15 +2,17 @@ Then /^I should be able to set the permissions on that content$/ do
   fill_in "Update", :with => "Them, Us, Things"
   fill_in "Delete", :with => "Us, Things, Stuff"
   fill_in "Publish", :with => "Us, Stuff"
+  fill_in "View", :with => "Us, Stuff"
   click_button "Publish"
   @_content.reload
   @_content.updatable_groups.should == ['Them', 'Us', 'Things']
   @_content.destroyable_groups.should == ['Us', 'Things', 'Stuff']
   @_content.publishable_groups.should == ['Us', 'Stuff']
+  @_content.viewable_groups.should == ['Us', 'Stuff']
 end
 
 Given(/^content's ([^\"]*) is set to "([^\"]*)" and "([^\"]*)"$/) do |permission, group1, group2|
-  @_content = Factory(:page_a, "#{permission.downcase.gsub(/e$/,'')}able_groups" => [group1, group2], :hide => true)
+  @_content = Factory(:page_a, "#{permission.downcase.gsub(/e$/,'')}able_groups" => [group1, group2], :publish => true)
 end
 
 Then(/^only users in the "([^\"]*)" and "([^\"]*)" should be able to ([^\"]*) content$/) do |group1, group2, actions|
@@ -37,6 +39,10 @@ Then(/^only users in the "([^\"]*)" and "([^\"]*)" should be able to ([^\"]*) co
         rescue Capybara::ElementNotFound => e
           raise Canable::Transgression # Raise this if we can't find the button
         end
+      when "View"
+        # Create a home page so there is something to redirect to
+        Factory(:home, :title => 'Home', :publish => true, :body => "Hello this is home")
+        visit node_path(@_content)
       end
     end
     Then %{I sign out} #Neeed to do this or remeber cookie gets in the way
@@ -60,6 +66,9 @@ Then(/^users not in the "([^\"]*)" and "([^\"]*)" should not be able to ([^\"]*)
   when "Publish"
     visit noodall_admin_node_path(@_content)
     lambda { click_button "Publish" }.should raise_error(Capybara::ElementNotFound)
+  when "View"
+    visit node_path(@_content)
+    page.should have_content("You do not have permission to do that")
   end
 end
 

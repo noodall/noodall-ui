@@ -97,7 +97,6 @@ module Noodall
       end
 
       def create
-        logger.debug  request.inspect
         @asset = Asset.new(params[:asset])
 
         respond_to do |format|

@@ -1,12 +1,19 @@
 module Noodall
   class NodesController < ApplicationController
+    include Canable::Enforcers
     rescue_from MongoMapper::DocumentNotFound, ActionView::MissingTemplate, :with => :render_404
+    rescue_from Canable::Transgression, :with => :permission_denied
 
     def show
       if flash.any? or published_states_changed_since_global_update? or stale?(:last_modified => GlobalUpdateTime::Stamp.read, :public => true)
         permalink = params[:permalink].is_a?(String) ? params[:permalink] : params[:permalink].join('/')
-
         @node = Node.find_by_permalink(permalink)
+
+        #Check view permissions
+        enforce_view_permission(@node) if anybody_signed_in?
+        #Set cache control to private if this page has restricted permisions
+        response.cache_control[:public] = false if @node.viewable_groups.any?
+
         @page_title = @node.title
         @page_description = @node.description
         @page_keywords = @node.keywords
@@ -16,7 +23,6 @@ module Noodall
           format.any { render "nodes/#{@node.class.name.underscore}" }
         end
       end
-
     end
 
     def sitemap
@@ -32,7 +38,7 @@ module Noodall
       @page_title = 'Searching: '+ params[:q]
     end
 
-  protected
+    protected
 
     def published_states_changed_since_global_update?
       if Node.count(:published_at => { :$gte => GlobalUpdateTime::Stamp.read, :$lte => Time.zone.now }).zero? and Node.count(:published_to => { :$gte => GlobalUpdateTime::Stamp.read, :$lte => Time.zone.now }).zero?
@@ -45,11 +51,15 @@ module Noodall
 
     def render_404(exception = nil)
       if exception
-          logger.info "Rendering 404: #{exception.message}"
+        logger.info "Rendering 404: #{exception.message}"
       end
 
       render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false, :content_type => "text/html"
     end
 
+    def permission_denied
+      flash[:error] = "You do not have permission to do that"
+      redirect_to root_url
+    end
   end
 end
