@@ -6,4 +6,5 @@ class PageA < Noodall::Node
   small_slots 4
   wide_slots 3
 
+  searchable_keys :title, :body, :description, :keywords
 end
