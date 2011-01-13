@@ -138,7 +138,10 @@ module Noodall
       def preview
         @node = Node.find(params[:id])
         @node.attributes = params[:node]
+        
         @node.permalink ||= 'preview'
+        @node.published_at = Time.zone.now
+        
         render :template => "/nodes/#{@node.class.name.underscore}", :layout => 'application'
       end
 
