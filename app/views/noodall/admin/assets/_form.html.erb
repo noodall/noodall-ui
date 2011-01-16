@@ -45,7 +45,7 @@
 <div id="sub-form">
   <div id="image">
   <% if @asset.image? or @asset.video? %>
-    <%= image_tag( @asset.url('260x', @asset.dragonfly_extension_sym), :alt => @asset.description, :id => "asset-#{@asset.id}" ) %>
+    <%= image_tag( @asset.url('260x', @asset.web_image_extension), :alt => @asset.description, :id => "asset-#{@asset.id}" ) %>
     <% else -%>
     <%= link_to( @asset.file.name, @asset.url, :title => @asset.description, :id => "asset-#{@asset.id}" ) %>
   <% end -%>

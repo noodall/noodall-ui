@@ -43,14 +43,25 @@ class Asset
     elsif video?
       file.encode(:tiff, { :offset => "#{video_thumbnail_offset}%" }).thumb(*args).url
     else
-      file.thumb(*args).url(:suffix => ".#{file_ext}")
+      file.thumb(*args).url
     end
   end
 
-  def dragonfly_extension_sym
-    file_ext.gsub('jpeg','jpg').to_sym
+  def web_image_extension
+    # If the extension id anything other than a png or gif then it should be a jpg
+    case file_ext
+    when 'png', 'gif'
+      file_ext
+    else
+      'jpg'
+    end.to_sym
   end
-  
+
+  def dragonfly_extension_sym
+    warn "[DEPRECATION] `dragonfly_extension_sym` is deprecated.  Please use `web_image_extension` instead."
+    web_image_extension
+  end
+
   def file_uid
     # Required to rerun the correct object for Dragonfly pending
     return Dragonfly::ActiveRecordExtensions::PendingUID.new if @file_uid == "PENDING"

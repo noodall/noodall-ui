@@ -4,7 +4,7 @@
 
   <div id="image">
   <% if @asset.image? or @asset.video? %>
-    <%= link_to(image_tag( @asset.url('500x400', @asset.dragonfly_extension_sym), :alt => @asset.description, :id => "asset-#{@asset.id}" ), @asset.url, :class => ('lightboxVideo' if @asset.video?)) %>
+    <%= link_to(image_tag( @asset.url('500x400', @asset.web_image_extension), :alt => @asset.description, :id => "asset-#{@asset.id}" ), @asset.url, :class => ('lightboxVideo' if @asset.video?)) %>
     <% else -%>
     <%= link_to( asset_icon(@asset) ) %>
   <% end -%>
