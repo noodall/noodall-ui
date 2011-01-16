@@ -210,7 +210,7 @@ function get_preview_html(e) {
   preview_form.appendTo("body");
   preview_form.submit();
   preview_form.remove();
-}
+};
 
 function initComponentTable() {
   // Mark slots that have content as filled
@@ -309,8 +309,8 @@ var Browser = {
       Browser.allowed_types = [];
     }
   },
-  toggle_added_asset: function(id) {
-    id_in_array = Browser.assets_to_add.indexOf(id);
+  toggle_added_asset: function(id, e) {
+    id_in_array = $.inArray(id, Browser.assets_to_add);
     if (id_in_array == -1) {
       Browser.assets_to_add.push(id);
       Browser.assets_to_add_html[id] = $('#asset-' + asset_id ).clone();
@@ -319,14 +319,14 @@ var Browser = {
       Browser.assets_to_add_html.splice(id_in_array,1);
     }
     if (Browser.mode == 'single') {
-      Browser.do_action_and_close();
+      Browser.do_action_and_close(e);
     }
   },
   toggle_from_link: function(e) {
     // Get the id from the href
     asset_id = $(this).siblings('a.show').attr('href').split('?')[0].split('/').pop();
     $(this).toggleClass('selected');
-    Browser.toggle_added_asset(asset_id);
+    Browser.toggle_added_asset(asset_id, e);
     return false;
   },
   attach_asset: function() {
@@ -383,8 +383,8 @@ var Browser = {
       });
     }
   },
-  do_action_and_close: function() {
-    Browser.action();
+  do_action_and_close: function(e) {
+    Browser.action(e);
     Browser.close();
   },
   // Callback stubs to be overridden
@@ -397,6 +397,11 @@ function open_component_form(e) {
   Component.set_slot(e.target);
 
   form_detail = $(e.target).closest('div.component_form').find('.component_form_detail');
+
+  // unload tinymce on previous textareas
+  form_detail.find('.lite-editor, .editor').each(function(){
+    tinyMCE.get($(this).attr('id')).remove();
+  });
 
   // Set the slot to nil to clear on save
   form_detail.html('<input name="node[' + Component.last_slot_type + '_slot_' + Component.last_slot_index + ']" type="hidden" value=""/>');
@@ -423,7 +428,7 @@ function open_component_form(e) {
     Component.slot_form.find('li.multi-file').last().hide();
     Component.slot_form.find('textarea.lite-editor').tinymce(lite_tiny_mce_config);
   });
-}
+};
 
 function clear_component_form(e) {
   slot_form = $(e.target).closest('div.component_form');
@@ -573,15 +578,11 @@ $('#tree-browser.link a').live('click', function(e) {
 // Asset Linker
 $('span.link-asset').live('click', {readonly:true}, function(event) {
   Component.link_input = $(this).siblings('input').first();
-  Component.allowed_types = [];
-  Browser.action = function() {
-    asset_id = Browser.assets_to_add[0];
-    Component.link_input.val($('#asset-' + asset_id).siblings('a.add').attr('href'));
+  Browser.set_opener($(this));
+  Browser.action = function(e) {
+    $(Component.link_input).val($(e.target).attr('href'));
   };
   Browser.after_close = Component.reopen_slot;
   Browser.open();
-
-
-  event.stopImmediatePropagation();
-  return false;
 });
+
