@@ -116,7 +116,7 @@ module Noodall
         flash[:notice] = "#{@node.class.name.titleize} '#{@node.title}' was successfully deleted."
 
         respond_to do |format|
-          format.html { redirect_to(noodall_admin_nodes_url) }
+          format.html { redirect_to(@node.root? ? noodall_admin_nodes_path : noodall_admin_node_nodes_path(@node.parent)) }
           format.xml  { head :ok }
         end
       end
