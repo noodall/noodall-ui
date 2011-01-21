@@ -8,7 +8,7 @@ module Noodall::LayoutHelper
   end
 
   def page_title
-    @page_title ||= controller.controller_name.titleize + (controller.action_name == 'index' ? " #{controller.action_name.titleize}" : ' ' )
+    @page_title ||= controller.controller_name.titleize + (controller.action_name == 'index' ? ' ' : " #{controller.action_name.titleize}" )
   end
 
   attr_reader :page_description, :page_keywords
