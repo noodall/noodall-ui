@@ -5,10 +5,10 @@ Then /^I should be able to set the permissions on that content$/ do
   fill_in "View", :with => "Us, Stuff"
   click_button "Publish"
   @_content.reload
-  @_content.updatable_groups.should == ['Them', 'Us', 'Things']
-  @_content.destroyable_groups.should == ['Us', 'Things', 'Stuff']
-  @_content.publishable_groups.should == ['Us', 'Stuff']
-  @_content.viewable_groups.should == ['Us', 'Stuff']
+  @_content.updatable_groups.should == ['them', 'us', 'things']
+  @_content.destroyable_groups.should == ['us', 'things', 'stuff']
+  @_content.publishable_groups.should == ['us', 'stuff']
+  @_content.viewable_groups.should == ['us', 'stuff']
 end
 
 Given(/^content's ([^\"]*) is set to "([^\"]*)" and "([^\"]*)"$/) do |permission, group1, group2|
