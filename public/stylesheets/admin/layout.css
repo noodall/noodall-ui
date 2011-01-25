@@ -704,6 +704,43 @@ li.multi-file span.file-title {
 
 li.multi-file .file-detail img {clear:both;float:left;}
 
+/*Advanced Sections*/
+.published-section {
+  width: 356px;
+  float:left;
+}
+
+.position-section {
+  width: 356px;
+  float:left;
+  margin: 0 0 0 10px;
+}
+
+.permissions-section {
+  width: 356px;
+  float:left;
+  margin: 0 0 0 10px;
+}
+
+.permissions-section legend {padding-bottom: 5px;}
+
+.permissions-section fieldset {
+  margin: 0 !important;
+  min-width: 300px !important;
+  padding: 0 !important;
+}
+
+.permissions-section fieldset input {
+  margin-left:5px !important;
+  width: 98% !important;
+}
+
+#content form .position-section p {
+  min-width: 356px;
+  padding: 0 !important;
+}
+
+
 
 
 /* -------------- CLEARFIX -------------- */

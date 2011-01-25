@@ -49,70 +49,81 @@
         <fieldset>
           <legend class="advanced">Advanced</legend>
           <div id="advanced">
-            <p class="published">
-              <%= f.label :published_at, "Publish at" %><br/>
-              <span class="input-wrap"><%= f.datetime_select :published_at, :include_blank => true  %></span>
-            </p>
+           
+             <div class="published-section">
+                  <p class="published">
+                     <%= f.label :published_at, "Publish at" %><br/>
+                     <span class="input-wrap"><%= f.datetime_select :published_at, :include_blank => true  %></span>
+                   </p>
 
-            <p class="published">
-              <%= f.label :published_to, "Publish until" %><br/>
-              <%
-                # Remove select for far future dates
-              @node.published_to = nil unless @node.published_to.nil? or @node.published_to < 5.years.from_now
-            %>
-          <span class="input-wrap"><%= f.datetime_select :published_to, :include_blank => true %></span>
-        </p>
-        <% unless @node.in_site_map? %>
-          <p>
-            <span class="node-mover">Parent Content</span>
-            <span class="input-wrap" id="parent-title">
-              <%= @node.root? ? "Root" : @node.parent.title %>
-              <a href="#" class="edit-item">Edit</a>
-            </span>
-            <%= f.hidden_field :parent, :value => @node.parent_id %>
-            <%= hidden_field_tag :parent_types, @node.class.parent_classes.join(','), :disabled => true %>
-          </p>
-          <p>
-            <span class="tooltip" title="Enter a custom url or leave it as the default value shown.">&nbsp;</span>
-            <%= f.label :permalink, 'Page Url' %><br/>
-            <span class="input-wrap"><%= f.text_field :permalink %></span>
-          </p>
-        <% end %>
+                   <p class="published">
+                     <%= f.label :published_to, "Publish until" %><br/>
+                     <%
+                       # Remove select for far future dates
+                     @node.published_to = nil unless @node.published_to.nil? or @node.published_to < 5.years.from_now
+                   %>
+                 <span class="input-wrap"><%= f.datetime_select :published_to, :include_blank => true %></span>
+               </p>
+            </div>
 
-        <% if current_user.admin? -%>
-          <fieldset>
-            <span class="tooltip" title="User Permissions">&nbsp;</span>
-            <legend>User Permission</legend>
-            <span class="input-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th width="85">Action</th>
-                    <th width="90%">Groups</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th><%= f.label :updatable_groups_list, "Update" %></th>
-                    <td><%= f.text_field :updatable_groups_list, :class => "groups-completer" %></td>
-                  </tr>
-                  <tr>
-                    <th><%= f.label :publishable_groups_list, "Publish" %></th>
-                    <td><%= f.text_field :publishable_groups_list, :class => "groups-completer" %></td>
-                  </tr>
-                  <tr>
-                    <th><%= f.label :destroyable_groups_list, "Delete" %></th>
-                    <td><%= f.text_field :destroyable_groups_list, :class => "groups-completer" %></td>
-                  </tr>
-                  <tr>
-                    <th><%= f.label :viewable_groups_list, "View" %></th>
-                    <td><%= f.text_field :viewable_groups_list, :class => "groups-completer" %></td>
-                  </tr>
-                </tbody>
-              </table>
-            </span>
-          </fieldset>
-        <% end -%>
+                <% if current_user.admin? -%>
+                <div class="permissions-section">
+                   <fieldset>
+                     <span class="tooltip" title="User Permissions">&nbsp;</span>
+                     <legend>User Permission</legend>
+                     <span class="input-wrap">
+                       <table>
+                         <thead>
+                           <tr>
+                             <th width="85">Action</th>
+                             <th width="90%">Groups</th>
+                           </tr>
+                         </thead>
+                         <tbody>
+                           <tr>
+                             <th><%= f.label :updatable_groups_list, "Update" %></th>
+                             <td><%= f.text_field :updatable_groups_list, :class => "groups-completer" %></td>
+                           </tr>
+                           <tr>
+                             <th><%= f.label :publishable_groups_list, "Publish" %></th>
+                             <td><%= f.text_field :publishable_groups_list, :class => "groups-completer" %></td>
+                           </tr>
+                           <tr>
+                             <th><%= f.label :destroyable_groups_list, "Delete" %></th>
+                             <td><%= f.text_field :destroyable_groups_list, :class => "groups-completer" %></td>
+                           </tr>
+                           <tr>
+                             <th><%= f.label :viewable_groups_list, "View" %></th>
+                             <td><%= f.text_field :viewable_groups_list, :class => "groups-completer" %></td>
+                           </tr>
+                         </tbody>
+                       </table>
+                     </span>
+                   </fieldset>
+                   </div>
+                 <% end -%>
+
+             
+             
+             
+             <div class="position-section">
+                <% unless @node.in_site_map? %>
+                   <p>
+                     <span class="node-mover">Parent Content</span>
+                     <span class="input-wrap" id="parent-title">
+                       <%= @node.root? ? "Root" : @node.parent.title %>
+                       <a href="#" class="edit-item">Edit</a>
+                     </span>
+                     <%= f.hidden_field :parent, :value => @node.parent_id %>
+                     <%= hidden_field_tag :parent_types, @node.class.parent_classes.join(','), :disabled => true %>
+                   </p>
+                   <p>
+                     <span class="tooltip" title="Enter a custom url or leave it as the default value shown.">&nbsp;</span>
+                     <%= f.label :permalink, 'Page Url' %><br/>
+                     <span class="input-wrap"><%= f.text_field :permalink %></span>
+                   </p>
+                 <% end %>
+            </div>
       </div>
     </fieldset>
   </div>
