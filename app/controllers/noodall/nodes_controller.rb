@@ -17,8 +17,8 @@ module Noodall
         @page_keywords = @node.keywords
 
         respond_to do |format|
-          format.json { render :json => @node }
           format.any { render "nodes/#{@node.class.name.underscore}" }
+          format.json { render :json => @node }
         end
       end
     end
