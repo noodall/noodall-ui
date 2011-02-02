@@ -51,6 +51,8 @@ module Noodall
       if exception
         logger.info "Rendering 404: #{exception.message}"
       end
+      # Expire any caching already set
+      expires_now
 
       render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false, :content_type => "text/html"
     end
