@@ -3,7 +3,7 @@ module Noodall
     class NodesController < BaseController
       include Canable::Enforcers
       layout 'noodall_admin'
-      before_filter :set_title
+      before_filter :set_title, :enforce_editor_permission
 
       def index
         if params[:node_id].nil?
@@ -138,10 +138,10 @@ module Noodall
       def preview
         @node = Node.find(params[:id])
         @node.attributes = params[:node]
-        
+
         @node.permalink ||= 'preview'
         @node.published_at = Time.zone.now
-        
+
         render :template => "/nodes/#{@node.class.name.underscore}", :layout => 'application'
       end
 

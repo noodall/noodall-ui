@@ -26,3 +26,7 @@ Feature: Groups access control
   Scenario: Administrators
     Given I am signed in as a website administrator
     Then I should be able to carry out all actions regardless of group permissions
+
+  Scenario: Set Editor groups
+    Given the system has editor groups set to 'editor'
+    Then a user not in the group editor will no be able to edit any content
