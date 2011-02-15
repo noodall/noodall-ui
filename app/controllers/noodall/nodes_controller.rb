@@ -17,6 +17,7 @@ module Noodall
         @page_keywords = @node.keywords
 
         respond_to do |format|
+          format.html { render "nodes/#{@node.class.name.underscore}" } # Make sure IE 7 get the correct format
           format.any { render "nodes/#{@node.class.name.underscore}" }
           format.json { render :json => @node }
         end
