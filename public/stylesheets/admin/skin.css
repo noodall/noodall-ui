@@ -683,9 +683,6 @@ a:hover {
   color:#D4954C;
 }
 
-
-
-
 /*download button*/
 #content form input.download-button{
   background:url("/images/admin/nav.gif") no-repeat scroll 0 -88px transparent;
@@ -701,3 +698,7 @@ a:hover {
   background-position: -122px -88px;
   cursor:pointer;
 }
+
+/*span liks*/
+.link-node, .link-asset {color: #60A0BE;}
+.link-node:hover, .link-asset:hover {color: #000; cursor: pointer;}
