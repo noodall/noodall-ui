@@ -24,7 +24,10 @@ lite_tiny_mce_config = {
     theme_advanced_styles : "Footnote=footnote",
 
     paste_auto_cleanup_on_paste : true,
-    paste_strip_class_attributes: 'mso'
+    paste_strip_class_attributes : "all",
+	paste_remove_spans : true,
+    paste_remove_styles : true
+
 };
 
 tiny_mce_config = {};

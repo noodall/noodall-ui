@@ -17,6 +17,7 @@ module Noodall
         @page_keywords = @node.keywords
 
         respond_to do |format|
+          format.html { render "nodes/#{@node.class.name.underscore}" } # Make sure IE 7 get the correct format
           format.any { render "nodes/#{@node.class.name.underscore}" }
           format.json { render :json => @node }
         end
@@ -51,6 +52,9 @@ module Noodall
       if exception
         logger.info "Rendering 404: #{exception.message}"
       end
+      # Expire any caching already set
+      expires_now
+      headers.delete('Last-Modified')
 
       render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false, :content_type => "text/html"
     end

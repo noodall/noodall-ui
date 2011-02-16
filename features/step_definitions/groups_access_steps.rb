@@ -120,3 +120,13 @@ Then /^I sign out$/ do
   # express the regexp above with the code you wish you had
 end
 
+Given /^the system has editor groups set to 'editor'$/ do
+  User.editor_groups = ['editor']
+end
+
+Then /^a user not in the group editor will no be able to edit any content$/ do
+  Factory(:home, :title => 'Home', :publish => true)
+  Given %{I am signed in as a nogood}
+  visit noodall_admin_nodes_path
+  page.should have_content("You do not have permission to do that")
+end
