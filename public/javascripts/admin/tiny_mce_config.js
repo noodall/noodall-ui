@@ -12,7 +12,7 @@ lite_tiny_mce_config = {
     //"safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking",
     // Theme options
     theme_advanced_blockformats : "h2,h3,h4,p",
-    theme_advanced_buttons1 : "bold,italic,underline,|,bullist,numlist,|,link,unlink,|,table,delete_table,col_before,col_after,row_before,row_after,delete_col,delete_row",
+    theme_advanced_buttons1 : "bold,italic,underline,|,bullist,numlist,|,link,unlink,|,table,delete_table,tablecontrols,col_before,col_after,row_before,row_after,delete_col,delete_row",
     theme_advanced_buttons2 : "",
     theme_advanced_buttons3 : "",
     theme_advanced_buttons4 : "",
@@ -33,7 +33,7 @@ tiny_mce_config = {};
 $.extend(tiny_mce_config, lite_tiny_mce_config, {
     editor_selector : "editor",
     theme_advanced_buttons1 : "bold,italic,underline,|,formatselect,removeformat ,|,bullist,numlist,|,link,unlink,anchor,|,outdent,indent,blockquote,|,justifyleft,justifycenter,justifyright,justifyfull",
-    theme_advanced_buttons2 : "table,delete_table,col_before,col_after,row_before,row_after,delete_col,delete_row,|,code,attribs,image,media, assetbrowser,nodebrowser",
+    theme_advanced_buttons2 : "table,delete_table,tablecontrols,col_before,col_after,row_before,row_after,delete_col,delete_row,|,code,attribs,image,media, assetbrowser,nodebrowser",
 
     setup : function(ed) {
       // Add a custom button
