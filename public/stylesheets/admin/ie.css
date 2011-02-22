@@ -148,3 +148,27 @@ th .tooltip {
 .multi-file-files ol li:first-child {
   height:500px;
 }
+
+
+/*FORM BUILDER*/
+
+.add.form-builder {
+    margin-top: 0px;
+}
+#form-fields fieldset p span.tooltip {
+  z-index:8888;
+  position: relative;
+  top: 20px;
+}
+
+#forms #content form p {
+  z-index:9999;
+  position: relative;
+}
+
+#forms #content form p#text_field, 
+#forms #content form p#select,
+#forms #content form p#radio,
+#forms #content form p#check_box {
+    z-index:1;
+}
