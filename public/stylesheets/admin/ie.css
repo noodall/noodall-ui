@@ -4,7 +4,7 @@
 #tags,
 .multi-file-files ol li,
 .pagination,
-div.file-form{
+div.file-forms{
   height: 1%;
 }
 
@@ -14,7 +14,17 @@ div.file-form{
 }
 
 .pagination span, .pagination a, th label {
-        vertical-align: middle;
+  vertical-align: middle;
+}
+
+#tags, #pending {
+    clear:right;
+    float:right;
+    height: 405px;
+    margin-bottom: 20px;
+    overflow: auto;
+    padding: 9px;
+    width: 15%;
 }
 
 #tags a {
@@ -25,9 +35,18 @@ div.file-form{
         margin:10px 10px 0 0;
 }
 
-#fancybox-inner ul#browser-list {
-        margin-top:50px;
-        clear:both;
+#browser-list {
+  margin-top:50px;
+  clear:both;
+  display: block;
+
+}
+
+#fancybox-inner #tags {
+  margin-top:30px;
+  clear:both;
+  display: block;
+
 }
 
 #fancybox-inner #asset-browser {
@@ -54,6 +73,11 @@ form#uploader {
   clear:both;
   float:left;
   width:100%;
+}
+
+
+#assets.pending #content{
+  padding-bottom: 100px;
 }
 
 #assets ul.choices {
@@ -92,6 +116,11 @@ ol#slot-list li {
   padding:10px;
 }
 
+.slot_tag {
+  margin-top: -37px;
+}
+
+
 .multi-file-files ol li {
   min-height:100px;
 }
@@ -109,8 +138,11 @@ th .tooltip {
   display:block !important;
 }
 
-.pagination .next_page {
-  margin:5px 0 0 0;
+.pagination a, .pagination span, .pagination em{
+  float:left;
+  margin:0 20px 0 0;
+  display:block;
+  clear:none;
 }
 
 .multi-file-files ol li:first-child {
