@@ -45,14 +45,29 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
         image : '/images/admin/image_small.png',
         href: '#asset-browser',
         onclick : function() {
-          Browser.before_close = function() {
-            asset_id = Browser.assets_to_add[0];
+          Browser.do_action_and_close = function() {
+            asset_id = Browser.assets_to_add[0]
             if (asset_id) {
               add_url = $('#asset-' + asset_id).siblings('a.show').attr('href').split('?')[0] + '/add';
               $.get(add_url, { node_id: NoodallNode.id() }, function(data) {
-                tinyMCE.activeEditor.focus();
-                tinyMCE.activeEditor.selection.setContent(data);
-                $.fancybox.close();
+                $('#asset-browser').html(data);
+
+                choices = $('#asset-browser .choice');
+                if (choices.length > 0) {
+                  $.each(choices, function(i, choice){
+                    $(choice).click(function(){
+                      tinyMCE.activeEditor.focus();
+                      tinyMCE.activeEditor.selection.setContent($(this).html());
+                      Browser.close();
+                      return false;
+                    })
+                  });
+                } else {
+                  tinyMCE.activeEditor.focus();
+                  tinyMCE.activeEditor.selection.setContent(data);
+                  Browser.close();
+                  return false;
+                }
               }, 'html');
             }
             return false;

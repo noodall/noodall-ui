@@ -277,6 +277,28 @@ form#uploader {
   margin-bottom: 10px;
 }
 
+#asset-browser #image-choices {
+  clear: both;
+}
+
+#asset-browser div.choice  {
+  width: 195px;
+  height: 165px;
+  float: left;
+  margin: 95px 0 0 50px;
+  cursor: pointer;
+  background: url(/images/admin/image_choices.png)
+}
+
+#asset-browser div.medium {
+  background-position: -236px;
+}
+#asset-browser div.large {
+  background-position: -472px;
+}
+#asset-browser div.choice a {
+  display: none;
+}
 /* PAGINATION */
 
 .pagination {

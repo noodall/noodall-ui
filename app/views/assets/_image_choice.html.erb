@@ -1,0 +1,17 @@
+<%= render 'menu' %>
+<h2>Choose Image Size</h2>
+
+<div id="image-choices">
+
+  <div class="choice small" title="Small">
+    <%= link_to image_tag( @asset.url('110x110', @asset.web_image_extension), :alt => @asset.description, :id => "asset-#{@asset.id}" ), @asset.url('800x600', @asset.web_image_extension), :class => 'lightbox', :title => @asset.title %>
+  </div>
+
+  <div class="choice medium" title="Medium">
+    <%= link_to image_tag( @asset.url('220x220', @asset.web_image_extension), :alt => @asset.description, :id => "asset-#{@asset.id}" ), @asset.url('800x600', @asset.web_image_extension), :class => 'lightbox', :title => @asset.title %>
+  </div>
+
+  <div class="choice large" title="Large">
+    <%= link_to image_tag( @asset.url('460x', @asset.web_image_extension), :alt => @asset.description, :id => "asset-#{@asset.id}" ), @asset.url('800x600', @asset.web_image_extension), :class => 'lightbox', :title => @asset.title %>
+  </div>
+</div>

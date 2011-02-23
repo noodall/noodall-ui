@@ -61,6 +61,10 @@ When /^I click "([^"]*)" on an Asset$/ do |button_name|
   end
 end
 
+When /^I click on the small icon$/ do
+  page.find('div.choice.small').click
+end
+
 Then /^the "([^"]*)" asset should appear in the content editor$/ do |asset_type|
   within_frame('node_body_ifr') do
     page.should have_css("#tinymce img[src^='/media/']")
