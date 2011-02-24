@@ -296,7 +296,7 @@ form#uploader {
 #asset-browser div.large {
   background-position: -472px;
 }
-#asset-browser div.choice a {
+#asset-browser div.choice * {
   display: none;
 }
 /* PAGINATION */
