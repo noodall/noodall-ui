@@ -36,7 +36,7 @@ function setUpPlupload() {
 
     // Specify what files to browse for
     filters : [
-      {title : "Image files", extensions : "jpg,gif,png,tiff,bmp"},
+      {title : "Image files", extensions : "jpg,jpeg,gif,png,tiff,bmp"},
       {title : "Zip files", extensions : "zip"},
       {title : "Flash files", extensions : "swf"},
       {title : "Document files", extensions : "doc,pdf,xls,txt,docx,ppt"},
