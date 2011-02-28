@@ -533,6 +533,11 @@ a.child-no {
   overflow:auto;
 }
 
+.component_form_detail p{
+  position: relative;
+}
+
+
 .slot_tag {
   display:block;
   float:right;
