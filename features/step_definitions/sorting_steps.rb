@@ -27,7 +27,6 @@ end
 
 
 Then /^the nodes should be ordered by "Updated"$/ do
-  Then %{show me the page}
   Then %{I should see in this order: 15:37:00, 14:37:00, 13:37:00 }
 end
 
