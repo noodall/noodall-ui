@@ -11,4 +11,16 @@ module Noodall::Admin::BaseHelper
       content_tag :li, link_to( title, send(link) )
     end.join.html_safe
   end
+  
+  # Monkey-patch for the thoughtbot/sortabletable headers, adding 'colspan' option
+  def sortable_table_header(opts = {})
+    raise ArgumentError if opts[:name].nil? || opts[:sort].nil?
+    anchor = opts[:anchor].blank? ? "" : "##{opts[:anchor]}"
+    content_tag :th, 
+      link_to(opts[:name], 
+        sortable_url(opts) + anchor, 
+        :title => opts[:title]),
+      :class => sortable_table_header_classes(opts),
+      :colspan => opts[:colspan]
+  end
 end

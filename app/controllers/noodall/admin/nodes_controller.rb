@@ -2,15 +2,18 @@ module Noodall
   module Admin
     class NodesController < BaseController
       include Canable::Enforcers
+      include SortableTable::App::Controllers::ApplicationController
+      
       layout 'noodall_admin'
       before_filter :set_title, :enforce_editor_permission
+      sortable_attributes :position, :admin_title, :title, :type, :updated_at
 
       def index
         if params[:node_id].nil?
-          @nodes = Node.roots.paginate(:per_page => 20, :page => params[:page])
+          @nodes = Node.roots.paginate(:per_page => 20, :page => params[:page], :order => sort_order(:default => "ascending") )
         else
           @parent = Node.find(params[:node_id])
-          @nodes = @parent.children.paginate(:per_page => 20, :page => params[:page])
+          @nodes = @parent.children.paginate(:per_page => 20, :page => params[:page], :order => sort_order(:default => "ascending") )
         end
 
         respond_to do |format|
