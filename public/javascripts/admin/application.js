@@ -276,7 +276,7 @@ var Component = {
   add_asset: function(asset_id) {
     file_form = Component.slot_form.find('.multi-file:last').first().clone();
     file_form.prepend(Browser.assets_to_add_html[asset_id]);
-    file_form.find('.asset_id').val(asset_id);
+    file_form.find('.asset_id').first().val(asset_id);
     Component.slot_form.find('.multi-file-files ol li:last').before(file_form); // Before the last as the last is the hidden emtpty
     // enable all form fields
     file_form.find('input').removeAttr('disabled');
