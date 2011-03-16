@@ -61,7 +61,15 @@ module Noodall
 
     def permission_denied
       flash[:error] = "You do not have permission to do that"
-      redirect_to root_url
+
+      case
+      when respond_to?('permission_denied_url')
+        redirect_to permission_denied_url
+      when respond_to?('permission_denied_path')
+        redirect_to permission_denied_path
+      else
+        redirect_to root_url
+      end
     end
 
     def can_view?(node)
