@@ -2,6 +2,20 @@ module Noodall
   module NodesHelper
     include Noodall::Permalinks
 
+    def published_roots
+      Noodall::Node.roots.published
+    end
+
+    def breadcrumb
+      return if @node.nil?
+      links = @node.ancestors.inject([]) do |l, n|
+        l << content_tag( :li, link_to(h(n.title), node_path(n)))
+      end
+      links << content_tag( :li, h(@node.title) )
+    end
+
+    # Site map related helpers
+
     def sitemap(tree)
       list_children(tree, nil, 'sitemap')
     end
@@ -22,14 +36,6 @@ module Noodall
           content_tag('li', content, {:id => "nav-#{n.permalink.join('-')}", :class => class_name})
         end.join.html_safe
       end
-    end
-
-    def breadcrumb
-      return if @node.nil?
-      links = @node.ancestors.inject([]) do |l, n|
-        l << content_tag( :li, link_to(h(n.title), node_path(n)))
-      end
-      links << content_tag( :li, h(@node.title) )
     end
 
     # get an organised grouped index of nodes for the primary nav
@@ -55,18 +61,5 @@ module Noodall
       !(current_node.nil? or node_tree[current_node.root.id.to_s].nil?)
     end
 
-    def related_content(ref_node, types =[], options = {})
-      options[:_type] = {'$in' => types} unless types.empty?
-
-      nodes = ref_node.related(options.merge(:order => 'published_at DESC', :published_at => { :$lte => Time.zone.now }, :published_to => { :$gte => Time.zone.now }))
-      
-      return if nodes.empty?
-
-      content_tag('h2', 'Related Content') + content_tag('ul', :id => 'related-content') do
-          nodes.collect do |node|
-            content_tag('li', link_to(node.title, node_path(node)) + node.published_at.to_formatted_s(:short_dot))
-          end.join.html_safe
-      end
-    end
   end
 end
