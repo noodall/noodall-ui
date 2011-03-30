@@ -90,7 +90,9 @@ maximum-scale = 1.0 retains dimensions instead of zooming in if page width < dev
 
     <!-- so:main-navigation -->
     <ul class="nav" id="main-nav">
-      <li></li>
+      <% for root in published_roots %>
+        <li><%= link_to root.name, node_path(root) %></li>
+      <% end %>
     </ul>
     <!-- so:main-navigation -->
 
