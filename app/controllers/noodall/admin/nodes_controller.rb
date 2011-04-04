@@ -2,9 +2,7 @@ module Noodall
   module Admin
     class NodesController < BaseController
       include Canable::Enforcers
-      include SortableTable::App::Controllers::ApplicationController
-      
-      layout 'noodall_admin'
+
       before_filter :set_title, :enforce_editor_permission
       sortable_attributes :position, :admin_title, :title, :type, :updated_at
 
