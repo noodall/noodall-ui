@@ -1,7 +1,6 @@
 module Noodall
   module Admin
     class AssetsController < BaseController
-      include SortableTable::App::Controllers::ApplicationController
       sortable_attributes :created_at, :title, :updated_at
       protect_from_forgery :except => :plupload
       before_filter :readonly
