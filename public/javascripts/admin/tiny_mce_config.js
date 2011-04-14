@@ -36,7 +36,7 @@ tiny_mce_config = {};
 $.extend(tiny_mce_config, lite_tiny_mce_config, {
     editor_selector : "editor",
     theme_advanced_buttons1 : "bold,italic,underline,|,formatselect,removeformat ,|,bullist,numlist,|,link,unlink,anchor,|,outdent,indent,blockquote,|,justifyleft,justifycenter,justifyright,justifyfull",
-    theme_advanced_buttons2 : "table,delete_table,tablecontrols,col_before,col_after,row_before,row_after,delete_col,delete_row,|,code,attribs,image,media, assetbrowser,nodebrowser",
+    theme_advanced_buttons2 : "table,delete_table,tablecontrols,col_before,col_after,row_before,row_after,delete_col,delete_row,|,code,attribs,image,media, assetbrowser,nodebrowser, addvideo",
 
     setup : function(ed) {
       // Add a custom button
@@ -93,6 +93,18 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
           },
           'script');
         }
+      });
+      
+      
+      
+      // Adding Videos 
+       ed.addButton('addvideo', {
+        title : 'Add a youtube Video',
+        image : '/images/admin/youtube.gif',
+        href: '#',
+        onclick : function() {
+         alert("hi");
+       }
       });
 
       ed.onPostProcess.add(function(ed, o) {
