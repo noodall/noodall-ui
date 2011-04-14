@@ -19,7 +19,7 @@ module Noodall::ComponentsHelper
 
       # pass a flag to the view to add an expanded html class
       component(node, slot_code, ( components[index + 1].nil? && index < (args.size - 1) ), additional_classes.join(' ')).to_s
-    end.to_s.html_safe
+    end.join.html_safe
   end
 
   def component(node, slot_code, expand = false, additional_classes = '')
