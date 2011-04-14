@@ -8,7 +8,7 @@ lite_tiny_mce_config = {
     editor_selector : "lite-editor",
     strict_loading_mode : 1,
     convert_urls : false,
-    plugins : "safari,inlinepopups,xhtmlxtras,paste,media,advimage,table,media",
+    plugins : "safari,inlinepopups,xhtmlxtras,paste,media,advimage,table,media,addvideo",
     //"safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking",
     // Theme options
     theme_advanced_blockformats : "h2,h3,h4,p",
@@ -36,7 +36,7 @@ tiny_mce_config = {};
 $.extend(tiny_mce_config, lite_tiny_mce_config, {
     editor_selector : "editor",
     theme_advanced_buttons1 : "bold,italic,underline,|,formatselect,removeformat ,|,bullist,numlist,|,link,unlink,anchor,|,outdent,indent,blockquote,|,justifyleft,justifycenter,justifyright,justifyfull",
-    theme_advanced_buttons2 : "table,delete_table,tablecontrols,col_before,col_after,row_before,row_after,delete_col,delete_row,|,code,attribs,image,media, assetbrowser,nodebrowser, addvideo",
+    theme_advanced_buttons2 : "table,delete_table,tablecontrols,col_before,col_after,row_before,row_after,delete_col,delete_row,|,code,attribs,image,media, assetbrowser,nodebrowser,addvideo",
 
     setup : function(ed) {
       // Add a custom button
@@ -46,7 +46,7 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
         href: '#asset-browser',
         onclick : function() {
           Browser.do_action_and_close = function() {
-            asset_id = Browser.assets_to_add[0]
+            asset_id = Browser.assets_to_add[0];
             if (asset_id) {
               add_url = $('#asset-' + asset_id).siblings('a.show').attr('href').split('?')[0] + '/add';
               $.get(add_url, { node_id: NoodallNode.id() }, function(data) {
@@ -60,7 +60,7 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
                       tinyMCE.activeEditor.selection.setContent($(this).html());
                       Browser.close();
                       return false;
-                    })
+                    });
                   });
                 } else {
                   tinyMCE.activeEditor.focus();
@@ -93,18 +93,6 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
           },
           'script');
         }
-      });
-      
-      
-      
-      // Adding Videos 
-       ed.addButton('addvideo', {
-        title : 'Add a youtube Video',
-        image : '/images/admin/youtube.gif',
-        href: '#',
-        onclick : function() {
-         alert("hi");
-       }
       });
 
       ed.onPostProcess.add(function(ed, o) {
