@@ -45,7 +45,10 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
         image : '/images/admin/image_small.png',
         href: '#asset-browser',
         onclick : function() {
-          Browser.action = function() {
+          tinyMCE.activeEditor.focus();
+          tinyMCE.activeEditor.windowManager.bookmark = tinyMCE.activeEditor.selection.getBookmark();
+          Browser.action = function(e) {
+            e.stopImmediatePropagation();
             asset_id = Browser.assets_to_add[0]
             if (asset_id) {
               add_url = $('#asset-' + asset_id).siblings('a.show').attr('href').split('?')[0] + '/add';
@@ -55,15 +58,15 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
                 choices = $('#asset-browser .choice');
                 if (choices.length > 0) {
                   $.each(choices, function(i, choice){
-                    $(choice).click(function(){
-                      tinyMCE.activeEditor.focus();
+                    $(choice).click(function(e){
+                      tinyMCE.activeEditor.selection.moveToBookmark(tinyMCE.activeEditor.windowManager.bookmark);
                       tinyMCE.activeEditor.selection.setContent($(this).html());
                       $.fancybox.close();
                       return false;
-                    })
+                    });
                   });
                 } else {
-                  tinyMCE.activeEditor.focus();
+                  tinyMCE.activeEditor.selection.moveToBookmark(tinyMCE.activeEditor.windowManager.bookmark);
                   tinyMCE.activeEditor.selection.setContent(data);
                   $.fancybox.close();
                   return false;
@@ -81,6 +84,8 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
         image : '/images/admin/top-level_small.png',
         href: '#asset-browser',
         onclick : function() {
+          tinyMCE.activeEditor.focus();
+          tinyMCE.activeEditor.windowManager.bookmark = tinyMCE.activeEditor.selection.getBookmark();
           // open asset lightbox
           $.get("/admin/nodes/tree", function() {
             // reopen the opening form if you close this form
@@ -105,6 +110,7 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
       // then insert the link, then remove containing span after all is good
       $('#tree-browser.tinymce li a').live('click', function(event) {
         add_url = $(this).attr('href').split('?')[0];
+        tinyMCE.activeEditor.selection.moveToBookmark(tinyMCE.activeEditor.windowManager.bookmark);
 
         if(tinyMCE.activeEditor.selection.getContent().length === 0){
           tinyMCE.execInstanceCommand(tinyMCE.activeEditor.id, 'mceInsertRawHTML', false, '<span class="tmp_tag">' + $(this).text() + '</span>');
