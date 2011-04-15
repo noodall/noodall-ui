@@ -45,7 +45,7 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
         image : '/images/admin/image_small.png',
         href: '#asset-browser',
         onclick : function() {
-          Browser.do_action_and_close = function() {
+          Browser.action = function() {
             asset_id = Browser.assets_to_add[0]
             if (asset_id) {
               add_url = $('#asset-' + asset_id).siblings('a.show').attr('href').split('?')[0] + '/add';
@@ -58,21 +58,20 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
                     $(choice).click(function(){
                       tinyMCE.activeEditor.focus();
                       tinyMCE.activeEditor.selection.setContent($(this).html());
-                      Browser.close();
+                      $.fancybox.close();
                       return false;
                     })
                   });
                 } else {
                   tinyMCE.activeEditor.focus();
                   tinyMCE.activeEditor.selection.setContent(data);
-                  Browser.close();
+                  $.fancybox.close();
                   return false;
                 }
               }, 'html');
             }
             return false;
           };
-          Browser.after_close = $.fancybox.close;
           Browser.open();
         }
       });
