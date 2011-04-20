@@ -14,3 +14,13 @@ fieldset span.tooltip {
 fieldset.template label img {
 top:30px;
 }
+
+ol#slot-list li {
+  display:list-item;
+  padding: 0 0 0 3px;
+  
+}
+
+#sub-form ol#slot-list li a {
+    padding: 10px 10px 10px 0 !important;
+}

@@ -149,6 +149,15 @@ th .tooltip {
   height:500px;
 }
 
+#sub-form ol#slot-list li {
+    display:list-item;  list-style-position:inside;
+    padding-left:2px;
+}
+
+#sub-form ol#slot-list li a{
+    padding-left:5px !important;
+    display:block;
+}
 
 /*FORM BUILDER*/
 
