@@ -625,6 +625,10 @@ a.tooltip {
         padding:10px;
 }
 
+#content-table .tooltip-show {
+  left:10px !important;
+}
+
 .hidden{
   display:none;
 }

@@ -40,7 +40,7 @@ function setup_tooltips() {
       this.title = "";
       this.width = $(this).width();
       $(this).find('.tooltip-show').css({
-        left: this.width - 22
+        left: this.width - 80
       });
       $('.tooltip-show').fadeIn(400);
     },
