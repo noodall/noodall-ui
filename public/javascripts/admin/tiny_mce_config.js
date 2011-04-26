@@ -50,6 +50,7 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
           Browser.action = function(e) {
             e.stopImmediatePropagation();
             asset_id = Browser.assets_to_add[0]
+
             if (asset_id) {
               add_url = $('#asset-' + asset_id).siblings('a.show').attr('href').split('?')[0] + '/add';
               $.get(add_url, { node_id: NoodallNode.id() }, function(data) {
