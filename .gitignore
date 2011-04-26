@@ -6,7 +6,9 @@ doc/app
 rerun.txt
 .sass-cache
 .bundle
+.rvmrc
 Gemfile.lock
+
 
 ## MAC OS
 .DS_Store
