@@ -7,6 +7,7 @@ gemspec
 gem 'rails', '~> 3.0.1'
 gem 'rmagick', :require => 'RMagick'
 gem 'dragonfly', '~> 0.7.6'
+gem 'mm-versionable', :git => 'git://github.com/stengland/mm-versionable.git'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
@@ -23,4 +24,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem "faker", "~> 0.3.1"
   gem "haml"
+  gem "SystemTimer", ">= 1.2.0"
+  gem "bson_ext", "~> 1.3.0"
 end
