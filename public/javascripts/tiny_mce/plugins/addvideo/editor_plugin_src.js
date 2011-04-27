@@ -9,35 +9,23 @@
  */
 
 (function() {
-	// Load plugin specific language pack
-	tinymce.PluginManager.requireLangPack('addvideo');
-
 	tinymce.create('tinymce.plugins.AddvideoPlugin', {
-		/**
-		 * Initializes the plugin, this will be executed after the plugin has been created.
-		 * This call is done before the editor instance has finished it's initialization so use the onInit event
-		 * of the editor instance to intercept that event.
-		 *
-		 * @param {tinymce.Editor} ed Editor instance that the plugin is initialized in.
-		 * @param {string} url Absolute URL to where the plugin is located.
-		 */
 		init : function(ed, url) {
 			// Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('mceExample');
 			ed.addCommand('mceAddvideo', function() {
 				ed.windowManager.open({
-					file : url + '/dialog.htm',
+					file : url + '/addvideo.htm',
 					width : 320 + parseInt(ed.getLang('addvideo.delta_width', 0)),
-					height : 120 + parseInt(ed.getLang('addvideo.delta_height', 0)),
+					height :130 + parseInt(ed.getLang('addvideo.delta_height', 0)),
 					inline : 1
 				}, {
-					plugin_url : url, // Plugin absolute URL
-					some_custom_arg : 'custom arg' // Custom argument
+					plugin_url : url
 				});
 			});
 
 			// Register addvideo button
 			ed.addButton('addvideo', {
-				title : 'addvideo.desc',
+				title : 'Add youtube video',
 				cmd : 'mceAddvideo',
 				image : url + '/img/youtube.gif'
 			});
