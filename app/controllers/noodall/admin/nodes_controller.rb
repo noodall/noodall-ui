@@ -97,7 +97,7 @@ module Noodall
 
         if params[:draft].blank?
           if @node.update_attributes(params[:node])
-            flash[:notice] = "#{@node.class.name.titleize} '#{@node.title}' was successfully updated."
+            flash[:notice] = "#{@node.class.name.titleize} '#{@node.title}' was successfully published."
             if @node.parent.nil?
               redirect_to noodall_admin_nodes_path
             else

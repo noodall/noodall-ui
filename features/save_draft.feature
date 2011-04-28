@@ -16,7 +16,7 @@ Feature: Work with drafts
 
     Given I go to edit the content again
     When I publish the content
-    Then I should see "has been successfully published"
+    Then I should see "was successfully published"
     Then the live page should be at version 2
 
     Given I go to edit the content again
