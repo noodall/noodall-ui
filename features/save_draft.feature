@@ -14,14 +14,14 @@ Feature: Work with drafts
     And the form should contain version 1
 
     Given I go to edit the content again
-    When I publish the content
+    And I press "Publish"
     Then I should see "was successfully published"
     Then the live page should be at version 2
 
     Given I go to edit the content again
-    And I press "Versions"
+    And I follow "Versions"
     Then I should see a list of previous versions
-    When I press "Use" within version 1
-    Then I should be editing version 1
-    When I press "publish"
+    When I follow "Use" within version 1
+    Then the form should contain version 1
+    When I press "Publish"
     Then the live page should be at version 1

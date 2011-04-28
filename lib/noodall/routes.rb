@@ -7,6 +7,7 @@ module Noodall
           namespace 'noodall/admin', :as => 'noodall_admin', :path => 'admin' do
             resources :nodes do
               resources :nodes
+              resources :versions
               member do
                 get :change_template
                 get :move_up

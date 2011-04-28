@@ -40,9 +40,13 @@ module Noodall
         @node = Node.find(params[:id])
         enforce_update_permission(@node)
         enforce_publish_permission(@node) if @node.published?
-        if @node.has_draft?
-          flash[:alert] = "You are editing a draft version of this page"
+        
+        if params[:version_number] 
+          @node.rollback(params[:version_number].to_i)
+          flash[:alert] = "You are viewing draft version '#{@node.version_number}' of this page"
+        elsif @node.has_draft?
           @node.rollback(:latest)
+          flash[:alert] = "You are editing a draft version of this page"
         end
 
         respond_to do |format|

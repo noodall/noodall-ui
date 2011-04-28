@@ -20,14 +20,12 @@ Given /^I edit the content again$/ do
 end
 
 Then /^I should see a list of previous versions$/ do
-  pending # express the regexp above with the code you wish you had
+  page.should have_css("table#versions-list tr", :count => @_content.all_versions.count)
 end
 
-When /^I press "([^"]*)" within version (\d+)$/ do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
-end
-
-Then /^I should be editing version (\d+)$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+When /^I follow "([^"]*)" within version (\d+)$/ do |link_name, version_number|
+  within "tr:contains('Version #{version_number}')" do
+    click_link link_name
+  end
 end
 
