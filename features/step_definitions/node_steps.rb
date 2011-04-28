@@ -30,6 +30,6 @@ Then /^I should see a page of xml$/ do
 end
 
 When /^I view the page "([^"]*)" as "([^"]*)"$/ do |title, format|
-  visit node_path(Noodall::Node.find_by_title(title), format)
+  visit node_path(Noodall::Node.find_by_title(title), format.to_sym)
 end
 

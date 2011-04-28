@@ -412,7 +412,7 @@ td.child a.child-no{
 }
 
 span.check,
-span.draft {
+span.hidden {
         width:26px;
         height:26px;
         display:block;

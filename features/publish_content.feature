@@ -5,7 +5,7 @@ In order to control when content is available on the website a website administr
     Given content exists
     When I publish the content
     Then the content should be visible on the website
-    When I unpublish the content
+    When I hide the content
     Then the content should not be visible on the website
 
   Scenario: Publish content for set period

@@ -7,9 +7,9 @@ When /^I publish the content$/ do
   click_button('Publish')
 end
 
-When /^I save content as draft$/ do
+When /^I hide the content$/ do
   visit noodall_admin_node_path(@_content)
-  click_button('Draft')
+  click_button('Hide')
 end
 
 Then /^the content should (not |)be visible on the website$/ do |is_not|
@@ -27,7 +27,7 @@ Given /^I publish content between "([^\"]*)" and "([^\"]*)"$/ do |from, to|
   select_datetime(from.to_time, :from => 'Publish at')
   select_datetime(to.to_time, :from => 'Publish until')
   click_button('Publish')
-  page.should have_content('was successfully updated')
+  page.should have_content('was successfully published')
 end
 
 

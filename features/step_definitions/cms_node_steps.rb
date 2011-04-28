@@ -81,7 +81,7 @@ Then /^I should be able to move a child content to another parent$/ do
   click_link "Advanced"
   within(:css, '#parent-title' ) { click_link "Edit" }
   within(:css, 'ol.tree' ) { click_link @_new_parent.title }
-  click_button 'Draft'
+  click_button 'Publish'
 end
 
 Then /^I should see the child listed within the other parent’s children$/ do

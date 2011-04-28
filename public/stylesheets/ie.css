@@ -66,7 +66,7 @@ Backtrace:
 /home/steve/.rvm/gems/ruby-1.8.7-p330/gems/capybara-0.4.1.2/lib/capybara/driver/rack_test_driver.rb:200:in `visit'
 /home/steve/.rvm/gems/ruby-1.8.7-p330/gems/capybara-0.4.1.2/lib/capybara/session.rb:135:in `visit'
 /home/steve/.rvm/gems/ruby-1.8.7-p330/gems/capybara-0.4.1.2/lib/capybara/dsl.rb:104:in `visit'
-/home/steve/Gems/noodall-ui/features/step_definitions/component_steps.rb:3
+/home/steve/Gems/noodall-ui/features/step_definitions/pubish_content_steps.rb:40
 /home/steve/.rvm/gems/ruby-1.8.7-p330/gems/cucumber-0.10.2/bin/../lib/cucumber/core_ext/instance_exec.rb:48:in `instance_exec'
 /home/steve/.rvm/gems/ruby-1.8.7-p330/gems/cucumber-0.10.2/bin/../lib/cucumber/core_ext/instance_exec.rb:48:in `cucumber_instance_exec'
 /home/steve/.rvm/gems/ruby-1.8.7-p330/gems/cucumber-0.10.2/bin/../lib/cucumber/core_ext/instance_exec.rb:69:in `cucumber_run_with_backtrace_filtering'

@@ -195,9 +195,7 @@ $(document).ready(function() {
     handle: 'img'
   });
 
-  $('#versions-button').fancybox({
-
-  });
+  $('#versions-button').fancybox();
 
   // Add emptys div for browsers/preview
   $('body').append('<div style="display:none;"><div id="asset-browser"></div><div id="tree-browser"></div><div id="preview-pane"><iframe name="preview-frame" src="about:blank"/></div></div>');

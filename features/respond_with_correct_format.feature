@@ -4,6 +4,7 @@ Feature: Respond with the correct format
   Scenario: Render correct format
     Given a page a exists with a title of "My Formatted Page"
     When I view the page "My Formatted Page" as "html"
+    Then show me the page
     Then I should see "My Formatted Page"
     When I view the page "My Formatted Page" as "rss"
     Then I should see "My Formatted Page"
