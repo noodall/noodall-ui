@@ -43,7 +43,7 @@ module Noodall
           get "search" => "noodall/nodes#search", :as => :noodall_search
           get "sitemap" => "noodall/nodes#sitemap", :as => :noodall_sitemap
           get "*permalink.:format" =>  'noodall/nodes#show'
-          get "*permalink" =>  'noodall/nodes#show', :as => :node_permalink
+          get "*permalink(.:format)" =>  'noodall/nodes#show', :as => :node_permalink
         end
       end
     end
