@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 source 'http://gems.github.com'
 
 gem 'mm-versionable', :git => 'git://github.com/stengland/mm-versionable.git'
-gem 'noodall-core', :path => '~/Gems/noodall-core'
+gem 'noodall-core', :git => 'git@github.com:beef/noodall-core.git', :branch => 'mm9'
 gemspec
 
 # Required for running as demo rails app
@@ -24,7 +24,7 @@ group :development, :test do
   gem 'jeweler', '~> 1.4.0'
   gem 'factory_girl_rails'
   gem "faker", "~> 0.3.1"
-  gem "haml"
+  gem "sass"
   gem "SystemTimer", ">= 1.2.0"
   gem "bson_ext", "~> 1.3.0"
 end

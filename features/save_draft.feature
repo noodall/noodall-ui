@@ -25,3 +25,10 @@ Feature: Work with drafts
     Then the form should contain version 1
     When I press "Publish"
     Then the live page should be at version 1
+
+  Scenario: View a version
+    Given content exists with several versions
+    When I go to edit the content again
+    And I follow "Versions"
+    And I follow "View" within version 1
+    Then I should see version 1 of the content

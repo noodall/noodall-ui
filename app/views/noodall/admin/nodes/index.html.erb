@@ -26,14 +26,14 @@
     <tr>
       <%= sortable_table_header :name => "Title", :sort => "admin_title", :class => 'sort' %>
       <%= sortable_table_header :name => "Type", :sort => "_type", :class => 'sort' %>
-      
+
       <%# Change 'position' header if we are sorting by position %>
       <% if(params[:sort] && params[:sort] != "position" || params[:order] == "descending") %>
         <%= sortable_table_header :name => "Position", :sort => "position", :class => 'sort' %>
       <% else %>
         <%= sortable_table_header :name => "Position", :sort => "position", :class => 'sort', :colspan => 2 %>
       <% end %>
-      
+
       <th width="120">Sub Section</th>
       <%= sortable_table_header :name => "Updated", :sort => "updated_at", :class => 'sort' %>
       <th width="45">Show</th>
@@ -44,19 +44,19 @@
   <tbody>
 <% @nodes.each do |node| %>
     <tr id="node-<%= node.id %>" class="<%=cycle('odd', 'even')%>">
-      <td class="edit"><%= link_to h(node.admin_title), noodall_admin_node_path(node), :class => 'edit', :title => "Edit #{node.title}" %></td>
+      <td class="edit"><%= link_to "#{ node.admin_title } #{ '(draft)' if node.has_draft? }", noodall_admin_node_path(node), :class => 'edit', :title => "Edit #{node.title}" %></td>
       <td><%= node.class.name.titleize %></td>
-      
+
       <%# Change 'position' content if we are sorting by position %>
       <% if(params[:sort] && params[:sort] != "position" || params[:order] == "descending") %>
         <td width="55"><%= node.position %></td>
       <% else %>
-        
+
         <td width="25"><%= link_to 'up', move_up_noodall_admin_node_path(node), { :class => "page_up", :title => 'Move this content higher in the navigation' } unless node.first? %></td>
         <td width="30" class="down"><%= link_to 'down', move_down_noodall_admin_node_path(node), { :class => 'page_down', :title => 'Move this content lower in the navigation' } unless node.last? %></td>
       <% end %>
-      
-      
+
+
       <td class="child">
 <% unless node.class.template_classes.blank? -%>
         <%= link_to pluralize(node.children.size, "Child"), noodall_admin_node_nodes_path(node), :title => "View content under #{h(node.title)}", :class => 'child-no' %>
@@ -74,14 +74,14 @@
     <tr>
       <%= sortable_table_header :name => "Title", :sort => "admin_title", :class => 'sort' %>
       <%= sortable_table_header :name => "Type", :sort => "_type", :class => 'sort' %>
-      
+
       <%# Change 'position' header if we are sorting by position %>
       <% if(params[:sort] && params[:sort] != "position" || params[:order] == "descending") %>
         <%= sortable_table_header :name => "Position", :sort => "position", :class => 'sort' %>
       <% else %>
         <%= sortable_table_header :name => "Position", :sort => "position", :class => 'sort', :colspan => 2 %>
       <% end %>
-      
+
       <th width="120">Sub Section</th>
       <%= sortable_table_header :name => "Updated", :sort => "updated_at", :class => 'sort' %>
       <th width="45">Show</th>

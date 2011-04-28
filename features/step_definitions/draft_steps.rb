@@ -15,10 +15,6 @@ Then /^the form should contain version (\d+)$/ do |version|
   Then %{the "Title" field should contain "#{version.content(:title)}"}
 end
 
-Given /^I edit the content again$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
 Then /^I should see a list of previous versions$/ do
   page.should have_css("table#versions-list tr", :count => @_content.all_versions.count)
 end
@@ -29,3 +25,15 @@ When /^I follow "([^"]*)" within version (\d+)$/ do |link_name, version_number|
   end
 end
 
+Given /^content exists with several versions$/ do
+  @_content = Factory(:page_a)
+  3.times do |i|
+    @_content.title = "Title #{i}"
+    @_content.save
+  end
+end
+
+Then /^I should see version (\d+) of the content$/ do |version|
+  version = @_content.version_at(version.to_i)
+  page.should have_content(version.content(:title))
+end

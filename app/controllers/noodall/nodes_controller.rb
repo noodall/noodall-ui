@@ -24,6 +24,16 @@ module Noodall
       end
     end
 
+    def version
+      @node = Node.find(params[:node_id])
+      version = Version.find(params[:id])
+      @node.rollback(version.pos)
+      @page_title = @node.title
+      @page_description = @node.description
+      @page_keywords = @node.keywords
+      render "nodes/#{@node.class.name.underscore}"
+    end
+
     def sitemap
       if stale?(:last_modified => GlobalUpdateTime::Stamp.read, :public => true)
         @page_title = 'Sitemap'

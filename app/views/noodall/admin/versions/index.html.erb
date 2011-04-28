@@ -1,13 +1,18 @@
 <h1> Versions </h1>
-<table id="versions-list">
-  <th> Version </th>
-  <th> </th>
-  
-  <% for version in @versions %>
-    <tr class="<%= "active" if version.pos == @node.version_number %>">
-      <td> Version <%= version.pos  %> </td>
-      <td> <%= link_to "Use", noodall_admin_node_path(@node, :version_number => version.pos) %> </td>
-    </tr>
-  <% end %>
-  
+<table id="versions-list" class="content">
+  <thead>
+    <th> Version </th>
+    <th> Date </th>
+    <th colspan="2"> Actions </th>
+  </thead>
+  <tbody>
+    <% for version in @versions %>
+      <tr class="<%= "active" if version.pos == @node.version_number %>">
+        <td> Version <%= version.pos  %> </td>
+        <td> <%= l version.date %> </td>
+        <td> <%= link_to "View", noodall_version_path(@node, version) %> </td>
+        <td> <%= link_to "Use", noodall_admin_node_path(@node, :version_number => version.pos) %> </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
