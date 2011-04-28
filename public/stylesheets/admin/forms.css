@@ -392,6 +392,14 @@ div#flash div.error {
           color:#fff;
 }
 
+div#flash div.alert {
+          background: #E19449;
+          border:3px solid #C46F1C;
+          color:#fff;
+}
+
+
+
 div#flash a {
   color:#fff;
 }
