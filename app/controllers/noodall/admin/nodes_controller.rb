@@ -40,6 +40,10 @@ module Noodall
         @node = Node.find(params[:id])
         enforce_update_permission(@node)
         enforce_publish_permission(@node) if @node.published?
+        if @node.has_draft?
+          flash[:alert] = "You are editing a draft version of this page"
+          @node.rollback(:latest)
+        end
 
         respond_to do |format|
           format.html
@@ -91,20 +95,25 @@ module Noodall
         # Set user stamp
         @node.updater = current_user
 
-        respond_to do |format|
+        if params[:draft].blank?
           if @node.update_attributes(params[:node])
             flash[:notice] = "#{@node.class.name.titleize} '#{@node.title}' was successfully updated."
-            format.html {
-              if @node.parent.nil?
-                redirect_to noodall_admin_nodes_path
-              else
-                redirect_to noodall_admin_node_nodes_path(@node.parent.id)
-              end
-            }
-            format.xml  { head :ok }
+            if @node.parent.nil?
+              redirect_to noodall_admin_nodes_path
+            else
+              redirect_to noodall_admin_node_nodes_path(@node.parent.id)
+            end
           else
-            format.html { render :action => "show" }
-            format.xml  { render :xml => @node.errors, :status => :unprocessable_entity }
+            render :action => "show"
+          end
+        else
+          @node.attributes = params[:node]
+          @node.save_version(current_user.id)
+          flash[:notice] = "#{@node.class.name.titleize} '#{@node.title}' was successfully saved as version #{@node.version_number} (draft)."
+          if @node.parent.nil?
+            redirect_to noodall_admin_nodes_path
+          else
+            redirect_to noodall_admin_node_nodes_path(@node.parent.id)
           end
         end
       end
