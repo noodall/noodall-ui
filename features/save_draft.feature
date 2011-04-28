@@ -7,7 +7,6 @@ Feature: Work with drafts
     Given I am editing content
     And I make some changes
     And I press "Draft"
-    Then show me the page
     Then I should see "was successfully saved as version 1 (draft)"
     And the live page should be at version 0
     When I go to edit the content again
