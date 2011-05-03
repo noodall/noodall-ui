@@ -175,8 +175,12 @@ table.content tr.even {
         background:#fff6d3;
 }
 
-table.content tbody tr:hover, table.content tr.active {
-        background:#e4edff !important;
+table.content tbody tr:hover {
+        background:#e4edff;
+}
+
+table.content tr.active {
+        background:#bae8b4!important;
 }
 
 table.content th {
