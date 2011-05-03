@@ -641,7 +641,9 @@ ul.choices li a,
 a.download,
 .edit-item,
 a.change,
-a.spam, span.spam {
+a.spam, span.spam,
+.fixed-form input#hide,
+#content form .fixed-form a#versions-button {
         overflow: hidden;
         text-align: left;
         display: block;

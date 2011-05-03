@@ -266,15 +266,16 @@ p.remove span{
 }
 
 #content form .fixed-form a#versions-button {
+          background:url(/images/admin/versions.gif) no-repeat;
           width:110px;
           height:26px;
           left:440px;
           top:20px;
-          border: 1px solid red;
-          color: red;
+          border: none;
           position:absolute;
-          background: white;
 }
+
+
 #content form .fixed-form input.draft {
           background:url(/images/admin/draft.gif) no-repeat;
           width:110px;
@@ -287,22 +288,22 @@ p.remove span{
 }
 
 .fixed-form input#hide {
+          background:url(/images/admin/hide.gif) no-repeat;
           width:160px;
           height:56px;
           cursor:pointer;
-          border: 1px solid red;
-          color: red;
+          border: none;
           position:absolute;
-          background: white;
           top:20px;
           right:200px;
 }
+
 .fixed-form a.cancel, .fixed-form a.delete {
           background:url(/images/admin/cancel.gif) no-repeat;
           width:160px;
           height:56px;
           cursor:pointer;
-           border:none;
+          border:none;
           position:absolute;
           top:20px;
           right:20px;
