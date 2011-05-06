@@ -364,8 +364,8 @@ a.edit, span.edit {
 a.delete, span.delete {
         background:url(/images/admin/delete.png) no-repeat -1px -4px;
 }
-a.spam, span.spam {
-        background:url(/images/admin/spam.png) no-repeat -1px -4px;
+td.spam {
+        background:url(/images/admin/spam-flag.png) no-repeat -1px -4px;
 }
 a.download {
         background:url(/images/admin/download.png) no-repeat -1px -4px;
