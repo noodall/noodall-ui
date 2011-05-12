@@ -26,7 +26,7 @@ var AddvideoDialog = {
 
     // Add Link and img to the body
 
-    tinyMCEPopup.editor.execCommand('mceInsertContent', false, "<a href='" + url + "' title='" + title + "' class='fancy-youtube'><img src='http://img.youtube.com/vi/" +  videoid[1] + "/1.jpg' alt='" + title + "' /></a>");
+    tinyMCEPopup.editor.execCommand('mceInsertContent', false, "<a href='" + url + "' title='" + title + "' class='fancy-youtube'><img src='http://img.youtube.com/vi/" +  videoid[1] + "/0.jpg' alt='" + title + "' /></a>");
     tinyMCEPopup.close();
   }
 };
