@@ -4,7 +4,7 @@ xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
 # homepage
     xml.url do
       xml.loc         root_path(:only_path => false)
-      xml.lastmod     File.new("#{Rails.root.to_s}/app/views/nodes/home.html.erb").mtime.to_formatted_s(:w3c)
+      xml.lastmod     File.new("#{Rails.root.to_s}/app/views/nodes/home.html.erb").mtime.strftime("%Y-%m-%dT%H:%M:%S%z") #w3c formatted string
       xml.changefreq  "daily"
       xml.priority    1
     end
@@ -13,7 +13,7 @@ xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
   @nodes.each do |node|
     xml.url do
       xml.loc         node_path(node,:only_path => false)
-      xml.lastmod     node.updated_at.to_formatted_s(:w3c)
+      xml.lastmod     node.updated_at.strftime("%Y-%m-%dT%H:%M:%S%z") #w3c formatted string
       xml.changefreq  "daily"
       xml.priority    1
     end
