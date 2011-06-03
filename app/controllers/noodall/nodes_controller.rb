@@ -33,8 +33,12 @@ module Noodall
     end
 
     def search
-      @nodes = Node.search(params[:q], :per_page => 10, :page => params[:page], :published_at => { :$lte => Time.zone.now }, :published_to => { :$gte => Time.zone.now })
-      @page_title = 'Searching: '+ params[:q]
+      if params[:q].nil?
+        render_404
+      else
+        @nodes = Node.search(params[:q], :per_page => 10, :page => params[:page], :published_at => { :$lte => Time.zone.now }, :published_to => { :$gte => Time.zone.now })
+        @page_title = 'Searching: '+ params[:q]
+      end
     end
 
     protected
