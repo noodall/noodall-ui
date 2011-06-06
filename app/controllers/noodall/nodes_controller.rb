@@ -25,8 +25,8 @@ module Noodall
     end
 
     def version
-      @node = Node.find(params[:node_id])
-      version = Version.find(params[:id])
+      @node = Node.find!(params[:node_id])
+      version = Version.find!(params[:id])
       @node.rollback(version.pos)
       @page_title = @node.title
       @page_description = @node.description
