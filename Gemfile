@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 source 'http://gems.github.com'
 
-gem 'mm-versionable', :git => 'git://github.com/stengland/mm-versionable.git'
 gem 'noodall-core', :git => 'git@github.com:beef/noodall-core.git', :branch => 'mm9'
 gemspec
 
