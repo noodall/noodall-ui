@@ -33,3 +33,32 @@ Noodall::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 end
+
+require 'dragonfly'
+require 'stringio'
+require 'tempfile'
+module Dragonfly 
+  class TempObject
+    private
+    def initialize_from_object!(obj)
+      case obj
+      when TempObject
+        @initialized_data = obj.initialized_data
+        @initialized_tempfile = copy_to_tempfile(obj.initialized_tempfile.path) if obj.initialized_tempfile
+        @initialized_file = obj.initialized_file
+      when String
+        @initialized_data = obj
+      when Tempfile
+        @initialized_tempfile = obj
+      when File
+        @initialized_file = obj
+        self.name = File.basename(obj.path)
+      when ::ActionDispatch::Http::UploadedFile
+        @initialized_tempfile = obj.tempfile
+      else
+        raise ArgumentError, "#{self.class.name} must be initialized with a String, a File, a Tempfile, an ActionDispatch::Http::UploadedFile or another TempObject"
+      end
+      self.name = obj.original_filename if obj.respond_to?(:original_filename)
+    end
+  end
+end
