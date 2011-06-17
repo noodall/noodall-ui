@@ -22,7 +22,6 @@ group :development, :test do
   gem 'jeweler', '~> 1.4.0'
   gem 'factory_girl_rails'
   gem "faker", "~> 0.3.1"
-  gem "sass"
   gem "SystemTimer", ">= 1.2.0"
   gem "bson_ext", "~> 1.3.0"
 end

@@ -1,82 +1,12 @@
-/*
-Syntax error: Invalid CSS after "...------------ */": expected selector or at-rule, was "{"
-        on line 9 of /Users/liamrichardson/Sites/noodall-ui/public/stylesheets/sass/ie.scss
+/* -------------- IE -------------- */
+/* for IE 7 and bellow */
 
-4: /* -------------- COMMON FIX'S -------------- */
-5: button {  width: auto; overflow: visible; }
-6: img { -ms-interpolation-mode: bicubic; }
-7: 
-8: /* -------------- CLEARFIX -------------- */
-9: {
-10:   height: 1%;
-11: }
+/* -------------- COMMON FIX'S -------------- */
+button {  width: auto; overflow: visible; }
+img { -ms-interpolation-mode: bicubic; }
 
-Backtrace:
-/Users/liamrichardson/Sites/noodall-ui/public/stylesheets/sass/ie.scss:9
-/opt/local/lib/ruby/gems/1.8/gems/sass-3.1.1/lib/sass/../sass/scss/parser.rb:898:in `expected'
-/opt/local/lib/ruby/gems/1.8/gems/sass-3.1.1/lib/sass/../sass/scss/parser.rb:841:in `expected'
-/opt/local/lib/ruby/gems/1.8/gems/sass-3.1.1/lib/sass/../sass/scss/parser.rb:27:in `parse'
-/opt/local/lib/ruby/gems/1.8/gems/sass-3.1.1/lib/sass/../sass/engine.rb:319:in `_to_tree'
-/opt/local/lib/ruby/gems/1.8/gems/sass-3.1.1/lib/sass/../sass/engine.rb:291:in `_render'
-/opt/local/lib/ruby/gems/1.8/gems/sass-3.1.1/lib/sass/../sass/engine.rb:239:in `render'
-/opt/local/lib/ruby/gems/1.8/gems/sass-3.1.1/lib/sass/../sass/util.rb:298:in `silence_sass_warnings'
-/opt/local/lib/ruby/gems/1.8/gems/sass-3.1.1/lib/sass/../sass/engine.rb:239:in `render'
-/opt/local/lib/ruby/gems/1.8/gems/sass-3.1.1/lib/sass/../sass/plugin/compiler.rb:319:in `update_stylesheet'
-/opt/local/lib/ruby/gems/1.8/gems/sass-3.1.1/lib/sass/../sass/plugin/compiler.rb:181:in `update_stylesheets'
-/opt/local/lib/ruby/gems/1.8/gems/sass-3.1.1/lib/sass/../sass/plugin/compiler.rb:175:in `each'
-/opt/local/lib/ruby/gems/1.8/gems/sass-3.1.1/lib/sass/../sass/plugin/compiler.rb:175:in `update_stylesheets'
-/opt/local/lib/ruby/gems/1.8/gems/sass-3.1.1/lib/sass/../sass/plugin/compiler.rb:173:in `each'
-/opt/local/lib/ruby/gems/1.8/gems/sass-3.1.1/lib/sass/../sass/plugin/compiler.rb:173:in `update_stylesheets'
-/opt/local/lib/ruby/gems/1.8/gems/sass-3.1.1/lib/sass/../sass/plugin.rb:81:in `update_stylesheets'
-/opt/local/lib/ruby/gems/1.8/gems/sass-3.1.1/lib/sass/../sass/plugin.rb:54:in `check_for_updates'
-/opt/local/lib/ruby/gems/1.8/gems/sass-3.1.1/lib/sass/../sass/plugin/rack.rb:51:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/head.rb:14:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/flash.rb:182:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/cookies.rb:295:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
-/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/sendfile.rb:107:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/rack/logger.rb:13:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/runtime.rb:17:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/activesupport-3.0.3/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/dragonfly-0.7.7/lib/dragonfly/middleware.rb:16:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `synchronize'
-/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/static.rb:30:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:168:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:77:in `send'
-/opt/local/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:77:in `method_missing'
-/opt/local/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/rack/log_tailer.rb:14:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/content_length.rb:13:in `call'
-/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/handler/webrick.rb:52:in `service'
-/opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
-/opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
-/opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
-/opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
-/opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
-/opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
-/opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
-/opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
-/opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
-/opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
-/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/handler/webrick.rb:13:in `run'
-/opt/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/server.rb:213:in `start'
-/opt/local/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/commands/server.rb:65:in `start'
-/opt/local/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:30
-/opt/local/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:27:in `tap'
-/opt/local/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:27
-script/rails:6:in `require'
-script/rails:6
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"...------------ */\": expected selector or at-rule, was \"{\"\A         on line 9 of /Users/liamrichardson/Sites/noodall-ui/public/stylesheets/sass/ie.scss\A \A 4: /* -------------- COMMON FIX'S -------------- */\A 5: button {  width: auto; overflow: visible; }\A 6: img { -ms-interpolation-mode: bicubic; }\A 7: \A 8: /* -------------- CLEARFIX -------------- */\A 9: {\A 10:   height: 1%;\A 11: }"; }
+/* -------------- CLEARFIX -------------- */
+{
+  height: 1%;
+}
+
