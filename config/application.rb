@@ -26,6 +26,6 @@ module Noodall
     paths.config.routes 'demo/routes.rb'
     paths.config.initializers << "demo/initializers"
 
-    config.middleware.insert_after 'Rack::Lock', 'Dragonfly::Middleware', :noodall_assets, '/media'
+    config.middleware.insert 0, 'Dragonfly::Middleware', :noodall_assets
   end
 end
