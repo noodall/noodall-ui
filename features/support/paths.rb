@@ -18,6 +18,8 @@ module NavigationHelpers
       node_path(node)
     when /^the content admin page$/
       noodall_admin_nodes_path
+    when /^edit the content again$/
+      noodall_admin_node_path(@_content)
     when /^the site ?map page$/
       noodall_sitemap_path
     when /^a page that's content is in the "([^\"]*)" template$/

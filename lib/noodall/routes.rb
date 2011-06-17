@@ -7,6 +7,7 @@ module Noodall
           namespace 'noodall/admin', :as => 'noodall_admin', :path => 'admin' do
             resources :nodes do
               resources :nodes
+              resources :versions
               member do
                 get :change_template
                 get :move_up
@@ -38,10 +39,11 @@ module Noodall
             resources :groups
           end
 
+          get "v/:node_id/:id" => "noodall/nodes#version", :as => :noodall_version
           get "search" => "noodall/nodes#search", :as => :noodall_search
           get "sitemap" => "noodall/nodes#sitemap", :as => :noodall_sitemap
           get "*permalink.:format" =>  'noodall/nodes#show'
-          get "*permalink" =>  'noodall/nodes#show', :as => :node_permalink
+          get "*permalink(.:format)" =>  'noodall/nodes#show', :as => :node_permalink
         end
       end
     end

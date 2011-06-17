@@ -194,6 +194,8 @@ $(document).ready(function() {
     axis: 'y',
     handle: 'img'
   });
+  
+  $('#versions-button').fancybox({'autoDimensions':false});
 
   // Add emptys div for browsers/preview
   $('body').append('<div style="display:none;"><div id="asset-browser"></div><div id="tree-browser"></div><div id="preview-pane"><iframe name="preview-frame" src="about:blank"/></div></div>');

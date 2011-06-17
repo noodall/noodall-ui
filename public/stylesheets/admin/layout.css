@@ -117,21 +117,21 @@ div#content-table {
         clear:both;
 }
 
-div#content-table table.content {
+table.content {
         width:100%;
 }
 
-div#content-table table.content th,
-div#content-table table.content td {
+table.content th,
+table.content td {
         padding:9px;
         vertical-align:middle;
 }
 
-div#content-table table.content th {
+table.content th {
         padding:14px;
 }
 
-div#content-table table.content td label {
+table.content td label {
         display:none;
 }
 
@@ -412,7 +412,7 @@ td.child a.child-no{
 }
 
 span.check,
-span.draft {
+span.hidden {
         width:26px;
         height:26px;
         display:block;

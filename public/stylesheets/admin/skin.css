@@ -134,12 +134,12 @@ div#content-table {
         background:#e9e9e9;
 }
 
-div#content-table table.content {
+table.content {
         border:1px solid #c2c2c2;
         background:#fff;
 }
 
-div#content-table table.content td{
+table.content td{
         color:#707070;
 }
 
@@ -147,8 +147,8 @@ a.edit {
         color:#106bab;
 }
 
-div#content-table table.content td a.child-no,
-div#content-table table.content td.file a {
+table.content td a.child-no,
+table.content td.file a {
         color:#707070;
 }
 
@@ -157,39 +157,43 @@ a.edit:hover,
         color:#d4954c;
 }
 
-div#content-table table.content td a.child-no:hover,
-div#content-table table.content td.file a:hover {
+table.content td a.child-no:hover,
+table.content td.file a:hover {
         color:#83b452;
 }
 
 
-div#content-table table.content thead,
-div#content-table table.content tfoot,
-div#content-table table.content thead a,
-div#content-table table.content tfoot a {
+table.content thead,
+table.content tfoot,
+table.content thead a,
+table.content tfoot a {
         background: #4a4747;
         color:#fff;
 }
 
-div#content-table table.content tr.even {
+table.content tr.even {
         background:#fff6d3;
 }
 
-div#content-table table.content tbody tr:hover {
-        background:#e4edff !important;
+table.content tbody tr:hover {
+        background:#e4edff;
 }
 
-div#content-table table.content th {
+table.content tr.active {
+        background:#bae8b4!important;
+}
+
+table.content th {
         border-left:1px solid #686666;
 }
 
-div#content-table table.content td {
+table.content td {
         border-left:1px solid #D3D3D3 !important;
 }
 
-div#content-table table.content th:first-child,
-div#content-table table.content td:first-child,
-div#content-table table.content td.down {
+table.content th:first-child,
+table.content td:first-child,
+table.content td.down {
         border-left:none !important;
 }
 
@@ -393,8 +397,8 @@ span.check {
         background:url(/images/admin/check.png) no-repeat -1px -4px;
 }
 
-span.draft {
-        background:url(/images/admin/draft.png) no-repeat -1px -4px;
+span.hidden {
+        background:url(/images/admin/hidden.png) no-repeat -1px -4px;
 }
 
 a.child, a.add{
@@ -413,7 +417,9 @@ a.page_up:hover,
 a.page_down:hover,
 a.child:hover,
 a.add:hover,
-a.download:hover {
+a.download:hover,
+a.spam:hover
+ {
         background-position: -1px -36px;
 }
 
@@ -632,7 +638,7 @@ a.page_down,
 a.show,
 a.add,
 span.check,
-span.draft,
+span.hidden,
 a.child,
 .form-save,
 .form-delete,
@@ -644,7 +650,10 @@ a.child,
 ul.choices li a,
 a.download,
 .edit-item,
-a.change {
+a.change,
+a.spam, span.spam,
+.fixed-form input#hide,
+#content form .fixed-form a#versions-button {
         overflow: hidden;
         text-align: left;
         display: block;

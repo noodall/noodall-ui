@@ -39,7 +39,9 @@
   <div class="fixed-form">
     <div id="buttons">
       <%= f.submit 'Publish', :class => 'publish', :name => 'node[publish]' if can_publish?(@node) %>
-      <%= f.submit 'Draft', :name => 'node[hide]', :class => 'draft' %>
+      <%= f.submit 'Draft', :name => "draft", :class => 'draft' %>
+      <%= link_to 'Versions', noodall_admin_node_versions_path(@node), :id => "versions-button" %>
+      <%= f.submit 'Hide', :name => 'node[hide]', :id => 'hide' %>
       <%= link_to 'Cancel', @node.root? ? noodall_admin_nodes_path : noodall_admin_node_nodes_path(@node.parent), :class => 'cancel'  %>
     </div>
 
@@ -49,7 +51,7 @@
         <fieldset>
           <legend class="advanced">Advanced</legend>
           <div id="advanced">
-           
+
              <div class="published-section">
                   <p class="published">
                      <%= f.label :published_at, "Publish at" %><br/>
@@ -103,9 +105,9 @@
                    </div>
                  <% end -%>
 
-             
-             
-             
+
+
+
              <div class="position-section">
                 <% unless @node.in_site_map? %>
                    <p>

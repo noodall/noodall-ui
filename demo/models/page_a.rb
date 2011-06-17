@@ -3,7 +3,7 @@ class PageA < Noodall::Node
   root_template!
 
   main_slots 1
-  small_slots 4
+  small_slots 20
   wide_slots 3
 
   searchable_keys :title, :body, :description, :keywords
