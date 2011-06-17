@@ -33,3 +33,6 @@ When /^I view the page "([^"]*)" as "([^"]*)"$/ do |title, format|
   visit node_path(Noodall::Node.find_by_title(title), :format => format)
 end
 
+Then /^I should see (\d+) nodes?$/ do |count|
+  page.should have_selector "tr.node", :count => count.to_i
+end

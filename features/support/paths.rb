@@ -9,9 +9,9 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /the (home\s?page|website)/i
+    when /^the (home\s?page|website)/i
       root_path
-    when /the CMS/
+    when /^the CMS/
       '/admin'
     when /^the (?:root )?content titled "([^\"]*)" page$/i
       node = Node.find_by_title($1)
@@ -37,7 +37,8 @@ module NavigationHelpers
       node_path(node)
     when /^that page$/
       node_path(@_content)
-
+    when /^that page in the CMS$/
+      noodall_admin_node_nodes_path(@_content)
     when /^the article list page$/
       node_path(@_content)
     when /content titled "([^\"]*)"$/

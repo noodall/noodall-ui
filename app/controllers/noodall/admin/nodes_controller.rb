@@ -7,12 +7,16 @@ module Noodall
       sortable_attributes :position, :admin_title, :title, :type, :updated_at
 
       def index
+        
         if params[:node_id].nil?
-          @nodes = Node.roots.paginate(:per_page => 20, :page => params[:page], :order => sort_order(:default => "ascending") )
+          nodes = Node.roots
         else
           @parent = Node.find(params[:node_id])
-          @nodes = @parent.children.paginate(:per_page => 20, :page => params[:page], :order => sort_order(:default => "ascending") )
+          nodes = @parent.children
         end
+        
+        per_page = 15
+        @nodes = nodes.where( :title => /#{params[:f]}/i ).paginate(:per_page => (params[:limit] || per_page), :page => params[:page] )
 
         respond_to do |format|
           format.html # index.html.erb

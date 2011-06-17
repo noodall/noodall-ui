@@ -185,3 +185,11 @@ Then /^I should see the course information box$/ do
     course_info.should contain('AB1234')
   end
 end
+
+
+Given /^a content branch has the follow nodes$/ do |table|
+  @_content = Factory(:page_a, :title => 'Top Page', :publish => true)
+  table.hashes.each do |row|
+    @_subcontent = Factory(:page_a, :title => row['title'], :parent => @_content, :publish => true)
+  end
+end
