@@ -16,6 +16,7 @@ module Noodall
               end
               collection do
                 get :tree
+                post :filter
               end
             end
 

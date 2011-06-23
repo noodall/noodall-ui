@@ -19,8 +19,22 @@
 <% end %>
 
 </ul>
-<%= will_paginate(@nodes, :previous_label => 'Previous', :next_label => 'Next') %>
+
 <div id="content-table">
+  
+  <div id="form-filter">
+    <%= form_tag '', :method => :get, :id => 'filter' do %>
+      <%= label_tag :f, 'Filter by Title' %>
+      <%= text_field_tag :f %>
+      <%= submit_tag "Filter" %>
+    <% end %>
+
+    <% if params[:f] %>
+      <%= link_to "reset", url_for(:only_path => false, :f => nil), :class => 'button' %>
+    <% end %>
+  </div>
+  
+  <%= will_paginate(@nodes) %>
  <table border="0" cellspacing="0" cellpadding="0" class="content">
   <thead>
     <tr>
@@ -43,7 +57,7 @@
   </thead>
   <tbody>
 <% @nodes.each do |node| %>
-    <tr id="node-<%= node.id %>" class="<%=cycle('odd', 'even')%>">
+    <tr id="node-<%= node.id %>" class="node <%=cycle('odd', 'even')%>">
       <td class="edit"><%= link_to "#{ node.admin_title } #{ '(draft)' if node.has_draft? }", noodall_admin_node_path(node), :class => 'edit', :title => "Edit #{node.title}" %></td>
       <td><%= node.class.name.titleize %></td>
 
@@ -90,5 +104,6 @@
     </tr>
   </tfoot>
 </table>
-</div>
 <%= will_paginate(@nodes, :previous_label => 'Previous', :next_label => 'Next') %>
+
+</div>

@@ -16,6 +16,8 @@ Spork.prefork do
   require 'cucumber/rails/world'
   require 'cucumber/web/tableish'
   require 'cucumber/rspec/doubles'
+  
+  require 'ruby-debug'
 
   require 'capybara/rails'
   require 'capybara/cucumber'
