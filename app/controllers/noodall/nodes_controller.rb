@@ -12,7 +12,7 @@ module Noodall
         #Check view permissions
         enforce_view_permission(@node)
 
-        @page_title = @node.title
+        @page_title = @node.browser_title.blank? ? @node.title : @node.browser_title
         @page_description = @node.description
         @page_keywords = @node.keywords
 
@@ -28,7 +28,7 @@ module Noodall
       @node = Node.find!(params[:node_id])
       version = @node.all_versions.find!(params[:id])
       @node.rollback(version.pos)
-      @page_title = @node.title
+      @page_title = @node.browser_title.blank? ? @node.title : @node.browser_title
       @page_description = @node.description
       @page_keywords = @node.keywords
       render "nodes/#{@node.class.name.underscore}"
