@@ -108,24 +108,33 @@
 
 
 
-             <div class="position-section">
-                <% unless @node.in_site_map? %>
-                   <p>
-                     <span class="node-mover">Parent Content</span>
-                     <span class="input-wrap" id="parent-title">
-                       <%= @node.root? ? "Root" : @node.parent.title %>
-                       <a href="#" class="edit-item">Edit</a>
-                     </span>
-                     <%= f.hidden_field :parent, :value => @node.parent_id %>
-                     <%= hidden_field_tag :parent_types, @node.class.parent_classes.join(','), :disabled => true %>
-                   </p>
-                   <p>
-                     <span class="tooltip" title="Enter a custom url or leave it as the default value shown.">&nbsp;</span>
-                     <%= f.label :permalink, 'Page Url' %><br/>
-                     <span class="input-wrap"><%= f.text_field :permalink %></span>
-                   </p>
-                 <% end %>
-            </div>
+        <div class="position-section">
+          <% unless @node.in_site_map? %>
+            <p>
+              <span class="node-mover">Parent Content</span>
+              <span class="input-wrap" id="parent-title">
+                <%= @node.root? ? "Root" : @node.parent.title %>
+                <a href="#" class="edit-item">Edit</a>
+              </span>
+              <%= f.hidden_field :parent, :value => @node.parent_id %>
+              <%= hidden_field_tag :parent_types, @node.class.parent_classes.join(','), :disabled => true %>
+            </p>
+            
+            <!-- PAGE URL -->
+            <p>
+              <span class="tooltip" title="Enter a custom url or leave it as the default value shown."> &nbsp; </span>
+              <%= f.label :permalink, 'Page Url' %><br/>
+              <span class="input-wrap"><%= f.text_field :permalink %></span>
+            </p>
+            
+            <!-- BROWSER TITLE -->
+            <p>
+              <span class="tooltip" title="This is normally the title shown at the very top of your browser window."> &nbsp; </span>
+              <%= f.label :browser_title, 'Browser Title' %><br/>
+              <span class="input-wrap"><%= f.text_field :browser_title %></span>
+            </p>
+          <% end %>
+        </div>
       </div>
     </fieldset>
   </div>
