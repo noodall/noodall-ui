@@ -1,5 +1,5 @@
 module Noodall
   module UI
-    VERSION = "0.3.18"
+    VERSION = "0.4.0"
   end
 end
