@@ -16,7 +16,7 @@ module Noodall
         end
         
         per_page = 15
-        @nodes = nodes.where( :title => /#{params[:f]}/i ).paginate(:per_page => (params[:limit] || per_page), :page => params[:page] )
+        @nodes = nodes.where( :title => /#{params[:f]}/i ).paginate(:per_page => (params[:limit] || per_page), :page => params[:page], :order => sort_order(:default => "ascending") )
 
         respond_to do |format|
           format.html # index.html.erb
