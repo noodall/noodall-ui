@@ -25,7 +25,8 @@ lite_tiny_mce_config = {
 
     paste_auto_cleanup_on_paste : true,
     paste_strip_class_attributes : "all",
-	paste_remove_spans : true,
+    extended_valid_elements : "iframe[src|width|height|name|align]",
+	  paste_remove_spans : true,
     paste_remove_styles : true
 
 };
