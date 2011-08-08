@@ -1,7 +1,7 @@
 module Noodall
   class NodesController < ApplicationController
     include Canable::Enforcers
-    rescue_from MongoMapper::DocumentNotFound, ActionView::MissingTemplate, :with => :render_404
+    rescue_from MongoMapper::DocumentNotFound, ActionView::MissingTemplate, BSON::InvalidStringEncoding, :with => :render_404
     rescue_from Canable::Transgression, :with => :permission_denied
 
     def show
