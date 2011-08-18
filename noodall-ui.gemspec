@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'noodall-core', ">= 0.7.2"
   s.add_dependency 'thoughtbot-sortable_table', "= 0.0.6"
-  s.add_dependency 'will_paginate', "~> 3.0.pre2"
+  s.add_dependency 'will_paginate', "~> 3.0"
   s.add_dependency 'dynamic_form', ">= 0"
 
   s.add_development_dependency "bundler", ">= 1.0.0"

@@ -3,9 +3,6 @@ source 'http://gems.github.com'
 
 gemspec
 
-#temp
-gem 'noodall-core', '~> 0.7.3'
-
 # Required for running as demo rails app
 gem 'rails', '~> 3.0.1'
 gem 'rmagick', :require => 'RMagick'
@@ -25,7 +22,7 @@ group :development, :test do
   gem 'jeweler', '~> 1.4.0'
   gem 'factory_girl_rails'
   gem "faker", "~> 0.3.1"
-  gem "SystemTimer", ">= 1.2.0"
-  gem "bson_ext", "~> 1.3.0"
-  gem "ruby-debug"
+  gem "bson_ext"
+  gem "ruby-debug19"
+  #gem "SystemTimer", ">= 1.2.0" # Ruby-1.8.7 only
 end
