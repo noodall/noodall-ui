@@ -8,7 +8,7 @@ When /^I click on a root$/ do
   within("tbody tr:last") { click_link "Children" }
 end
 
-Then /^I should see a list the of the root’s children$/ do
+Then /^I should see a list the of the root's children$/ do
   @_page.children.each do |child|
     page.should have_content(child.title)
   end
@@ -19,7 +19,7 @@ When /^I click on a child$/ do
   within(:css, "tbody tr:first") { click_link "Children" }
 end
 
-Then /^I should see a list of the child’s children$/ do
+Then /^I should see a list of the child's children$/ do
   @_child.children.each do |gchild|
     page.should have_content(gchild.title)
   end
@@ -50,7 +50,7 @@ Then /^I should be able to create a new child$/ do
   page.should have_content(' was successfully created.')
 end
 
-Then /^I should see the child listed within the root’s children$/ do
+Then /^I should see the child listed within the root's children$/ do
   visit noodall_admin_node_nodes_path(@_page)
   page.should have_content('New Child')
 end
@@ -63,10 +63,10 @@ Then /^I should be able to delete content$/ do
   page.should have_content("deleted")
 end
 
-Then /^the content and all of it’s sub content will be removed from the website$/ do
+Then /^the content and all of it's sub content will be removed from the website$/ do
 
   visit node_path(@_deleted_node)
-  page.should have_content("The page you were looking for doesn't exist.")
+  page.should have_content("The page you were looking for doesn't exist")
 
   @_deleted_node_children.each do |child|
     lambda { visit node_path(child) }.should raise_error(MongoMapper::DocumentNotFound)
@@ -84,14 +84,14 @@ Then /^I should be able to move a child content to another parent$/ do
   click_button 'Publish'
 end
 
-Then /^I should see the child listed within the other parent’s children$/ do
+Then /^I should see the child listed within the other parent's children$/ do
   visit noodall_admin_node_nodes_path(@_new_parent)
   within('tbody') do
     page.should have_content(@_child.title)
   end
 end
 
-Then /^I should be able change the order of the root’s children$/ do
+Then /^I should be able change the order of the root's children$/ do
   table = table(tableish("table tr", 'td, th'))
   title = table.hashes[2]['Title'] # 2 as zero index
   within(:css, 'table tbody tr:nth(3)') { click_link "up" }

@@ -11,9 +11,9 @@ require "active_resource/railtie"
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 require 'noodall-core'
-require 'lib/noodall/permalinks'
-require 'lib/noodall/ui'
-require 'lib/noodall/canable'
+require 'noodall/permalinks'
+require 'noodall/ui'
+require 'noodall/canable'
 
 module Noodall
   class Application < Rails::Application

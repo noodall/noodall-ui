@@ -6,7 +6,6 @@ doc/app
 rerun.txt
 .sass-cache
 .bundle
-.rvmrc
 Gemfile.lock
 
 

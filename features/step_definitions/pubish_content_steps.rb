@@ -18,7 +18,7 @@ Then /^the content should (not |)be visible on the website$/ do |is_not|
     page.should within('#content h1') { have_content(@_content.title) }
   else
     visit node_path(@_content)
-    page.should have_content("The page you were looking for doesn't exist.")
+    page.should have_content("The page you were looking for doesn't exist")
   end
 end
 
