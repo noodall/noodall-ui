@@ -8,7 +8,7 @@ Spork.prefork do
   # instead of editing this one. Cucumber will automatically load all features/**/*.rb
   # files.
 
-  ENV["RACK_ENV"] ||= "test"
+  ENV["RAILS_ENV"] ||= "test"
   require File.expand_path(File.dirname(__FILE__) + '/../../spec/dummy/config/environment')
 
   require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
@@ -16,7 +16,6 @@ Spork.prefork do
   require 'cucumber/rails/world'
   require 'cucumber/web/tableish'
   require 'cucumber/rspec/doubles'
-  require 'factory_girl_rails'
 
   require 'ruby-debug'
 
