@@ -1,0 +1,183 @@
+#content,
+#topnav,
+.choices,
+#tags,
+.multi-file-files ol li,
+.pagination,
+div.file-forms{
+  height: 1%;
+}
+
+.index #content h1 {
+  display:inline;
+  float:left;
+}
+
+.pagination span, .pagination a, th label {
+  vertical-align: middle;
+}
+
+#tags, #pending {
+    clear:right;
+    float:right;
+    height: 405px;
+    margin-bottom: 20px;
+    overflow: auto;
+    padding: 9px;
+    width: 15%;
+}
+
+#tags a {
+        display:block;
+}
+
+#tags li {
+        margin:10px 10px 0 0;
+}
+
+#browser-list {
+  margin-top:50px;
+  clear:both;
+  display: block;
+
+}
+
+#fancybox-inner #tags {
+  margin-top:30px;
+  clear:both;
+  display: block;
+
+}
+
+#fancybox-inner #asset-browser {
+        padding:0 0 0 0;
+}
+
+ul#topnav li a {
+        display:block;
+}
+
+ul#topnav li {
+        margin-top:10px !important;
+}
+
+fieldset span.tooltip {
+          top:0px;
+}
+
+.add.form-builder {
+  margin:-20px 0;
+}
+
+form#uploader {
+  clear:both;
+  float:left;
+  width:100%;
+}
+
+
+#assets.pending #content{
+  padding-bottom: 100px;
+}
+
+#assets ul.choices {
+margin:-60px 0 -50px;
+}
+
+#assets.index ul.choices   {
+  margin:0 0 0 0;
+}
+
+
+.change_template #main-form label {
+  display:block;
+  float:none;
+}
+
+fieldset.template label img {
+top:30px;
+}
+
+#fancybox-inner #tags {
+  float:right;
+  clear:both;
+}
+
+#content form .fixed-form legend.advanced {
+  left:183px !important;
+}
+
+#sub-form ol#slot-list li a {
+  padding:0px !important;
+}
+
+ol#slot-list li {
+  display:block;
+  padding:10px;
+}
+
+.slot_tag {
+  margin-top: -37px;
+}
+
+
+.multi-file-files ol li {
+  min-height:100px;
+}
+
+div#content-table {
+  margin-bottom:20px;
+}
+
+th .tooltip {
+  top:-15px !important;
+}
+
+.pagination .previous_page,
+.pagination .next_page {
+  display:block !important;
+}
+
+.pagination a, .pagination span, .pagination em{
+  float:left;
+  margin:0 20px 0 0;
+  display:block;
+  clear:none;
+}
+
+.multi-file-files ol li:first-child {
+  height:500px;
+}
+
+#sub-form ol#slot-list li {
+    display:list-item;  list-style-position:inside;
+    padding-left:2px;
+}
+
+#sub-form ol#slot-list li a{
+    padding-left:5px !important;
+    display:block;
+}
+
+/*FORM BUILDER*/
+
+.add.form-builder {
+    margin-top: 0px;
+}
+#form-fields fieldset p span.tooltip {
+  z-index:8888;
+  position: relative;
+  top: 20px;
+}
+
+#forms #content form p {
+  z-index:9999;
+  position: relative;
+}
+
+#forms #content form p#text_field, 
+#forms #content form p#select,
+#forms #content form p#radio,
+#forms #content form p#check_box {
+    z-index:1;
+}

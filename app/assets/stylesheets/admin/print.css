@@ -1,0 +1,27 @@
+body  {
+	font-size: 11pt;
+	font-family: arial, verdana, helvetica, sans-serif;
+	color: #000000;
+	background-color: #ffffff;	
+}
+
+ul, li {
+	font-weight: bold;
+	list-style-type: none;
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+.print {
+	display: block;
+}
+
+form, h1, a, div#footerNav {
+	display: none;	
+}
+
+div.print {
+	border-top: 1px solid #000;
+	padding-top: 10px;
+}

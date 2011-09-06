@@ -1,0 +1,555 @@
+/* -------------- Forms (inputs, textareas etc) -------------- */
+
+label,
+#sub-form h2 {
+          color:#106bab;
+          display:block;
+          margin-bottom:5px;
+          /*padding-left:10px;*/
+}
+
+#fancybox-inner label,
+.show-advanced label {
+          display:inline-block;
+}
+
+#main-form label {
+          margin-bottom:-5px;
+}
+
+#main-form fieldset.template label {
+  margin-bottom:0px;
+  float:none;
+  display:block;
+}
+
+.change_template #main-form label {
+          margin-bottom:0px;
+}
+
+span.input-wrap {
+          display:block;
+          border:1px solid #c2c2c2;
+          background:#e9e9e9;
+
+          padding:9px 31px 9px 9px;
+}
+
+.component_form_detail span.input-wrap,
+#open_days span.input-wrap {
+          display:inline-block;
+          padding:9px 9px 9px 9px;
+}
+
+#content form p span.textarea-wrap,
+.plupload_container {
+          display:block;
+          border:1px solid #c2c2c2;
+          background:#e9e9e9 !important;
+          position:relative;
+          padding:9px 9px 9px 9px;
+          min-width:523px;
+}
+
+#fancybox-inner legend {
+  padding-bottom: 10px;
+}
+
+#content form legend {
+
+          color:#106bab;
+}
+
+fieldset table th {
+          color:#fff;
+          padding-bottom:10px;
+}
+
+#main-form fieldset {
+          position:relative;
+          min-width:543px;
+          padding-right:20px;
+          clear:both;
+}
+
+fieldset span.tooltip {
+          top:-30px;
+}
+
+#form-fields fieldset p span.tooltip {
+          left:116px;
+          top:-4px;
+}
+
+fieldset table input {
+          margin-bottom:9px;
+}
+
+#content form input,
+#fancybox-inner input {
+          border:1px solid #c2c2c2;
+          background:#fff;
+          width:100%;
+          padding:8px 10px;
+}
+
+div#form-fields table input {
+          width:100%;
+          padding:8px 5px;
+}
+
+
+.new div#content-table table.content th,
+.show div#content-table table.content th {
+          color:#fff !important;
+}
+
+#content form input[type="radio"] {
+          width:auto;
+          border:none;
+          padding:0;
+}
+
+.change_template #main-form label {
+  display:block;
+  float:none;
+}
+
+#content form textarea,
+#fancybox-inner textarea {
+          border:1px solid #c2c2c2;
+          background:#fff;
+          width:100%;
+          padding:8px 10px;
+          line-height:20px;
+}
+
+#content form textarea.description {
+  height: 200px;
+}
+
+#fancybox-inner input, #fancybox-inner textarea {
+  width: 320px;
+}
+
+.multi-file-details {
+  width: 350px;
+}
+
+#content form textarea#asset_description,
+#content form textarea#node_description {
+          height:100px;
+}
+
+#content form p, .fixed-form fieldset fieldset {
+          clear:both;
+          margin:0 0 20px;
+          padding:0 20px 0 0;
+          min-width:543px;
+          position:relative;
+}
+
+#forms #content form p {
+          width:543px;
+}
+
+#content form p.template {
+          display:inline-block;
+          min-width:204px;
+}
+
+.form-save, .form-reset, .form-delete {
+        background:url(/images/admin/set.gif) no-repeat;
+        margin:27px;
+        width:110px;
+        height:26px;
+        cursor:pointer;
+       float:left;
+}
+
+.form-reset {
+       background:url(/images/admin/cancel-small.gif) no-repeat;
+       float:right;
+       margin:27px 0;
+}
+
+.form-delete {
+       background:url(/images/admin/clear.gif) no-repeat;
+       float:right;
+}
+
+.add-multi-asset {
+        background:url(/images/admin/add_file.gif) no-repeat;
+        overflow: hidden;
+        width:110px;
+        height:26px;
+        cursor:pointer;
+}
+
+p.add-multi-asset span{
+  display:none;
+}
+
+.remove {
+        background:url(/images/admin/remove.gif) no-repeat;
+        overflow: hidden;
+        width:110px;
+        height:26px;
+        cursor:pointer;
+}
+
+p.remove span{
+  display:none;
+}
+
+#content form .fixed-form span {
+          background:none;
+          border:none;
+}
+
+#content form .fixed-form #buttons input, #content form .fixed-form a.preview, #content form .fixed-form input.update {
+          border:none;
+          padding:0px;
+          cursor:pointer;
+          position:absolute;
+}
+
+#content form .fixed-form input.publish {
+          background:url(/images/admin/publish.gif) no-repeat;
+          width:160px;
+          height:56px;
+          top:20px;
+          position:absolute;
+          border:none;
+          left:20px;
+}
+
+#content form .fixed-form input.create {
+          background:url(/images/admin/create.gif) no-repeat;
+          width:160px;
+          height:56px;
+          top:20px;
+          left:20px;
+          border:none;
+          position:absolute;
+          cursor:pointer;
+}
+
+#content form .fixed-form input.update {
+          background:url(/images/admin/update.gif) no-repeat;
+          width:160px;
+          height:56px;
+          top:20px;
+          left:20px;
+          border:none;
+          position:absolute;
+}
+
+#content form .fixed-form input.change {
+          background:url(/images/admin/change-bg.gif) no-repeat;
+          width:160px;
+          height:56px;
+          top:20px;
+          left:20px;
+          border:none;
+          position:absolute;
+}
+
+#content form .fixed-form a.preview {
+          background:url(/images/admin/preview.gif) no-repeat;
+          width:110px;
+          height:26px;
+          left:190px;
+          top:20px;
+          border:none;
+          position:absolute;
+}
+
+#content form .fixed-form a#versions-button {
+          background:url(/images/admin/versions.gif) no-repeat;
+          width:110px;
+          height:26px;
+          left:440px;
+          top:20px;
+          border: none;
+          position:absolute;
+}
+
+
+#content form .fixed-form input.draft {
+          background:url(/images/admin/draft.gif) no-repeat;
+          width:110px;
+          height:26px;
+          left:305px;
+          top:20px;
+          border:none;
+          position:absolute;
+
+}
+
+.fixed-form input#hide {
+          background:url(/images/admin/hide.gif) no-repeat;
+          width:160px;
+          height:56px;
+          cursor:pointer;
+          border: none;
+          position:absolute;
+          top:20px;
+          right:200px;
+}
+
+.fixed-form a.cancel, .fixed-form a.delete {
+          background:url(/images/admin/cancel.gif) no-repeat;
+          width:160px;
+          height:56px;
+          cursor:pointer;
+          border:none;
+          position:absolute;
+          top:20px;
+          right:20px;
+}
+
+.fixed-form a.delete {
+          background:url(/images/admin/delete.gif) no-repeat;
+          top:20px;
+          right:240px;
+}
+
+legend {
+  padding-bottom:10px;
+}
+
+body.edit .fixed-form a.cancel,
+body.new .fixed-form a.cancel {
+          right:50px;
+}
+
+.fixed-form #advanced {
+        padding:15px 0 10px 0;
+        border-top:1px solid #3e3c3c;
+        float:left;
+        clear:both;
+        width:100%;
+}
+
+.fixed-form .show-advanced {
+          padding:90px 20px 0 20px !important;
+          display:block;
+          color:#fff;
+}
+
+
+#content form .fixed-form legend.advanced,
+#content form .fixed-form a.advanced {
+        background:url(/images/admin/advanced.gif) no-repeat left top;
+        cursor:pointer;
+        height:26px !important;
+        left:190px;
+        overflow:hidden;
+        padding-bottom:0;
+        position:absolute !important;
+        top:50px;
+        width:225px !important;
+/*        padding-right: 225px;
+        padding-top: 22px;*/
+}
+
+#content form .fixed-form legend.open,
+#content form .fixed-form a.open {
+          background-position: left bottom;
+}
+
+legend span{
+  display:none;
+}
+
+
+#content form .fixed-form label,
+p.select_component label,
+span.node-mover,
+.fixed-form legend {
+          color:#979797 !important;
+}
+
+#content form .fixed-form span.input-wrap,
+p.select_component span.input-wrap {
+          color:#fff;
+          background:#686666;
+          border:3px solid #4A4747;
+}
+
+#parent-title {
+          width:310px;
+          font-size:12px;
+          position:relative;
+          margin-top:5px;
+          min-height: 14px;
+}
+
+p.select_component {
+    background:#232222;
+    margin-bottom:10px;
+    padding:10px 27px 15px;
+}
+
+/* -------------- ERROR MESSAGES -------------- */
+
+div#flash {
+          margin:20px 20px 0px 20px;
+}
+
+div#flash div {
+          padding:13px 10px 13px 50px;
+          color:#fff;
+}
+
+div#flash div.notice {
+          background:#82b452 url(/images/admin/check.png) no-repeat 10px 5px;
+          border:3px solid #548126;
+}
+
+div#flash div.error {
+          background:#E47373 url(/images/admin/delete.png) no-repeat 10px 5px;
+          border:3px solid #9C3B3B;
+          color:#fff;
+}
+
+div#flash div.alert {
+          background: #E19449;
+          border:3px solid #C46F1C;
+          color:#fff;
+}
+
+
+
+div#flash a {
+  color:#fff;
+}
+
+#errorExplanation {
+          background:none repeat scroll 0 0 #E47373;
+          border:3px solid #9C3B3B;
+          color:#9C3B3B;
+          margin-bottom:20px;
+          padding:9px;
+}
+
+a, button, input[type="select"] {
+  cursor:pointer;
+}
+
+/* -------------- JQUERY TRANSFROM -------------- */
+
+p.template span.input-wrap {
+          display:inline-block !important;
+          padding:9px !important;
+}
+
+p.published span.input-wrap {
+          display:inline-block !important;
+          padding:9px 9px 7px 9px !important;
+          color:#E9E9E9;
+}
+
+.jqTransformSelectWrapper {
+          position:relative;
+          height:27px;
+          background: #fff;
+          border:1px solid #C2C2C2;
+          padding:0 5px 0 0;
+}
+
+p.published .jqTransformSelectWrapper {
+          display:inline-block;
+}
+
+.jqTransformSelectWrapper div span {
+          color:#000;
+          font-size:14px;
+          position: absolute;
+          white-space: nowrap;
+          padding: 5px 10px !important;
+          overflow: hidden;
+          cursor:pointer;
+}
+
+
+a.jqTransformSelectOpen {
+          display: block;
+          position: absolute;
+          right: 0px;
+          width: 32px;
+          height: 27px;
+          background: url(/images/admin/forms/select-right.gif) no-repeat center top;
+}
+
+p.template .jqTransformSelectWrapper ul {
+          overflow:hidden !important;
+          height:auto !important;
+}
+
+p.published .jqTransformSelectWrapper ul {
+          overflow:scroll !important;
+          height:100px !important;
+}
+
+.jqTransformSelectWrapper ul {
+          background: #fff;
+          border:1px solid #C2C2C2;
+          display:none;
+          left:-1px;
+          list-style:none outside;
+          position:absolute;
+          top:27px;
+          width:100% !important;
+}
+
+.jqTransformSelectWrapper ul li:first-child {
+          padding: 5px 10px;
+          height:14px;
+}
+
+.jqTransformSelectWrapper ul li a {
+          display: block;
+          padding: 5px 10px;
+          text-decoration: none;
+          color:#000;
+          font-size:14px !important;
+          line-height:20px;
+}
+
+.jqTransformSelectWrapper ul li a.selected {
+          font-weight:bold;
+          color:#4992c7;
+}
+
+.jqTransformSelectWrapper ul li:hover {
+          background-color: #d4ecfc;
+}
+
+.fixed-form .jqTransformSelectWrapper  {
+          border:1px solid #111010;
+}
+
+.fixed-form a.jqTransformSelectOpen  {
+          background:url("/248
+") no-repeat center top;
+}
+
+.fixed-form .jqTransformSelectWrapper ul li a.selected {
+          font-weight:bold;
+          color:#111010;
+}
+
+.fixed-form .jqTransformSelectWrapper ul li:hover {
+          background-color: #cdcdcd;
+}
+
+fieldset.template label {
+  float: left;
+  padding: 4px;
+}
+
+.jqTransformHidden {
+          display: none;
+}
