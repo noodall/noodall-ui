@@ -162,7 +162,7 @@ $(document).ready(function() {
   // Preview
   preview_link = $('<a class="preview" href="#preview-pane" title="Content Preview">Preview</a>');
 
-  $("body#nodes.show #node_submit").after(preview_link);
+  $("body#nodes.show #publish").after(preview_link);
 
   // Using selectors as latest version of webkit does not like binding to objects
   $('a.preview').fancybox({
@@ -194,7 +194,7 @@ $(document).ready(function() {
     axis: 'y',
     handle: 'img'
   });
-  
+
   $('#versions-button').fancybox({'autoDimensions':false});
 
   // Add emptys div for browsers/preview

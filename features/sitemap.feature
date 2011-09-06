@@ -1,4 +1,4 @@
-@website
+@,website
 Feature: Site Map
   In order to allow website visitors to see on overview of the entire site the website will
   provide a site map showing all content on the website

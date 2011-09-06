@@ -38,7 +38,7 @@
 
   <div class="fixed-form">
     <div id="buttons">
-      <%= f.submit 'Publish', :class => 'publish', :name => 'node[publish]' if can_publish?(@node) %>
+      <%= f.submit 'Publish', :class => 'publish', :id => "publish", :name => 'node[publish]' if can_publish?(@node) %>
       <%= f.submit 'Draft', :name => "draft", :class => 'draft' %>
       <%= link_to 'Versions', noodall_admin_node_versions_path(@node), :id => "versions-button" %>
       <%= f.submit 'Hide', :name => 'node[hide]', :id => 'hide' %>
@@ -119,7 +119,7 @@
               <%= f.hidden_field :parent, :value => @node.parent_id %>
               <%= hidden_field_tag :parent_types, @node.class.parent_classes.join(','), :disabled => true %>
             </p>
-            
+
             <!-- PAGE URL -->
             <p>
               <span class="tooltip" title="Enter a custom url or leave it as the default value shown."> &nbsp; </span>

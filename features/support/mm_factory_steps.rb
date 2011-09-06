@@ -1,3 +1,6 @@
+require 'factory_girl_rails'
+require 'faker'
+
 FactoryGirl.factories.each do |factory|
   factory.human_names.each do |human_name|
     if factory.build_class.respond_to?(:keys)

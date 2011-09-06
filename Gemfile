@@ -4,7 +4,7 @@ source 'http://gems.github.com'
 gemspec
 
 # Required for running as demo rails app
-gem 'rails', '~> 3.0.1'
+gem 'rails', '3.1.0'
 gem 'rmagick', :require => 'RMagick'
 gem 'dragonfly', '~> 0.9.4'
 
@@ -20,9 +20,10 @@ group :development, :test do
   gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
   gem 'jeweler', '~> 1.4.0'
+  gem 'factory_girl'
   gem 'factory_girl_rails'
   gem "faker", "~> 0.3.1"
   gem "bson_ext"
-  gem "ruby-debug19"
+  gem "ruby-debug19", :require => 'ruby-debug'
   #gem "SystemTimer", ">= 1.2.0" # Ruby-1.8.7 only
 end
