@@ -1,5 +1,7 @@
 <h1><%= @parent.nil? ? 'Content Tree' : "Content under '#{@parent.title}'" %></h1>
 
+<%= admin_breadcrumb %>
+
 <ul class="choices">
 
 <% if @parent.nil? -%>
