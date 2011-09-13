@@ -31,7 +31,7 @@
     <p>
       <span class="tooltip" title="Enter a comma seperated list of keywords to describe this content.&quot;website,launch,event&quot;">&nbsp;</span>
       <%= f.label :keywords, "Keywords" %><br/>
-      <span class="input-wrap"><%= f.text_field :keywords %></span>
+      <span class="input-wrap"><%= f.text_field :keywords, :class => "keywords-completer" %></span>
     </p>
 
   </div>

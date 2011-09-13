@@ -38,6 +38,7 @@ module Noodall
             match 'components/form/:type' => 'components#form'
 
             resources :groups
+            resources :keywords
           end
 
           get "v/:node_id/:id" => "noodall/nodes#version", :as => :noodall_version
