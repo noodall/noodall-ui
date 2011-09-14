@@ -72,9 +72,28 @@ fieldset table th {
           clear:both;
 }
 
-fieldset span.tooltip {
-          top:-30px;
+
+
+
+
+#content form .fixed-form div.permissions-section,
+#content form .fixed-form div.position-section p {
+  position: relative !important;
+  display: block !important;
 }
+
+#content form .fixed-form div.permissions-section fieldset{
+  position:static !important;
+}
+
+#content form .fixed-form span.tooltip {
+  top:-4px !important;
+  right: 0px !important;
+  display: block !important;
+  position: absolute !important;
+  left: auto !important;
+}
+
 
 #form-fields fieldset p span.tooltip {
           left:116px;
@@ -265,17 +284,6 @@ p.remove span{
           position:absolute;
 }
 
-#content form .fixed-form a#versions-button {
-          background:url(/images/admin/versions.gif) no-repeat;
-          width:110px;
-          height:26px;
-          left:440px;
-          top:20px;
-          border: none;
-          position:absolute;
-}
-
-
 #content form .fixed-form input.draft {
           background:url(/images/admin/draft.gif) no-repeat;
           width:110px;
@@ -287,23 +295,12 @@ p.remove span{
 
 }
 
-.fixed-form input#hide {
-          background:url(/images/admin/hide.gif) no-repeat;
-          width:160px;
-          height:56px;
-          cursor:pointer;
-          border: none;
-          position:absolute;
-          top:20px;
-          right:200px;
-}
-
 .fixed-form a.cancel, .fixed-form a.delete {
           background:url(/images/admin/cancel.gif) no-repeat;
           width:160px;
           height:56px;
           cursor:pointer;
-          border:none;
+           border:none;
           position:absolute;
           top:20px;
           right:20px;
@@ -413,14 +410,6 @@ div#flash div.error {
           border:3px solid #9C3B3B;
           color:#fff;
 }
-
-div#flash div.alert {
-          background: #E19449;
-          border:3px solid #C46F1C;
-          color:#fff;
-}
-
-
 
 div#flash a {
   color:#fff;
