@@ -3,7 +3,7 @@
 
 
 // Cufon
-Cufon.replace( "", {hover: 'true',fontFamily: 'Helvetica Neue LT Std'});
+Cufon.replace( "", {hover: 'true',fontFamily: ''});
 
 
 $(document).ready(function () {
