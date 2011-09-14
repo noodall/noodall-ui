@@ -38,10 +38,10 @@
 
   <div class="fixed-form">
     <div id="buttons">
-      <%= f.submit 'Publish', :class => 'publish', :id => "publish", :name => 'node[publish]' if can_publish?(@node) %>
-      <%= f.submit 'Draft', :name => "draft", :class => 'draft' %>
-      <%= link_to 'Versions', noodall_admin_node_versions_path(@node), :id => "versions-button" %>
-      <%= f.submit 'Hide', :name => 'node[hide]', :id => 'hide' %>
+      <%= f.submit 'Publish', :title => "Save and put live", :class => 'publish', :id => "publish", :name => 'node[publish]' if can_publish?(@node) %>
+      <%= f.submit 'Draft', :title => "Save this to edit later", :name => "draft", :class => 'draft' %>
+      <%= link_to 'Versions', noodall_admin_node_versions_path(@node), :title => "View document history", :id => "versions-button" %>
+      <%= f.submit 'Hide', :title => "Temporarily hide this page", :name => 'node[hide]', :id => 'hide' %>
       <%= link_to 'Cancel', @node.root? ? noodall_admin_nodes_path : noodall_admin_node_nodes_path(@node.parent), :class => 'cancel'  %>
     </div>
 
