@@ -370,46 +370,46 @@ a.delete, span.delete {
 }
 
 td.spam {
-				text-align: right;
+  text-align: right;
 }
 
 td.spam.flagged {
-				background:url(/images/admin/spam-flag.png) no-repeat 8px 8px;
+  background:url(/images/admin/spam-flag.png) no-repeat 8px 8px;
 }
 
 a.download {
-        background:url(/images/admin/download.png) no-repeat -1px -4px;
+  background:url(/images/admin/download.png) no-repeat -1px -4px;
 }
 
 a.show {
-        background:url(/images/admin/view.png) no-repeat -1px -4px;
+  background:url(/images/admin/view.png) no-repeat -1px -4px;
 }
 
 a.page_up {
-        background:url(/images/admin/up.png) no-repeat -1px -4px;
+  background:url(/images/admin/up.png) no-repeat -1px -4px;
 }
 
 a.page_down {
-        background:url(/images/admin/down.png) no-repeat -1px -4px;
+  background:url(/images/admin/down.png) no-repeat -1px -4px;
 }
 
 span.check {
-        background:url(/images/admin/check.png) no-repeat -1px -4px;
+  background:url(/images/admin/check.png) no-repeat -1px -4px;
 }
 
 span.hidden {
-        background:url(/images/admin/hidden.png) no-repeat -1px -4px;
+  background:url(/images/admin/hidden.png) no-repeat -1px -4px;
 }
 
 a.child, a.add{
-        background:url(/images/admin/add.png) no-repeat -1px -4px;
+  background:url(/images/admin/add.png) no-repeat -1px -4px;
 }
 
 #asset-browser.multi a.add {
-        background:url(/images/admin/select_image.gif) no-repeat 4px;
+  background:url(/images/admin/select_image.gif) no-repeat 4px;
 }
 #asset-browser.multi a.add.selected {
-        background:url(/images/admin/select_image.gif) no-repeat -22px;
+  background:url(/images/admin/select_image.gif) no-repeat -22px;
 }
 a.delete:hover,
 span.delete:hover,
@@ -534,7 +534,8 @@ table#node_body_tbl,
   cursor:help;
 }
 
-.tooltip {
+span.tooltip,
+#content form .fixed-form span.tooltip {
         background:url(/images/admin/info.png) no-repeat center center;
         cursor:help;
 }
@@ -549,6 +550,7 @@ th .tooltip {
         background:#d4ecfc;
         border:#60a0be 1px solid;
 }
+f
 
 /*.tooltip-top {
         background:url(/images/admin/tooltip-top.png) no-repeat;
