@@ -2,6 +2,7 @@ module Noodall
   module Admin
     module NodesHelper
       include Noodall::Permalinks
+      include Noodall::NodesHelper
       include AssetsHelper
 
       def admin_breadcrumb
