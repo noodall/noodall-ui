@@ -284,6 +284,17 @@ p.remove span{
           position:absolute;
 }
 
+#content form .fixed-form a#versions-button {
+          background:url(/images/admin/versions.gif) no-repeat;
+          width:110px;
+          height:26px;
+          left:440px;
+          top:20px;
+          border: none;
+          position:absolute;
+}
+
+
 #content form .fixed-form input.draft {
           background:url(/images/admin/draft.gif) no-repeat;
           width:110px;
@@ -293,6 +304,17 @@ p.remove span{
           border:none;
           position:absolute;
 
+}
+
+.fixed-form input#hide {
+          background:url(/images/admin/hide.gif) no-repeat;
+          width:160px;
+          height:56px;
+          cursor:pointer;
+          border: none;
+          position:absolute;
+          top:20px;
+          right:200px;
 }
 
 .fixed-form a.cancel, .fixed-form a.delete {
@@ -410,6 +432,14 @@ div#flash div.error {
           border:3px solid #9C3B3B;
           color:#fff;
 }
+
+div#flash div.alert {
+          background: #E19449;
+          border:3px solid #C46F1C;
+          color:#fff;
+}
+
+
 
 div#flash a {
   color:#fff;
