@@ -70,3 +70,20 @@ Then /^the "([^"]*)" asset should appear in the content editor$/ do |asset_type|
     page.should have_css("#tinymce img[src^='/media/']")
   end
 end
+
+Given /^there are no assets$/ do
+  Asset.count.should == 0
+end
+
+When /^I visit the admin assets pending$/ do
+  visit '/admin/assets/pending'
+end
+
+Then /^I should be redirected to the admin assets page$/ do
+  URI.parse(current_url).path.should == noodall_admin_assets_path
+end
+
+Then /^I should see the message "(.*)"$/ do |message|
+  page.should have_content(message)
+end
+

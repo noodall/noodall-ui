@@ -12,6 +12,15 @@ Feature: Manage Content Tree
     When I click on a child
     Then I should see a list of the child's children
 
+  Scenario: content Breadcrumb
+    Given I am on the content admin page
+    Then I should not see a breadcrumb
+    When I click on a root
+    Then I should see a breadcrumb title of page
+    When I click on a child
+    Then I should see a breadcrumb title of page
+      And I should see a breadcrumb link to parent
+
   Scenario: Create Root Content
     Given I am on the content admin page
     Then I should be able to create a new root

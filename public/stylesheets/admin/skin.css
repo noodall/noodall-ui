@@ -714,3 +714,20 @@ a:hover {
 /*span liks*/
 .link-node, .link-asset {color: #60A0BE;}
 .link-node:hover, .link-asset:hover {color: #000; cursor: pointer;}
+
+/* breadcrumb */
+.breadcrumb {
+    font-size: 14px;
+}
+ul.breadcrumb {
+    list-style-type: none;
+}
+
+.breadcrumb li:before {
+    content: ": "
+}
+
+.breadcrumb li {
+    display: inline-block;
+    padding: 3px;
+}
