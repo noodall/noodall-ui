@@ -67,11 +67,15 @@ module Noodall
 
       def pending
         @asset = Asset.first(:tags => nil, :offset => params[:offset], :order => "created_at DESC")
-
-        respond_to do |format|
-          format.html { render :form }
-          format.js { render :form }
-          format.xml  { render :xml => @asset }
+        unless @asset.blank?
+          respond_to do |format|
+            format.html { render :form }
+            format.js { render :form }
+            format.xml  { render :xml => @asset }
+          end
+        else
+          flash[:notice] = "No assets pending"
+          redirect_to noodall_admin_assets_path
         end
       end
 

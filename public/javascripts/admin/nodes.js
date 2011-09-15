@@ -1,6 +1,6 @@
-function groupsAutocomplete() {
-  $.get('/admin/groups.json', function(data) {
-    $("input.groups-completer").autocomplete({
+function populateFormFieldAutocomplete(data_source, target_field) {
+  $.get(data_source, function(data) {
+    $(target_field).autocomplete({
       minLength: 0,
       source: function(request, response) {
         // delegate back to autocomplete, but extract the last term
@@ -23,8 +23,23 @@ function groupsAutocomplete() {
       }
     });
   });
-}
+};
+
+function formFieldAutocomplete(data_source, target_field) {
+  if ($(target_field)) {
+    populateFormFieldAutocomplete(data_source, target_field);
+  };
+};
+
+function groupsAutocomplete() {
+  formFieldAutocomplete('/admin/groups.json', "input.groups-completer");
+};
+
+function keywordsAutocomplete() {
+  formFieldAutocomplete('/admin/keywords.json', "input.keywords-completer");
+};
 
 $(function() {
   groupsAutocomplete();
+  keywordsAutocomplete();
 });
