@@ -71,7 +71,7 @@
                 <% if current_user.admin? -%>
                 <div class="permissions-section">
                    <fieldset>
-                     <span class="tooltip" title="User Permissions">&nbsp;</span>
+                     <span class="tooltip" title="If you have created different permission groups for users, you can assign different actions for these users based on their roles. Fill out below to determine which roles can perform certain tasks.">&nbsp;</span>
                      <legend>User Permission</legend>
                      <span class="input-wrap">
                        <table>
@@ -122,7 +122,7 @@
             
             <!-- PAGE URL -->
             <p>
-              <span class="tooltip" title="Enter a custom url or leave it as the default value shown."> &nbsp; </span>
+              <span class="tooltip" title="You can leave as default value shown or if you want to create a custom URL for this page do not include a forward slash at the beginning of the URL."> &nbsp; </span>
               <%= f.label :permalink, 'Page Url' %><br/>
               <span class="input-wrap"><%= f.text_field :permalink %></span>
             </p>
