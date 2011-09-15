@@ -23,6 +23,11 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem "faker", "~> 0.3.1"
   gem "bson_ext"
-  gem "ruby-debug19"
+
+  unless ENV["CI"]
+    platform :mri_19 do
+      gem "ruby-debug19"
+    end
+  end
   #gem "SystemTimer", ">= 1.2.0" # Ruby-1.8.7 only
 end

@@ -4,6 +4,11 @@ module Noodall
       include Noodall::Permalinks
       include AssetsHelper
 
+      def admin_breadcrumb
+         breadcrumbs = breadcrumb_for(@parent, :node_path => :noodall_admin_node_nodes_path)
+         content_tag('ul', breadcrumbs.join.html_safe, :class => 'breadcrumb') if breadcrumbs
+      end
+
       def sorted_node_tree(tree)
         nodes = []
         tree.each do |node|
@@ -36,6 +41,15 @@ module Noodall
 
       def can_change_templates?(node)
         can_publish?(node) and !node.is_a?(Home) and (node.parent.nil? ? Node.template_names : node.parent.class.template_names).length > 1
+      end
+
+      def updater_name(node)
+        begin
+          node.updater.full_name if node.updater
+        rescue
+          logger.warn 'Unable to resolve updater name: ' +  $!.message
+          'Unknown'
+        end
       end
     end
   end

@@ -27,3 +27,8 @@ In order to allow easy access to documents whilst editing a website editor will 
     And I click on the small icon
     Then the "Image" asset should appear in the content editor
 
+  Scenario: Handle no assets when visiting assets pending
+    Given there are no assets
+    When I visit the admin assets pending
+    Then I should be redirected to the admin assets page
+      And I should see the message "No assets pending"
