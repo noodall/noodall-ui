@@ -818,7 +818,8 @@ li.multi-file .file-detail img {clear:both;float:left;}
 .file-selectable:after,
 ul.choices:after,
 #sub-form ol#slot-list li:after,
-.slot_tag:after {
+.slot_tag:after,
+.breadcrumb:after {
         content: ".";
         display: block;
         height: 0;

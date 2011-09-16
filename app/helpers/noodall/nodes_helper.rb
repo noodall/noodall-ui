@@ -14,9 +14,9 @@ module Noodall
       return if node.nil?
       path_method = args[:node_path] || :node_path
       links = node.ancestors.inject([]) do |l, n|
-        l << content_tag( :li, link_to(h(n.title), send(path_method, n)))
+        l << content_tag( :li, content_tag( :span, ">", :class => "arrow" ) + content_tag( :span, link_to(h(n.title), send(path_method, n))) ).html_safe
       end
-      links << content_tag( :li, h(node.title) )
+      links << content_tag( :li, content_tag( :span, ">", :class => "arrow" ) + content_tag( :span, h(node.title), :class => "current" ) )
     end
 
     # Site map related helpers

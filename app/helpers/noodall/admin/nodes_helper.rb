@@ -5,6 +5,7 @@ module Noodall
       include AssetsHelper
 
       def admin_breadcrumb
+        "<a href='home'>Home</a>"
          breadcrumbs = breadcrumb_for(@parent, :node_path => :noodall_admin_node_nodes_path)
          content_tag('ul', breadcrumbs.join.html_safe, :class => 'breadcrumb') if breadcrumbs
       end
