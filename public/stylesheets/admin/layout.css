@@ -768,10 +768,14 @@ li.multi-file .file-detail img {clear:both;float:left;}
   padding: 0 !important;
 }
 
+.version_message_section{
+  position: relative;
+  left: -10px;
+}
+
 .version_message_section p {
   min-width: 356px !important;
 }
-
 
 /* -------------- Admin filtering -------------- */
 #form-filter {
