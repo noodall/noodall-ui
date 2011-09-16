@@ -12,7 +12,8 @@ body {
 
 body.show #content,
 body.edit #content,
-body.new #content {
+body.new #content,
+body.create #content {
         margin:20px;
         padding:0 0 130px;
 }
