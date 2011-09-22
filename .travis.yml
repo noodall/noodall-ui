@@ -1,2 +1,3 @@
 rvm: 1.9.2
 env: DB=mongodb
+script: "bundle exec cucumber -t ~@javascript"

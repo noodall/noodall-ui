@@ -31,17 +31,17 @@
     <p>
       <span class="tooltip" title="Enter a comma seperated list of keywords to describe this content.&quot;website,launch,event&quot;">&nbsp;</span>
       <%= f.label :keywords, "Keywords" %><br/>
-      <span class="input-wrap"><%= f.text_field :keywords %></span>
+      <span class="input-wrap"><%= f.text_field :keywords, :class => "keywords-completer" %></span>
     </p>
 
   </div>
 
   <div class="fixed-form">
     <div id="buttons">
-      <%= f.submit 'Publish', :class => 'publish', :name => 'node[publish]' if can_publish?(@node) %>
-      <%= f.submit 'Draft', :name => "draft", :class => 'draft' %>
-      <%= link_to 'Versions', noodall_admin_node_versions_path(@node), :id => "versions-button" %>
-      <%= f.submit 'Hide', :name => 'node[hide]', :id => 'hide' %>
+      <%= f.submit 'Publish', :title => "Save and put live", :class => 'publish', :id => "publish", :name => 'node[publish]' if can_publish?(@node) %>
+      <%= f.submit 'Draft', :title => "Save this to edit later", :name => "draft", :class => 'draft' %>
+      <%= link_to 'Versions', noodall_admin_node_versions_path(@node), :title => "View document history", :id => "versions-button" %>
+      <%= f.submit 'Hide', :title => "Temporarily hide this page", :name => 'node[hide]', :id => 'hide' %>
       <%= link_to 'Cancel', @node.root? ? noodall_admin_nodes_path : noodall_admin_node_nodes_path(@node.parent), :class => 'cancel'  %>
     </div>
 
@@ -52,7 +52,7 @@
           <legend class="advanced">Advanced</legend>
           <div id="advanced">
 
-             <div class="published-section">
+             <div class="published-section advanced-block">
                   <p class="published">
                      <%= f.label :published_at, "Publish at" %><br/>
                      <span class="input-wrap"><%= f.datetime_select :published_at, :include_blank => true  %></span>
@@ -66,12 +66,20 @@
                    %>
                  <span class="input-wrap"><%= f.datetime_select :published_to, :include_blank => true %></span>
                </p>
+               
+               <div class="version_message_section advanced-block">
+                 <p>
+                   <%= f.label :version_message %><br />
+                   <span class="input-wrap"><%= f.text_field :version_message -%></span>
+                 </p>
+               </div>
+               
             </div>
 
                 <% if current_user.admin? -%>
-                <div class="permissions-section">
+                <div class="permissions-section advanced-block">
                    <fieldset>
-                     <span class="tooltip" title="User Permissions">&nbsp;</span>
+                     <span class="tooltip" title="If you have created different permission groups for users, you can assign different actions for these users based on their roles. Fill out below to determine which roles can perform certain tasks.">&nbsp;</span>
                      <legend>User Permission</legend>
                      <span class="input-wrap">
                        <table>
@@ -108,7 +116,7 @@
 
 
 
-        <div class="position-section">
+        <div class="position-section advanced-block">
           <% unless @node.in_site_map? %>
             <p>
               <span class="node-mover">Parent Content</span>
@@ -119,10 +127,10 @@
               <%= f.hidden_field :parent, :value => @node.parent_id %>
               <%= hidden_field_tag :parent_types, @node.class.parent_classes.join(','), :disabled => true %>
             </p>
-            
+
             <!-- PAGE URL -->
             <p>
-              <span class="tooltip" title="Enter a custom url or leave it as the default value shown."> &nbsp; </span>
+              <span class="tooltip" title="You can leave as default value shown or if you want to create a custom URL for this page do not include a forward slash at the beginning of the URL."> &nbsp; </span>
               <%= f.label :permalink, 'Page Url' %><br/>
               <span class="input-wrap"><%= f.text_field :permalink %></span>
             </p>
@@ -132,6 +140,13 @@
             <span class="tooltip" title="This is normally the title shown at the very top of your browser window."> &nbsp; </span>
             <%= f.label :browser_title, 'Browser Title' %><br/>
             <span class="input-wrap"><%= f.text_field :browser_title %></span>
+          </p>
+        </div>
+
+        <div class="version_message_section">
+          <p>
+            <%= f.label :version_message %><br />
+            <span class="input-wrap"><%= f.text_field :version_message -%></span>
           </p>
         </div>
       </div>

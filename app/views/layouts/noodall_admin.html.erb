@@ -13,7 +13,6 @@
 
 <!-- END META TAGS -->
 <title><%= admin_page_title %> | <%= Noodall::UI.app_name %> <%= Noodall::UI.system_name %></title>
-
 <%= stylesheet_link_tag 'admin/reset', 'admin/layout', 'admin/skin', 'admin/typography', 'admin/forms', 'admin/fancybox',  :media=>'screen,tv,projection' %>
 <%= stylesheet_link_tag 'admin/print', :media=>'print' %>
 <%= stylesheet_link_tag 'admin/handheld', :media=>'handheld' %>
@@ -28,7 +27,7 @@
   google.load("jquery", "1.4.2");
   google.load("jqueryui", "1.8");
 </script>
-<%= javascript_include_tag 'rails', 'cufon-yui', 'admin/gotham.font.js', 'fancybox', 'ajaxify', 'admin/application' %>
+<%= javascript_include_tag 'rails', 'fancybox', 'ajaxify', 'admin/application' %>
 <%= csrf_meta_tag %>
 
 <%= yield :header %>
@@ -61,6 +60,5 @@
 
   </div>
   <!-- end screen -->
-  <!--[if IE]><script type="text/javascript"> Cufon.now(); </script><![endif]-->
 </body>
 </html>

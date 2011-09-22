@@ -1,6 +1,7 @@
 <table id="versions-list" class="content">
   <thead>
     <th> Version </th>
+    <th> Message </th>
     <th> Date </th>
     <th colspan="2"> Actions </th>
   </thead>
@@ -8,9 +9,10 @@
     <% for version in @versions %>
       <tr class="<%= "active" if version.pos == @node.version_number %>">
         <td> Version <%= version.pos  %> </td>
+        <td> <%= version.message %> </td>
         <td> <%= l version.date %> </td>
-        <td> <%= link_to "View", noodall_version_path(@node, version) %> </td>
-        <td> <%= link_to "Use", noodall_admin_node_path(@node, :version_number => version.pos) %> </td>
+        <td> <%= link_to "View", noodall_version_path(@node, version), :title => "View this version" %> </td>
+        <td> <%= link_to "Use", noodall_admin_node_path(@node, :version_number => version.pos), :title => "Use this version of content" %> </td>
       </tr>
     <% end %>
   </tbody>

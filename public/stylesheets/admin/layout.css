@@ -12,7 +12,8 @@ body {
 
 body.show #content,
 body.edit #content,
-body.new #content {
+body.new #content,
+body.create #content {
         margin:20px;
         padding:0 0 130px;
 }
@@ -736,20 +737,17 @@ li.multi-file span.file-title {
 li.multi-file .file-detail img {clear:both;float:left;}
 
 /*Advanced Sections*/
-.published-section {
+.published-section,
+.position-section,
+.permissions-section,
+.version_message_section {
   width: 356px;
   float:left;
 }
 
-.position-section {
-  width: 356px;
-  float:left;
-  margin: 0 0 0 10px;
-}
-
-.permissions-section {
-  width: 356px;
-  float:left;
+.position-section,
+.permissions-section,
+.version_message_section {
   margin: 0 0 0 10px;
 }
 
@@ -771,6 +769,14 @@ li.multi-file .file-detail img {clear:both;float:left;}
   padding: 0 !important;
 }
 
+.version_message_section{
+  position: relative;
+  left: -10px;
+}
+
+.version_message_section p {
+  min-width: 356px !important;
+}
 
 /* -------------- Admin filtering -------------- */
 #form-filter {
@@ -817,7 +823,8 @@ li.multi-file .file-detail img {clear:both;float:left;}
 .file-selectable:after,
 ul.choices:after,
 #sub-form ol#slot-list li:after,
-.slot_tag:after {
+.slot_tag:after,
+.breadcrumb:after {
         content: ".";
         display: block;
         height: 0;

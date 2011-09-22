@@ -101,7 +101,7 @@ module Noodall
         enforce_publish_permission(@node) if @node.published?
 
         # Set user stamp
-        @node.updater = current_user
+        @node.updater_id = current_user.id
 
         if params[:draft].blank?
           if @node.update_attributes(params[:node])

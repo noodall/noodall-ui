@@ -2,7 +2,17 @@ module Noodall
   module Admin
     module NodesHelper
       include Noodall::Permalinks
+      include Noodall::NodesHelper
       include AssetsHelper
+
+      def admin_breadcrumb
+        breadcrumbs = breadcrumb_for(
+                        @parent,
+                        :node_path => :noodall_admin_node_nodes_path,
+                        :home_link => content_tag('li', link_to('Contents', noodall_admin_nodes_path))
+                      )
+        content_tag('ul', breadcrumbs.join.html_safe, :class => 'breadcrumb') if breadcrumbs
+      end
 
       def sorted_node_tree(tree)
         nodes = []
@@ -37,6 +47,35 @@ module Noodall
       def can_change_templates?(node)
         can_publish?(node) and !node.is_a?(Home) and (node.parent.nil? ? Node.template_names : node.parent.class.template_names).length > 1
       end
+
+      def updater_name(node)
+        begin
+          node.updater.full_name if node.updater
+        rescue
+          logger.warn 'Unable to resolve updater name: ' +  $!.message
+          'Unknown'
+        end
+      end
+
+      def admin_nodes_column_headings
+        html = Array.new
+        html << sortable_table_header(:name => "Name", :sort => "admin_title", :class => 'sort')
+        html << sortable_table_header(:name => "Type", :sort => "_type", :class => 'sort')
+
+        # Change 'position' header if we are sorting by position
+        if(params[:sort] && params[:sort] != "position" || params[:order] == "descending")
+          html << sortable_table_header(:name => "Position", :sort => "position", :class => 'sort')
+        else
+          html << sortable_table_header(:name => "Position", :sort => "position", :class => 'sort', :colspan => 2)
+        end
+
+        html << content_tag('th', 'Sub Section', :width => "120")
+        html << sortable_table_header(:name => "Updated", :sort => "updated_at", :class => 'sort')
+        %w{Show Publish Delete}.each{|text| html << content_tag('th', text, :width => '45')}
+        html.join("\n").html_safe
+      end
+
+
     end
   end
 end
