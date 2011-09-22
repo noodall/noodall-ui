@@ -9,7 +9,7 @@ module Noodall
         breadcrumbs = breadcrumb_for(
                         @parent,
                         :node_path => :noodall_admin_node_nodes_path,
-                        :home_link => link_to('Content tree', noodall_admin_nodes_path)
+                        :home_link => content_tag('li', link_to('Contents', noodall_admin_nodes_path))
                       )
         content_tag('ul', breadcrumbs.join.html_safe, :class => 'breadcrumb') if breadcrumbs
       end

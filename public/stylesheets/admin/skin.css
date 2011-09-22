@@ -716,19 +716,35 @@ a:hover {
 .link-node, .link-asset {color: #60A0BE;}
 .link-node:hover, .link-asset:hover {color: #000; cursor: pointer;}
 
-/* breadcrumb */
+
+/* BREADCRUMBS */
 .breadcrumb {
-    font-size: 14px;
+    font-size: 12px;
+    color: #D3D3D3;
+    display: block;
+    clear:both;
+    margin: 0 0 20px 0;
 }
-ul.breadcrumb {
+.breadcrumb {
     list-style-type: none;
 }
 
-.breadcrumb li:before {
-    content: ": "
+.breadcrumb li {
+  float: left;
+  padding: 0 0 0 10px;
+  width: auto;
+  
 }
 
-.breadcrumb li {
-    display: inline-block;
-    padding: 3px;
+.breadcrumb li a:after{
+  content:" > ";
+}
+
+
+.breadcrumb li:first-child{
+  padding-left:0;
+}
+
+.breadcrumb li:first-child span.arrow{
+  display:none;
 }
