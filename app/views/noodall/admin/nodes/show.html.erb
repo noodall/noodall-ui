@@ -52,7 +52,7 @@
           <legend class="advanced">Advanced</legend>
           <div id="advanced">
 
-             <div class="published-section">
+             <div class="published-section advanced-block">
                   <p class="published">
                      <%= f.label :published_at, "Publish at" %><br/>
                      <span class="input-wrap"><%= f.datetime_select :published_at, :include_blank => true  %></span>
@@ -66,10 +66,18 @@
                    %>
                  <span class="input-wrap"><%= f.datetime_select :published_to, :include_blank => true %></span>
                </p>
+               
+               <div class="version_message_section advanced-block">
+                 <p>
+                   <%= f.label :version_message %><br />
+                   <span class="input-wrap"><%= f.text_field :version_message -%></span>
+                 </p>
+               </div>
+               
             </div>
 
                 <% if current_user.admin? -%>
-                <div class="permissions-section">
+                <div class="permissions-section advanced-block">
                    <fieldset>
                      <span class="tooltip" title="If you have created different permission groups for users, you can assign different actions for these users based on their roles. Fill out below to determine which roles can perform certain tasks.">&nbsp;</span>
                      <legend>User Permission</legend>
@@ -108,7 +116,7 @@
 
 
 
-        <div class="position-section">
+        <div class="position-section advanced-block">
           <% unless @node.in_site_map? %>
             <p>
               <span class="node-mover">Parent Content</span>
