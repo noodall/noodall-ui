@@ -13,7 +13,7 @@ module Noodall
     def breadcrumb_for(node, args = {})
       return if node.nil?
       path_method = args[:node_path] || :node_path
-      links = node.ancestors.inject([]) do |l, n|
+      links = node.ancestors.inject([args[:home_link]]) do |l, n|
         l << content_tag( :li, link_to(h(n.title), send(path_method, n)))
       end
       links << content_tag( :li, h(node.title) )

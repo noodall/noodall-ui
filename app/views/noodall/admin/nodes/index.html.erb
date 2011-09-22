@@ -40,21 +40,7 @@
  <table border="0" cellspacing="0" cellpadding="0" class="content">
   <thead>
     <tr>
-      <%= sortable_table_header :name => "Name", :sort => "admin_title", :class => 'sort' %>
-      <%= sortable_table_header :name => "Type", :sort => "_type", :class => 'sort' %>
-
-      <%# Change 'position' header if we are sorting by position %>
-      <% if(params[:sort] && params[:sort] != "position" || params[:order] == "descending") %>
-        <%= sortable_table_header :name => "Position", :sort => "position", :class => 'sort' %>
-      <% else %>
-        <%= sortable_table_header :name => "Position", :sort => "position", :class => 'sort', :colspan => 2 %>
-      <% end %>
-
-      <th width="120">Sub Section</th>
-      <%= sortable_table_header :name => "Updated", :sort => "updated_at", :class => 'sort' %>
-      <th width="45">Show</th>
-      <th width="45">Published</th>
-      <th width="45">Delete</th>
+      <%= admin_nodes_column_headings %>
     </tr>
   </thead>
   <tbody>
@@ -88,21 +74,7 @@
   </tbody>
   <tfoot>
     <tr>
-      <%= sortable_table_header :name => "Title", :sort => "admin_title", :class => 'sort' %>
-      <%= sortable_table_header :name => "Type", :sort => "_type", :class => 'sort' %>
-
-      <%# Change 'position' header if we are sorting by position %>
-      <% if(params[:sort] && params[:sort] != "position" || params[:order] == "descending") %>
-        <%= sortable_table_header :name => "Position", :sort => "position", :class => 'sort' %>
-      <% else %>
-        <%= sortable_table_header :name => "Position", :sort => "position", :class => 'sort', :colspan => 2 %>
-      <% end %>
-
-      <th width="120">Sub Section</th>
-      <%= sortable_table_header :name => "Updated", :sort => "updated_at", :class => 'sort' %>
-      <th width="45">Show</th>
-      <th width="45">Published</th>
-      <th width="45">Delete</th>
+      <%= admin_nodes_column_headings %>
     </tr>
   </tfoot>
 </table>
