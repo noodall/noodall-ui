@@ -733,15 +733,13 @@ a:hover {
   float: left;
   padding: 0 0 0 10px;
   width: auto;
+  
 }
 
-.breadcrumb li span.arrow {
-  padding-right: 10px;
+.breadcrumb li a:after{
+  content:" > ";
 }
 
-.breadcrumb li span.current {
-  color: #000;
-}
 
 .breadcrumb li:first-child{
   padding-left:0;
