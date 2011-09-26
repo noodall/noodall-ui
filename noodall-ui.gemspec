@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = ">= 1.3.6"
 
   s.add_dependency 'noodall-core', ">= 0.6.0"
-  s.add_dependency 'thoughtbot-sortable_table', "= 0.0.6"
+  s.add_dependency 'thoughtbot-sortable_table', ">= 0.0.6"
   s.add_dependency 'will_paginate', "~> 3.0.pre2"
   s.add_dependency 'dynamic_form', ">= 0"
 
