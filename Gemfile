@@ -5,7 +5,6 @@ gemspec
 
 # Required for running as demo rails app
 gem 'rails', '3.1.0'
-gem 'rmagick', :require => 'RMagick'
 gem 'dragonfly', '~> 0.9.4'
 
 # Bundle gems for the local environment. Make sure to
@@ -24,6 +23,11 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem "faker", "~> 0.3.1"
   gem "bson_ext"
-  gem "ruby-debug19", :require => 'ruby-debug'
+
+  unless ENV["CI"]
+    platform :mri_19 do
+      gem "ruby-debug19"
+    end
+  end
   #gem "SystemTimer", ">= 1.2.0" # Ruby-1.8.7 only
 end

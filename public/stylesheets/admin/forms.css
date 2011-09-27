@@ -72,9 +72,28 @@ fieldset table th {
           clear:both;
 }
 
-fieldset span.tooltip {
-          top:-30px;
+
+
+
+
+#content form .fixed-form div.permissions-section,
+#content form .fixed-form div.position-section p {
+  position: relative !important;
+  display: block !important;
 }
+
+#content form .fixed-form div.permissions-section fieldset{
+  position:static !important;
+}
+
+#content form .fixed-form span.tooltip {
+  top:-4px !important;
+  right: 0px !important;
+  display: block !important;
+  position: absolute !important;
+  left: auto !important;
+}
+
 
 #form-fields fieldset p span.tooltip {
           left:116px;
@@ -303,7 +322,7 @@ p.remove span{
           width:160px;
           height:56px;
           cursor:pointer;
-          border:none;
+           border:none;
           position:absolute;
           top:20px;
           right:20px;

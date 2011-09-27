@@ -125,3 +125,23 @@ Then /^I should see a list of the roots$/ do
     page.should have_content(root.title)
   end
 end
+
+Then /^I should not see a breadcrumb$/ do
+  page.should_not have_css('.breadcrumb')
+end
+
+Then /^I should see a breadcrumb title of page$/ do
+  page.should have_css('.breadcrumb')
+  if @_child
+    find('.breadcrumb').should have_content(@_child.title)
+    find('.breadcrumb').find('a').should_not have_content(@_child.title)
+  else
+    find('.breadcrumb').should have_content(@_page.title)
+    find('.breadcrumb').should_not have_css('a')
+  end
+end
+
+Then /^I should see a breadcrumb link to parent$/ do
+  find('.breadcrumb').find('a').should have_content(@_page.title)
+end
+
