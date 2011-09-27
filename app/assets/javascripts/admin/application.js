@@ -14,16 +14,6 @@ $.extend($.ui.autocomplete, {
   }
 });
 
-Cufon.replace('#content h1', {
-  hover: 'true',
-  fontFamily: 'Gotham Book'
-});
-
-Cufon.replace('#header h1', {
-  hover: 'true',
-  fontFamily: 'Gotham Bold'
-});
-
 function setup_tooltips() {
   // tooltip for question mark icons
   var version = parseInt($.browser.version.substr(0, 1));
