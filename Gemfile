@@ -6,6 +6,7 @@ gemspec
 # Required for running as demo rails app
 gem 'rails', '3.1.0'
 gem 'dragonfly', '~> 0.9.4'
+gem 'mm-versionable', '0.2.5'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
