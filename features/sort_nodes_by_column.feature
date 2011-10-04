@@ -3,14 +3,14 @@ Feature: Sort nodes by column
   In order to peruse nodes more effectively
   I want to be able to order them by their various column titles
 
-  Scenario Outline: 
+  Scenario Outline:
     Given some nodes exist
     When I am on the content admin page
     And I follow <Title>
     Then the nodes should be ordered by <Title>
-    
+
     Examples:
     | Title      |
-    | "Title"    |
+    | "Name"     |
     | "Type"     |
     | "Updated"  |

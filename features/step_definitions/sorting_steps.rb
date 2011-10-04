@@ -1,23 +1,23 @@
-Given /^some nodes exist$/ do 
+Given /^some nodes exist$/ do
   Time.stub!(:now).and_return(Time.parse("01/01/2010 13:37"))
   f = Factory.build(:node)
   f.title = "A Header"
   f.save
-  
+
   Time.stub!(:now).and_return(Time.parse("01/01/2010 14:37"))
   f = Factory.build(:node)
   f.title = "B Header"
   f.save
-  
+
   Time.stub!(:now).and_return(Time.parse("01/01/2010 15:37"))
   f = Factory.build(:page_a)
   f.title = "C Header"
   f.save
-  
+
 end
 
-Then /^the nodes should be ordered by "Title"$/ do
-  Then %{I should see in this order: C Header, B Header, A Header}
+Then /^the nodes should be ordered by "Name"$/ do
+  Then %{I should see in this order: A Header, B Header, C Header}
 end
 
 

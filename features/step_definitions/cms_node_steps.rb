@@ -137,11 +137,11 @@ Then /^I should see a breadcrumb title of page$/ do
     find('.breadcrumb').find('a').should_not have_content(@_child.title)
   else
     find('.breadcrumb').should have_content(@_page.title)
-    find('.breadcrumb').should_not have_css('a')
+    page.should have_css('.breadcrumb a', :count => 1)
   end
 end
 
 Then /^I should see a breadcrumb link to parent$/ do
-  find('.breadcrumb').find('a').should have_content(@_page.title)
+  find('.breadcrumb li:nth-child(2) a').should have_content(@_page.title)
 end
 
