@@ -9,6 +9,7 @@ module Noodall
       initializer "static assets" do |app|
         app.middleware.use ::ActionDispatch::Static, File.join(root, 'app', 'assets')
         app.middleware.use ::ActionDispatch::Static, File.join(root, 'vendor', 'assets')
+        app.middleware.use ::ActionDispatch::Static, File.join(root, 'public')
       end
     end
 

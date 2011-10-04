@@ -132,6 +132,7 @@ end
 
 Then /^I should see a breadcrumb title of page$/ do
   page.should have_css('.breadcrumb')
+  save_and_open_page
   if @_child
     find('.breadcrumb').should have_content(@_child.title)
     find('.breadcrumb').find('a').should_not have_content(@_child.title)

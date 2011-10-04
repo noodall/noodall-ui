@@ -1,9 +1,9 @@
 function setUpAssets() {
-  document.write('<link rel="stylesheet" href="/stylesheets/plupload.queue.css" type="text/css" media="screen" charset="utf-8">');
-  document.write('<script type="text/javascript" src="/javascripts/plupload/gears_init.js"></script>');
+  document.write('<link rel="stylesheet" href="/assets/plupload.queue.css" type="text/css" media="screen" charset="utf-8">');
+  document.write('<script type="text/javascript" src="/assets/plupload/gears_init.js"></script>');
   document.write('<script type="text/javascript" src="http://bp.yahooapis.com/2.4.21/browserplus-min.js"></script>');
-  document.write('<script type="text/javascript" src="/javascripts/plupload/plupload.full.min.js"></script>');
-  document.write('<script type="text/javascript" src="/javascripts/plupload/jquery.plupload.queue.min.js"></script>');
+  document.write('<script type="text/javascript" src="/assets/plupload/plupload.full.min.js"></script>');
+  document.write('<script type="text/javascript" src="/assets/plupload/jquery.plupload.queue.min.js"></script>');
 
   $('#asset-browser ul.choices a, #asset-browser #tags a, #asset-browser .tags a, #asset-browser a.show, #asset-browser .pagination a').live('click', function() {
     $.get(
@@ -43,10 +43,10 @@ function setUpPlupload() {
       {title : "Video files", extensions : "flv,f4v"}
     ],
     // Flash settings
-    flash_swf_url : '/javascripts/plupload/plupload.flash.swf',
+    flash_swf_url : '/assets/plupload/plupload.flash.swf',
 
     // Silverlight settings
-    silverlight_xap_url : '/javascripts/plupload/plupload.silverlight.xap'
+    silverlight_xap_url : '/assets/plupload/plupload.silverlight.xap'
 
   });
   var uploader = $('#uploader').pluploadQueue();
@@ -89,7 +89,7 @@ function setUpPlupload() {
 
     $('#uploader_filelist').append(error_item);
 
-    error_item.delay(8000).fadeOut(2000, function(){ $(this).remove(); if($('#uploader_filelist li').length == 0) $('#uploader_filelist').append('<li class="plupload_droptext">Drag files here.</li>'); });
+    error_item.delay(8000).fadeOut(2000, function(){ $(this).remove(); if($('#uploader_filelist li').length === 0) $('#uploader_filelist').append('<li class="plupload_droptext">Drag files here.</li>'); });
 
     up.refresh(); // Reposition Flash/Silverlight
   });

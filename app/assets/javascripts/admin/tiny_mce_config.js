@@ -1,7 +1,7 @@
 lite_tiny_mce_config = {
-    script_url : '/javascripts/tiny_mce/tiny_mce.js',
+    script_url : '/assets/tiny_mce/tiny_mce.js',
 
-    content_css : "/stylesheets/admin/tinymce.css",
+    content_css : "/assets/admin/tinymce.css",
 
     theme : "advanced",
     mode : "specific_textareas",
@@ -42,7 +42,7 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
       // Add a custom button
       ed.addButton('assetbrowser', {
         title : 'Insert Asset',
-        image : '/images/admin/image_small.png',
+        image : '/assets/admin/image_small.png',
         href: '#asset-browser',
         onclick : function() {
           tinyMCE.activeEditor.focus();
@@ -82,7 +82,7 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
 
       ed.addButton('nodebrowser', {
         title : 'Insert an internal link',
-        image : '/images/admin/top-level_small.png',
+        image : '/assets/admin/top-level_small.png',
         href: '#asset-browser',
         onclick : function() {
           tinyMCE.activeEditor.focus();
@@ -99,9 +99,9 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
           'script');
         }
       });
-      
-      
-      
+
+
+
 
       ed.onPostProcess.add(function(ed, o) {
         if(o.save){

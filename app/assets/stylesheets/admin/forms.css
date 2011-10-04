@@ -178,7 +178,7 @@ div#form-fields table input {
 }
 
 .form-save, .form-reset, .form-delete {
-        background:url(/images/admin/set.gif) no-repeat;
+        background:url(/assets/admin/set.gif) no-repeat;
         margin:27px;
         width:110px;
         height:26px;
@@ -187,18 +187,18 @@ div#form-fields table input {
 }
 
 .form-reset {
-       background:url(/images/admin/cancel-small.gif) no-repeat;
+       background:url(/assets/admin/cancel-small.gif) no-repeat;
        float:right;
        margin:27px 0;
 }
 
 .form-delete {
-       background:url(/images/admin/clear.gif) no-repeat;
+       background:url(/assets/admin/clear.gif) no-repeat;
        float:right;
 }
 
 .add-multi-asset {
-        background:url(/images/admin/add_file.gif) no-repeat;
+        background:url(/assets/admin/add_file.gif) no-repeat;
         overflow: hidden;
         width:110px;
         height:26px;
@@ -210,7 +210,7 @@ p.add-multi-asset span{
 }
 
 .remove {
-        background:url(/images/admin/remove.gif) no-repeat;
+        background:url(/assets/admin/remove.gif) no-repeat;
         overflow: hidden;
         width:110px;
         height:26px;
@@ -234,7 +234,7 @@ p.remove span{
 }
 
 #content form .fixed-form input.publish {
-          background:url(/images/admin/publish.gif) no-repeat;
+          background:url(/assets/admin/publish.gif) no-repeat;
           width:160px;
           height:56px;
           top:20px;
@@ -244,7 +244,7 @@ p.remove span{
 }
 
 #content form .fixed-form input.create {
-          background:url(/images/admin/create.gif) no-repeat;
+          background:url(/assets/admin/create.gif) no-repeat;
           width:160px;
           height:56px;
           top:20px;
@@ -255,7 +255,7 @@ p.remove span{
 }
 
 #content form .fixed-form input.update {
-          background:url(/images/admin/update.gif) no-repeat;
+          background:url(/assets/admin/update.gif) no-repeat;
           width:160px;
           height:56px;
           top:20px;
@@ -265,7 +265,7 @@ p.remove span{
 }
 
 #content form .fixed-form input.change {
-          background:url(/images/admin/change-bg.gif) no-repeat;
+          background:url(/assets/admin/change-bg.gif) no-repeat;
           width:160px;
           height:56px;
           top:20px;
@@ -275,7 +275,7 @@ p.remove span{
 }
 
 #content form .fixed-form a.preview {
-          background:url(/images/admin/preview.gif) no-repeat;
+          background:url(/assets/admin/preview.gif) no-repeat;
           width:110px;
           height:26px;
           left:190px;
@@ -285,7 +285,7 @@ p.remove span{
 }
 
 #content form .fixed-form a#versions-button {
-          background:url(/images/admin/versions.gif) no-repeat;
+          background:url(/assets/admin/versions.gif) no-repeat;
           width:110px;
           height:26px;
           left:440px;
@@ -296,7 +296,7 @@ p.remove span{
 
 
 #content form .fixed-form input.draft {
-          background:url(/images/admin/draft.gif) no-repeat;
+          background:url(/assets/admin/draft.gif) no-repeat;
           width:110px;
           height:26px;
           left:305px;
@@ -307,7 +307,7 @@ p.remove span{
 }
 
 .fixed-form input#hide {
-          background:url(/images/admin/hide.gif) no-repeat;
+          background:url(/assets/admin/hide.gif) no-repeat;
           width:160px;
           height:56px;
           cursor:pointer;
@@ -318,7 +318,7 @@ p.remove span{
 }
 
 .fixed-form a.cancel, .fixed-form a.delete {
-          background:url(/images/admin/cancel.gif) no-repeat;
+          background:url(/assets/admin/cancel.gif) no-repeat;
           width:160px;
           height:56px;
           cursor:pointer;
@@ -329,7 +329,7 @@ p.remove span{
 }
 
 .fixed-form a.delete {
-          background:url(/images/admin/delete.gif) no-repeat;
+          background:url(/assets/admin/delete.gif) no-repeat;
           top:20px;
           right:240px;
 }
@@ -360,7 +360,7 @@ body.new .fixed-form a.cancel {
 
 #content form .fixed-form legend.advanced,
 #content form .fixed-form a.advanced {
-        background:url(/images/admin/advanced.gif) no-repeat left top;
+        background:url(/assets/admin/advanced.gif) no-repeat left top;
         cursor:pointer;
         height:26px !important;
         left:190px;
@@ -423,12 +423,12 @@ div#flash div {
 }
 
 div#flash div.notice {
-          background:#82b452 url(/images/admin/check.png) no-repeat 10px 5px;
+          background:#82b452 url(/assets/admin/check.png) no-repeat 10px 5px;
           border:3px solid #548126;
 }
 
 div#flash div.error {
-          background:#E47373 url(/images/admin/delete.png) no-repeat 10px 5px;
+          background:#E47373 url(/assets/admin/delete.png) no-repeat 10px 5px;
           border:3px solid #9C3B3B;
           color:#fff;
 }
@@ -499,7 +499,7 @@ a.jqTransformSelectOpen {
           right: 0px;
           width: 32px;
           height: 27px;
-          background: url(/images/admin/forms/select-right.gif) no-repeat center top;
+          background: url(/assets/admin/forms/select-right.gif) no-repeat center top;
 }
 
 p.template .jqTransformSelectWrapper ul {

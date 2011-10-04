@@ -13,21 +13,21 @@
 
 <!-- END META TAGS -->
 <title><%= admin_page_title %> | <%= Noodall::UI.app_name %> <%= Noodall::UI.system_name %></title>
-<%= stylesheet_link_tag 'admin/reset', 'admin/layout', 'admin/skin', 'admin/typography', 'admin/forms', 'fancybox',  :media=>'screen,tv,projection' %>
+<%= stylesheet_link_tag 'admin',  :media=>'screen,tv,projection' %>
 <%= stylesheet_link_tag 'admin/print', :media=>'print' %>
 <%= stylesheet_link_tag 'admin/handheld', :media=>'handheld' %>
 <%= stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/base/jquery.ui.all.css' %>
 
-<!--[if IE 6]><link href="/stylesheets/admin/ie6.css" media="screen" rel="Stylesheet" type="text/css" /><![endif]-->
-<!--[if IE 7]><link href="/stylesheets/admin/ie.css" media="screen" rel="Stylesheet" type="text/css" /><![endif]-->
-<!--[if IE 8]><link href="/stylesheets/admin/ie8.css" media="screen" rel="Stylesheet" type="text/css" /><![endif]-->
+<!--[if IE 6]><%= stylesheet_link_tag 'admin/ie6',  :media=>'screen,tv,projection' %><![endif]-->
+<!--[if IE 7]><%= stylesheet_link_tag 'admin/ie',  :media=>'screen,tv,projection' %><![endif]-->
+<!--[if IE 8]><%= stylesheet_link_tag 'admin/ie8',  :media=>'screen,tv,projection' %><![endif]-->
 
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
 <script type="text/javascript">
   google.load("jquery", "1.4.2");
   google.load("jqueryui", "1.8");
 </script>
-<%= javascript_include_tag 'rails', 'fancybox', 'ajaxify', 'admin/application' %>
+<%= javascript_include_tag 'admin' %>
 <%= csrf_meta_tag %>
 
 <%= yield :header %>

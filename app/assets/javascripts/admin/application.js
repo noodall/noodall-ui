@@ -1,4 +1,4 @@
-// Turn off fnacy box keypresses
+// Turn off fancy box keypresses
 $.fn.fancybox.defaults.enableEscapeButton = false;
 
 // We should remove once JQuery UI is updated
@@ -149,6 +149,11 @@ $(document).ready(function() {
     'onComplete': Component.fancy_open_slot
   });
 
+  $('a.slot_link').click(function(e){
+    e.stopImmediatePropagation();
+    return false;
+  });
+
   // Preview
   preview_link = $('<a class="preview" href="#preview-pane" title="Content Preview">Preview</a>');
 
@@ -231,6 +236,7 @@ var Component = {
     Component.last_slot_index = target.attr('id').replace(/[^_]+_slot_(\d+)_type/i, "$1");
   },
   fancy_open_slot: function(args) {
+    console.log('here');
     Component.open_slot(args[0]);
   },
   open_slot: function(slot_link) {
@@ -420,7 +426,7 @@ function open_component_form(e) {
     Component.slot_form.find('li.multi-file').last().hide();
     Component.slot_form.find('textarea.lite-editor').tinymce(lite_tiny_mce_config);
   });
-};
+}
 
 function clear_component_form(e) {
   slot_form = $(e.target).closest('div.component_form');
