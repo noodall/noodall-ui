@@ -57,6 +57,14 @@ module Noodall
         end
       end
 
+      def popular_tags(limit = 10)
+        content_tag :span, :class => 'tags' do
+          Noodall::Node.tag_cloud(:limit => limit).map do |tagging|
+            link_to tagging.name, '#node_keywords', :class => "count#{tagging.count}"
+          end.join(', ').html_safe
+        end
+      end
+
       def admin_nodes_column_headings
         html = Array.new
         html << sortable_table_header(:name => "Name", :sort => "admin_title", :class => 'sort')

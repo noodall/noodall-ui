@@ -1,5 +1,6 @@
 require 'factory_girl_rails'
 require 'faker'
+require 'factory_girl/step_definitions'
 
 FactoryGirl.factories.each do |factory|
   factory.human_names.each do |human_name|

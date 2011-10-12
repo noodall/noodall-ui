@@ -31,7 +31,10 @@
     <p>
       <span class="tooltip" title="Enter a comma seperated list of keywords to describe this content.&quot;website,launch,event&quot;">&nbsp;</span>
       <%= f.label :keywords, "Keywords" %><br/>
-      <span class="input-wrap"><%= f.text_field :keywords, :class => "keywords-completer" %></span>
+      <span class="input-wrap">
+        <%= f.text_field :keywords, :class => "keywords-completer" %><br/>
+        <%= popular_tags %>
+      </span>
     </p>
 
   </div>
@@ -66,14 +69,14 @@
                    %>
                  <span class="input-wrap"><%= f.datetime_select :published_to, :include_blank => true %></span>
                </p>
-               
+
                <div class="version_message_section advanced-block">
                  <p>
                    <%= f.label :version_message %><br />
                    <span class="input-wrap"><%= f.text_field :version_message -%></span>
                  </p>
                </div>
-               
+
             </div>
 
                 <% if current_user.admin? -%>

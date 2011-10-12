@@ -42,6 +42,18 @@ function setup_tooltips() {
   }
 }
 
+function set_up_tags() {
+  $('span.tags a').click(function() {
+    target = $($(this).attr('href'));
+    if (target.val()) {
+      target.val(target.val() + ', ' + $(this).text());
+    } else {
+      target.val($(this).text());
+    }
+    return false;
+  });
+}
+
 $(document).ready(function() {
 
   //video previews
@@ -130,7 +142,7 @@ $(document).ready(function() {
 
 
 
-
+  set_up_tags();
 
 
   $('body#assets.index .file').click(function() {
