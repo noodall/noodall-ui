@@ -58,11 +58,9 @@ module Noodall
       end
 
       def popular_tags(limit = 10)
-        content_tag :span, :class => 'tags' do
-          Noodall::Node.tag_cloud(:limit => limit).map do |tagging|
-            link_to tagging.name, '#node_keywords', :class => "count#{tagging.count}"
-          end.join(', ').html_safe
-        end
+        Noodall::Node.tag_cloud(:limit => limit).map do |tagging|
+          link_to tagging.name, '#node_keywords', :class => "count#{tagging.count}"
+        end.join(', ').html_safe
       end
 
       def admin_nodes_column_headings

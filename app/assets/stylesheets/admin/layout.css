@@ -812,6 +812,16 @@ li.multi-file .file-detail img {clear:both;float:left;}
   margin: 0;
 }
 
+/* -------------- Popular Tags -------------- */
+span.tags {
+  font-size: 15px;
+  padding: 10px 0;
+  display: block;
+  line-height: 1.5;
+}
+
+
+
 /* -------------- CLEARFIX -------------- */
 
 #header:after,
