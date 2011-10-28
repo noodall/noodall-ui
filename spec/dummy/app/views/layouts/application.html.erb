@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!--
+  HTML5 - When your ready to do so
+  <!doctype html>
+  <html lang="en">
+-->
+
+<head>
+
+<title><%#= Settings.site_name %> - <%= page_title %></title>
+
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+     Remove this if you use the .htaccess -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!--  Mobile Viewport Fix
+      j.mp/mobileviewport & davidbcalhoun.com/2010/viewport-metatag
+device-width : Occupy full width of the screen in its current orientation
+initial-scale = 1.0 retains dimensions instead of zooming out if page height > device height
+maximum-scale = 1.0 retains dimensions instead of zooming in if page width < device width
+-->
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+
+<meta name="description" content="<%=h page_description %>" />
+<meta name="keywords" content="<%=h page_keywords %>" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-language" content="en" />
+
+<meta name="author" content="<%#= Settings.site_name %>" />
+<meta name="copyright" content="<%= Time.now.year %>, <%#= Settings.site_name %>" />
+
+<meta name="Geo.Country" content="GB" />
+<meta name="Geo.Region" content="GB-BST" />
+
+<!-- so:Style Sheets -->
+  <%= stylesheet_link_tag 'reset', 'layout', 'skin', 'typography', 'forms', :media => 'screen,tv,projection' %>
+  <!--[if lte IE 8]><link href="/stylesheets/ie8.css" media="screen" rel="Stylesheet" type="text/css" /><![endif]-->
+  <!--[if lte IE 7]><link href="/stylesheets/ie.css" media="screen" rel="Stylesheet" type="text/css" /><![endif]-->
+<!-- eo:Style Sheets -->
+
+<!-- Place favicon.ico and apple-touch-icon.png in the root of your domain and delete these references -->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- so:JavaScripts -->
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tag %>
+
+<!-- so:JavaScripts -->
+
+<%= yield :head %>
+
+<!--
+    Asynchronous google analytics: mathiasbynens.be/notes/async-analytics-snippet
+    change the UA-XXXXX-X to be your site's ID
+    Now at the top cos google said so!
+-->
+  <script>
+   var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+   (function(d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.async = true;
+    g.src = '//www.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s);
+   })(document, 'script');
+  </script>
+
+</head>
+
+</head>
+<body id="<%= page_id %>" class="<%= page_class %>">
+
+
+<div id="wrapper">
+
+<div id="header">
+  <h1><a href="/" id="logo">Site Name</a></h1>
+</div>
+
+    <!-- so:main-navigation -->
+    <ul class="nav" id="main-nav">
+      <% for root in published_roots %>
+        <li><%= link_to root.name, node_path(root) %></li>
+      <% end %>
+    </ul>
+    <!-- so:main-navigation -->
+
+    <div id="content">
+      <%= flash_messages %>
+      <%= yield %>
+    </div>
+
+    <%= form_tag(noodall_search_path, :method => :get, :class => 'search') do %>
+      <%= text_field_tag :q, params[:q], :value => 'Enter keyword(s) here'  %>
+      <%= submit_tag 'Search' %>
+    <% end %>
+
+    <div id="footer">
+      <!-- so:main-navigation -->
+        <ul class="nav" id="footer-nav">
+          <li></li>
+        </ul>
+      <!-- eo:main-navigation -->
+
+      <%= yield :footer %>
+    </div>
+
+</div>
+<!-- Last Updated: <%#= GlobalUpdateTime::Stamp.read %> -->
+
+</body>
+</html>

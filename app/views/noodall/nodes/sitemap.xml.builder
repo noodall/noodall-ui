@@ -1,0 +1,26 @@
+xml.instruct!
+
+xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
+# homepage
+    xml.url do
+      xml.loc         root_path(:only_path => false)
+      #w3c formatted time
+      time = Noodall::GlobalUpdateTime::Stamp.read
+      xml.lastmod     "#{time.strftime("%Y-%m-%dT%H:%M:%S")}#{time.strftime("%z")[0..2]}:#{time.strftime("%z")[3..4]}"
+      xml.changefreq  "daily"
+      xml.priority    1
+    end
+
+# nodes
+  @nodes.each do |node|
+    xml.url do
+      xml.loc         node_path(node,:only_path => false)
+      #w3c formatted time
+      time = node.updated_at
+      xml.lastmod     "#{time.strftime("%Y-%m-%dT%H:%M:%S")}#{time.strftime("%z")[0..2]}:#{time.strftime("%z")[3..4]}"
+      xml.changefreq  "daily"
+      xml.priority    1
+    end
+  end
+
+end

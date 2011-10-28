@@ -1,5 +1,5 @@
 Given /^the website has been populated with content based on the site map$/ do
-  seed_file = File.join(Rails.root, "demo", "seeds.rb")
+  seed_file = File.join(Rails.root, "db", "seeds.rb")
   load(seed_file)
 end
 
