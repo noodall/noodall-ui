@@ -4,9 +4,13 @@
 //= require admin/application
 //= require admin/nodes
 //= require admin/nodes
-//= require plupload/gears_init
-//= require plupload/plupload.full.min
-//= require plupload/jquery.plupload.queue.min
+//= require plupload/plupload
+//= require plupload/plupload.html4
+//= require plupload/plupload.html5
+//= require plupload/plupload.gears
+//= require plupload/plupload.flash
+//= require plupload/plupload.silverlight
+//= require plupload/jquery.plupload.queue/jquery.plupload.queue
 //= require admin/assets
 //= require admin/asset_edit
 //= require tiny_mce/jquery.tinymce

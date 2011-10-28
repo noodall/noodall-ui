@@ -5,5 +5,5 @@
 *= require admin/skin
 *= require admin/typography
 *= require admin/forms
-*= require plupload.queue.css
+*= require plupload/jquery.plupload.queue/css/jquery.plupload.queue
 */

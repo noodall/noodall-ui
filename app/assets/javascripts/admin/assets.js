@@ -16,7 +16,7 @@ function setUpPlupload() {
   $("#uploader").pluploadQueue({
 
     // General settings
-    runtimes : 'html5,flash,gears',
+    runtimes : 'html5,flash,gears,silverlight,html4',
     url : '/admin/assets/plupload',
     // max_file_size : '10mb',
     chunk_size : '1mb',
