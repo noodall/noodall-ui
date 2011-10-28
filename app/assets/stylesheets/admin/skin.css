@@ -1,0 +1,750 @@
+/* -------------- SKIN (color, background etc) -------------- */
+
+body {
+        background:#fff;
+        color:#000;
+}
+
+/* -------------- HEADER -------------- */
+
+#header {
+        background:#232222;
+        color:#cecece;
+}
+
+#header h1 strong,
+#header a {
+        color:#fff;
+}
+/* -------------- MODULE FANCY BOX -------------- */
+
+#fancybox-topnav {
+        background:#4992c7;
+        color:#fff;
+        border-top:1px solid #336e8b;
+        height:45px;
+
+}
+#fancybox-topnav h1 {
+        text-align:left;
+        padding:14px 0 0 20px;
+}
+.component_buttons {
+        background:#232222;
+}
+
+/* ---------------- MODULE DIAGRAM --------------*/
+
+table.component-table {
+  background-color:#E9E9E9;
+  border:1px solid #C2C2C2;
+}
+table.component-table td {
+  border: 4px solid white;
+  background: white;
+}
+table.component-table td.content {
+  background:#eee;
+}
+
+table.component-table td a {
+  color: #FFF;
+  background: #C2C2C2;
+}
+table.component-table td a.filled {
+  background: #E47373;
+}
+
+/* -------------- NAVIGATION -------------- */
+
+ul#topnav {
+        background:#106bab;
+        color:#fff;
+        border-top:1px solid #336e8b;
+}
+
+ul#topnav li a {
+        color:#fff;
+}
+
+ul#topnav li a:hover {
+        background:#49a3e1;
+        color:#fff;
+}
+
+ul#topnav li {
+        border-left:1px dotted #49a3e1;
+}
+
+ul#topnav li:first-child {
+        border-left:none;
+}
+
+
+/* -------------- CONTENT -------------- */
+
+#content form .fixed-form {
+        background:#232222;
+        color:#fff;
+}
+
+#modules-list {
+        border:1px solid #c2c2c2;
+        background:#e9e9e9;
+}
+#template-wireframe{
+        display:block;
+        padding-top:3px;
+}
+
+#sub-form ol#slot-list {
+        border:1px solid #c2c2c2;
+        background:#fff;
+        list-style:decimal inside none;
+}
+
+ol#slot-list li {
+        padding-left:6px;
+        border-top:1px solid #c2c2c2;
+}
+
+#sub-form ol#slot-list li a {
+        padding:10px 17px 10px 0px !important;
+}
+
+#sub-form ol#slot-list li a {
+        color:#000;
+}
+
+#sub-form ol#slot-list li:first-child {
+        border-top:none;
+}
+
+#sub-form ol#slot-list li:hover {
+        background-color: #d4ecfc;
+}
+
+.slot_tag {
+        border-left:1px dotted #C2C2C2;
+        color:#9A9A9A;
+}
+
+div#content-table {
+        border:1px solid #c2c2c2;
+        background:#e9e9e9;
+}
+
+table.content {
+        border:1px solid #c2c2c2;
+        background:#fff;
+}
+
+table.content td{
+        color:#707070;
+}
+
+a.edit {
+        color:#106bab;
+}
+
+table.content td a.child-no,
+table.content td.file a {
+        color:#707070;
+}
+
+a.edit:hover,
+#info h2 {
+        color:#d4954c;
+}
+
+table.content td a.child-no:hover,
+table.content td.file a:hover {
+        color:#83b452;
+}
+
+
+table.content thead,
+table.content tfoot,
+table.content thead a,
+table.content tfoot a {
+        background: #4a4747;
+        color:#fff;
+}
+
+table.content tr.even {
+        background:#fff6d3;
+}
+
+table.content tbody tr:hover {
+        background:#e4edff;
+}
+
+table.content tr.active {
+        background:#bae8b4!important;
+}
+
+table.content th {
+        border-left:1px solid #686666;
+}
+
+table.content td {
+        border-left:1px solid #D3D3D3 !important;
+}
+
+table.content th:first-child,
+table.content td:first-child,
+table.content td.down {
+        border-left:none !important;
+}
+
+a.change {
+        background: url(/assets/admin/change.gif) no-repeat 0 0;
+        height:27px;
+        margin:5px 0 0px;
+        width:280px;
+}
+
+ul.choices li a {
+        color:#000;
+        background: url(/assets/admin/media.gif) no-repeat 0 0;
+}
+
+ul.choices li a.button {
+        background: url(/assets/admin/nav.gif) no-repeat 0 0;
+}
+
+ul.choices li a.up.button {
+        background: url(/assets/admin/nav-2.gif) no-repeat 0 -44px;
+}
+
+  ul.choices li a.up.button:hover  {
+          background-position:-122px -44px;
+  }
+
+ul.choices li a.button  {
+        background-position:0 0;
+}
+
+  ul.choices li a.button:hover  {
+          background-position:-122px 0;
+  }
+
+ul.choices li a.top.button  {
+        background-position:0 -44px;
+}
+
+  ul.choices li a.top.button:hover  {
+          background-position:-122px -44px;
+  }
+
+ul.choices li a.download.button  {
+        background-position:0 -88px;
+}
+
+  ul.choices li a.download.button:hover  {
+          background-position:-122px -88px;
+  }
+
+ul.choices li.upload a  {
+        background-position:0 -44px;
+}
+
+
+  ul.choices li.upload a:hover  {
+          background-position:-122px -44px;
+  }
+
+
+  ul.choices li.cancel a:hover{
+          background-position:-122px 0px;
+  }
+
+
+ul.choices li.action a  {
+        background-position:0 -220px;
+}
+
+  ul.choices li.action a:hover  {
+          background-position:-122px -220px;
+  }
+
+ul.choices li.images a  {
+        background-position:0 -88px;
+}
+
+  ul.choices li.images a:hover  {
+          background-position:-122px -88px;
+  }
+
+ul.choices li.videos a  {
+        background-position:0 -176px;
+}
+
+  ul.choices li.videos a:hover  {
+          background-position:-122px -176px;
+  }
+
+ul.choices li.back a  {
+        background-position:0 0;
+}
+
+  ul.choices li.back a:hover  {
+          background-position:-122px 0;
+  }
+
+ul.choices li.documents a  {
+        background-position:0 -132px;
+}
+
+  ul.choices li.documents a:hover  {
+          background-position:-122px -132px;
+  }
+
+ul.choices li a:hover {
+        cursor:pointer;
+}
+
+#tags, div.tags {
+        border:3px solid #c46f1c;
+        background:#e19449;
+}
+
+#tags a, div.tags a {
+        background:#fff url(/assets/admin/tag.png) no-repeat -3px -2px;
+        color:#000;
+}
+
+#tags a:hover, div.tags a:hover {
+        background-color:#C46F1C;
+        color:#fff;
+}
+
+/* PAGINATION */
+
+.pagination a, #tree-browser a {
+        color:#106bab;
+}
+
+.pagination a:hover {
+        color:#49a3e1;
+}
+
+.pagination span, .pagination em {
+        color:#686666;
+}
+
+.pagination .previous_page,
+.pagination .next_page {
+        background:url("/assets/admin/pagination.gif") no-repeat scroll;
+
+}
+
+.pagination a.previous_page {
+        background-position:0 0;
+}
+
+.pagination a.next_page {
+        background-position:-130px 0;
+}
+
+.pagination span.previous_page {
+        background-position:0 -26px;
+}
+
+.pagination span.next_page {
+        background-position:-130px -26px;
+}
+
+/* -------------- TABLE ICONS -------------- */
+
+a.edit, span.edit {
+        background:url(/assets/admin/edit.png) no-repeat right -4px;
+}
+
+  a.edit:hover, span.edit:hover {
+          background-position: right -370px;
+  }
+
+a.delete, span.delete {
+        background:url(/assets/admin/delete.png) no-repeat -1px -4px;
+}
+
+td.spam {
+  text-align: right;
+}
+
+td.spam.flagged {
+  background:url(/assets/admin/spam-flag.png) no-repeat 8px 8px;
+}
+
+a.download {
+  background:url(/assets/admin/download.png) no-repeat -1px -4px;
+}
+
+a.show {
+  background:url(/assets/admin/view.png) no-repeat -1px -4px;
+}
+
+a.page_up {
+  background:url(/assets/admin/up.png) no-repeat -1px -4px;
+}
+
+a.page_down {
+  background:url(/assets/admin/down.png) no-repeat -1px -4px;
+}
+
+span.check {
+  background:url(/assets/admin/check.png) no-repeat -1px -4px;
+}
+
+span.hidden {
+  background:url(/assets/admin/hidden.png) no-repeat -1px -4px;
+}
+
+a.child, a.add{
+  background:url(/assets/admin/add.png) no-repeat -1px -4px;
+}
+
+#asset-browser.multi a.add {
+  background:url(/assets/admin/select_image.gif) no-repeat 4px;
+}
+#asset-browser.multi a.add.selected {
+  background:url(/assets/admin/select_image.gif) no-repeat -22px;
+}
+a.delete:hover,
+span.delete:hover,
+a.page_up:hover,
+a.page_down:hover,
+a.child:hover,
+a.add:hover,
+a.download:hover,
+a.spam:hover
+ {
+        background-position: -1px -36px;
+}
+
+a.show:hover {
+        background-position: -2px -37px;
+}
+
+td.file:hover a.show {
+        background-position: -2px -37px;
+}
+
+td.file:hover {cursor:pointer;}
+
+th.sort a {
+          background:url(/assets/admin/sort.png) no-repeat right 1px !important;
+          padding:10px 42px 10px 0;
+}
+
+th.sort a:hover {
+          background-position: right -30px !important;
+          color:#49a3e1 !important;
+}
+
+.edit-item {
+          background:url(/assets/admin/edit.gif) no-repeat;
+          width:89px;
+          height:26px;
+          position:absolute;
+          right:2px;
+          top:2px;
+}
+
+/* -------------- TINY MCE -------------- */
+
+/* This overides the TinyMCE stylesheet */
+
+#content form p.tinymce {
+        min-width:543px;
+}
+
+a#node_body_mybutton img  {
+background-position:-180px -20px;
+}
+
+table#node_body_tbl,
+.defaultSkin iframe {
+        width:100% !important;
+}
+
+.defaultSkin td.mceToolbar {
+        padding:0 0 9px !important;
+}
+
+.defaultSkin table {
+        background:none !important;
+}
+
+.defaultSkin table.mceLayout tr.mceLast td,
+.defaultSkin table.mceLayout tr.mceFirst td,
+.defaultSkin table.mceLayout {
+        border:none !important;
+}
+
+.defaultSkin .mceIframeContainer {
+        border:1px solid #C2C2C2;
+}
+
+.defaultSkin .mceMenu table {background:#FFF !important;}
+
+/* --------------- ASSETS ----------------*/
+
+.file img,
+#image img,
+.file-selectable .file-detail {
+        border:1px solid #c2c2c2;
+        background:#e9e9e9 !important;
+}
+
+/* SHOW IMAGE */
+
+#image img {
+        display:block;
+}
+
+#show-assets #info,
+#show-assets #no-tags {
+        border:1px solid #c2c2c2;
+        background:#fff;
+}
+
+#show-assets #no-tags a {
+        color:#106bab;
+}
+
+#show-assets #no-tags a:hover,
+#show-assets #no-tags h2 {
+        color:#D4954C;
+}
+
+#tree-browser span.expand {
+   background:#82b452;
+   border:3px solid #548126;
+   color: #fff;
+}
+
+/* -------------- JQUERY and CSS3 -------------- */
+
+/* TOOLTIP */
+
+.new th,
+.show th {
+  cursor:help;
+}
+
+span.tooltip,
+#content form .fixed-form span.tooltip {
+        background:url(/assets/admin/info.png) no-repeat center center;
+        cursor:help;
+}
+
+a.tooltip,
+th .tooltip {
+        background:url(/assets/admin/info-white.png) no-repeat center center;
+}
+
+.tooltip-show {
+        color:#000;
+        background:#d4ecfc;
+        border:#60a0be 1px solid;
+}
+
+/*.tooltip-top {
+        background:url(/assets/admin/tooltip-top.png) no-repeat;
+}
+
+.tooltip-middle {
+        background:url(/assets/admin/tooltip-middle.png) repeat;
+}
+
+.tooltip-bottom {
+        background:url(/assets/admin/tooltip-bottom.png) no-repeat;
+}
+*/
+
+#pending {
+  background:#E47373;
+  border:3px solid #9C3B3B;
+  color:#fff;
+}
+#pending a {
+  color:#fff;
+  text-decoration: underline;
+}
+
+
+/* BORDER RADIUS */
+
+span.input-wrap,
+span.textarea-wrap,
+div#content-table,
+div#flash,
+.plupload_container,
+ul.choices li a,
+#tags,
+div.tags,
+#show-assets #info,
+#modules-list,
+.pagination .previous_page,
+.pagination .next_page,
+ul#topnav li a:hover,
+.file img,
+#image img,
+#tags a, div.tags a,
+#show-assets #no-tags,
+div#flash div,
+.select-file,
+span.done,
+table.component-table,
+#errorExplanation,
+.file-selectable .file-detail,
+#pending,
+.tooltip-show {
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+}
+
+#fancybox-outer   {
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+}
+
+#tree-browser span.expand  {
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        border-radius: 15px;
+}
+
+/* ------------- IMAGE REPLACEMENT  --------------- */
+
+
+.fixed-form a.cancel,
+.fixed-form a.preview,
+.fixed-form input.draft,
+.fixed-form input.cancel,
+.fixed-form input.publish,
+.fixed-form input.update,
+.fixed-form input.create,
+.fixed-form a.advanced,
+.fixed-form input.change,
+a.delete,
+span.edit,
+span.delete,
+a.page_up,
+a.page_down,
+a.show,
+a.add,
+span.check,
+span.hidden,
+a.child,
+.form-save,
+.form-delete,
+.form-reset,
+.add-multi-asset,
+.remove,
+.pagination .previous_page,
+.pagination .next_page,
+ul.choices li a,
+a.download,
+.edit-item,
+a.change,
+a.spam, span.spam,
+.fixed-form input#hide,
+#content form .fixed-form a#versions-button {
+        overflow: hidden;
+        text-align: left;
+        display: block;
+        line-height:0;
+        text-indent: -1000em;
+}
+
+/* ------------- STUFF TO BE TIDIED --------------- */
+
+.select-file, span.done {
+        background: #60A0BE;
+        border:2px solid #D4ECFC;
+        color: #fff;
+        font-weight: bold;
+        padding: 9px;
+        margin-right:5px;
+        display:inline-block;
+}
+
+.select-file:hover, span.done:hover {
+         background: #D4ECFC;
+         cursor: pointer;
+}
+
+.multi-file-files ol li {
+  border-top: 1px solid #c2c2c2;
+  background: white;
+}
+
+#image {
+  margin-top:32px;
+}
+
+a {
+  color:#106BAB;
+}
+
+a:hover {
+  color:#D4954C;
+}
+
+/*download button*/
+#content form input.download-button{
+  background:url("/assets/admin/nav.gif") no-repeat scroll 0 -88px transparent;
+  border:0 none;
+  color:#FFFFFF;
+  font-size:0;
+  height:50px;
+  text-align:right;
+  width:122px;
+}
+
+#content form input.download-button:hover {
+  background-position: -122px -88px;
+  cursor:pointer;
+}
+
+/*span liks*/
+.link-node, .link-asset {color: #60A0BE;}
+.link-node:hover, .link-asset:hover {color: #000; cursor: pointer;}
+
+
+/* BREADCRUMBS */
+.breadcrumb {
+    font-size: 12px;
+    color: #D3D3D3;
+    display: block;
+    clear:both;
+    margin: 0 0 20px 0;
+}
+.breadcrumb {
+    list-style-type: none;
+}
+
+.breadcrumb li {
+  float: left;
+  padding: 0 0 0 10px;
+  width: auto;
+
+}
+
+.breadcrumb li a:after{
+  content:" > ";
+}
+
+
+.breadcrumb li:first-child{
+  padding-left:0;
+}
+
+.breadcrumb li:first-child span.arrow{
+  display:none;
+}

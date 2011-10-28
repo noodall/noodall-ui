@@ -1,0 +1,843 @@
+/* -------------- LAYOUT (margin, height, width etc)-------------- */
+
+body {
+        margin:0;
+        padding:0;
+}
+
+.show #screen,
+.new #screen {
+        margin:0;
+}
+
+body.show #content,
+body.edit #content,
+body.new #content,
+body.create #content {
+        margin:20px;
+        padding:0 0 130px;
+}
+
+
+/* -------------- HEADER -------------- */
+
+#header {
+        height:40px;
+        position:relative;
+        width:100%;
+}
+
+#header h1 {
+        position:absolute;
+        left:20px;
+        top:13px;
+}
+
+#header ul#status {
+        position:absolute;
+        right:20px;
+        top:13px;
+}
+
+#header ul#status li {
+        float:left;
+        margin:0 0 0 15px;
+}
+
+/* -------------- NAVIGATION -------------- */
+
+ul#topnav {
+        min-height:45px;
+        position:relative;
+        width:100%;
+}
+
+ul#topnav li {
+        float:left;
+        margin:13px 0px 13px;
+        padding:0 10px;
+}
+
+ul#topnav li:first-child {
+        margin:13px 0 13px 10px;
+}
+
+ul#topnav li a {
+        padding:5px 7px;
+}
+
+ul#per-page-select{
+  margin:10px 0px;
+  padding-bottom:10px;
+}
+ul#per-page-select li{
+  padding:0px 10px;
+  float:left;
+  border-left:1px solid #686666;
+}
+ul#per-page-select li.first{
+  border-left:none;
+}
+/* -------------- CONTENT -------------- */
+
+#content {
+        clear:both;
+        margin:20px;
+}
+
+#content h1 {
+        margin-bottom:10px;
+        display:inline-block;
+}
+
+#content form .fixed-form {
+        min-height:95px;
+        width:100%;
+        display:block;
+        z-index:1000;
+        position:fixed;
+        bottom:0px;
+        left:0px;
+        margin: 0;
+}
+
+#main-form {
+        float:left;
+        margin:0 10px 100px 0;
+        width:67%;
+        position:relative;
+        z-index:10;
+}
+
+body#assets.edit #main-form {
+        margin:10px 10px 0 0;
+}
+
+div#content-table {
+        padding:9px;
+        clear:both;
+}
+
+table.content {
+        width:100%;
+}
+
+table.content th,
+table.content td {
+        padding:9px;
+        vertical-align:middle;
+}
+
+table.content th {
+        padding:14px;
+}
+
+table.content td label {
+        display:none;
+}
+
+div#form-fields table.content td {
+        vertical-align:middle;
+        padding:9px 20px 0 9px;
+}
+
+td.center {
+        text-align:center;
+}
+
+#form-fields {
+        clear:both;
+        position:relative;
+        margin-bottom: 100px;
+}
+
+
+#field-type, .add.form-builder {
+float:left;
+margin: 0 10px 10px 0;
+}
+
+ .add.form-builder {
+   margin-top: -3px;
+ }
+
+/* CHOICES */
+
+ul.choices {
+        float:right;
+        margin-bottom:20px;
+}
+
+ul.choices li {
+        float:left;
+        margin:0 0 0 5px;
+}
+
+ul.choices li a {
+        width:122px;
+        height:44px;
+}
+
+#fancybox-inner #asset-browser ul.choices {
+        margin:0 0 20px;
+        position:relative;
+        top:0;
+}
+
+form#uploader {
+        clear:both;
+}
+
+/* ASSET BROWSER */
+
+#asset-browser {
+        height: 550px;
+        width:800px;
+        overflow: hidden;
+}
+
+#asset-browser h2.title {
+  float: left;
+}
+#asset-browser .pagination {
+        margin-left:17px;
+}
+
+#browser-list {
+  clear:both;
+  float:left;
+  width:643px;
+}
+
+#browser-list li {
+  float:left;
+  height:120px;
+  padding:0 0 15px 17px;
+  position:relative;
+  width:111px;
+}
+
+
+#browser-list li img, {
+        float: left;
+        margin-right: 10px;
+}
+#browser-list li a.show {
+        bottom:10px;
+        float:none;
+        margin:0;
+        position:absolute;
+        right:33px;
+}
+
+#browser-list li a.add {
+        bottom:10px;
+        float:none;
+        margin:0;
+        position:absolute;
+        left:33px;
+}
+
+#image img {
+  padding:5px;
+}
+
+.file img,
+#show-assets img {
+        display:block;
+        float:left;
+        margin-left:10px;
+        max-height:70px;
+        max-width:70px;
+        overflow:hidden;
+        padding:5px;
+}
+
+#browser-list li span.file-title{
+  display:block;
+  font-size:11px;
+  font-weight:bold;
+  margin: 0 10px 3px;
+  text-align:left;
+  width:90px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  -moz-binding: url('../ellipsis.xml#ellipsis');
+  display: block;
+}
+
+#show-assets img {
+        max-height:400px !important;
+        max-width:500px !important;
+}
+
+#asset-usage {
+  margin-bottom: 10px;
+}
+
+#asset-browser #image-choices {
+  clear: both;
+}
+
+#asset-browser div.choice  {
+  width: 195px;
+  height: 165px;
+  float: left;
+  margin: 95px 0 0 50px;
+  cursor: pointer;
+  background: url(/images/admin/image_choices.png)
+}
+
+#asset-browser div.medium {
+  background-position: -236px;
+}
+#asset-browser div.large {
+  background-position: -472px;
+}
+#asset-browser div.choice * {
+  display: none;
+}
+/* PAGINATION */
+
+.pagination {
+				float:left;
+        margin:15px 0;
+        height:26px;
+}
+
+.pagination span,
+.pagination em,
+.pagination a {
+        padding:0 4px;
+        vertical-align: middle;
+}
+
+.pagination .previous_page,
+.pagination .next_page {
+        width:130px;
+        height:26px;
+        display:inline-block !important;
+        padding:0;
+}
+
+.pagination .previous_page {
+        margin-right:5px;
+}
+
+.pagination .next_page {
+        margin-left:5px;
+}
+
+#fancybox-inner #main-form {
+        width:100%;
+}
+
+/* TAGS */
+
+#tags, #pending {
+        padding:9px;
+        float:left;
+        width:15%;
+        margin-bottom:20px;
+        clear:none;
+        height: 405px;
+        overflow:auto;
+}
+
+#tags ul {
+        padding-top:3px;
+}
+
+#tags a, div.tags a {
+        display:block;
+        margin:7px 0 0 0;
+        padding:8px 10px 8px 29px;
+}
+div.tags {
+        padding:9px;
+        margin: 10px 0;
+        clear:both;
+}
+
+div.tags li {
+         display:inline;
+}
+
+div.tags a {
+         display:inline-block;
+         margin:10px 5px 0 0;
+}
+
+#assets #content-table {
+        float:left;
+        width:78%;
+        margin:0 20px 10px 0;
+        min-width:717px;
+}
+#asset-browser #all-tags {
+  height: 450px;
+  width: 800px;
+  overflow: auto;
+}
+
+/* -------------- TABLE / ADMIN ICONS -------------- */
+
+a.page_up,
+a.page_down,
+a.delete,
+span.edit,
+span.delete,
+a.show,
+a.child,
+a.add,
+a.download,
+a.spam,span.spam {
+        width:26px;
+        height:26px;
+        display:block;
+        cursor:pointer;
+}
+
+a.delete,
+a.show,
+a.download,
+a.spam,span.spam  {
+        margin:auto;
+}
+
+td.child a.child-no{
+  white-space: no-wrap;
+}
+
+span.check,
+span.hidden {
+        width:26px;
+        height:26px;
+        display:block;
+        margin:auto;
+}
+
+a.edit {
+        padding:5px 40px 5px 0px;
+        cursor:pointer;
+        display:block;
+}
+
+a.child, a.download {
+        float:right;
+}
+
+a.child-no {
+        display:block;
+        float:left;
+        position:relative;
+        top:5px;
+        vertical-align:text-bottom;
+        width:100px;
+}
+
+.file a.show {
+        float:right;
+        margin:15px 10px 0 0;
+}
+
+/* SHOW IMAGE */
+
+#show-assets {
+        max-width:969px;
+        padding:10px 0 0;
+        clear:both;
+}
+
+#show-assets #image {
+        float:left;
+        margin:0 10px 10px 0;
+}
+
+#show-assets #info,
+#show-assets #no-tags {
+        float:left;
+        margin:0 10px 10px 0;
+        width:194px;
+        padding:9px 9px 0px;
+}
+
+#show-assets #no-tags,
+#show-assets #tags h2 {
+        margin:0 0 0 0;
+}
+
+#show-assets h2 {
+        margin-bottom:10px;
+        padding-bottom:10px;
+        border-bottom:1px solid #c2c2c2;
+}
+
+
+#show-assets #tags {
+        clear:none;
+        float:right;
+        margin:0;
+        width:186px;
+}
+
+/* -------------- SUB CONTENT -------------- */
+
+#sub-form {
+        float:left;
+        width:260px;
+        position:relative;
+        z-index:9;
+}
+
+#modules-list {
+        margin:9px 0 0;
+        display:block;
+        width:260px;
+        padding:9px;
+}
+
+#sub-form ol#slot-list li {
+        position:relative;
+}
+
+#sub-form ol#slot-list li a {
+        padding:10px 17px;
+        display:inline-block;
+}
+
+/* -------------- SLOT FANCYBOX -------------- */
+
+.component_form_wrap{
+  display:none;
+}
+
+.component_form {
+  height:500px;
+  overflow:hidden;
+  position:relative;
+  width:800px;
+}
+
+.component_buttons {
+  bottom:0;
+  height:80px;
+  position:absolute;
+  width:800px;
+}
+
+.component_form_detail {
+  height:318px;
+  overflow:auto;
+}
+
+.component_form_detail p{
+  position: relative;
+}
+
+
+.slot_tag {
+  display:block;
+  float:right;
+  min-height:22px;
+  padding:10px 0 5px 20px;
+  width:123px;
+}
+
+.multi-file-details {
+        float: left;
+        width: 400px;
+}
+.multi-file-files {
+        float:right;
+        margin-right:10px;
+        width:380px;
+}
+.multi-file-files ol {
+        overflow: visible;
+        height: 350px;
+}
+.multi-file-files ol li, div.file-form {
+        padding: 5px 0;
+        clear: both;
+}
+
+.file-selectable .file-detail {
+  float: left;
+  width: 70px;
+  padding: 3px;
+  margin-right: 5px;
+}
+.file-selectable .file-detail .file-title {
+  display: none;
+}
+
+.multi-file span.edit, .multi-file span.delete {
+  float: right;
+}
+
+/* -------------- JQUERY -------------- */
+
+/* TOOLTIP */
+
+.tooltip {
+        width:22px;
+        height:21px;
+        top:-5px;
+        right:20px;
+        z-index:999;
+        position:absolute;
+        display:block;
+        text-align:center;
+}
+
+#sub-form .tooltip {
+        right:-20px;
+        top:-5px;
+}
+
+th .tooltip {
+        display:block;
+        float:right;
+        height:16px;
+        position:relative;
+        text-align:center;
+        right:0px !important;
+        top:-2px !important;
+        width:22px;
+        z-index:999;
+}
+
+a.tooltip {
+        right:17px;
+        top:53px;
+}
+
+
+.tooltip-show {
+        position:absolute;
+        top:22px;
+        left:-170px !important;
+        display:none;
+        width:150px;
+        padding:10px;
+}
+
+#content-table .tooltip-show {
+  left:10px !important;
+}
+
+.hidden{
+  display:none;
+}
+
+/* Component Table */
+
+table.component-table {
+  width: 280px;
+  padding:9px;
+  margin-top:10px;
+}
+table.component-table td {
+  width: 25%;
+  min-height: 50px;
+  border: 4px solid white;
+  text-align: center;
+  background: white;
+}
+table.component-table td.empty {
+  height: 40px;
+}
+table.component-table td a {
+  display: block;
+  padding: 15px 0;
+}
+
+/* preview */
+
+#preview-pane iframe,
+#preview-pane {
+        width: 100%;
+        height: 100%;
+}
+
+#preview-pane {
+        display:none;
+}
+
+#fancybox-inner #preview-pane {
+         display:block;
+}
+
+/* --- tree ---- */
+
+#tree-browser {
+  width: 400px;
+  height: 400px;
+  padding: 10px;
+}
+
+ol.tree li {
+  margin: 2px 10px;
+  list-style-type: decimal;
+}
+
+ol.tree .expand, #parent-title {
+  cursor: pointer;
+}
+span.expand {
+  display: inline-block !important;
+  height: 15px;
+  width: 15px;
+  text-align:center;
+}
+
+/* --- new template -- */
+fieldset.template label img {
+  left:520px;
+  position:absolute;
+  top:20px;
+}
+
+#current-label {
+  margin-right:250px;
+}
+
+#current-label,
+#new-label {
+  font-size:14px;
+}
+
+#main-form fieldset.template {
+float:left;
+min-width:200px;
+}
+
+/* hack to give some blank padding between tinymce and beef cms icons */
+#node_body_assetbrowser{
+  margin-left:30px;
+}
+
+.dowload-form {
+  margin-top: 20px;
+}
+
+.dowload-form h2 {
+  margin-bottom: 20px;
+}
+
+li.multi-file span.file-title {
+  float:left;
+  margin-bottom: 10px;
+}
+
+li.multi-file .file-detail img {clear:both;float:left;}
+
+/*Advanced Sections*/
+.published-section,
+.position-section,
+.permissions-section,
+.version_message_section {
+  width: 356px;
+  float:left;
+}
+
+.position-section,
+.permissions-section,
+.version_message_section {
+  margin: 0 0 0 10px;
+}
+
+.permissions-section legend {padding-bottom: 5px;}
+
+.permissions-section fieldset {
+  margin: 0 !important;
+  min-width: 300px !important;
+  padding: 0 !important;
+}
+
+.permissions-section fieldset input {
+  margin-left:5px !important;
+  width: 98% !important;
+}
+
+#content form .position-section p {
+  min-width: 356px;
+  padding: 0 !important;
+}
+
+.version_message_section{
+  position: relative;
+  left: -10px;
+}
+
+.version_message_section p {
+  min-width: 356px !important;
+}
+
+/* -------------- Admin filtering -------------- */
+#form-filter {
+  float: right;
+  margin: 0px 0 10px 0;
+  width: 321px;
+}
+
+#form-filter form input[type="text"] {
+  float:left;
+  margin: 0 20px 0 0;
+  width: 200px;
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: 1px solid #C2C2C2;
+  padding: 8px;
+}
+
+#form-filter form input[type="submit"] {
+  float:left;
+  width: 80px;
+  background: none repeat scroll 0 0 #93bf65;
+  border: 5px solid #659132;
+  padding: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  text-transform:uppercase;
+  font-size: 10px;
+  text-shadow: 2px 2px 2px #659132;
+  filter: dropshadow(color=#659132, offx=2, offy=2);
+  margin: 0;
+}
+
+/* -------------- Popular Tags -------------- */
+span.tags {
+  font-size: 15px;
+  padding: 10px 0;
+  display: block;
+  line-height: 1.5;
+}
+
+
+
+/* -------------- CLEARFIX -------------- */
+
+#header:after,
+#content:after,
+#topnav:after,
+.choices:after,
+#tags ul:after,
+.multi-file-files ol li:after,
+.file-selectable:after,
+ul.choices:after,
+#sub-form ol#slot-list li:after,
+.slot_tag:after,
+.breadcrumb:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+}

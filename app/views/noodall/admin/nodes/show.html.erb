@@ -1,6 +1,3 @@
-<% content_for :header, javascript_include_tag( 'tiny_mce/jquery.tinymce.js', 'admin/tiny_mce_config', 'admin/nodes', 'admin/assets' ) %>
-
-
 <h1>Editing Content</h1>
 <p>* Required Fields</p>
 
@@ -31,7 +28,10 @@
     <p>
       <span class="tooltip" title="Enter a comma seperated list of keywords to describe this content.&quot;website,launch,event&quot;">&nbsp;</span>
       <%= f.label :keywords, "Keywords" %><br/>
-      <span class="input-wrap"><%= f.text_field :keywords, :class => "keywords-completer" %></span>
+      <span class="input-wrap">
+        <%= f.text_field :keywords, :class => "keywords-completer" %><br/>
+        <span class="tags"><strong>Popular Tags: </strong><%= popular_tags %></span>
+      </span>
     </p>
 
   </div>
@@ -66,14 +66,14 @@
                    %>
                  <span class="input-wrap"><%= f.datetime_select :published_to, :include_blank => true %></span>
                </p>
-               
+
                <div class="version_message_section advanced-block">
                  <p>
                    <%= f.label :version_message %><br />
                    <span class="input-wrap"><%= f.text_field :version_message -%></span>
                  </p>
                </div>
-               
+
             </div>
 
                 <% if current_user.admin? -%>
@@ -143,12 +143,6 @@
           </p>
         </div>
 
-        <div class="version_message_section">
-          <p>
-            <%= f.label :version_message %><br />
-            <span class="input-wrap"><%= f.text_field :version_message -%></span>
-          </p>
-        </div>
       </div>
     </fieldset>
   </div>

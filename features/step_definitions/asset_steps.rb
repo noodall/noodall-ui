@@ -5,7 +5,7 @@ end
 When /^I upload a file$/ do
   click_link "Upload"
   fill_in "Title", :with => "A loverly asset"
-  attach_file("File", "#{Rails.root}/spec/files/beef.png")
+  attach_file("File", "#{Rails.root}/files/beef.png")
 end
 
 When /^enter tags$/ do

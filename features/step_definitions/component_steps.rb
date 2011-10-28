@@ -11,13 +11,13 @@ When /^(?:|I )click a "([^"]*)" component slot$/ do |slot_name|
 end
 
 When /^(?:|I )select the "([^\"]+)" component$/ do |component_name|
-  within "#fancybox-inner" do
+  within "#fancybox-content" do
     select component_name, :from => 'Select the type of component'
   end
 end
 
 When /^(?:|I )fill in the following within the component:$/ do |fields|
-  within "#fancybox-inner" do
+  within "#fancybox-content" do
     fields.rows_hash.each do |name, value|
       When %{I fill in "#{name}" with "#{value}"}
     end
@@ -25,7 +25,7 @@ When /^(?:|I )fill in the following within the component:$/ do |fields|
 end
 
 When /^(?:|I )press "([^"]*)" within the component$/ do |button|
-  within "#fancybox-inner" do
+  within "#fancybox-content" do
     click_button(button)
   end
   sleep 3
@@ -33,7 +33,7 @@ end
 
 When /^(?:|I )select an image from the asset library$/ do
   asset = Factory(:asset, :title => "My Image")
-  within "#fancybox-inner" do
+  within "#fancybox-content" do
     pending
   end
 end
