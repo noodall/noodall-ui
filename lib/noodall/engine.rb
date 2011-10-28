@@ -11,6 +11,10 @@ module Noodall
         app.middleware.use ::ActionDispatch::Static, File.join(root, 'vendor', 'assets')
         app.middleware.use ::ActionDispatch::Static, File.join(root, 'public')
       end
+    else
+      initializer "Add noodall assets to precomiler" do |app|
+        app.config.assets.precompile += %w( admin.css admin.js )
+      end
     end
 
     initializer "load site map" do |app|
