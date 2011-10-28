@@ -2,7 +2,7 @@ Description:
     Explain the generator
 
 Example:
-    rails generate noodall:node Thing
+    rails generate noodall:template Thing
 
     This will create:
         what/will/it/create

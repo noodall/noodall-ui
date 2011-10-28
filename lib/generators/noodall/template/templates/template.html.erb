@@ -6,7 +6,7 @@
 <dl>
 <% for attribute in attributes -%>
   <dt><%= attribute.name.titleize %></dt>
-  <dd><%%= @node.<% attribute.name %>%></dd>
+  <dd><%%= @node.<%= attribute.name %> %></dd>
 <% end -%>
 </dl>
 <% end -%>
