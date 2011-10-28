@@ -1,4 +1,4 @@
-/* 
+/*
    Plupload
 ------------------------------------------------------------------- */
 
@@ -11,7 +11,7 @@
     border: 1px solid #bababa;
     padding: 2px 8px 3px 20px;
 	margin-right: 4px;
-    background: #f3f3f3 url('../img/buttons.png') no-repeat 0 center;
+    background: #f3f3f3 url('/assets/plupload/jquery.plupload.queue/img/buttons.png') no-repeat 0 center;
 	outline: 0;
 
     /* Optional rounded corners for browsers that support it */
@@ -29,7 +29,7 @@
 .plupload_disabled, a.plupload_disabled:hover {
     color: #737373;
     border-color: #c5c5c5;
-    background: #ededed url('../img/buttons-disabled.png') no-repeat 0 center;
+    background: #ededed url('/assets/plupload/jquery.plupload.queue/img/buttons-disabled.png') no-repeat 0 center;
 	cursor: default;
 }
 
@@ -44,7 +44,7 @@
 
 .plupload_container {
 	padding: 8px;
-	background: url('../img/transp50.png');
+	background: url('/assets/plupload/jquery.plupload.queue/img/transp50.png');
 	/*-moz-border-radius: 5px;*/
 }
 
@@ -54,9 +54,19 @@
 	width: 98%;
 }
 
-.plupload_header {background: #2A2C2E url('../img/backgrounds.gif') repeat-x;}
+.plupload_header {background: #2A2C2E url('/assets/plupload/jquery.plupload.queue/img/transp50.png');
+	/*-moz-border-radius: 5px;*/
+}
+
+.plupload_container input {
+	border: 1px solid #DDD;
+	font: normal 11px Verdana,sans-serif;
+	width: 98%;
+}
+
+.plupload_header {background: #2A2C2E url('/assets/plupload/jquery.plupload.queue/img/backgrounds.gif') repeat-x;}
 .plupload_header_content {
-	background: url('../img/backgrounds.gif') no-repeat 0 -317px;
+	background: url('/assets/plupload/jquery.plupload.queue/img/backgrounds.gif') no-repeat 0 -317px;
 	min-height: 56px;
 	padding-left: 60px;
 	color: #FFF;
@@ -83,7 +93,7 @@
 
 .plupload_filelist li {
 	padding: 10px 8px;
-	background: #F5F5F5 url('../img/backgrounds.gif') repeat-x 0 -156px;
+	background: #F5F5F5 url('/assets/plupload/jquery.plupload.queue/img/backgrounds.gif') repeat-x 0 -156px;
 	border-bottom: 1px solid #DDD;
 }
 
@@ -92,7 +102,7 @@
 	padding: 8px 8px;
 	color: #42454A;
 }
-.plupload_filelist_header {	
+.plupload_filelist_header {
 	border-top: 1px solid #EEE;
 	border-bottom: 1px solid #CDCDCD;
 }
@@ -122,20 +132,20 @@
 	height: 16px;
 }
 
-li.plupload_uploading {background: #ECF3DC url('../img/backgrounds.gif') repeat-x 0 -238px;}
+li.plupload_uploading {background: #ECF3DC url('/assets/plupload/jquery.plupload.queue/img/backgrounds.gif') repeat-x 0 -238px;}
 li.plupload_done {color:#AAA}
 
 li.plupload_delete a {
-	background: url('../img/delete.gif');
+	background: url('/assets/plupload/jquery.plupload.queue/img/delete.gif');
 }
 
 li.plupload_failed a {
-	background: url('../img/error.gif');
+	background: url('/assets/plupload/jquery.plupload.queue/img/error.gif');
 	cursor: default;
 }
 
 li.plupload_done a {
-	background: url('../img/done.gif');
+	background: url('/assets/plupload/jquery.plupload.queue/img/done.gif');
 	cursor: default;
 }
 
@@ -165,7 +175,7 @@ li.plupload_done a {
 .plupload_clearer, .plupload_progress_bar {
 	display: block;
 	font-size: 0;
-	line-height: 0;	
+	line-height: 0;
 }
 
 li.plupload_droptext {
