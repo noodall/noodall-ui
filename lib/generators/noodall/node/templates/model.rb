@@ -1,11 +1,4 @@
 class <%= class_name %> < Noodall::Node
-  # Define if this Node Template can be added as a root page in the top level of the tree
-<%- if options.root? -%>
-  root_template!
-<%- else -%>
-  # root_template!
-<%- end -%>
-
   # Define which Node Templates can be used as children of Nodes using this template
   sub_templates <%= class_name %>
 <%- if options.root? -%>
