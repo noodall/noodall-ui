@@ -2,3 +2,12 @@
 //= require fancybox
 //= require ajaxify
 //= require admin/application
+//= require admin/nodes
+//= require admin/nodes
+//= require plupload/gears_init
+//= require plupload/plupload.full.min
+//= require plupload/jquery.plupload.queue.min
+//= require admin/assets
+//= require admin/asset_edit
+//= require tiny_mce/jquery.tinymce
+//= require admin/tiny_mce_config

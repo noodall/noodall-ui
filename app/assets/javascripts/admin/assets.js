@@ -1,10 +1,4 @@
 function setUpAssets() {
-  document.write('<link rel="stylesheet" href="/assets/plupload.queue.css" type="text/css" media="screen" charset="utf-8">');
-  document.write('<script type="text/javascript" src="/assets/plupload/gears_init.js"></script>');
-  document.write('<script type="text/javascript" src="http://bp.yahooapis.com/2.4.21/browserplus-min.js"></script>');
-  document.write('<script type="text/javascript" src="/assets/plupload/plupload.full.min.js"></script>');
-  document.write('<script type="text/javascript" src="/assets/plupload/jquery.plupload.queue.min.js"></script>');
-
   $('#asset-browser ul.choices a, #asset-browser #tags a, #asset-browser .tags a, #asset-browser a.show, #asset-browser .pagination a').live('click', function() {
     $.get(
       $(this).attr('href'),
@@ -15,13 +9,14 @@ function setUpAssets() {
   });
   ajaxifyForms('form.edit_asset');
 }
+setUpAssets();
 
 function setUpPlupload() {
 
   $("#uploader").pluploadQueue({
 
     // General settings
-    runtimes : 'html5,flash,gears,silverlight,browserplus,',
+    runtimes : 'html5,flash,gears',
     url : '/admin/assets/plupload',
     // max_file_size : '10mb',
     chunk_size : '1mb',
@@ -53,7 +48,7 @@ function setUpPlupload() {
 
 
   uploader.bind('FileUploaded', function(up, file, res) {
-    if(this.total.queued == 0) {
+    if(this.total.queued === 0) {
       message = $('<div id="flash"><div class="flash notice">Assets were successfully uploaded. <strong>Please enter full information for each asset</strong></div></div>');
       message.bind('click', function() {
         window.location.href = "/admin/assets/pending";
@@ -94,5 +89,3 @@ function setUpPlupload() {
     up.refresh(); // Reposition Flash/Silverlight
   });
 }
-
-setUpAssets();

@@ -47,13 +47,7 @@ maximum-scale = 1.0 retains dimensions instead of zooming in if page width < dev
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <!-- so:JavaScripts -->
-  <script src="http://www.google.com/jsapi" type="text/javascript"></script>
-  <script type="text/javascript">
-    google.load("jquery", "1.4");
-    google.load("swfobject", "2.2");
-  </script>
-
-  <%= javascript_include_tag 'rails', 'fancybox', 'carousel.lite', 'application' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
 
 <!-- so:JavaScripts -->
