@@ -13,7 +13,7 @@ module Noodall
       end
     else
       initializer "Add noodall assets to precomiler" do |app|
-        app.config.assets.precompile += %w( admin.css admin.js admin/ie6.css  admin/ie.css  admin/ie8.css admin/tinymce.css tinymce/* )
+        app.config.assets.precompile += %w( admin.css admin.js admin/ie6.css  admin/ie.css  admin/ie8.css admin/tinymce.css tiny_mce/* )
       end
     end
 
