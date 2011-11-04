@@ -12,6 +12,6 @@ end
 
 task :default => :spec
 
-require File.expand_path('../config/application', __FILE__)
+#require File.expand_path('../config/application', __FILE__)
 
-Noodall::Application.load_tasks
+#Noodall::Application.load_tasks
