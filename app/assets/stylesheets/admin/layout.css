@@ -311,7 +311,7 @@ form#uploader {
 .pagination span,
 .pagination em,
 .pagination a {
-        padding:0 4px;
+        padding:0 1px;
         vertical-align: middle;
 }
 
