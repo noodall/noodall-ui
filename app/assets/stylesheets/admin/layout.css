@@ -288,7 +288,7 @@ form#uploader {
   float: left;
   margin: 95px 0 0 50px;
   cursor: pointer;
-  background: url(/images/admin/image_choices.png)
+  background: url(/assets/admin/image_choices.png)
 }
 
 #asset-browser div.medium {
@@ -311,7 +311,7 @@ form#uploader {
 .pagination span,
 .pagination em,
 .pagination a {
-        padding:0 4px;
+        padding:0 1px;
         vertical-align: middle;
 }
 
