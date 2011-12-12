@@ -664,10 +664,6 @@ table.component-table td a {
         height: 100%;
 }
 
-#preview-pane {
-        display:none;
-}
-
 #fancybox-inner #preview-pane {
          display:block;
 }
