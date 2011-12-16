@@ -39,7 +39,7 @@
       <h1><strong><%= Noodall::UI.app_name %></strong> <%= Noodall::UI.system_name %></h1>
       <ul id="status">
         <li><%= current_user.full_name %> is logged in</li>
-        <li><%= link_to 'Sign Out', destroy_user_session_path  %></li>
+        <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
         <li><%= link_to 'Live Site', '/' %></li>
       </ul>
     </div>
