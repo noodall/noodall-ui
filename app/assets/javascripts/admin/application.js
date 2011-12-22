@@ -248,7 +248,6 @@ var Component = {
     Component.last_slot_index = target.attr('id').replace(/[^_]+_slot_(\d+)_type/i, "$1");
   },
   fancy_open_slot: function(args) {
-    console.log('here');
     Component.open_slot(args[0]);
   },
   open_slot: function(slot_link) {
