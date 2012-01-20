@@ -92,15 +92,12 @@ Then /^I should see the child listed within the other parent's children$/ do
 end
 
 Then /^I should be able change the order of the root's children$/ do
-  table = table(tableish("table tr", 'td, th'))
-  title = table.hashes[2]['Title'] # 2 as zero index
+  title = find("table tbody tr:nth(3) td:first-child").text.strip
   within(:css, 'table tbody tr:nth(3)') { click_link "up" }
-  table = table(tableish("table tr", 'td, th'))
-  table.hashes[1]['Title'].should == title
+  find("table tbody tr:nth(2) td:first-child").text.strip.should == title
   within(:css, 'table tbody tr:nth(2)' ) { click_link "down" }
   within(:css, 'table tbody tr:nth(3)' ) { click_link "down" }
-  table = table(tableish("table tr", 'td, th'))
-  table.hashes[3]['Title'].should == title
+  find("table tbody tr:nth(4) td:first-child").text.strip.should == title
 end
 
 When /^I create a new child under an ancestor in "([^"]+)" template$/ do |template_title|

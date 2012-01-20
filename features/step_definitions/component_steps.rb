@@ -19,7 +19,7 @@ end
 When /^(?:|I )fill in the following within the component:$/ do |fields|
   within "#fancybox-content" do
     fields.rows_hash.each do |name, value|
-      When %{I fill in "#{name}" with "#{value}"}
+      step %{I fill in "#{name}" with "#{value}"}
     end
   end
 end

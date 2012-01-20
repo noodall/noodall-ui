@@ -17,17 +17,17 @@ Given /^some nodes exist$/ do
 end
 
 Then /^the nodes should be ordered by "Name"$/ do
-  Then %{I should see in this order: A Header, B Header, C Header}
+  step %{I should see in this order: A Header, B Header, C Header}
 end
 
 
 Then /^the nodes should be ordered by "Type"$/ do
-  Then %{I should see in this order: Page A, Noodall/Node, Noodall/Node}
+  step %{I should see in this order: Page A, Noodall/Node, Noodall/Node}
 end
 
 
 Then /^the nodes should be ordered by "Updated"$/ do
-  Then %{I should see in this order: 15:37:00, 14:37:00, 13:37:00 }
+  step %{I should see in this order: 15:37:00, 14:37:00, 13:37:00 }
 end
 
 Then /^(?:|I )should see in this order(?: within "([^\"]*)")?: (.*)$/ do |selector, text|

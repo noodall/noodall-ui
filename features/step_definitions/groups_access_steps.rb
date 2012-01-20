@@ -17,7 +17,7 @@ end
 
 Then(/^only users in the "([^\"]*)" and "([^\"]*)" should be able to ([^\"]*) content$/) do |group1, group2, actions|
   [group1, group2].each do |group|
-    Given %{I am signed in as a #{group}}
+    step %{I am signed in as a #{group}}
     actions.split(', ').each do |action|
       case action
       when "Update"
@@ -45,12 +45,12 @@ Then(/^only users in the "([^\"]*)" and "([^\"]*)" should be able to ([^\"]*) co
         visit node_path(@_content)
       end
     end
-    Then %{I sign out} #Neeed to do this or remeber cookie gets in the way
+    step %{I sign out} #Neeed to do this or remeber cookie gets in the way
   end
 end
 
 Then(/^users not in the "([^\"]*)" and "([^\"]*)" should not be able to ([^\"]*) content$/) do |group1, group2, action|
-  Given %{I am signed in as a nogood}
+  step %{I am signed in as a nogood}
   case action
   when "Update"
     visit noodall_admin_node_path(@_content)
@@ -77,7 +77,7 @@ Given /^content exists with permissions set$/ do
 end
 
 When /^a child of that content is created$/ do
-  Given %{I am signed in as a website administrator}
+  step %{I am signed in as a website administrator}
   visit noodall_admin_node_nodes_path(@_content)
   within(".choices") { click_link "New" }
   fill_in "Title", :with => "Permeable Content"
@@ -104,7 +104,7 @@ Then(/^by default the child should have the same permissions as it's parent$/) d
 end
 
 Then /^I should be able to carry out all actions regardless of group permissions$/ do
-  Given %{content exists with permissions set}
+  step %{content exists with permissions set}
   visit noodall_admin_node_path(@_content)
   click_button "Draft"
   visit noodall_admin_node_nodes_path(@_content)
@@ -126,7 +126,7 @@ end
 
 Then /^a user not in the group editor will no be able to edit any content$/ do
   Factory(:home, :title => 'Home', :publish => true)
-  Given %{I am signed in as a nogood}
+  step %{I am signed in as a nogood}
   visit noodall_admin_nodes_path
   page.should have_content("You do not have permission to do that")
 end
