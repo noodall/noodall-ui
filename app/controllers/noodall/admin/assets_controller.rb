@@ -66,8 +66,8 @@ module Noodall
       end
 
       def pending
-        @asset = Asset.first(:tags => nil, :offset => params[:offset], :order => "created_at DESC")
-        unless @asset.blank?
+        @asset = Asset.first(:tags => { '$size' => 0 }, :order => "created_at DESC")
+        if !@asset.blank?
           respond_to do |format|
             format.html { render :form }
             format.js { render :form }
@@ -230,7 +230,7 @@ module Noodall
       helper_method :admin_assets_type_url
 
       def pending_count
-        @pending_count ||= Asset.count(:tags => nil)
+        @pending_count ||= Asset.count(:tags => { '$size' => 0 })
       end
       helper_method :pending_count
 
