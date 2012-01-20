@@ -12,7 +12,7 @@ end
 Then /^the form should contain version (\d+)$/ do |version|
   @_content = Noodall::Node.find(@_content.id) # Reload the model to remove memoized versions (reload does not do this)
   version = @_content.version_at(version.to_i)
-  Then %{the "Title" field should contain "#{version.content(:title)}"}
+  step %{the "Title" field should contain "#{version.content(:title)}"}
 end
 
 Then /^I should see a list of previous versions$/ do
