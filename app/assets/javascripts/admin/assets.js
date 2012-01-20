@@ -7,7 +7,6 @@ function setUpAssets() {
       'script' );
     return false;
   });
-  ajaxifyForms('form.edit_asset');
 }
 setUpAssets();
 

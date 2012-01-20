@@ -5,10 +5,8 @@
     <li class="file" title="<%= h( asset.title ) %>">
       <div class="file-detail" id="asset-<%= asset.id %>">
         <span class="file-title"><%= h( asset.title ) %></span>
-
         <%= (asset.image? or asset.video?) ? image_tag( asset.url('70x70#', asset.web_image_extension)  ) : asset_icon(asset) %>
       </div>
-
       <%= link_to 'Show', noodall_admin_asset_path(asset, :readonly => readonly), :class => 'show button', :title => 'View this asset' %>
       <%= link_to 'Add me', asset.url, :class => 'add button', :title => 'Add this asset' %>
     </li>
