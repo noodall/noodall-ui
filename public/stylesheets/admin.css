@@ -633,7 +633,7 @@ form#uploader {
 /* ASSET BROWSER */
 
 #asset-browser {
-        height: 500px;
+        height: 550px;
         width:800px;
         overflow: hidden;
 }
@@ -730,7 +730,7 @@ form#uploader {
   float: left;
   margin: 95px 0 0 50px;
   cursor: pointer;
-  background: url(/assets/admin/image_choices.png)
+  background: url(/images/admin/image_choices.png)
 }
 
 #asset-browser div.medium {
@@ -753,7 +753,7 @@ form#uploader {
 .pagination span,
 .pagination em,
 .pagination a {
-        padding:0 4px;
+        padding:0 1px;
         vertical-align: middle;
 }
 
@@ -1106,10 +1106,6 @@ table.component-table td a {
         height: 100%;
 }
 
-#preview-pane {
-        display:none;
-}
-
 #fancybox-inner #preview-pane {
          display:block;
 }
@@ -1253,6 +1249,16 @@ li.multi-file .file-detail img {clear:both;float:left;}
   filter: dropshadow(color=#659132, offx=2, offy=2);
   margin: 0;
 }
+
+/* -------------- Popular Tags -------------- */
+span.tags {
+  font-size: 15px;
+  padding: 10px 0;
+  display: block;
+  line-height: 1.5;
+}
+
+
 
 /* -------------- CLEARFIX -------------- */
 
@@ -1474,7 +1480,7 @@ table.content td.down {
 }
 
 a.change {
-        background: url(/assets/admin/change.gif) no-repeat 0 0;
+        background: url(/images/admin/change.gif) no-repeat 0 0;
         height:27px;
         margin:5px 0 0px;
         width:280px;
@@ -1482,15 +1488,15 @@ a.change {
 
 ul.choices li a {
         color:#000;
-        background: url(/assets/admin/media.gif) no-repeat 0 0;
+        background: url(/images/admin/media.gif) no-repeat 0 0;
 }
 
 ul.choices li a.button {
-        background: url(/assets/admin/nav.gif) no-repeat 0 0;
+        background: url(/images/admin/nav.gif) no-repeat 0 0;
 }
 
 ul.choices li a.up.button {
-        background: url(/assets/admin/nav-2.gif) no-repeat 0 -44px;
+        background: url(/images/admin/nav-2.gif) no-repeat 0 -44px;
 }
 
   ul.choices li a.up.button:hover  {
@@ -1586,7 +1592,7 @@ ul.choices li a:hover {
 }
 
 #tags a, div.tags a {
-        background:#fff url(/assets/admin/tag.png) no-repeat -3px -2px;
+        background:#fff url(/images/admin/tag.png) no-repeat -3px -2px;
         color:#000;
 }
 
@@ -1611,7 +1617,7 @@ ul.choices li a:hover {
 
 .pagination .previous_page,
 .pagination .next_page {
-        background:url("/assets/admin/pagination.gif") no-repeat scroll;
+        background:url("/images/admin/pagination.gif") no-repeat scroll;
 
 }
 
@@ -1634,7 +1640,7 @@ ul.choices li a:hover {
 /* -------------- TABLE ICONS -------------- */
 
 a.edit, span.edit {
-        background:url(/assets/admin/edit.png) no-repeat right -4px;
+        background:url(/images/admin/edit.png) no-repeat right -4px;
 }
 
   a.edit:hover, span.edit:hover {
@@ -1642,7 +1648,7 @@ a.edit, span.edit {
   }
 
 a.delete, span.delete {
-        background:url(/assets/admin/delete.png) no-repeat -1px -4px;
+        background:url(/images/admin/delete.png) no-repeat -1px -4px;
 }
 
 td.spam {
@@ -1650,42 +1656,42 @@ td.spam {
 }
 
 td.spam.flagged {
-  background:url(/assets/admin/spam-flag.png) no-repeat 8px 8px;
+  background:url(/images/admin/spam-flag.png) no-repeat 8px 8px;
 }
 
 a.download {
-  background:url(/assets/admin/download.png) no-repeat -1px -4px;
+  background:url(/images/admin/download.png) no-repeat -1px -4px;
 }
 
 a.show {
-  background:url(/assets/admin/view.png) no-repeat -1px -4px;
+  background:url(/images/admin/view.png) no-repeat -1px -4px;
 }
 
 a.page_up {
-  background:url(/assets/admin/up.png) no-repeat -1px -4px;
+  background:url(/images/admin/up.png) no-repeat -1px -4px;
 }
 
 a.page_down {
-  background:url(/assets/admin/down.png) no-repeat -1px -4px;
+  background:url(/images/admin/down.png) no-repeat -1px -4px;
 }
 
 span.check {
-  background:url(/assets/admin/check.png) no-repeat -1px -4px;
+  background:url(/images/admin/check.png) no-repeat -1px -4px;
 }
 
 span.hidden {
-  background:url(/assets/admin/hidden.png) no-repeat -1px -4px;
+  background:url(/images/admin/hidden.png) no-repeat -1px -4px;
 }
 
 a.child, a.add{
-  background:url(/assets/admin/add.png) no-repeat -1px -4px;
+  background:url(/images/admin/add.png) no-repeat -1px -4px;
 }
 
 #asset-browser.multi a.add {
-  background:url(/assets/admin/select_image.gif) no-repeat 4px;
+  background:url(/images/admin/select_image.gif) no-repeat 4px;
 }
 #asset-browser.multi a.add.selected {
-  background:url(/assets/admin/select_image.gif) no-repeat -22px;
+  background:url(/images/admin/select_image.gif) no-repeat -22px;
 }
 a.delete:hover,
 span.delete:hover,
@@ -1710,7 +1716,7 @@ td.file:hover a.show {
 td.file:hover {cursor:pointer;}
 
 th.sort a {
-          background:url(/assets/admin/sort.png) no-repeat right 1px !important;
+          background:url(/images/admin/sort.png) no-repeat right 1px !important;
           padding:10px 42px 10px 0;
 }
 
@@ -1720,7 +1726,7 @@ th.sort a:hover {
 }
 
 .edit-item {
-          background:url(/assets/admin/edit.gif) no-repeat;
+          background:url(/images/admin/edit.gif) no-repeat;
           width:89px;
           height:26px;
           position:absolute;
@@ -1812,13 +1818,13 @@ table#node_body_tbl,
 
 span.tooltip,
 #content form .fixed-form span.tooltip {
-        background:url(/assets/admin/info.png) no-repeat center center;
+        background:url(/images/admin/info.png) no-repeat center center;
         cursor:help;
 }
 
 a.tooltip,
 th .tooltip {
-        background:url(/assets/admin/info-white.png) no-repeat center center;
+        background:url(/images/admin/info-white.png) no-repeat center center;
 }
 
 .tooltip-show {
@@ -1828,15 +1834,15 @@ th .tooltip {
 }
 
 /*.tooltip-top {
-        background:url(/assets/admin/tooltip-top.png) no-repeat;
+        background:url(/images/admin/tooltip-top.png) no-repeat;
 }
 
 .tooltip-middle {
-        background:url(/assets/admin/tooltip-middle.png) repeat;
+        background:url(/images/admin/tooltip-middle.png) repeat;
 }
 
 .tooltip-bottom {
-        background:url(/assets/admin/tooltip-bottom.png) no-repeat;
+        background:url(/images/admin/tooltip-bottom.png) no-repeat;
 }
 */
 
@@ -1974,7 +1980,7 @@ a:hover {
 
 /*download button*/
 #content form input.download-button{
-  background:url("/assets/admin/nav.gif") no-repeat scroll 0 -88px transparent;
+  background:url("/images/admin/nav.gif") no-repeat scroll 0 -88px transparent;
   border:0 none;
   color:#FFFFFF;
   font-size:0;
@@ -2035,9 +2041,6 @@ body, textarea {
   font-family: 'Arial', verdana, sans-serif;
 }
 
-/*#content h1, #header h1{
-}*/
-
 
 /* -------------- FONT SIZES -------------- */
 
@@ -2067,11 +2070,6 @@ span.node-mover
 #info p,
 #no-tags p {
     font-size:1.2em;
-  }
-
-  /* 13px */
-  {
-    font-size:1.3em;
   }
 
   /* 14px */
@@ -2105,45 +2103,10 @@ table#versions-list td,
     font-size:1.6em;
   }
 
-  /* 17px */
-  {
-    font-size:1.7em;
-  }
-
-  /* 18px */
-  {
-    font-size:1.8em;
-  }
-
-  /* 19px */
-  {
-    font-size:1.9em;
-  }
-
   /* 20px */
 h2.title
   {
     font-size:2.0em;
-  }
-
-  /* 21px */
-  {
-    font-size:2.1em;
-  }
-
-  /* 22px */
-  {
-    font-size:2.2em;
-  }
-
-  /* 23px */
-  {
-    font-size:2.3em;
-  }
-
-  /* 24px */
-  {
-    font-size:2.4em;
   }
 
   /* 36px */
@@ -2188,29 +2151,6 @@ div#flash a,
     font-weight: bold;
   }
 
-  /* Italic */
-  {
-    font-style: italic;
-  }
-
-  /* Underline */
-  {
-    text-decoration: underline;
-  }
-
-  /* Unordered List */
-  {
-    list-style-type: disc;
-  }
-
-  /* Ordered List */
-  {
-    list-style-type: decimal;
-  }
-
-
-  }
-
   /* Uppercase */
 label,
 #sub-form h2,
@@ -2235,12 +2175,6 @@ div#content-table table.content td.file {
 #info p {
   line-height:16px;
 }
-
-/* -------------- LETTER SPACING -------------- */
-
-
-
-/* -------------- WORD SPACING -------------- */
 
 /* -------------- Forms (inputs, textareas etc) -------------- */
 
@@ -2423,7 +2357,7 @@ div#form-fields table input {
 }
 
 .form-save, .form-reset, .form-delete {
-        background:url(/assets/admin/set.gif) no-repeat;
+        background:url(/images/admin/set.gif) no-repeat;
         margin:27px;
         width:110px;
         height:26px;
@@ -2432,18 +2366,18 @@ div#form-fields table input {
 }
 
 .form-reset {
-       background:url(/assets/admin/cancel-small.gif) no-repeat;
+       background:url(/images/admin/cancel-small.gif) no-repeat;
        float:right;
        margin:27px 0;
 }
 
 .form-delete {
-       background:url(/assets/admin/clear.gif) no-repeat;
+       background:url(/images/admin/clear.gif) no-repeat;
        float:right;
 }
 
 .add-multi-asset {
-        background:url(/assets/admin/add_file.gif) no-repeat;
+        background:url(/images/admin/add_file.gif) no-repeat;
         overflow: hidden;
         width:110px;
         height:26px;
@@ -2455,7 +2389,7 @@ p.add-multi-asset span{
 }
 
 .remove {
-        background:url(/assets/admin/remove.gif) no-repeat;
+        background:url(/images/admin/remove.gif) no-repeat;
         overflow: hidden;
         width:110px;
         height:26px;
@@ -2479,7 +2413,7 @@ p.remove span{
 }
 
 #content form .fixed-form input.publish {
-          background:url(/assets/admin/publish.gif) no-repeat;
+          background:url(/images/admin/publish.gif) no-repeat;
           width:160px;
           height:56px;
           top:20px;
@@ -2489,7 +2423,7 @@ p.remove span{
 }
 
 #content form .fixed-form input.create {
-          background:url(/assets/admin/create.gif) no-repeat;
+          background:url(/images/admin/create.gif) no-repeat;
           width:160px;
           height:56px;
           top:20px;
@@ -2500,7 +2434,7 @@ p.remove span{
 }
 
 #content form .fixed-form input.update {
-          background:url(/assets/admin/update.gif) no-repeat;
+          background:url(/images/admin/update.gif) no-repeat;
           width:160px;
           height:56px;
           top:20px;
@@ -2510,7 +2444,7 @@ p.remove span{
 }
 
 #content form .fixed-form input.change {
-          background:url(/assets/admin/change-bg.gif) no-repeat;
+          background:url(/images/admin/change-bg.gif) no-repeat;
           width:160px;
           height:56px;
           top:20px;
@@ -2520,7 +2454,7 @@ p.remove span{
 }
 
 #content form .fixed-form a.preview {
-          background:url(/assets/admin/preview.gif) no-repeat;
+          background:url(/images/admin/preview.gif) no-repeat;
           width:110px;
           height:26px;
           left:190px;
@@ -2530,7 +2464,7 @@ p.remove span{
 }
 
 #content form .fixed-form a#versions-button {
-          background:url(/assets/admin/versions.gif) no-repeat;
+          background:url(/images/admin/versions.gif) no-repeat;
           width:110px;
           height:26px;
           left:440px;
@@ -2541,7 +2475,7 @@ p.remove span{
 
 
 #content form .fixed-form input.draft {
-          background:url(/assets/admin/draft.gif) no-repeat;
+          background:url(/images/admin/draft.gif) no-repeat;
           width:110px;
           height:26px;
           left:305px;
@@ -2552,7 +2486,7 @@ p.remove span{
 }
 
 .fixed-form input#hide {
-          background:url(/assets/admin/hide.gif) no-repeat;
+          background:url(/images/admin/hide.gif) no-repeat;
           width:160px;
           height:56px;
           cursor:pointer;
@@ -2563,7 +2497,7 @@ p.remove span{
 }
 
 .fixed-form a.cancel, .fixed-form a.delete {
-          background:url(/assets/admin/cancel.gif) no-repeat;
+          background:url(/images/admin/cancel.gif) no-repeat;
           width:160px;
           height:56px;
           cursor:pointer;
@@ -2574,7 +2508,7 @@ p.remove span{
 }
 
 .fixed-form a.delete {
-          background:url(/assets/admin/delete.gif) no-repeat;
+          background:url(/images/admin/delete.gif) no-repeat;
           top:20px;
           right:240px;
 }
@@ -2605,7 +2539,7 @@ body.new .fixed-form a.cancel {
 
 #content form .fixed-form legend.advanced,
 #content form .fixed-form a.advanced {
-        background:url(/assets/admin/advanced.gif) no-repeat left top;
+        background:url(/images/admin/advanced.gif) no-repeat left top;
         cursor:pointer;
         height:26px !important;
         left:190px;
@@ -2668,12 +2602,12 @@ div#flash div {
 }
 
 div#flash div.notice {
-          background:#82b452 url(/assets/admin/check.png) no-repeat 10px 5px;
+          background:#82b452 url(/images/admin/check.png) no-repeat 10px 5px;
           border:3px solid #548126;
 }
 
 div#flash div.error {
-          background:#E47373 url(/assets/admin/delete.png) no-repeat 10px 5px;
+          background:#E47373 url(/images/admin/delete.png) no-repeat 10px 5px;
           border:3px solid #9C3B3B;
           color:#fff;
 }
@@ -2744,7 +2678,7 @@ a.jqTransformSelectOpen {
           right: 0px;
           width: 32px;
           height: 27px;
-          background: url(/assets/admin/forms/select-right.gif) no-repeat center top;
+          background: url(/images/admin/forms/select-right.gif) no-repeat center top;
 }
 
 p.template .jqTransformSelectWrapper ul {
@@ -2816,6 +2750,184 @@ fieldset.template label {
 
 .jqTransformHidden {
           display: none;
+}
+/* 
+   Plupload
+------------------------------------------------------------------- */
+
+
+.plupload_button {
+	display: -moz-inline-box; /* FF < 3*/
+	display: inline-block;
+	font: normal 12px sans-serif;
+	text-decoration: none;
+    color: #42454a;
+    border: 1px solid #bababa;
+    padding: 2px 8px 3px 20px;
+	margin-right: 4px;
+    background: #f3f3f3 url('../img/buttons.png') no-repeat 0 center;
+	outline: 0;
+
+    /* Optional rounded corners for browsers that support it */
+    -moz-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.plupload_button:hover {
+	color: #000;
+	text-decoration: none;
+}
+
+.plupload_disabled, a.plupload_disabled:hover {
+    color: #737373;
+    border-color: #c5c5c5;
+    background: #ededed url('../img/buttons-disabled.png') no-repeat 0 center;
+	cursor: default;
+}
+
+.plupload_add {
+	background-position: -181px center;
+}
+
+.plupload_wrapper {
+	font: normal 11px Verdana,sans-serif;
+	width: 100%;
+}
+
+.plupload_container {
+	padding: 8px;
+	background: url('../img/transp50.png');
+	/*-moz-border-radius: 5px;*/
+}
+
+.plupload_container input {
+	border: 1px solid #DDD;
+	font: normal 11px Verdana,sans-serif;
+	width: 98%;
+}
+
+.plupload_header {background: #2A2C2E url('../img/backgrounds.gif') repeat-x;}
+.plupload_header_content {
+	background: url('../img/backgrounds.gif') no-repeat 0 -317px;
+	min-height: 56px;
+	padding-left: 60px;
+	color: #FFF;
+}
+.plupload_header_title {
+	font: normal 18px sans-serif;
+	padding: 6px 0 3px;
+}
+.plupload_header_text {
+	font: normal 12px sans-serif;
+}
+
+.plupload_filelist {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.plupload_scroll .plupload_filelist {
+	height: 185px;
+	background: #F5F5F5;
+	overflow-y: scroll;
+}
+
+.plupload_filelist li {
+	padding: 10px 8px;
+	background: #F5F5F5 url('../img/backgrounds.gif') repeat-x 0 -156px;
+	border-bottom: 1px solid #DDD;
+}
+
+.plupload_filelist_header, .plupload_filelist_footer {
+	background: #DFDFDF;
+	padding: 8px 8px;
+	color: #42454A;
+}
+.plupload_filelist_header {	
+	border-top: 1px solid #EEE;
+	border-bottom: 1px solid #CDCDCD;
+}
+
+.plupload_filelist_footer {border-top: 1px solid #FFF; height: 22px; line-height: 20px; vertical-align: middle;}
+.plupload_file_name {float: left; overflow: hidden}
+.plupload_file_status {color: #777;}
+.plupload_file_status span {color: #42454A;}
+.plupload_file_size, .plupload_file_status, .plupload_progress {
+	float: right;
+	width: 80px;
+}
+.plupload_file_size, .plupload_file_status, .plupload_file_action {text-align: right;}
+
+.plupload_filelist .plupload_file_name {width: 205px}
+
+.plupload_file_action {
+	float: right;
+	width: 16px;
+	height: 16px;
+	margin-left: 15px;
+}
+
+.plupload_file_action * {
+	display: none;
+	width: 16px;
+	height: 16px;
+}
+
+li.plupload_uploading {background: #ECF3DC url('../img/backgrounds.gif') repeat-x 0 -238px;}
+li.plupload_done {color:#AAA}
+
+li.plupload_delete a {
+	background: url('../img/delete.gif');
+}
+
+li.plupload_failed a {
+	background: url('../img/error.gif');
+	cursor: default;
+}
+
+li.plupload_done a {
+	background: url('../img/done.gif');
+	cursor: default;
+}
+
+.plupload_progress, .plupload_upload_status {
+	display: none;
+}
+
+.plupload_progress_container {
+	margin-top: 3px;
+	border: 1px solid #CCC;
+	background: #FFF;
+	padding: 1px;
+}
+.plupload_progress_bar {
+	width: 0px;
+	height: 7px;
+	background: #CDEB8B;
+}
+
+.plupload_scroll .plupload_filelist_header .plupload_file_action, .plupload_scroll .plupload_filelist_footer .plupload_file_action {
+	margin-right: 17px;
+}
+
+/* Floats */
+
+.plupload_clear,.plupload_clearer {clear: both;}
+.plupload_clearer, .plupload_progress_bar {
+	display: block;
+	font-size: 0;
+	line-height: 0;	
+}
+
+li.plupload_droptext {
+	background: transparent;
+	text-align: center;
+	vertical-align: middle;
+	border: 0;
+	line-height: 165px;
 }
 /* ...
 */
