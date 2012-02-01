@@ -26,14 +26,6 @@ module Noodall
 
       def tree
         @options = {}
-        @options[:_type] = params[:allowed_types] if params[:allowed_types]
-        if params[:not_branch]
-          @options.merge!(
-            :_id => {"$ne" => BSON::ObjectId.from_string(params[:not_branch])},
-            Node.path_field => {"$ne" => BSON::ObjectId.from_string(params[:not_branch])}
-          )
-        end
-
         respond_to do |format|
           format.html
           format.js

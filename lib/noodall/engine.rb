@@ -7,9 +7,9 @@ module Noodall
 
     if Rails::VERSION::MINOR == 0 # if rails 3.0.x
       initializer "static assets" do |app|
+        app.middleware.use ::ActionDispatch::Static, File.join(root, 'public')
         app.middleware.use ::ActionDispatch::Static, File.join(root, 'app', 'assets')
         app.middleware.use ::ActionDispatch::Static, File.join(root, 'vendor', 'assets')
-        app.middleware.use ::ActionDispatch::Static, File.join(root, 'public')
       end
     else
       initializer "Add noodall assets to precomiler" do |app|
