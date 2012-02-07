@@ -1,7 +1,7 @@
 <ol class="tree">
 <% for node in nodes %>
   <li>
-    <% if params[:allowed_types].include?(node.class.to_s) && node.id != params[:not_branch] && !node.path.include?(params[:not_branch]) %>
+    <% if ( params[:allowed_types] && params[:allowed_types].include?(node.class.to_s) ) && node.id != params[:not_branch] && !node.path.include?(params[:not_branch]) %>
       <%= link_to h(node.title), node_path(node), :id => "id-#{node.id}" %>
     <% else %>
       <%= node.title %>
