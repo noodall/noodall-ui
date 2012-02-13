@@ -37,9 +37,8 @@ module Noodall
     def sitemap
       if stale?(:last_modified => GlobalUpdateTime::Stamp.read, :public => true)
         @page_title = 'Sitemap'
+        @nodes = Node.all
       end
-
-      @nodes = Node.all
     end
 
     def search
