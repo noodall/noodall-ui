@@ -1,0 +1,378 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>TINYMCE - Help</title>
+  <script type="text/javascript" src="../../tiny_mce_popup.js"></script>
+<style type="text/css">
+table th {
+	color: #FFF;
+}
+p, td, h1, h2, h3, h4{
+	font-family: arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	
+}
+p, td {
+	font-size: 12px;
+}
+
+th {
+	font-size: 16px;
+}
+html {
+  background:#FFFFFF;
+}
+#wrapper {
+	background:#FFFFFF;
+	width:100%
+	height:100%
+}
+
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<form onsubmit="AddvideoDialog.insert();return false;" action="#">
+  <div id="wrapper">
+    <h1>	TinyMCE User Manual</h1>
+      <div class="referenceManualCollation depth-1">
+      <h1>1.Introduction</h1>
+      <p class="documentDescription">Introduction to TinyMCE.</p>
+      <div>
+        <div>
+          <p>&nbsp;</p>
+          <p>TinyMCE is a platform independent web based Javascript HTML WYSIWYG editor. What this means is that it will let you create html content on your web site. This user manual will show you all the basics of the TinyMCE editor.</p>
+<p><span class="ingress"></span></p>
+        </div>
+      </div>
+    </div>        
+    <div class="referenceManualCollation depth-1">
+      <h1>&nbsp;</h1>
+      <h1>2. Basics </h1>
+      <p class="documentDescription">Basic options of TinyMCE.</p>
+    <div>
+      <div>
+        <p>The default TinyMCE editor will look like this:</p>
+        <p><img class="image-inline" src="img/help/default.gif" alt=""></p>
+        <p>On top you can see the toolbar, below the text area and at the bottom a resize bar. If you drag the lower right corner you can make the editor window bigger or smaller.</p>
+        <h2>&nbsp;</h2>
+        <h2>Toolbar</h2>
+        <p>The following table describes the function and output of each button.</p>
+        <table class="listing"><thead><tr><th width="117" height="40" align="left" valign="middle" bgcolor="#4a4747"><div align="left">Icon</div></th>
+          <th width="134" height="40" align="left" valign="middle" bgcolor="#4a4747"><div align="left">Function</div></th>
+          <th width="300" height="40" align="left" valign="middle" bgcolor="#4a4747"><div align="left">Description</div></th>
+          <th width="67" height="40" align="left" valign="middle" bgcolor="#4a4747"><div align="left">Example</div></th>
+          </tr></thead><tbody><tr class="even"><td><img class="image-inline" src="img/help/save.gif" alt=""></td>
+          <td bgcolor="#fff6d3">save</td>
+          <td bgcolor="#fff6d3">Saves changes <br></td>
+          <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr><tr><td valign="top" rowspan="6"><img class="image-inline" src="img/help/style.gif" alt="">&nbsp;<br></td>
+          <td valign="top" bgcolor="#fff6d3">text style<br></td>
+          <td valign="top" bgcolor="#fff6d3">Heading 2<br></td>
+          <td valign="top" bgcolor="#fff6d3">text<br></td>
+          </tr><tr class="even"><td valign="top" bgcolor="#fff6d3"><br></td>
+          <td valign="top" bgcolor="#fff6d3">Heading 3<br></td>
+          <td valign="top" bgcolor="#fff6d3">
+          <h2>text</h2>
+          </td>
+          </tr><tr><td valign="top" bgcolor="#fff6d3"><br></td>
+          <td valign="top" bgcolor="#fff6d3">Heading 4<br></td>
+          <td valign="top" bgcolor="#fff6d3">
+          <h3>text</h3>
+          </td>
+          </tr><tr class="even"><td valign="top" bgcolor="#fff6d3"><br></td>
+          <td valign="top" bgcolor="#fff6d3">Paragrpah<br></td>
+          <td valign="top" bgcolor="#fff6d3">
+          <pre>text</pre>
+          </td>
+          </tr><tr><td valign="top" bgcolor="#fff6d3"><br></td>
+          <td valign="top" bgcolor="#fff6d3"><br></td>
+          <td valign="top" bgcolor="#fff6d3">
+          <p class="discreet">&nbsp;</p>
+          </td>
+          </tr><tr class="even"><td colspan="3" valign="top"><br></td>
+          </tr>
+          <tr class="even">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr class="even"><td><img class="image-inline" src="img/help/bold.gif" alt=""><br></td>
+          <td bgcolor="#fff6d3">bold<br></td>
+          <td bgcolor="#fff6d3">Bolds selected text<br></td>
+          <td bgcolor="#fff6d3"><strong>test</strong></td>
+          </tr><tr><td><img class="image-inline" src="img/help/italic.gif" alt=""><br></td>
+          <td bgcolor="#fff6d3">italic</td>
+          <td bgcolor="#fff6d3">Italicizes selected text<br></td>
+          <td bgcolor="#fff6d3"><em>text</em></td>
+          </tr>
+          <tr align="left" valign="bottom" class="even">
+            <td height="30"><strong>Justify</strong></td>
+            <td height="30" bgcolor="#fff6d3">&nbsp;</td>
+            <td height="30" bgcolor="#fff6d3">&nbsp;</td>
+            <td height="30" bgcolor="#fff6d3">&nbsp;</td>
+          </tr>
+          <tr class="even"><td><img class="image-inline" src="img/help/justifyleft.gif" alt=""></td>
+          <td bgcolor="#fff6d3">justify left<br></td>
+          <td bgcolor="#fff6d3">Aligns the selected text
+          to the left</td>
+          <td bgcolor="#fff6d3">text</td>
+          </tr><tr><td><img class="image-inline" src="img/help/justifycenter.gif" alt=""><br></td>
+          <td bgcolor="#fff6d3">justify center<br></td>
+          <td bgcolor="#fff6d3">Aligns the selected text
+          to the center of the screen</td>
+          <td align="center" bgcolor="#fff6d3">text<br></td>
+          </tr><tr class="even"><td><img class="image-inline" src="img/help/justifyright.gif" alt=""></td>
+          <td bgcolor="#fff6d3">justify right<br></td>
+          <td bgcolor="#fff6d3">Aligns the selected text
+          to the right</td>
+          <td align="right" bgcolor="#fff6d3">text<br></td>
+          </tr><tr><td><img class="image-inline" src="img/help/justifyfull.gif" alt=""></td>
+          <td bgcolor="#fff6d3">justify full<br></td>
+          <td bgcolor="#fff6d3">Aligns the selected text&nbsp; to both left and right<br></td>
+          <td bgcolor="#fff6d3">text <br></td>
+          </tr>
+          <tr align="left" valign="bottom" class="even">
+            <td height="30"><strong>Lists</strong></td>
+            <td height="30">&nbsp;</td>
+            <td height="30">&nbsp;</td>
+            <td height="30">&nbsp;</td>
+          </tr>
+          <tr class="even"><td><img class="image-inline" src="img/help/bullist.gif" alt=""></td>
+          <td bgcolor="#fff6d3">bulleted list<br></td>
+          <td bgcolor="#fff6d3">Creates a
+          bulleted list</td>
+          <td bgcolor="#fff6d3">
+          <ul><li>item 1</li><li>item 2</li><li>item 3<br></li></ul></td>
+          </tr><tr><td><img class="image-inline" src="img/help/numlist.gif" alt=""></td>
+          <td bgcolor="#fff6d3">numbered list<br></td>
+          <td bgcolor="#fff6d3">Creates a
+          numbered list</td>
+          <td bgcolor="#fff6d3">
+          <ol><li>item 1</li><li>item 2</li><li>item 3<br></li></ol></td>
+          </tr>
+          <tr align="left" valign="bottom" class="even">
+            <td height="30"><strong>Indents</strong></td>
+            <td height="30" bgcolor="#fff6d3">&nbsp;</td>
+            <td height="30" bgcolor="#fff6d3">&nbsp;</td>
+            <td height="30" bgcolor="#fff6d3">&nbsp;</td>
+          </tr>
+          <tr class="even"><td><img class="image-inline" src="img/help/outdent.gif" alt=""></td>
+          <td bgcolor="#fff6d3">oudent</td>
+          <td bgcolor="#fff6d3">Moves an indented section
+          of text one tab to the left</td>
+          <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr><tr><td><img class="image-inline" src="img/help/indent.gif" alt=""></td>
+          <td bgcolor="#fff6d3">indent<br></td>
+          <td bgcolor="#fff6d3">Indents the selected text
+          by one tab</td>
+          <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr>
+          <tr align="left" valign="bottom" class="even">
+            <td height="30"><strong>Tables</strong></td>
+            <td height="30">&nbsp;</td>
+            <td height="30">&nbsp;</td>
+            <td height="30">&nbsp;</td>
+          </tr>
+          <tr class="even"><td><img class="image-inline" src="img/help/table.gif" alt=""></td>
+          <td bgcolor="#fff6d3">insert table<br></td>
+          <td bgcolor="#fff6d3">Inserts a table <br></td>
+          <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr><tr><td><img class="image-inline" src="img/help/rowproperties.gif" alt=""></td>
+          <td bgcolor="#fff6d3">row properties<br></td>
+          <td bgcolor="#fff6d3">Table row properties<br></td>
+          <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr><tr class="even"><td><img class="image-inline" src="img/help/celproperties.gif" alt=""></td>
+          <td bgcolor="#fff6d3">cell properties<br></td>
+          <td bgcolor="#fff6d3">Table cell properties<br></td>
+          <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr><tr><td><img class="image-inline" src="img/help/rowbefore.gif" alt=""></td>
+          <td bgcolor="#fff6d3">insert row before<br></td>
+          <td bgcolor="#fff6d3">Inserts a row before the current row<br></td>
+          <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr><tr class="even"><td><img class="image-inline" src="img/help/rowafter.gif" alt=""></td>
+          <td bgcolor="#fff6d3">insert row after<br></td>
+          <td bgcolor="#fff6d3">Inserts a row after the current row<br></td>
+          <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr><tr><td><img class="image-inline" src="img/help/delrow.gif" alt=""></td>
+          <td bgcolor="#fff6d3">delete row<br></td>
+          <td bgcolor="#fff6d3">Deletes the current row<br></td>
+          <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr><tr class="even"><td><img class="image-inline" src="img/help/colbefore.gif" alt=""></td>
+          <td bgcolor="#fff6d3">insert column before<br></td>
+          <td bgcolor="#fff6d3">Inserts a column before the current column<br></td>
+          <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr><tr><td><img class="image-inline" src="img/help/colafter.gif" alt=""></td>
+          <td bgcolor="#fff6d3">insert column after<br></td>
+          <td bgcolor="#fff6d3">Inserts a column after the current column<br></td>
+          <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr><tr class="even"><td><img class="image-inline" src="img/help/delcol.gif" alt=""></td>
+          <td bgcolor="#fff6d3">delete column<br></td>
+          <td bgcolor="#fff6d3">Deletes the current column<br></td>
+          <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr><tr><td><img class="image-inline" src="img/help/splitcel.gif" alt=""></td>
+          <td bgcolor="#fff6d3">split cells<br></td>
+          <td bgcolor="#fff6d3">Splits the current cell<br></td>
+          <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr><tr class="even"><td><img class="image-inline" src="img/help/mergecel.gif" alt=""></td>
+          <td bgcolor="#fff6d3">merge cells<br></td>
+          <td bgcolor="#fff6d3">Merge the current cell with other cells<br></td>
+          <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr>
+          <tr align="left" valign="bottom">
+            <td height="30"><strong>Links</strong></td>
+            <td height="30">&nbsp;</td>
+            <td height="30">&nbsp;</td>
+            <td height="30">&nbsp;</td>
+          </tr>
+          <tr><td><img class="image-inline" src="img/help/link.gif" alt="">&nbsp;</td>
+          <td bgcolor="#fff6d3">insert link<br></td>
+          <td bgcolor="#fff6d3">Inserts or edits a link<br></td>
+          <td bgcolor="#fff6d3"><br></td>
+          </tr><tr class="even"><td><img class="image-inline" src="img/help/unlink.gif" alt=""></td>
+          <td bgcolor="#fff6d3">unlink<br></td>
+          <td bgcolor="#fff6d3">Removes the current link<br></td>
+          <td bgcolor="#fff6d3"><br></td>
+          </tr><tr><td><img class="image-inline" src="img/help/anchor.gif" alt=""></td>
+            <td bgcolor="#fff6d3">insert anchor<br></td>
+            <td bgcolor="#fff6d3">Inserts or edits an anchor <br></td>
+            <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr>
+          <tr align="left" valign="bottom">
+            <td height="30"><strong>Media</strong></td>
+            <td height="30">&nbsp;</td>
+            <td height="30">&nbsp;</td>
+            <td height="30">&nbsp;</td>
+          </tr>
+          <tr><td><img class="image-inline" src="img/help/image.gif" alt="" /></td>
+          <td bgcolor="#fff6d3">insert image<br></td>
+          <td bgcolor="#fff6d3">Inserts or edits an image<br></td>
+          <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr><tr class="even"><td><img class="image-inline" src="img/help/embedded-icon.gif" alt="" /></td>
+          <td bgcolor="#fff6d3">insert media</td>
+          <td bgcolor="#fff6d3">Inserts or edits media</td>
+          <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr>
+          <tr class="even">
+            <td><img class="image-inline" src="img/help/insert-media-icon.gif" alt="" /></td>
+            <td bgcolor="#fff6d3">insert asset</td>
+            <td bgcolor="#fff6d3">Inserts an asset from the asset library</td>
+            <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr>
+          <tr class="even">
+            <td><img class="image-inline" src="img/help/internal-link-icon.gif" alt="" /></td>
+            <td align="left" valign="top" bgcolor="#fff6d3">insert internal link</td>
+            <td align="left" valign="top" bgcolor="#fff6d3">Inserts an internal link. i.e. A page you have<br />
+              created within your current site</td>
+            <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr>
+          <tr align="left" valign="bottom">
+            <td height="30"><strong>HTML</strong></td>
+            <td height="30">&nbsp;</td>
+            <td height="30">&nbsp;</td>
+            <td height="30">&nbsp;</td>
+          </tr>
+          <tr>
+            <td><img class="image-inline" src="img/help/code.gif" alt="" /></td>
+            <td bgcolor="#fff6d3">html<br /></td>
+            <td bgcolor="#fff6d3">Edit the HTML source code<br /></td>
+            <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr>
+          <tr class="even">
+            <td><img class="image-inline" src="img/help/attribute-icon.gif" alt="" /></td>
+            <td bgcolor="#fff6d3">insert attributes<br /></td>
+            <td bgcolor="#fff6d3">Inserts or edits an attributes<br /></td>
+            <td bgcolor="#fff6d3">&nbsp;</td>
+          </tr>
+          </tbody>
+        </table>
+        <p>&nbsp;</p>
+      </div>
+    </div>
+  </div>
+  
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+          
+  <div class="referenceManualCollation depth-1">
+    <h1>3. Inserting Asset    </h1>
+    <p>From here you can insert any asset from the asset library (or upload new files to the asset library) whether it be an image or document (PDF etc)</p>
+    <div>
+      <div>
+        <p><img class="image-inline" src="img/help/noodall_images.jpg" alt="" /></p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+      </div>
+  </div>
+  </div>        
+
+
+  <div class="referenceManualCollation depth-1">
+    <h1>4.Inserting Links
+    </h1>
+    <p class="documentDescription">Inserting internal, external and anchor links.</p>
+    <p class="documentDescription">&nbsp;</p>
+    <div>
+      <div>
+        <h2>Internal Links</h2>
+        <p>Select a word or phrase, click the <em>Insert/edit link</em> icon, and the <em>Insert/edit link</em> panel will appear:
+ </p>
+        <p><img class="image-inline" src="img/help/internal-links.jpg" alt="" /></p>
+        <p>&nbsp;</p>
+        <p>You use this panel by clicking on any of the pages. The green icon denotes and displays the available sub-pages</p>
+        <p>&nbsp;</p>
+        <h2>External Links</h2>
+        <p>Select a word or phrase, click the <em>Insert/edit link</em> icon:</p>
+        <p><img class="image-inline" src="img/help/insert-link.gif" alt="" /></p>
+        <p>&nbsp;</p>
+        <p>Type the web address of the external web site in the Link URL, you can then set the target. This determines if the link opens in the existing browser window or a new window/tab.</p>
+        <p>&nbsp;</p>
+        <h2>Anchors</h2>
+        <p align="left">Anchors are like position markers within a document,
+        based on headings, subheadings, or another style set within the
+        document. As an example, for a page called "Eastern Tiger Swallowtail,"
+        with subheadings entitled "Description," "Habitat," "Behavior,"
+        "Conservation Status," and "Literature," an easy set of links to these
+        subheadings (to the positions within the document at those subheadings)
+        can be created using anchors.</p>
+        <p align="left">First, create the document with the subheadings set within it, and re-type the subheadings at the top of the document:</p>
+        <p align="left"><img class="image-inline" src="img/help/anchor_page.jpg" alt=""></p>
+        <p align="left">&nbsp;</p>
+        <p align="left">Now create the anchors for each subheading. To create each anchor move the cursor to the beginning of the subheading and press the <em>Insert/edit anchor</em> icon. Enter the name of the anchor in&nbsp; the <em>Anchor name</em> field. Then click <em>ok</em>.</p>
+        <p align="left"><img class="image-inline" src="img/help/insert-anchor.gif" alt=""></p>
+        <p align="left">&nbsp;</p>
+        <p align="left">&nbsp;</p>
+        <p align="left">Then select each of the re-typed subheadings at the top and click the <em>Insert/edit link</em> icon to select by subheadings:</p>
+        <p align="left"><img class="image-inline" src="img/help/insert_anchor_select_text.jpg" alt=""></p>
+        <p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+      </div>
+    </div>
+  </div>        
+
+
+  <div class="referenceManualCollation depth-1">
+    <h1>&nbsp;</h1>
+    <h1>5.Inserting Tables</h1>
+    <p class="documentDescription">Inserting, updating and deleting tables, columns, rows and cells.</p>
+  <div>
+
+  <div>
+    <p>Tables are handy for tabular data and lists. To add a table, put your cursor where you want it and click the <em>Inserts a new table</em> icon.&nbsp; You'll see the <em>Insert/Modify table</em></p>
+    <p> panel:</p>
+    <p><img class="image-inline" src="img/help/insert-table.gif" alt="" /></p>
+    <p>From this window you can select the number of Columns (vertical) and Rows (horizontal) to appear within your table aswell as setting the width and height.</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  </div>
+  </div>        
+  </div>
+  <div class="mceActionPanel">
+    <input type="button" id="cancel" name="cancel" value="{#close}" onclick="tinyMCEPopup.close();" />
+  </div>
+</form>
+</body>
+</html>
