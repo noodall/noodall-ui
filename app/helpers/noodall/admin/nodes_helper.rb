@@ -34,14 +34,20 @@ module Noodall
 
       def slot_link(node,type,index)
         link_to( "#{type.to_s.titleize} Slot", "##{type}_component_form_#{index}", :id=> "#{type}_slot_#{index}_selector", :class => 'slot_link') +
-          "<span id=\"#{type}_slot_#{index}_tag\" class=\"slot_tag\">#{node.send("#{type}_slot_#{index}").class.name.titleize unless @node.send("#{type}_slot_#{index}").nil?}</span>".html_safe
+          "<span id=\"#{type}_slot_#{index}_tag\" class=\"slot_tag\">#{node.send("#{type}_slot_#{index}").class.model_name.human.titleize unless @node.send("#{type}_slot_#{index}").nil?}</span>".html_safe
       end
 
       def slot_form(node,type,index)
         component = @node.send("#{type}_slot_#{index}")
-        options = options_for_select([''] + Component.positions_names(type), (component._type.titleize unless component.nil?))
+        options = options_for_select([''] + component_options(type), (component.class.name.titleize unless component.nil?))
 
         render :partial => 'slot_form', :locals => { :type => type, :index => index, :component => component, :options => options, :slot_name => "#{ type }_slot_#{ index }" }
+      end
+
+      def component_options(type)
+        Component.positions_classes(type).map do |component|
+          [component.model_name.human.titleize, component.name.titleize]
+        end
       end
 
       def can_change_templates?(node)
