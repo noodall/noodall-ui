@@ -43,7 +43,7 @@ class Asset
     elsif video?
       file.encode(:tiff, { :offset => "#{video_thumbnail_offset}%" }).thumb(*args).url
     else
-      file.thumb(*args).url
+      file.thumb(*args).strip.convert('-colorspace RGB').url
     end
   end
 
