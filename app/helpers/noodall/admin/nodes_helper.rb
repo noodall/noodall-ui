@@ -51,7 +51,10 @@ module Noodall
       end
 
       def can_change_templates?(node)
-        can_publish?(node) and !node.is_a?(Home) and (node.parent.nil? ? Node.template_names : node.parent.class.template_names).length > 1
+        can_publish?(node)       \
+        and !node.is_a?(Home)    \
+        and !node.in_site_map?   \
+        and (node.parent.nil? ? Node.template_names : node.parent.class.template_names).length > 1
       end
 
       def updater_name(node)
