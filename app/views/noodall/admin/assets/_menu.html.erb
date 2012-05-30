@@ -1,8 +1,8 @@
-<ul class="choices">
-  <%= content_tag :li, '<a>Done</a>'.html_safe, :class => 'action' if params[:mode] == 'multi' %>
-  <%= content_tag :li, '<a>Cancel</a>'.html_safe, :class => 'cancel' if params[:mode] %>
-  <li class="upload"><%= link_to 'Upload', new_noodall_admin_asset_path(:readonly => readonly) %></li>
-  <%= content_tag :li, link_to( 'Images', noodall_admin_assets_path(:readonly => readonly) ), :class => 'images' if params[:allowed_types].blank? or params[:allowed_types].include?('images') %>
-  <%= content_tag :li, link_to( 'Documents', documents_noodall_admin_assets_path(:readonly => readonly) ), :class => 'documents' if params[:allowed_types].blank? or params[:allowed_types].include?('documents') %>
-  <%= content_tag :li, link_to( 'Videos', videos_noodall_admin_assets_path(:readonly => readonly) ), :class => 'videos' if Asset.video_extensions.any? and (params[:allowed_types].blank? or params[:allowed_types].include?('videos')) %>
-</ul>
+<div class="btn-group pull-right">
+  <%= '<a class="action btn btn-success"><i class="icon-ok-sign"></i> Done</a>'.html_safe if params[:mode] == 'multi'  %>
+  <%= '<a class="cancel btn btn-danger"><i class="icon-remove-sign"></i> Cancel</a>'.html_safe if params[:mode] %>
+  <%= link_to '<i class="icon-upload"></i> Upload'.html_safe, new_noodall_admin_asset_path(:readonly => readonly), :class => 'upload btn' %>
+  <%= link_to '<i class="icon-picture"></i> Images'.html_safe, noodall_admin_assets_path(:readonly => readonly), :class => 'images btn' if params[:allowed_types].blank? or params[:allowed_types].include?('images') %>
+  <%= link_to '<i class="icon-file"></i> Documents'.html_safe, documents_noodall_admin_assets_path(:readonly => readonly), :class => 'documents btn' if params[:allowed_types].blank? or params[:allowed_types].include?('documents')  %>
+  <%= link_to '<i class="icon-film"></i> Videos'.html_safe, videos_noodall_admin_assets_path(:readonly => readonly), :class => 'videos btn' if Asset.video_extensions.any? and (params[:allowed_types].blank? or params[:allowed_types].include?('videos')) %>
+</div>

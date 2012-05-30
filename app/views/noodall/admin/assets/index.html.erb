@@ -1,64 +1,76 @@
-<h1><%= admin_page_title %></h1>
+<div class="row-fluid">
+  <div class="span12">
+    <h1 class="pull-left"><%= admin_page_title %></h1>
+    <%= render 'menu' %>
+  </div> <!-- span12 -->
+</div> <!-- row-fluid -->
 
-<%= render 'menu' %>
-<%= will_paginate(@assets, :previous_label => 'Previous', :next_label => 'Next') %>
-<div id="content-table">
-<table border="0" cellspacing="0" cellpadding="0" class="content">
-  <thead>
-    <tr>
-      <%= sortable_table_header :name => "Title", :sort => "title", :class => 'sort' %>
-      <th width="140">File</th>
-      <%= sortable_table_header :name => "Created", :sort => "created_at", :class => 'sort' %>
-      <%= sortable_table_header :name => "Updated", :sort => "updated_at", :class => 'sort' %>
-      <th width="50">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-<% @assets.each do |asset| %>
-    <tr id="asset-<%= asset.id %>" class="<%=cycle('odd', 'even')%>">
-      <td><%= link_to h( asset.title ), edit_noodall_admin_asset_path(asset), :class => 'edit', :title => 'Edit this asset' %></td>
-      <td class="file">
-        <%= (asset.image? or asset.video?) ? image_tag( asset.url('70x70', asset.web_image_extension), :alt => "#{truncate(asset.file.name, :length => 80)}")  : link_to( asset_icon(asset) ) %>
-        <%= link_to 'Show', noodall_admin_asset_path(asset), :class => 'show', :title => 'View this asset' %>
-      </td>
-      <td><%=h asset.created_at.to_formatted_s(:short_ordinal) %></td>
-      <td><%=h asset.updated_at.to_formatted_s(:short_ordinal) %></td>
-      <td class="button"><%= link_to 'Delete', noodall_admin_asset_path(asset), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this asset' %></td>
-    </tr>
-<% end %>
-  </tbody>
-  <tfoot>
-    <tr>
-      <%= sortable_table_header :name => "Title", :sort => "title", :class => 'sort' %>
-      <th width="140">File</th>
-      <%= sortable_table_header :name => "Created", :sort => "created_at", :class => 'sort' %>
-      <%= sortable_table_header :name => "Updated", :sort => "updated_at", :class => 'sort' %>
-      <th width="50">Delete</th>
-    </tr>
-  </tfoot>
-</table>
-
-  <ul id="per-page-select">
-<% for quant in [10, 20, 50] %>
-    <li<%= (quant == 10 ? ' class="first"' : '') %>><%= link_to quant, params.merge(:limit => quant)  %></li>
-<% end %>
-  </ul>
-
-</div>
-<% if pending_count > 0%>
-<div id="pending" class="error">
-  <p><%= pluralize( pending_count, "asset" ) %> awaiting information.</p>
-  <p><%= link_to "Click here", pending_noodall_admin_assets_path %> to be taken through each asset and enter the information.</p>
-</div>
-<% end -%>
-
-<div id="tags">
-  <h2>Tags</h2>
-  <ul>
-<% for tag in @tags %>
-    <li><%= link_to "#{h( tag.name )} (#{tag.count})", :tag => tag.name  %></li>
-<% end -%>
-  </ul>
-  <%= link_to 'All Tags', noodall_admin_asset_tags_path(controller.action_name) %>
-</div>
-<%= will_paginate(@assets, :previous_label => 'Previous', :next_label => 'Next') %>
+<div class="row-fluid">
+  <div class="span10">
+    <%= will_paginate(@assets, :previous_label => 'Previous', :next_label => 'Next') %>
+    <table border="0" cellspacing="0" cellpadding="0" class="table table-striped table-bordered" id="content-table">
+      <thead>
+        <tr>
+          <%= sortable_table_header :name => "Title", :sort => "title", :class => 'sort' %>
+          <th width="140">File</th>
+          <%= sortable_table_header :name => "Created", :sort => "created_at", :class => 'sort' %>
+          <%= sortable_table_header :name => "Updated", :sort => "updated_at", :class => 'sort' %>
+          <th width="50">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+    <% @assets.each do |asset| %>
+        <tr id="asset-<%= asset.id %>" class="<%=cycle('odd', 'even')%>">
+          <td><%= link_to h( asset.title ), edit_noodall_admin_asset_path(asset), :class => 'edit', :title => 'Edit this asset' %></td>
+          <td class="file">
+            <%= (asset.image? or asset.video?) ? image_tag( asset.url('70x70', asset.web_image_extension), :alt => "#{truncate(asset.file.name, :length => 80)}")  : link_to( asset_icon(asset) ) %>
+            <%= link_to 'Show', noodall_admin_asset_path(asset), :class => 'show', :title => 'View this asset' %>
+          </td>
+          <td><%=h asset.created_at.to_formatted_s(:short_ordinal) %></td>
+          <td><%=h asset.updated_at.to_formatted_s(:short_ordinal) %></td>
+          <td class="button"><%= link_to 'Delete', noodall_admin_asset_path(asset), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this asset' %></td>
+        </tr>
+    <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <%= sortable_table_header :name => "Title", :sort => "title", :class => 'sort' %>
+          <th width="140">File</th>
+          <%= sortable_table_header :name => "Created", :sort => "created_at", :class => 'sort' %>
+          <%= sortable_table_header :name => "Updated", :sort => "updated_at", :class => 'sort' %>
+          <th width="50">Delete</th>
+        </tr>
+      </tfoot>
+    </table>
+    <%= will_paginate(@assets, :previous_label => 'Previous', :next_label => 'Next') %>
+    <p>Number per Page</p>
+    <div class="btn-group">
+      <% for quant in [10, 20, 50] %>
+          <%= link_to quant, params.merge(:limit => quant), :class => "btn"%>
+      <% end %>
+    </div>
+  </div> <!-- span10 -->
+  
+  <div class="span2">
+    
+    <% if pending_count > 0%>
+      <div class="alert alert-info">
+        <p><%= pluralize( pending_count, "asset" ) %> awaiting information.</p>
+        <p><%= link_to "Click here", pending_noodall_admin_assets_path %> to be taken through each asset and enter the information.</p>
+      </div>
+    <% end -%>
+    
+    <div class="alert alert-info">
+      <h2>Tags</h2>
+      <ul>
+      <% for tag in @tags %>
+          <li><%= link_to "#{h( tag.name )} (#{tag.count})", :tag => tag.name  %></li>
+      <% end -%>
+      </ul>
+      <%= link_to 'All Tags', noodall_admin_asset_tags_path(controller.action_name) %>
+    </div>
+    
+  </div><!-- span2 -->
+  
+  
+</div> <!-- row-fluid -->
