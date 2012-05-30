@@ -1,83 +1,85 @@
 <%= admin_breadcrumb %>
 
-<h1><%= @parent.nil? ? 'Content Tree' : "Content under '#{@parent.title}'" %></h1>
+<div class="row-fluid">
+  <div class="span12">
+      <h1 class="pull-left"><%= @parent.nil? ? 'Content Tree' : "Content under '#{@parent.title}'" %></h1>
 
-<ul class="choices">
+      <div class="btn-group pull-right">
+        <% if @parent.nil? -%>
+          <% if Noodall::Node.root_templates.any? -%>
+            <%= link_to 'New', new_noodall_admin_node_path, :class => 'btn', :title => "Add new" %>
+          <% end -%>
+        <% elsif @parent.class.template_names.any?  %>
+          <%= link_to 'New', new_noodall_admin_node_node_path(@parent), :class => 'btn', :title =>  "Add content under #{@parent.title}" %>
+        <% end -%>
+        <% if !@parent.nil? and !@parent.parent.nil? %>
+          <%= link_to "Up to #{@parent.parent.title}", noodall_admin_node_nodes_path(@parent.parent), :class => "btn" %>
+        <% end %>
+        <% if !@parent.nil?  %>
+          <%= link_to "Top Level", noodall_admin_nodes_path, :class => "btn" %>
+        <% end %>
+      </div>
+      
+  </div> <!-- span12 -->
+</div> <!-- row-fluid -->
 
-<% if @parent.nil? -%>
-  <% if Noodall::Node.root_templates.any? -%>
-    <li><%= link_to 'New', new_noodall_admin_node_path, :class => 'button', :title => "Add new" %></li>
-  <% end -%>
-<% elsif @parent.class.template_names.any?  %>
-  <li><%= link_to 'New', new_noodall_admin_node_node_path(@parent), :class => 'button', :title =>  "Add content under #{@parent.title}" %></li>
-<% end -%>
 
-<% if !@parent.nil? and !@parent.parent.nil? %>
-  <li><%= link_to "Up to #{@parent.parent.title}", noodall_admin_node_nodes_path(@parent.parent), :class => "up button" %></li>
-<% end %>
-
-<% if !@parent.nil?  %>
-  <li><%= link_to "Top Level", noodall_admin_nodes_path, :class => "top button" %></li>
-<% end %>
-
-</ul>
-
-<div id="content-table">
-  
-  <div id="form-filter">
-    <%= form_tag '', :method => :get, :id => 'filter' do %>
+<div class="row-fluid">
+  <div class="span12">
+    
+    <%= form_tag '', :method => :get, :id => 'filter', :class => "well form-inline pull-right" do %>
       <%= label_tag :f, 'Filter by Title' %>
       <%= text_field_tag :f %>
-      <%= submit_tag "Filter" %>
+      <%= submit_tag "Filter", :class => "btn" %>
     <% end %>
-
     <% if params[:f] %>
       <%= link_to "reset", url_for(:only_path => false, :f => nil), :class => 'button' %>
     <% end %>
-  </div>
-  
-  <%= will_paginate(@nodes) %>
- <table border="0" cellspacing="0" cellpadding="0" class="content">
-  <thead>
-    <tr>
-      <%= admin_nodes_column_headings %>
-    </tr>
-  </thead>
-  <tbody>
-<% @nodes.each do |node| %>
-    <tr id="node-<%= node.id %>" class="node <%=cycle('odd', 'even')%>">
-      <td class="edit"><%= link_to "#{ node.admin_title } #{ '(draft)' if node.has_draft? }", noodall_admin_node_path(node), :class => 'edit', :title => "Edit #{node.title}" %></td>
-      <td><%= node.class.name.titleize %></td>
 
-      <%# Change 'position' content if we are sorting by position %>
-      <% if(params[:sort] && params[:sort] != "position" || params[:order] == "descending") %>
-        <td width="55"><%= node.position %></td>
-      <% else %>
+    
+    <%= will_paginate(@nodes) %>
+     <table border="0" cellspacing="0" cellpadding="0" class="table table-striped table-bordered" id="content-table">
+      <thead>
+        <tr>
+          <%= admin_nodes_column_headings %>
+        </tr>
+      </thead>
+      <tbody>
+    <% @nodes.each do |node| %>
+        <tr id="node-<%= node.id %>" class="node <%=cycle('odd', 'even')%>">
+          <td class="edit"><%= link_to "#{ node.admin_title } #{ '(draft)' if node.has_draft? }", noodall_admin_node_path(node), :class => 'edit', :title => "Edit #{node.title}" %></td>
+          <td><%= node.class.name.titleize %></td>
 
-        <td width="25"><%= link_to 'up', move_up_noodall_admin_node_path(node), { :class => "page_up", :title => 'Move this content higher in the navigation' } unless node.first? %></td>
-        <td width="30" class="down"><%= link_to 'down', move_down_noodall_admin_node_path(node), { :class => 'page_down', :title => 'Move this content lower in the navigation' } unless node.last? %></td>
-      <% end %>
+          <%# Change 'position' content if we are sorting by position %>
+          <% if(params[:sort] && params[:sort] != "position" || params[:order] == "descending") %>
+            <td width="55"><%= node.position %></td>
+          <% else %>
+
+            <td width="25"><%= link_to 'up', move_up_noodall_admin_node_path(node), { :class => "page_up", :title => 'Move this content higher in the navigation' } unless node.first? %></td>
+            <td width="30" class="down"><%= link_to 'down', move_down_noodall_admin_node_path(node), { :class => 'page_down', :title => 'Move this content lower in the navigation' } unless node.last? %></td>
+          <% end %>
 
 
-      <td class="child">
-<% unless node.class.template_classes.blank? -%>
-        <%= link_to pluralize(node.children.size, "Child"), noodall_admin_node_nodes_path(node), :title => "View content under #{h(node.title)}", :class => 'child-no' %>
-        <%= link_to('Add', new_noodall_admin_node_node_path(node), :title => "Add content under #{h(node.title)}", :class => 'child') if node.class.template_names.any? %>
-<% end -%>
-      </td>
-      <td class="date" title="by <%= updater_name(node) %>"><%=h node.updated_at.to_formatted_s(:short_ordinal) %></td>
-      <td class=""><%= link_to 'Show', node_path(node), :class => 'show', :title => 'View this content' if node.published? %></td>
-      <td class="date" title="<%= node.published? ? 'Published ':'Hidden' %><%= node.published_at.to_formatted_s(:short_ordinal) unless node.published_at.nil? %><%= " - #{node.published_to.to_formatted_s(:short_ordinal)}" unless node.published_to.nil? %>"><%= (node.published? ? '<span class="check">Published</span>' : '<span class="hidden">Hidden</span>').html_safe %></td>
-      <td><%= link_to 'Delete', noodall_admin_node_path(node), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this content' unless node.in_site_map? %></td>
-    </tr>
-<% end %>
-  </tbody>
-  <tfoot>
-    <tr>
-      <%= admin_nodes_column_headings %>
-    </tr>
-  </tfoot>
-</table>
-<%= will_paginate(@nodes, :previous_label => 'Previous', :next_label => 'Next') %>
+          <td class="child">
+    <% unless node.class.template_classes.blank? -%>
+            <%= link_to pluralize(node.children.size, "Child"), noodall_admin_node_nodes_path(node), :title => "View content under #{h(node.title)}", :class => 'child-no' %>
+            <%= link_to('Add', new_noodall_admin_node_node_path(node), :title => "Add content under #{h(node.title)}", :class => 'child') if node.class.template_names.any? %>
+    <% end -%>
+          </td>
+          <td class="date" title="by <%= updater_name(node) %>"><%=h node.updated_at.to_formatted_s(:short_ordinal) %></td>
+          <td class=""><%= link_to 'Show', node_path(node), :class => 'show', :title => 'View this content' if node.published? %></td>
+          <td class="date" title="<%= node.published? ? 'Published ':'Hidden' %><%= node.published_at.to_formatted_s(:short_ordinal) unless node.published_at.nil? %><%= " - #{node.published_to.to_formatted_s(:short_ordinal)}" unless node.published_to.nil? %>"><%= (node.published? ? '<span class="check">Published</span>' : '<span class="hidden">Hidden</span>').html_safe %></td>
+          <td><%= link_to 'Delete', noodall_admin_node_path(node), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this content' unless node.in_site_map? %></td>
+        </tr>
+    <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <%= admin_nodes_column_headings %>
+        </tr>
+      </tfoot>
+    </table>
+    <%= will_paginate(@nodes, :previous_label => 'Previous', :next_label => 'Next') %>
 
-</div>
+  </div> <!-- span12 -->
+</div> <!-- row-fluid -->

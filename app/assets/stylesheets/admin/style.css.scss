@@ -1,0 +1,94 @@
+/* Style.css */
+/* =============================================================================
+  LAYOUT
+========================================================================== */
+body {
+  padding-top: 50px;
+}
+
+
+input[type="file"]{
+  display: block;
+  clear:both;
+}
+
+/* =============================================================================
+  COMPONENTS
+========================================================================== */
+
+//Navbar
+.user-button{
+  margin-right: 10px;
+}
+
+
+
+/*Content Table*/
+#content-table {
+  font-size: 16px;
+}
+
+#content-table .table th {
+  background: #2c2c2c;
+  color: #fff;
+  border-color: #666;
+}
+
+#content-table #table-show,
+#content-table #table-publish,
+#content-table #table-delete {
+  width: 5%;
+  font-size: 20px;
+}
+
+#content-table td.show,
+#content-table td.publish,
+#content-table td.delete {
+  text-align: center;
+}
+
+#content-table td.publish a {
+  color: #5BB75B;
+}
+
+#content-table td.publish a:hover {
+  color: #51A351;
+}
+
+#content-table td.delete a {
+  color: #DA4F49;
+}
+
+#content-table td.delete a:hover {
+  color: #BD362F;
+}
+
+/*COMPONENT TABLE*/
+#component-table tr td {
+  min-width: 40px;
+  min-height: 40px;
+  background: #eee;
+  color: #ddd;
+}
+
+#component-table tr td a {
+  color: #fff;
+}
+
+/*NODE FORM*/
+#node-form .control-group input[type="text"],
+#node-form .control-group textarea {
+  width: 98%;
+}
+
+/* =============================================================================
+  CLEARFIX
+========================================================================== */
+header:after,
+#main-nav:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}

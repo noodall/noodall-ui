@@ -1,9 +1,6 @@
 /* ...
-*= require fancybox
-*= require admin/reset
-*= require admin/layout
-*= require admin/skin
-*= require admin/typography
-*= require admin/forms
-*= require plupload/jquery.plupload.queue/css/jquery.plupload.queue
+*= require admin/bootstrap.min
+*= require admin/bootstrap-responsive.min
+*= require admin/font-awesome
+*= require admin/style
 */
