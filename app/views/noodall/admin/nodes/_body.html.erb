@@ -1,5 +1,5 @@
-<p class="tinymce">
-  <span class="tooltip" title="Enter content for this page">&nbsp;</span>
-  <%= f.label :body, "Body" %><br/>
-  <span class="textarea-wrap"><%= f.text_area :body, :class => 'editor' %></span>
-</p>
+<div class="control-group">
+  <%= f.label :body, "Body", :class => "control-label" %>
+  <i class="icon-info-sign pull-right icon-large help" title="Body" data-content="Enter content for this page"></i>
+  <div class="controls"><%= f.text_area :body, :class => 'editor span6' %></div>
+</div>

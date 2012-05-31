@@ -24,11 +24,11 @@
           <td><%= link_to h( asset.title ), edit_noodall_admin_asset_path(asset), :class => 'edit', :title => 'Edit this asset' %></td>
           <td class="file">
             <%= (asset.image? or asset.video?) ? image_tag( asset.url('70x70', asset.web_image_extension), :alt => "#{truncate(asset.file.name, :length => 80)}")  : link_to( asset_icon(asset) ) %>
-            <%= link_to 'Show', noodall_admin_asset_path(asset), :class => 'show', :title => 'View this asset' %>
+            <%= link_to '<i class="icon-search"></i>'.html_safe, noodall_admin_asset_path(asset), :class => 'show', :title => 'View this asset' %>
           </td>
-          <td><%=h asset.created_at.to_formatted_s(:short_ordinal) %></td>
-          <td><%=h asset.updated_at.to_formatted_s(:short_ordinal) %></td>
-          <td class="button"><%= link_to 'Delete', noodall_admin_asset_path(asset), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this asset' %></td>
+          <td><%=h asset.created_at.to_formatted_s(:noodall_time) %></td>
+          <td><%=h asset.updated_at.to_formatted_s(:noodall_time) %></td>
+          <td class="button"><%= link_to '<i class="icon-remove-sign"></i>'.html_safe, noodall_admin_asset_path(asset), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this asset' %></td>
         </tr>
     <% end %>
       </tbody>

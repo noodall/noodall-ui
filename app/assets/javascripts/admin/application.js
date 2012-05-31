@@ -9,6 +9,7 @@ $(document).ready(function () {
   
   // Popover
   $('.help').popover();
+
   
   // // Text Area
   // $('#textarea').wysihtml5();

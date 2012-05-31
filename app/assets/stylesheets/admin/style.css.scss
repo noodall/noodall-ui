@@ -2,10 +2,7 @@
 /* =============================================================================
   LAYOUT
 ========================================================================== */
-body {
-  padding-top: 50px;
-}
-
+body {padding-top: 50px;}
 
 input[type="file"]{
   display: block;
@@ -17,78 +14,65 @@ input[type="file"]{
 ========================================================================== */
 
 //Navbar
-.user-button{
-  margin-right: 10px;
-}
+.user-button{ margin-right: 10px;}
+
+/* Component Table */
+table.component-table {
+  width: 280px;
+  padding:9px;
+  margin:10px 0 0 0;
+  background-color:#e9e9e9;
+  border:1px solid #c2c2c2;
+  td{
+    width: 25%;
+    min-height: 50px;
+    border: 4px solid #fff;
+    text-align: center;
+    background: white;
+    border: 4px solid #fff;
+    background: #fff;
+    &.empty{height: 40px;}
+    &.content{background:#eee;}
+    a{
+      display: block;
+      padding: 15px 0;
+      color: #fff;
+      background: #c2c2c2;
+      &.filled {background: #e47373;}
+    } //a
+  } //td
+} //.component-table
 
 
 
 /*Content Table*/
+.component-table-well {
+  width: 280px;
+  background-color: #fff;
+  border-color: #c2c2c2;
+}
+
 #content-table {
   font-size: 16px;
+  .table th {
+    background: #2c2c2c;
+    color: #fff;
+    border-color: #666;
+  } //table th
 }
 
-#content-table .table th {
-  background: #2c2c2c;
-  color: #fff;
-  border-color: #666;
-}
-
-#content-table #table-show,
-#content-table #table-publish,
-#content-table #table-delete {
-  width: 5%;
-  font-size: 20px;
-}
-
-#content-table td.show,
-#content-table td.publish,
-#content-table td.delete {
-  text-align: center;
-}
-
-#content-table td.publish a {
-  color: #5BB75B;
-}
-
-#content-table td.publish a:hover {
-  color: #51A351;
-}
-
-#content-table td.delete a {
-  color: #DA4F49;
-}
-
-#content-table td.delete a:hover {
-  color: #BD362F;
-}
-
-/*COMPONENT TABLE*/
-#component-table tr td {
-  min-width: 40px;
-  min-height: 40px;
-  background: #eee;
-  color: #ddd;
-}
-
-#component-table tr td a {
-  color: #fff;
-}
-
-/*NODE FORM*/
-#node-form .control-group input[type="text"],
-#node-form .control-group textarea {
-  width: 98%;
+/*Component List*/
+.component-list{
+  width: 320px;
 }
 
 /* =============================================================================
   CLEARFIX
 ========================================================================== */
-header:after,
-#main-nav:after {
-  content: ".";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
+//{
+//  content: ".";
+//  display: block;
+//  height: 0;
+//  clear: both;
+//  visibility: hidden;
+//}

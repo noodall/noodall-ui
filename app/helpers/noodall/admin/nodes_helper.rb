@@ -33,7 +33,10 @@ module Noodall
       end
 
       def slot_link(node,type,index)
-        link_to( "#{type.to_s.titleize} Slot", "##{type}_component_form_#{index}", :id=> "#{type}_slot_#{index}_selector", :class => 'slot_link') +
+        link_to( "#{type.to_s.titleize} Slot", "##{type}_component_form_#{index}", :id=> "#{type}_slot_#{index}_selector", :class => 'slot_link')
+      end
+      
+      def slot_span(node,type,index)
           "<span id=\"#{type}_slot_#{index}_tag\" class=\"slot_tag\">#{node.send("#{type}_slot_#{index}").class.model_name.human.titleize unless @node.send("#{type}_slot_#{index}").nil?}</span>".html_safe
       end
 

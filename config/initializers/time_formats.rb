@@ -1,0 +1,1 @@
+Time::DATE_FORMATS[:noodall_time] = "%d/%m/%Y - %H:%M"

@@ -7,16 +7,16 @@
       <div class="btn-group pull-right">
         <% if @parent.nil? -%>
           <% if Noodall::Node.root_templates.any? -%>
-            <%= link_to 'New', new_noodall_admin_node_path, :class => 'btn', :title => "Add new" %>
+            <%= link_to '<i class="icon-plus"></i> New'.html_safe, new_noodall_admin_node_path, :class => 'btn btn-success', :title => "Add new" %>
           <% end -%>
         <% elsif @parent.class.template_names.any?  %>
-          <%= link_to 'New', new_noodall_admin_node_node_path(@parent), :class => 'btn', :title =>  "Add content under #{@parent.title}" %>
+          <%= link_to '<i class="icon-plus"></i> New'.html_safe, new_noodall_admin_node_node_path(@parent), :class => 'btn btn-success', :title =>  "Add content under #{@parent.title}" %>
         <% end -%>
         <% if !@parent.nil? and !@parent.parent.nil? %>
-          <%= link_to "Up to #{@parent.parent.title}", noodall_admin_node_nodes_path(@parent.parent), :class => "btn" %>
+          <%= link_to "<i class='icon-chevron-up'></i> Up to #{@parent.parent.title}".html_safe, noodall_admin_node_nodes_path(@parent.parent), :class => "btn" %>
         <% end %>
         <% if !@parent.nil?  %>
-          <%= link_to "Top Level", noodall_admin_nodes_path, :class => "btn" %>
+          <%= link_to "<i class='icon-arrow-up'></i> Top Level".html_safe, noodall_admin_nodes_path, :class => "btn" %>
         <% end %>
       </div>
       
@@ -63,13 +63,13 @@
           <td class="child">
     <% unless node.class.template_classes.blank? -%>
             <%= link_to pluralize(node.children.size, "Child"), noodall_admin_node_nodes_path(node), :title => "View content under #{h(node.title)}", :class => 'child-no' %>
-            <%= link_to('Add', new_noodall_admin_node_node_path(node), :title => "Add content under #{h(node.title)}", :class => 'child') if node.class.template_names.any? %>
+            <%= link_to('<i class="icon-plus pull-right add"></i>'.html_safe, new_noodall_admin_node_node_path(node), :title => "Add content under #{h(node.title)}", :class => 'child') if node.class.template_names.any? %>
     <% end -%>
           </td>
-          <td class="date" title="by <%= updater_name(node) %>"><%=h node.updated_at.to_formatted_s(:short_ordinal) %></td>
-          <td class=""><%= link_to 'Show', node_path(node), :class => 'show', :title => 'View this content' if node.published? %></td>
-          <td class="date" title="<%= node.published? ? 'Published ':'Hidden' %><%= node.published_at.to_formatted_s(:short_ordinal) unless node.published_at.nil? %><%= " - #{node.published_to.to_formatted_s(:short_ordinal)}" unless node.published_to.nil? %>"><%= (node.published? ? '<span class="check">Published</span>' : '<span class="hidden">Hidden</span>').html_safe %></td>
-          <td><%= link_to 'Delete', noodall_admin_node_path(node), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this content' unless node.in_site_map? %></td>
+          <td class="date" title="by <%= updater_name(node) %>"><%=h node.updated_at.to_formatted_s(:noodall_time) %></td>
+          <td class=""><%= link_to '<i class="icon-search"></i>'.html_safe, node_path(node), :class => 'show', :title => 'View this content' if node.published? %></td>
+          <td class="date" title="<%= node.published? ? 'Published ':'Hidden' %><%= node.published_at.to_formatted_s(:short_ordinal) unless node.published_at.nil? %><%= " - #{node.published_to.to_formatted_s(:noodall_time)}" unless node.published_to.nil? %>"><%= (node.published? ? '<i class="icon-ok-sign"></i>' : '<i class="icon-ban-circle"></i>').html_safe %></td>
+          <td><%= link_to '<i class="icon-remove-sign"></i>'.html_safe, noodall_admin_node_path(node), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this content' unless node.in_site_map? %></td>
         </tr>
     <% end %>
       </tbody>
