@@ -14,7 +14,7 @@ module Noodall
       return if node.nil?
       path_method = args[:node_path] || :node_path
       links = node.ancestors.inject([args[:home_link]]) do |l, n|
-        l << content_tag( :li, link_to( n.title , send(path_method, n)))
+        l << content_tag( :li, link_to( (n.title + ' <span class="divider">/</span>').html_safe, send(path_method, n)))
       end
       links << content_tag( :li, node.title )
     end

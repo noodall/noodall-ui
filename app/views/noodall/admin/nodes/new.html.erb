@@ -1,29 +1,44 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h1>New Content<%= " under '#{@parent.title}'" unless @parent.nil? %></h1>
+    <p>* Required Fields</p>
+  </div> <!-- span12 -->
+</div> <!-- row-fluid -->
 
-<h1>New Content<%= " under '#{@parent.title}'" unless @parent.nil? %></h1>
-<p>* Required Fields</p>
+<div class="row-fluid">
+  <div class="span8">
+    
+    <%= form_for(@node, :html => { :class => "form-horizontal"}, :as => :node, :url => noodall_admin_nodes_path) do |f| %>
+      
+      <%= f.error_messages %>
+      <%= f.hidden_field :parent, :value => @node.parent_id %>
+      
+      
+      <div class="control-group">
+        <%= f.label :title, 'Title *', :class => "control-label" %>
+        <i class="icon-info-sign pull-right icon-large help" title="Title" data-content="Enter a title for this page"></i>
+        <div class="controls"><%= f.text_field :title, :class => "span6" %></div>
+      </div>
 
-<%= form_for(@node, :as => :node, :url => noodall_admin_nodes_path) do |f| %>
-  <%= f.error_messages %>
-  <%= f.hidden_field :parent, :value => @node.parent_id %>
-
-<div id="main-form">
-  <p>
-    <span class="tooltip" title="Enter a title for this page">&nbsp;</span>
-    <%= f.label :title, 'Title *' %><br/>
-    <span class="input-wrap"><%= f.text_field :title %></span>
-  </p>
-  <fieldset class="template">
-    <legend>Select a template *</legend>
-<% for template_name in @template_names -%>
-    <label>
-       <%= template_name %> <%= f.radio_button :template, template_name, :checked => (template_name == @template_names.first) %><br/>
-       <%= image_tag "admin/templates/#{template_name.parameterize}.gif", :title => template_name %>
-    </label>
-<% end -%>
-  </fieldset>
-  <p class="fixed-form">
-    <span><%= f.submit 'Create', :class => 'create' %> <%= link_to 'Cancel', noodall_admin_nodes_path, :class => 'cancel'  %></span>
-  </p>
-<% end %>
-
-</div>
+      
+      <fieldset class="template">
+        <legend>Select a template *</legend>
+        <% for template_name in @template_names -%>
+          <div class="control-group">
+            <label class="control-label"><%= template_name %> <%= f.radio_button :template, template_name, :checked => (template_name == @template_names.first) %></label>
+            <div class="controls">
+              <%= image_tag "admin/templates/#{template_name.parameterize}.gif", :title => template_name %>
+            </div>
+          </div>
+        <% end -%>
+      </fieldset>
+      
+      <div class="form-actions">
+        <%= f.submit 'Create', :class => 'btn btn-success btn-large' %>
+        <%= link_to 'Cancel', noodall_admin_nodes_path, :class => 'btn btn-warning btn-large' %>
+      </div>
+    <% end %>
+    
+    
+  </div> <!-- span8 -->
+</div> <!-- row-fluid -->

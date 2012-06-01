@@ -47,8 +47,6 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="#">Profile</a></li>
-              <li class="divider"></li>
               <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
             </ul>
           </div>
@@ -62,7 +60,8 @@
 
   <div class="container-fluid">
     
-    <%= flash_messages %>
+   <%= render :partial => 'noodall/admin/shared/messages', :object => flash %>
+    
     <%= yield %>
     
     <hr />

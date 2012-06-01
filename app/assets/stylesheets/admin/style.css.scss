@@ -14,7 +14,51 @@ input[type="file"]{
 ========================================================================== */
 
 //Navbar
-.user-button{ margin-right: 10px;}
+
+.navbar-fixed-top .container {
+  width: auto;
+  padding: 0 19px;
+  .user-button{ margin-right: 10px;}
+}
+
+/*Content Table*/
+.component-table-well {
+  width: 280px;
+  background-color: #fff;
+  border-color: #c2c2c2;
+}
+
+#content-table {
+  font-size: 16px;
+  .table th {
+    background: #2c2c2c;
+    color: #fff;
+    border-color: #666;
+  } //table th
+  td{
+    i.add{
+      color:#5BB75B;
+      font-size: 25px;
+    }
+  } //td
+  td.show{
+    text-align:center;
+    a{color:#333;font-size: 25px;}
+  }
+  td.publish{
+    text-align:center;
+    i{color:#5BB75B;font-size: 25px;}
+  }
+  td.delete{
+    text-align:center;
+    a{color:#BD362F;font-size: 25px;}
+  }
+  td.file{
+    img{float:left;}
+    a.show{color:#333;font-size: 25px;float:right;}
+  }
+}
+
 
 /* Component Table */
 table.component-table {
@@ -42,24 +86,6 @@ table.component-table {
     } //a
   } //td
 } //.component-table
-
-
-
-/*Content Table*/
-.component-table-well {
-  width: 280px;
-  background-color: #fff;
-  border-color: #c2c2c2;
-}
-
-#content-table {
-  font-size: 16px;
-  .table th {
-    background: #2c2c2c;
-    color: #fff;
-    border-color: #666;
-  } //table th
-}
 
 /*Component List*/
 .component-list{

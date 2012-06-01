@@ -37,7 +37,7 @@
     <% end %>
 
     
-    <%= will_paginate(@nodes) %>
+    <%= will_paginate(@nodes, :previous_label => 'Previous', :next_label => 'Next') %>
      <table border="0" cellspacing="0" cellpadding="0" class="table table-striped table-bordered" id="content-table">
       <thead>
         <tr>
@@ -46,30 +46,29 @@
       </thead>
       <tbody>
     <% @nodes.each do |node| %>
-        <tr id="node-<%= node.id %>" class="node <%=cycle('odd', 'even')%>">
+        <tr id="node-<%= node.id %>" class="node">
           <td class="edit"><%= link_to "#{ node.admin_title } #{ '(draft)' if node.has_draft? }", noodall_admin_node_path(node), :class => 'edit', :title => "Edit #{node.title}" %></td>
           <td><%= node.class.name.titleize %></td>
-
+          
           <%# Change 'position' content if we are sorting by position %>
           <% if(params[:sort] && params[:sort] != "position" || params[:order] == "descending") %>
             <td width="55"><%= node.position %></td>
           <% else %>
-
             <td width="25"><%= link_to 'up', move_up_noodall_admin_node_path(node), { :class => "page_up", :title => 'Move this content higher in the navigation' } unless node.first? %></td>
             <td width="30" class="down"><%= link_to 'down', move_down_noodall_admin_node_path(node), { :class => 'page_down', :title => 'Move this content lower in the navigation' } unless node.last? %></td>
           <% end %>
-
-
+          
           <td class="child">
-    <% unless node.class.template_classes.blank? -%>
-            <%= link_to pluralize(node.children.size, "Child"), noodall_admin_node_nodes_path(node), :title => "View content under #{h(node.title)}", :class => 'child-no' %>
-            <%= link_to('<i class="icon-plus pull-right add"></i>'.html_safe, new_noodall_admin_node_node_path(node), :title => "Add content under #{h(node.title)}", :class => 'child') if node.class.template_names.any? %>
-    <% end -%>
+            <% unless node.class.template_classes.blank? -%>
+              <%= link_to pluralize(node.children.size, "Child"), noodall_admin_node_nodes_path(node), :title => "View content under #{h(node.title)}", :class => 'child-no' %>
+              <%= link_to('<i class="icon-plus pull-right add"></i>'.html_safe, new_noodall_admin_node_node_path(node), :title => "Add content under #{h(node.title)}", :class => 'child') if node.class.template_names.any? %>
+            <% end -%>
           </td>
+          
           <td class="date" title="by <%= updater_name(node) %>"><%=h node.updated_at.to_formatted_s(:noodall_time) %></td>
-          <td class=""><%= link_to '<i class="icon-search"></i>'.html_safe, node_path(node), :class => 'show', :title => 'View this content' if node.published? %></td>
-          <td class="date" title="<%= node.published? ? 'Published ':'Hidden' %><%= node.published_at.to_formatted_s(:short_ordinal) unless node.published_at.nil? %><%= " - #{node.published_to.to_formatted_s(:noodall_time)}" unless node.published_to.nil? %>"><%= (node.published? ? '<i class="icon-ok-sign"></i>' : '<i class="icon-ban-circle"></i>').html_safe %></td>
-          <td><%= link_to '<i class="icon-remove-sign"></i>'.html_safe, noodall_admin_node_path(node), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this content' unless node.in_site_map? %></td>
+          <td class="show"><%= link_to '<i class="icon-search"></i>'.html_safe, node_path(node), :class => 'show', :title => 'View this content' if node.published? %></td>
+          <td class="publish" title="<%= node.published? ? 'Published ':'Hidden' %><%= node.published_at.to_formatted_s(:short_ordinal) unless node.published_at.nil? %><%= " - #{node.published_to.to_formatted_s(:noodall_time)}" unless node.published_to.nil? %>"><%= (node.published? ? '<i class="icon-ok-sign"></i>' : '<i class="icon-ban-circle"></i>').html_safe %></td>
+          <td class="delete"><%= link_to '<i class="icon-remove-sign"></i>'.html_safe, noodall_admin_node_path(node), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this content' unless node.in_site_map? %></td>
         </tr>
     <% end %>
       </tbody>

@@ -1,54 +1,69 @@
-<%= render 'menu' %>
+<div class="row-fluid">
+  <div class="span12">
+    <%= render 'menu' %>
+  </div> <!-- span12 -->
+</div> <!-- row-fluid -->
 
-<%= form_for([:noodall, :admin, @asset], :html => { :multipart => true, :id => ( 'uploader' if @asset.new_record? ) } ) do |f| %>
-<div id="main-form">
-  <%= f.error_messages %>
-  <%= hidden_field_tag :pending, true if params[:pending] || controller.action_name == "pending" %>
-  <p>
-    <span class="tooltip" title="Enter a title for this asset">&nbsp;</span>
-    <%= f.label :title %><br/>
-    <span class="input-wrap"><%= f.text_field :title %></span>
-  </p>
-  <p>
-    <span class="tooltip" title="Enter a description for this asset">&nbsp;</span>
-    <%= f.label :description %><br/>
-    <span class="input-wrap"><%= f.text_area :description %></span>
-  </p>
-  <% if @asset.video? -%>
-  <p>
-    <span class="tooltip" title="What part of the video do you want the thumbnail genreated from">&nbsp;</span>
-    <%= f.label :video_thumbnail_offset, "Thumbnail Offset" %><br/>
-    <span class="input-wrap"><%= f.select :video_thumbnail_offset, 1..100 %>%</span>
-  </p>
-  <% end -%>
-  <p>
-    <span class="tooltip" title="Choose a file for this asset">&nbsp;</span>
-    <%= f.label :file %><br/>
-    <span class="input-wrap"><%= f.file_field :file %></span>
-  </p>
-  <p>
-    <span class="tooltip" title="Enter some tags (comma separated) for this asset">&nbsp;</span>
-    <%= f.label :tag_list, "Tags" %><br/>
-    <span class="input-wrap"><%= f.text_field :tag_list %></span>
-  </p>
 
-  <p class="fixed-form">
-    <%= f.submit @asset.new_record? ? 'Create' : 'Update', :disable_with => 'Submitting...', :class => 'update' %>
-
-    <%= link_to 'Delete', noodall_admin_asset_path(@asset, :pending => true), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this asset' if params[:pending] || controller.action_name == "pending" %>
-    <%= link_to 'Cancel', admin_assets_type_url(@asset), :class => 'cancel' %>
-  </p>
-</div>
-<% end %>
-
-<% unless @asset.new_record? %>
-<div id="sub-form">
-  <div id="image">
-  <% if @asset.image? or @asset.video? %>
-    <%= image_tag( @asset.url('260x', @asset.web_image_extension), :alt => @asset.description, :id => "asset-#{@asset.id}" ) %>
-    <% else -%>
-    <%= link_to( @asset.file.name, @asset.url, :title => @asset.description, :id => "asset-#{@asset.id}" ) %>
-  <% end -%>
-  </div>
-</div>
-<% end -%>
+<div class="row-fluid">
+  <div class="span8">
+    
+    <%= form_for([:noodall, :admin, @asset], :html => { :multipart => true, :id => ( 'uploader' if @asset.new_record? ), :class => "form-horizontal" } ) do |f| %>
+      <%= f.error_messages %>
+      <%= hidden_field_tag :pending, true if params[:pending] || controller.action_name == "pending" %>
+      
+      <% unless @asset.new_record? %>
+      
+        <div class="control-group">
+          <div class="controls">
+            <% if @asset.image? or @asset.video? %>
+              <%= image_tag( @asset.url('260x', @asset.web_image_extension), :alt => @asset.description, :id => "asset-#{@asset.id}" ) %>
+              <% else -%>
+              <%= link_to( @asset.file.name, @asset.url, :title => @asset.description, :id => "asset-#{@asset.id}" ) %>
+            <% end -%>
+          </div>
+        </div>
+      <% end -%>
+     
+      <div class="control-group">
+        <%= f.label :title, :class => "control-label" %>
+        <i class="icon-info-sign pull-right icon-large help" title="Title" data-content="Enter a title for this asset"></i>
+        <div class="controls"><%= f.text_field :title, :class => "span6" %></div>
+      </div>
+     
+      <div class="control-group">
+        <%= f.label :description, :class => "control-label" %>
+        <i class="icon-info-sign pull-right icon-large help" title="Description" data-content="Enter a description for this asset"></i>
+        <div class="controls"><%= f.text_area :description, :class => "span6" %></div>
+      </div>
+      
+      <% if @asset.video? -%>
+        <div class="control-group">
+          <%= f.label :video_thumbnail_offset, "Thumbnail Offset", :class => "control-label" %>
+          <i class="icon-info-sign pull-right icon-large help" title="Thumbnail Genaration" data-content="What part of the video do you want the thumbnail genreated from"></i>
+          <div class="controls"><%= f.select :video_thumbnail_offset, 1..100 %>%</div>
+        </div>
+      <% end -%>
+      
+      <div class="control-group">
+        <%= f.label :file, :class => "control-label" %>
+        <i class="icon-info-sign pull-right icon-large help" title="File" data-content="Choose a file for this asset"></i>
+        <div class="controls"><%= f.file_field :file, :class => "span6" %></div>
+      </div>
+      
+      <div class="control-group">
+        <%= f.label :tag_list, "Tags", :class => "control-label" %>
+        <i class="icon-info-sign pull-right icon-large help" title="Tags" data-content="Enter some tags (comma separated) for this asset"></i>
+        <div class="controls"><%= f.text_field :tag_list, :class => "span6" %></div>
+      </div>
+      
+      <div class="form-actions">
+        <%= f.submit @asset.new_record? ? 'Create' : 'Update', :disable_with => 'Submitting...', :class => 'btn btn-success btn-large' %>
+        <%= link_to 'Delete', noodall_admin_asset_path(@asset, :pending => true), :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-warning btn-large', :title => 'Delete this asset' if params[:pending] || controller.action_name == "pending" %>
+        <%= link_to 'Cancel', admin_assets_type_url(@asset), :class => 'btn btn-warning btn-large' %>
+      </div>
+      
+    <% end %>
+    
+  </div> <!-- span8 -->
+</div> <!-- row-fluid -->

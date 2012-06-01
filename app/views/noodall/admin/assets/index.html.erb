@@ -28,7 +28,7 @@
           </td>
           <td><%=h asset.created_at.to_formatted_s(:noodall_time) %></td>
           <td><%=h asset.updated_at.to_formatted_s(:noodall_time) %></td>
-          <td class="button"><%= link_to '<i class="icon-remove-sign"></i>'.html_safe, noodall_admin_asset_path(asset), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this asset' %></td>
+          <td class="delete"><%= link_to '<i class="icon-remove-sign"></i>'.html_safe, noodall_admin_asset_path(asset), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this asset' %></td>
         </tr>
     <% end %>
       </tbody>
@@ -43,12 +43,22 @@
       </tfoot>
     </table>
     <%= will_paginate(@assets, :previous_label => 'Previous', :next_label => 'Next') %>
-    <p>Number per Page</p>
-    <div class="btn-group">
-      <% for quant in [10, 20, 50] %>
-          <%= link_to quant, params.merge(:limit => quant), :class => "btn"%>
-      <% end %>
+    
+    <div class="btn-group pull-right">
+      <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+        View per Page
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <% for quant in [10, 20, 50] %>
+            <li><%= link_to quant, params.merge(:limit => quant)%></li>
+        <% end %>
+      </ul>
     </div>
+    
+    
+    
+
   </div> <!-- span10 -->
   
   <div class="span2">
