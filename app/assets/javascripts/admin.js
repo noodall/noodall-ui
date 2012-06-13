@@ -9,5 +9,5 @@
 // require plupload/jquery.plupload.queue/jquery.plupload.queue
 
 //= require admin/bootstrap.min
-// require redactor/redactor
+//= require redactor/redactor
 //= require admin/application

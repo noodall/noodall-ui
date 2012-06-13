@@ -9,13 +9,9 @@ $(document).ready(function () {
   
   // Popover
   $('.help').popover();
-
-  
-  // // Text Area
-  // $('#textarea').wysihtml5();
   
   // Text Area
-  $('#textarea').redactor({
+  $('textarea').redactor({
      toolbar    : 'noodall',
      autoresize :  true
   });
