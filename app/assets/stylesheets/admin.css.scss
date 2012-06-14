@@ -36,70 +36,69 @@ input[type="file"]{
   width: auto;
   padding: 0 19px;
   .user-button{ margin-right: 10px;}
+  .brand strong {color: $white;}
 }
 
 /*Content Table*/
-.component-table-well {
-  width: 280px;
-  background-color: #fff;
-  border-color: #c2c2c2;
-}
-
 #content-table {
   font-size: 16px;
   .table th {
-    background: #2c2c2c;
-    color: #fff;
-    border-color: #666;
+    background: $grayLight;
+    color: $white;
+    border-color: $gray;
   } //table th
   td{
     i.add{
-      color:#5BB75B;
+      color:$green;
       font-size: 25px;
     }
   } //td
   td.show{
     text-align:center;
-    a{color:#333;font-size: 25px;}
+    a{color:$grayDark;font-size: 25px;}
   }
   td.publish{
     text-align:center;
-    i{color:#5BB75B;font-size: 25px;}
+    i{color:$green;font-size: 25px;}
   }
   td.delete{
     text-align:center;
-    a{color:#BD362F;font-size: 25px;}
+    a{color:$red;font-size: 25px;}
   }
   td.file{
     img{float:left;}
-    a.show{color:#333;font-size: 25px;float:right;}
+    a.show{color:$grayDark;font-size: 25px;float:right;}
   }
 }
 
 
 /* Component Table */
+.component-table-well.well{
+  width: 280px;
+  background-color: $white;
+  border-color: $grayLighter;
+}
+
+
 table.component-table {
   width: 280px;
   padding:9px;
   margin:10px 0 0 0;
-  background-color:#e9e9e9;
-  border:1px solid #c2c2c2;
+  background-color:$grayLighter;
   td{
     width: 25%;
     min-height: 50px;
-    border: 4px solid #fff;
+    border: 4px solid $white;
     text-align: center;
-    background: white;
-    border: 4px solid #fff;
-    background: #fff;
+    background: $white;
     &.empty{height: 40px;}
-    &.content{background:#eee;}
+    &.content{background:$grayLighter;}
     a{
       display: block;
       padding: 15px 0;
-      color: #fff;
-      background: #c2c2c2;
-      &.filled {background: #e47373;}
+      color: $white;
+      background: $grayLight;
+      &.filled {background: $red;}
     } //a
   } //td
 } //.component-table
