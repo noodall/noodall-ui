@@ -11,11 +11,6 @@ body, textarea {
 
 /* -------------- FONT SIZES -------------- */
 
-  /* 10px */
-  #tree-browser li li {
-    font-size:1.0em;
-  }
-
   /* 11px */
 ul#status li,
 label,
@@ -55,7 +50,7 @@ table#versions-list td,
 #no-tags h2,
 #sub-form ol#slot-list li,
 #fancybox-topnav h1,
-#tree-browser li {
+ol.tree li {
     font-size:1.4em;
   }
 
@@ -114,7 +109,7 @@ legend,
 #errorExplanation,
 span.node-mover,
 div#flash a,
-#tree-browser span.expand  {
+ol.tree span.expand  {
     font-weight: bold;
   }
 

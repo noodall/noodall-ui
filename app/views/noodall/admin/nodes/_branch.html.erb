@@ -1,15 +1,16 @@
 <ol class="tree">
-<% for node in nodes %>
+<% if @parent.nil? %>
+  <li><a id="id-none" class="choose">Root</a></li>
+<% end %>
+<% for node in @nodes %>
   <li>
-    <% if params[:allowed_types].nil? || ( params[:allowed_types].include?(node.class.to_s) && node.id.to_s != params[:not_branch] && !node.path.map(&:to_s).include?(params[:not_branch]) ) %>
-      <%= link_to h(node.title), node_path(node), :id => "id-#{node.id}" %>
+    <% if params[:allowed_types] && params[:allowed_types].include?(node.class.to_s) && node.id.to_s != params[:not_branch] && !node.path.map(&:to_s).include?(params[:not_branch]) %>
+      <%= link_to h(node.title), node_path(node), :id => "id-#{node.id}", :class => 'choose' %>
     <% else %>
       <%= node.title %>
     <% end %>
-    <% unless (children = node.children.where(options)).empty? -%>
-      <span class="expand">+</span>
-      <%= render :partial => 'branch', :locals => { :nodes => children, :options => options } %>
-    <% end -%>
+    <%= link_to '+', tree_noodall_admin_node_path(node, params), :class => 'expand' unless node.children.count.zero? -%>
   </li>
 <% end -%>
 </ol>
+<%= javascript_tag "$('ol.tree li a.expand').fancybox()" %>
