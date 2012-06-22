@@ -125,7 +125,8 @@
                 <%= link_to 'Edit',
                   tree_noodall_admin_nodes_path(
                     :not_branch => @node.id,
-                    :allowed_types => @node.class.parent_classes.join(',')
+                    :allowed_types => @node.class.parent_classes.join(','),
+                    :mode => 'parent'
                   ),
                   :class => 'edit-item',
                   :title => 'Select a parent',

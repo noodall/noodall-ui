@@ -1,6 +1,8 @@
 <ol class="tree">
 <% if @parent.nil? %>
-  <li><a id="id-none" class="choose">Root</a></li>
+  <% if params[:mode] == 'parent' %>
+  <li><a id="id-none" class="<%= params[:mode] %>" href="/">Root</a></li>
+  <% end %>
 <% elsif @parent.parent_id? %>
   <li><%= link_to 'Up', tree_noodall_admin_node_path(@parent.parent_id, params), :class => 'expand' -%></li>
 <% else %>
@@ -8,8 +10,8 @@
 <% end %>
 <% for node in @nodes %>
   <li>
-    <% if params[:allowed_types] && params[:allowed_types].include?(node.class.to_s) && node.id.to_s != params[:not_branch] && !node.path.map(&:to_s).include?(params[:not_branch]) %>
-      <%= link_to h(node.title), node_path(node), :id => "id-#{node.id}", :class => 'choose' %>
+    <% if params[:mode] == 'link' or ( params[:allowed_types] && params[:allowed_types].include?(node.class.to_s) && node.id.to_s != params[:not_branch] && !node.path.map(&:to_s).include?(params[:not_branch]) ) %>
+      <%= link_to h(node.title), node_path(node), :id => "id-#{node.id}", :class => params[:mode] %>
     <% else %>
       <%= node.title %>
     <% end %>

@@ -88,15 +88,11 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
           tinyMCE.activeEditor.focus();
           tinyMCE.activeEditor.windowManager.bookmark = tinyMCE.activeEditor.selection.getBookmark();
           // open asset lightbox
-          $.get("/admin/nodes/tree", function() {
-            // reopen the opening form if you close this form
-            $.fancybox({
-              href: '#tree-browser',
-              title: "Link to content"
-            });
-            $('#tree-browser').attr('class', 'tinymce');
-          },
-          'script');
+          // reopen the opening form if you close this form
+          $.fancybox({
+            href: "/admin/nodes/tree?mode=link",
+            title: "Link to content"
+          });
         }
       });
 
@@ -112,7 +108,7 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
 
       // wow what a hack: insert a containing span for the page name if nothing is selected,
       // then insert the link, then remove containing span after all is good
-      $('#tree-browser.tinymce li a').live('click', function(event) {
+      $('ol.tree a.link').live('click', function(event) {
         add_url = $(this).attr('href').split('?')[0];
         tinyMCE.activeEditor.selection.moveToBookmark(tinyMCE.activeEditor.windowManager.bookmark);
 

@@ -528,26 +528,7 @@ $("li.multi-file span.delete").live("click", function(e) {
 });
 
 // Node mover and shaker
-//$('span.node-mover, #parent-title').live('click', function(event) {
-  //// open asset lightbox
-  //$('#tree-browser').get($(this).attr('href'), {
-    //allowed_types: $('#parent_types').val().split(','),
-    //not_branch: node_id
-  //},
-  //function() {
-    //// reopen the opening form if you close this form
-    //$.fancybox({
-      //href: '#tree-browser',
-      //title: "Select a parent"
-    //});
-  //},
-  //'script');
-
-  //event.stopImmediatePropagation();
-  //return false;
-//});
-
-$('ol.tree a.choose').live('click', function(e) {
+$('ol.tree a.parent').live('click', function(e) {
   id = this.id.replace('id-', '');
   $('#node_parent').val(id);
   $('#parent-title strong').html($(this).text());
