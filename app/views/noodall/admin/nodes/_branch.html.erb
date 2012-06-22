@@ -1,6 +1,10 @@
 <ol class="tree">
 <% if @parent.nil? %>
   <li><a id="id-none" class="choose">Root</a></li>
+<% elsif @parent.parent_id? %>
+  <li><%= link_to 'Up', tree_noodall_admin_node_path(@parent.parent_id, params), :class => 'expand' -%></li>
+<% else %>
+  <li><%= link_to 'Up', tree_noodall_admin_nodes_path(params.reject{|k,v| k == 'id'}), :class => 'expand' -%></li>
 <% end %>
 <% for node in @nodes %>
   <li>
