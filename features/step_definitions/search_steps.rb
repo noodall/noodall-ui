@@ -1,5 +1,5 @@
 Given /^there is content that can be searched$/ do
-  Given %q{the website has been populated with content based on the site map}
+  step %q{the website has been populated with content based on the site map}
   3.times do |i|
     Factory(:page_a, :title => "My Searchable Page #{i}", :publish => true)
   end
