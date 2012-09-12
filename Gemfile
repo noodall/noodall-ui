@@ -14,8 +14,8 @@ group :assets do
   gem 'sass-rails',   '~> 3.1.4'
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
-  gem 'bootstrap-sass', '~> 2.0.3'
-  gem 'font-awesome-sass-rails'
+  # gem 'bootstrap-sass'
+  # gem 'font-awesome-sass-rails'
   gem 'plupload-rails'
 end
 
@@ -31,8 +31,8 @@ group :development, :test do
   gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
   gem 'jeweler', '~> 1.4.0'
-  gem 'factory_girl'
-  gem 'factory_girl_rails'
+  # gem 'factory_girl'
+  # gem 'factory_girl_rails'
   gem "faker", "~> 0.3.1"
   gem "bson_ext"
 

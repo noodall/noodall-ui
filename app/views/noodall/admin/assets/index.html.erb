@@ -72,9 +72,9 @@
     
     <div class="alert alert-info">
       <h2>Tags</h2>
-      <ul>
+      <ul class="tags">
       <% for tag in @tags %>
-          <li><%= link_to "#{h( tag.name )} (#{tag.count})", :tag => tag.name  %></li>
+          <li><span class="label label-info"><%= link_to "<i class='icon-tag'></i> #{h( tag.name )} (#{tag.count})".html_safe, :tag => tag.name  %></span></li>
       <% end -%>
       </ul>
       <%= link_to 'All Tags', noodall_admin_asset_tags_path(controller.action_name) %>

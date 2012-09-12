@@ -38,7 +38,7 @@
 
     
     <%= will_paginate(@nodes, :previous_label => 'Previous', :next_label => 'Next') %>
-     <table border="0" cellspacing="0" cellpadding="0" class="table table-striped table-bordered" id="content-table">
+     <table border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover" id="content-table">
       <thead>
         <tr>
           <%= admin_nodes_column_headings %>
@@ -54,8 +54,9 @@
           <% if(params[:sort] && params[:sort] != "position" || params[:order] == "descending") %>
             <td width="55"><%= node.position %></td>
           <% else %>
-            <td width="25"><%= link_to 'up', move_up_noodall_admin_node_path(node), { :class => "page_up", :title => 'Move this content higher in the navigation' } unless node.first? %></td>
-            <td width="30" class="down"><%= link_to 'down', move_down_noodall_admin_node_path(node), { :class => 'page_down', :title => 'Move this content lower in the navigation' } unless node.last? %></td>
+            <td class="move-up" width="25"><%= link_to('<i class="icon-arrow-up center up"></i>'.html_safe, move_up_noodall_admin_node_path(node), :class => 'page_up', :title => 'Move this content higher in the navigation') unless node.first? %></td>
+            <td class="move-down" width="30"><%= link_to('<i class="icon-arrow-down down"></i>'.html_safe, move_down_noodall_admin_node_path(node), :class => 'page_down', :title => 'Move this content lower in the navigation') unless node.last? %></td>
+            
           <% end %>
           
           <td class="child">

@@ -1,5 +1,5 @@
 // require rails
 // require plupload
-//= require bootstrap
+//= require bootstrap.min
 //= require redactor/redactor
 //= require admin/application

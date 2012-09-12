@@ -21,7 +21,7 @@
     <%= yield :header %>
 </head>
 <body id="<%= self.controller_name %>" class="<%= self.action_name %>">
-  <div class="navbar navbar-fixed-top">
+  <div class="navbar navbar-fixed-top navbar-inverse">
     <div class="navbar-inner">
       <div class="container">
         
@@ -38,18 +38,21 @@
             <%= admin_menu_items %>
           </ul>
           
-          <%= link_to 'Live Site', '/', :class => "btn btn-success pull-right" %>
+          <ul class="nav pull-right">
+            <li>
+              <div class="btn-group pull-right user-button">
+                <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="icon-user"></i> <%= current_user.full_name %>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
+                </ul>
+              </div>
+            </li>
+            <li><%= link_to '<i class="icon-globe"></i> Live Site'.html_safe, '/' %></li>
+          </ul>
           
-          
-          <div class="btn-group pull-right user-button">
-            <a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">
-              <i class="icon-user"></i> <%= current_user.full_name %> is logged in
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
-            </ul>
-          </div>
 
         </div>
           
