@@ -36,19 +36,27 @@ h1 {
   margin:0 0 20px 0;
 }
 
+/* =============================================================================
+  BOOTSTRAP OVERRIDES
+============================================================================= */
+
 a [class^="icon-"], a [class*=" icon-"] {
   text-decoration:none;
   cursor:pointer;
 }
 
+.btn [class^="icon-"], .btn [class*=" icon-"] {
+  line-height: 14px;
+}
 
-/* =============================================================================
-  COMPONENTS
-============================================================================= */
 
 [class^="icon-"], [class*=" icon-"] {
   background-image:none;
 }
+
+/* =============================================================================
+  COMPONENTS
+============================================================================= */
 
 /* Navbar */
 
@@ -103,9 +111,11 @@ a [class^="icon-"], a [class*=" icon-"] {
     text-align:center;
     height:100%;
     i.icon-eye-close {width:25px; padding: 5px 0; color:#333; font-size: 25px;}
+    i:hover.icon-eye-close {color:#9D261D;}
     a{
       i {width:25px; padding-top: 5px;}
       color:#333;font-size: 25px;
+      &:hover {color:#46A546;}
     }
   }
   td.publish{
@@ -117,7 +127,7 @@ a [class^="icon-"], a [class*=" icon-"] {
       width:25px; 
       padding-top: 5px;
       &.icon-file {
-        color:#333;
+        color:#EAAC0C;
       }
     }
   }
