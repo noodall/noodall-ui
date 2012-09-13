@@ -21,8 +21,12 @@
     <%= yield :header %>
 </head>
 <body id="<%= self.controller_name %>" class="<%= self.action_name %>">
-  <div class="navbar navbar-fixed-top navbar-inverse">
+  
+  <!-- Primary Top Bar -->
+  <div class="navbar navbar-fixed-top navbar-inverse primary-nav">
     <div class="navbar-inner">
+      
+      <!-- Container -->
       <div class="container">
         
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -31,49 +35,63 @@
           <span class="icon-bar"></span>
         </a>
         
-        <a class="brand" href="/admin"><strong><%= Noodall::UI.app_name %></strong> <%= Noodall::UI.system_name %></a>
+        <a class="brand" href="/admin"><strong><%= Noodall::UI.app_name %></strong> <span><%= Noodall::UI.system_name %><span></a>
         
+        <!-- Top Bar Nav -->
         <div class="nav-collapse">
-          <ul class="nav">
-            <%= admin_menu_items %>
-          </ul>
-          
           <ul class="nav pull-right">
-            <li>
-              <div class="btn-group pull-right user-button">
-                <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#">
-                  <i class="icon-user"></i> <%= current_user.full_name %>
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
-                </ul>
-              </div>
-            </li>
             <li><%= link_to '<i class="icon-globe"></i> Live Site'.html_safe, '/' %></li>
+            <li><a href="#"><i class="icon-user"></i> <%= current_user.full_name %> is logged in</a></li>
+            <li><%= link_to '<i class="icon-signout"></i> Sign Out'.html_safe, destroy_user_session_path, :method => :delete %></li>
           </ul>
-          
-
         </div>
-          
+        <!-- Top Bar Nav -->
+        
       </div>
+      <!-- Container -->
+      
     </div>
   </div>
-
+  <!-- Primary Top Bar -->
+  
+  <!-- Secondary Top Bar -->
+  <div class="navbar navbar-fixed-top secondary-nav">
+    <div class="navbar-inner">
+      
+      <!-- Container -->
+      <div class="container">
+        <ul class="nav pull-left">
+          <%= admin_menu_items %>
+        </ul>
+      </div>
+      <!-- Container -->
+      
+    </div>
+  </div>
+  <!-- Secondary Top Bar -->
+  
+  
 
   <div class="container-fluid">
+    
+
     
    <%= render :partial => 'noodall/admin/shared/messages', :object => flash %>
     
     <%= yield %>
-    
-    <hr />
+    </div><!-- // Container -->
     <footer>
-      <p>Noodall was built with love by <a href="#">Beef</a>.</p>
-      <p>&copy; Beef 2012</p>
+      <div class="row-fluid">
+        <div class="span6 site-info">
+          <p>&copy; Beef 2012</p>
+        </div>
+        <div class="span6 built">
+          <p>Noodall was built with love by <a href="#">Beef</a></p>
+        </div>
+      </div>
     </footer>
 
-  </div><!-- // Container -->
+  
   
   <script src="http://www.google.com/jsapi" type="text/javascript"></script>
   <script type="text/javascript">

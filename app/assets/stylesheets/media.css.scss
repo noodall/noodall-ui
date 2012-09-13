@@ -5,13 +5,23 @@
 @media only screen and (max-width: 979px) {
   
   .container-fluid {
-    padding-top: 0;
+    padding-top:0px;
+  }
+  
+  .navbar .brand {
+    padding-right: 10px;
+    padding-left: 5px;
+    margin: 0 0 0 -5px;
   }
   
   a.brand {
-    strong {
-      display:none;
-    }
+    span {display:none;}
+  }
+  
+  
+  .navbar-fixed-top {
+    &.primary-nav {position:static; margin-bottom:0;}
+    &.secondary-nav {position:static; margin-top:0;}
   }
   
 }
@@ -23,10 +33,36 @@
 
 /* All Mobile Sizes (devices and browser) */
 @media only screen and (max-width: 767px) {
-  .span2 {
-    clear:both;
-    padding-top:20px;
+  
+  .span2 {clear:both; padding-top:20px;}
+
+  footer {
+    .site-info {text-align:center;}
+    .built {text-align:center;}
   }
+  
+  .asset-img {
+    text-align:center;
+    .pull-left {
+      float:none;
+    }
+  }
+  
+  h1.pull-left, .btn-group.pull-right, .filter-by-title form.pull-right {
+    float:none;
+  }
+  
+  .row-fluid .filter-by-title.offset5 {
+    margin-left:0;
+  }
+  
+  .filter-by-title form #f {width: 44%;}
+  .btn-group.pull-right {margin-bottom:20px;}
+  
+  footer {
+    margin:0;
+  }
+  
 }
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */

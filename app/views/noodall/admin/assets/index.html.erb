@@ -28,7 +28,7 @@
           </td>
           <td><%=h asset.created_at.to_formatted_s(:noodall_time) %></td>
           <td><%=h asset.updated_at.to_formatted_s(:noodall_time) %></td>
-          <td class="delete"><%= link_to '<i class="icon-remove-sign"></i>'.html_safe, noodall_admin_asset_path(asset), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this asset' %></td>
+          <td class="delete"><%= link_to '<i class="icon-remove"></i>'.html_safe, noodall_admin_asset_path(asset), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this asset' %></td>
         </tr>
     <% end %>
       </tbody>

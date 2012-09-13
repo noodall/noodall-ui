@@ -27,33 +27,33 @@
      
       <div class="control-group">
         <%= f.label :title, :class => "control-label" %>
-        <i class="icon-info-sign pull-right icon-large help" title="Title" data-content="Enter a title for this asset"></i>
+        <i class="icon-info-sign pull-right icon-large help" title="Title" data-trigger="hover" data-content="Enter a title for this asset"></i>
         <div class="controls"><%= f.text_field :title, :class => "span6" %></div>
       </div>
      
       <div class="control-group">
         <%= f.label :description, :class => "control-label" %>
-        <i class="icon-info-sign pull-right icon-large help" title="Description" data-content="Enter a description for this asset"></i>
+        <i class="icon-info-sign pull-right icon-large help" title="Description" data-trigger="hover" data-content="Enter a description for this asset"></i>
         <div class="controls"><%= f.text_area :description, :class => "span6" %></div>
       </div>
       
       <% if @asset.video? -%>
         <div class="control-group">
           <%= f.label :video_thumbnail_offset, "Thumbnail Offset", :class => "control-label" %>
-          <i class="icon-info-sign pull-right icon-large help" title="Thumbnail Genaration" data-content="What part of the video do you want the thumbnail genreated from"></i>
+          <i class="icon-info-sign pull-right icon-large help" title="Thumbnail Genaration" data-trigger="hover" data-content="What part of the video do you want the thumbnail genreated from"></i>
           <div class="controls"><%= f.select :video_thumbnail_offset, 1..100 %>%</div>
         </div>
       <% end -%>
       
       <div class="control-group">
         <%= f.label :file, :class => "control-label" %>
-        <i class="icon-info-sign pull-right icon-large help" title="File" data-content="Choose a file for this asset"></i>
+        <i class="icon-info-sign pull-right icon-large help" title="File" data-trigger="hover" data-content="Choose a file for this asset"></i>
         <div class="controls"><%= f.file_field :file, :class => "span6" %></div>
       </div>
       
       <div class="control-group">
         <%= f.label :tag_list, "Tags", :class => "control-label" %>
-        <i class="icon-info-sign pull-right icon-large help" title="Tags" data-content="Enter some tags (comma separated) for this asset"></i>
+        <i class="icon-info-sign pull-right icon-large help" title="Tags" data-trigger="hover" data-content="Enter some tags (comma separated) for this asset"></i>
         <div class="controls"><%= f.text_field :tag_list, :class => "span6" %></div>
       </div>
       

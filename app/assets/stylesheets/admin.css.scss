@@ -4,7 +4,7 @@
 
 /* =============================================================================
   BOOTSTRAP COMPATIBILITY
-========================================================================== */
+============================================================================= */
 /* Rails scaffold style compatibility */
 .errorExplanation {
   @extend .alert;
@@ -18,13 +18,13 @@
 
 /* =============================================================================
   LAYOUT
-========================================================================== */
+============================================================================= */
 body {
-  
 }
 
 .container-fluid {
-  padding-top: 50px;
+  padding-top:110px;
+  background-color:#fff;
 }
 
 input[type="file"]{
@@ -32,24 +32,50 @@ input[type="file"]{
   clear:both;
 }
 
+h1 {
+  margin:0 0 20px 0;
+}
+
+a [class^="icon-"], a [class*=" icon-"] {
+  text-decoration:none;
+  cursor:pointer;
+}
+
+
 /* =============================================================================
   COMPONENTS
-========================================================================== */
+============================================================================= */
 
 [class^="icon-"], [class*=" icon-"] {
   background-image:none;
 }
 
-//Navbar
+/* Navbar */
 
-.navbar-fixed-top .container {
-  width: auto;
-  padding: 0 19px;
-  .user-button{ margin-right: 10px;}
-  .brand strong {color: #fff;}
+.navbar-fixed-top {
+  .container {
+    width: auto;
+    padding: 0 19px;
+    .user-button { margin-right: 10px;}
+    .brand strong {color: #fff;}
+  }
+  &.primary-nav {
+
+  }
+  &.secondary-nav {
+    margin-top:42px;
+    ul.nav {
+      li {
+        a:first-child {
+          padding-left:0;
+        }
+      }
+    }
+  }
 }
 
 /*Content Table*/
+
 #content-table {
   font-size: 16px;
   i, a {
@@ -71,33 +97,57 @@ input[type="file"]{
     }
     i.add{
       color:#46a546;
-      //font-size: 25px;
     }
   } //td
   td.show{
     text-align:center;
     height:100%;
-    a{color:#333;font-size: 25px;}
+    i.icon-eye-close {width:25px; padding: 5px 0; color:#333; font-size: 25px;}
+    a{
+      i {width:25px; padding-top: 5px;}
+      color:#333;font-size: 25px;
+    }
   }
   td.publish{
     text-align:center;
-    &[title*=Hidden] {
-      i{
-        color:#9d261d;
-      } 
+    height:100%;
+    i {
+      color:#46a546; 
+      font-size: 25px; 
+      width:25px; 
+      padding-top: 5px;
+      &.icon-file {
+        color:#333;
+      }
     }
-    i{color:#46a546;font-size: 25px;}
   }
   td.delete{
     text-align:center;
-    a{color:#9d261d;font-size: 25px;}
+    height:100%;
+    a{
+      i {width:25px; padding-top: 5px;}
+      display:block; 
+      color:#9d261d;
+      font-size: 25px;
+    }
   }
   td.file{
+    text-align:center;
+    height:100%;
     img{float:left;}
-    a.show{color:#333;font-size: 25px;float:right;}
+    a.show{
+      color:#333; 
+      font-size: 25px; 
+      float:right;
+      i {
+        padding-right: 10px;
+        padding-top: 5px;
+      }
+    }
   }
 }
 /* Tags */
+
 .tags {
   margin:0 0 15px 0;
   padding:0;
@@ -115,12 +165,12 @@ input[type="file"]{
 }
 
 /* Component Table */
+
 .component-table-well.well{
   width: 280px;
   background-color: #fff;
   border-color: #eee;
 }
-
 
 table.component-table {
   width: 280px;
@@ -145,15 +195,45 @@ table.component-table {
   } //td
 } //.component-table
 
-/*Component List*/
+/* Component List */
+
 .component-list{
   width: 320px;
   margin:20px 0 0 0;
 }
 
+.filter-by-type {
+  padding-top:20px;
+}
+
+/* =============================================================================
+  FOOTER
+============================================================================= */
+footer {
+  padding: 20px 0;
+  margin:20px 20px 0 20px;
+  border-top:1px solid #ddd;
+  .site-info {}
+  .built {
+    text-align:right;
+    a {
+      width:40px;
+      height:28px;
+      line-height:28px;
+      margin-left:5px;
+      display:inline-block;
+      background: url(/assets/admin/beef-love.jpg) no-repeat;
+      text-indent: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+}
+
 /* =============================================================================
   CLEARFIX
-========================================================================== */
+============================================================================= */
+
 //{
 //  content: ".";
 //  display: block;
