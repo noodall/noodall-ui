@@ -1,5 +1,5 @@
 @javascript
-Feature: Preview Content
+Feature: Set content browser title
   In order to have a succinct page title, with a more descriptive browser title
   A website editor
   Will be able to set a separate browser title
@@ -11,7 +11,7 @@ Feature: Preview Content
     Then the content should be visible on the website
     And the title should be "Bacon Ipsum"
     And the browser title should be "Bacon Ipsum"
-    
+
 
   Scenario: Set a browser title
     Given I am editing content

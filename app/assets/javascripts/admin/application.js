@@ -206,6 +206,8 @@ $(document).ready(function() {
 
   // Add emptys div for browsers/preview
   $('body').append('<div style="display:none;"><div id="asset-browser"></div><div id="tree-browser"></div><div id="preview-pane"><iframe name="preview-frame" src="about:blank"/></div></div>');
+
+  $('#parent-title a.edit-item').fancybox();
 });
 
 function get_preview_html(e) {
@@ -526,36 +528,10 @@ $("li.multi-file span.delete").live("click", function(e) {
 });
 
 // Node mover and shaker
-$('span.node-mover, #parent-title').live('click', function(event) {
-  node_id = $(this).closest('form').attr('action').split('/').pop();
-  // open asset lightbox
-  $.get("/admin/nodes/tree", {
-    allowed_types: $('#parent_types').val().split(','),
-    not_branch: node_id
-  },
-  function() {
-    // reopen the opening form if you close this form
-    $.fancybox({
-      href: '#tree-browser',
-      title: "Select a parent"
-    });
-    $('#tree-browser').attr('class', 'parent');
-    $('#tree-browser .tree:first').append('<li><a id="id-none">Root</a></li>');
-  },
-  'script');
-
-  event.stopImmediatePropagation();
-  return false;
-});
-
-$('#tree-browser ol.tree span.expand').live('click', function(e) {
-  $(this).toggleClass('expanded').siblings('ol.tree').toggle();
-});
-
-$('#tree-browser.parent a').live('click', function(e) {
+$('ol.tree a.parent').live('click', function(e) {
   id = this.id.replace('id-', '');
   $('#node_parent').val(id);
-  $('#parent-title').html($(this).text() + '<a class="edit-item">Edit</a>');
+  $('#parent-title strong').html($(this).text());
   $.fancybox.close();
   return false;
 });

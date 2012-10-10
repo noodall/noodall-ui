@@ -121,11 +121,18 @@
             <p>
               <span class="node-mover">Parent Content</span>
               <span class="input-wrap" id="parent-title">
-                <%= @node.root? ? "Root" : @node.parent.title %>
-                <a href="#" class="edit-item">Edit</a>
+                <strong><%= @node.root? ? "Root" : @node.parent.title %></strong>
+                <%= link_to 'Edit',
+                  tree_noodall_admin_nodes_path(
+                    :not_branch => @node.id,
+                    :allowed_types => @node.class.parent_classes.join(','),
+                    :mode => 'parent'
+                  ),
+                  :class => 'edit-item',
+                  :title => 'Select a parent',
+                %>
               </span>
               <%= f.hidden_field :parent, :value => @node.parent_id %>
-              <%= hidden_field_tag :parent_types, @node.class.parent_classes.join(','), :disabled => true %>
             </p>
 
             <!-- PAGE URL -->

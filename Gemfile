@@ -4,7 +4,7 @@ source 'http://gems.github.com'
 gemspec
 
 # Required for running as demo rails app
-gem 'rails', '3.1.0'
+gem 'rails', '~> 3.1.0'
 gem 'dragonfly', '~> 0.9.4'
 gem 'mm-versionable', '0.2.5'
 
@@ -29,7 +29,7 @@ group :development, :test do
   gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
   gem 'jeweler', '~> 1.4.0'
-  gem 'factory_girl'
+  gem 'factory_girl', '~> 2.0'
   gem 'factory_girl_rails'
   gem "faker", "~> 0.3.1"
   gem "bson_ext"

@@ -18,7 +18,7 @@ function setUpPlupload() {
     runtimes : 'html5,flash,gears,silverlight,html4',
     url : '/admin/assets/plupload',
     // max_file_size : '10mb',
-    chunk_size : '1mb',
+    // chunk_size : '1mb',
     unique_names : false,
 
     // Use multipart

@@ -321,7 +321,7 @@ ul.choices li a:hover {
 
 /* PAGINATION */
 
-.pagination a, #tree-browser a {
+.pagination a, ol.tree a {
         color:#106bab;
 }
 
@@ -519,7 +519,7 @@ table#node_body_tbl,
         color:#D4954C;
 }
 
-#tree-browser span.expand {
+ol.tree a.expand {
    background:#82b452;
    border:3px solid #548126;
    color: #fff;
@@ -613,7 +613,7 @@ table.component-table,
         border-radius: 5px;
 }
 
-#tree-browser span.expand  {
+ol.tree a.expand  {
         -webkit-border-radius: 15px;
         -moz-border-radius: 15px;
         border-radius: 15px;

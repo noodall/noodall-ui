@@ -7,14 +7,14 @@ module Noodall
       sortable_attributes :position, :admin_title, :title, :type, :updated_at
 
       def index
-        
+
         if params[:node_id].nil?
           nodes = Node.roots
         else
           @parent = Node.find(params[:node_id])
           nodes = @parent.children
         end
-        
+
         per_page = 15
         @nodes = nodes.where( :title => /#{params[:f]}/i ).paginate(:per_page => (params[:limit] || per_page), :page => params[:page], :order => sort_order(:default => "ascending") )
 
@@ -25,9 +25,14 @@ module Noodall
       end
 
       def tree
-        @options = {}
+        if params[:id].nil?
+          @nodes = Node.roots
+        else
+          @parent = Node.find(params[:id])
+          @nodes = @parent.children
+        end
         respond_to do |format|
-          format.html
+          format.html { render :layout => false }
           format.js
         end
       end

@@ -12,6 +12,7 @@ module Noodall
                 get :change_template
                 get :move_up
                 get :move_down
+                get :tree
                 post :preview
               end
               collection do
