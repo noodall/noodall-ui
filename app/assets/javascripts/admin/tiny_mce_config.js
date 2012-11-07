@@ -90,7 +90,7 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
           // open asset lightbox
           // reopen the opening form if you close this form
           $.fancybox({
-            href: "/admin/nodes/tree?mode=link",
+            href: "/admin/nodes/tree?mode=link&scope_with=tiny-mce",
             title: "Link to content"
           });
         }
@@ -108,7 +108,7 @@ $.extend(tiny_mce_config, lite_tiny_mce_config, {
 
       // wow what a hack: insert a containing span for the page name if nothing is selected,
       // then insert the link, then remove containing span after all is good
-      $('ol.tree a.link').live('click', function(event) {
+      $('ol.tree.tiny-mce a.link').live('click', function(event) {
         add_url = $(this).attr('href').split('?')[0];
         tinyMCE.activeEditor.selection.moveToBookmark(tinyMCE.activeEditor.windowManager.bookmark);
 

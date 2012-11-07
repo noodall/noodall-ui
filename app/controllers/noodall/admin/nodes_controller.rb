@@ -25,6 +25,7 @@ module Noodall
       end
 
       def tree
+        params[:scope_with] ||= 'tiny-mce'
         if params[:id].nil?
           @nodes = Node.roots
         else

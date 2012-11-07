@@ -1,4 +1,4 @@
-<ol class="tree">
+<ol class="tree <%= params[:scope_with] %>">
 <% if @parent.nil? %>
   <% if params[:mode] == 'parent' %>
   <li><a id="id-none" class="<%= params[:mode] %>" href="/">Root</a></li>
