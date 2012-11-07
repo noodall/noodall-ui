@@ -540,21 +540,15 @@ $('ol.tree a.parent').live('click', function(e) {
 $('span.link-node').live('click', function(event) {
   Component.link_input = $(this).siblings('input').first();
   // open asset lightbox
-  $.get("/admin/nodes/tree", function() {
-    // reopen the opening form if you close this form
-    $.fancybox({
-      href: '#tree-browser',
-      title: "Link to content"
-    });
-    $('#tree-browser').attr('class', 'link');
-  },
-  'script');
-
+  $.fancybox({
+    href: '/admin/nodes/tree?mode=link&scope_with=component',
+    title: "Link to content"
+  });
   event.stopImmediatePropagation();
   return false;
 });
 
-$('#tree-browser.link a').live('click', function(e) {
+$('ol.tree.component a.link').live('click', function(e) {
   $(Component.link_input).val($(this).attr('href'));
   Component.reopen_slot();
   return false;
