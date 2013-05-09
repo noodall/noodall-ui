@@ -2,6 +2,7 @@ class Asset
   include MongoMapper::Document
   plugin Noodall::Tagging
   plugin Noodall::GlobalUpdateTime
+  plugin Noodall::Search
 
   # Set up dragonfly
   extend Dragonfly::ActiveModelExtensions
@@ -27,6 +28,8 @@ class Asset
   # Set up video format
   cattr_accessor :video_extensions
   self.video_extensions = []
+  
+  searchable_keys :title, :description
 
   def image?
     !(file_mime_type =~ self.class.image_reg_ex).nil?
