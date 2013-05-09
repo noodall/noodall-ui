@@ -194,6 +194,27 @@ module Noodall
           format.xml  { head :ok }
         end
       end
+      
+      def search
+        if params[:query].nil?
+          render_404
+        else
+          @page_title = 'Searching: '+ params[:query]
+          
+          options = asset_options(action_name)
+
+          @tags = Asset.tag_cloud options.merge(:limit => 10)
+          # By default it gets the top 10 ordered by count lets order these alphbetically
+          @tags.sort!{|a,b| a.name <=> b.name }
+          
+          @assets = Asset.search(params[:query], :per_page => 10, :page => params[:page])
+          respond_to do |format|
+            format.html { render :index }
+            format.js { render :index }
+            format.xml  { render :xml => @assets }
+          end
+        end
+      end
 
       protected
       def asset_options(asset_type)

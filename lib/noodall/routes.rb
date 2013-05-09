@@ -29,6 +29,7 @@ module Noodall
                 post :plupload
                 get :pending
                 get :tags
+                get :search
               end
               member do
                 get :add

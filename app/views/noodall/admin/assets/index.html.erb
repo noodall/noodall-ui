@@ -1,42 +1,58 @@
-<h1><%= admin_page_title %></h1>
+
+
+<% if params[:query] %>
+  <h1>Search results for <span class="term">'<%= h params[:query] %>'</span></h1>
+<% else %>
+  <h1><%= admin_page_title %></h1>
+<% end %>
 
 <%= render 'menu' %>
 <%= will_paginate(@assets, :previous_label => 'Previous', :next_label => 'Next') %>
 <div id="content-table">
-<table border="0" cellspacing="0" cellpadding="0" class="content">
-  <thead>
-    <tr>
-      <%= sortable_table_header :name => "Title", :sort => "title", :class => 'sort' %>
-      <th width="140">File</th>
-      <%= sortable_table_header :name => "Created", :sort => "created_at", :class => 'sort' %>
-      <%= sortable_table_header :name => "Updated", :sort => "updated_at", :class => 'sort' %>
-      <th width="50">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-<% @assets.each do |asset| %>
-    <tr id="asset-<%= asset.id %>" class="<%=cycle('odd', 'even')%>">
-      <td><%= link_to h( asset.title ), edit_noodall_admin_asset_path(asset), :class => 'edit', :title => 'Edit this asset' %></td>
-      <td class="file">
-        <%= (asset.image? or asset.video?) ? image_tag( asset.url('70x70', asset.web_image_extension), :alt => "#{truncate(asset.file.name, :length => 80)}")  : link_to( asset_icon(asset) ) %>
-        <%= link_to 'Show', noodall_admin_asset_path(asset), :class => 'show', :title => 'View this asset' %>
-      </td>
-      <td><%=h asset.created_at.to_formatted_s(:short_ordinal) %></td>
-      <td><%=h asset.updated_at.to_formatted_s(:short_ordinal) %></td>
-      <td class="button"><%= link_to 'Delete', noodall_admin_asset_path(asset), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this asset' %></td>
-    </tr>
-<% end %>
-  </tbody>
-  <tfoot>
-    <tr>
-      <%= sortable_table_header :name => "Title", :sort => "title", :class => 'sort' %>
-      <th width="140">File</th>
-      <%= sortable_table_header :name => "Created", :sort => "created_at", :class => 'sort' %>
-      <%= sortable_table_header :name => "Updated", :sort => "updated_at", :class => 'sort' %>
-      <th width="50">Delete</th>
-    </tr>
-  </tfoot>
-</table>
+  
+  <div id="form-filter">
+    <%= form_tag search_noodall_admin_assets_path, :method => :get, :id => 'asset_search' do %>
+      <%= label_tag :query, 'Search' %>
+      <%= text_field_tag :query %>
+      <%= submit_tag "Search" %>
+    <% end %>
+
+  </div>
+  
+  <table border="0" cellspacing="0" cellpadding="0" class="content">
+    <thead>
+      <tr>
+        <%= sortable_table_header :name => "Title", :sort => "title", :class => 'sort' %>
+        <th width="140">File</th>
+        <%= sortable_table_header :name => "Created", :sort => "created_at", :class => 'sort' %>
+        <%= sortable_table_header :name => "Updated", :sort => "updated_at", :class => 'sort' %>
+        <th width="50">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+  <% @assets.each do |asset| %>
+      <tr id="asset-<%= asset.id %>" class="<%=cycle('odd', 'even')%>">
+        <td><%= link_to h( asset.title ), edit_noodall_admin_asset_path(asset), :class => 'edit', :title => 'Edit this asset' %></td>
+        <td class="file">
+          <%= (asset.image? or asset.video?) ? image_tag( asset.url('70x70', asset.web_image_extension), :alt => "#{truncate(asset.file.name, :length => 80)}")  : link_to( asset_icon(asset) ) %>
+          <%= link_to 'Show', noodall_admin_asset_path(asset), :class => 'show', :title => 'View this asset' %>
+        </td>
+        <td><%=h asset.created_at.to_formatted_s(:short_ordinal) %></td>
+        <td><%=h asset.updated_at.to_formatted_s(:short_ordinal) %></td>
+        <td class="button"><%= link_to 'Delete', noodall_admin_asset_path(asset), :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this asset' %></td>
+      </tr>
+  <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <%= sortable_table_header :name => "Title", :sort => "title", :class => 'sort' %>
+        <th width="140">File</th>
+        <%= sortable_table_header :name => "Created", :sort => "created_at", :class => 'sort' %>
+        <%= sortable_table_header :name => "Updated", :sort => "updated_at", :class => 'sort' %>
+        <th width="50">Delete</th>
+      </tr>
+    </tfoot>
+  </table>
 
   <ul id="per-page-select">
 <% for quant in [10, 20, 50] %>
