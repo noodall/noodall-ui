@@ -199,13 +199,7 @@ module Noodall
         if params[:query].nil?
           render_404
         else
-          
-          
-          
-          
           @page_title = 'Searching: '+ params[:query]
-          
-          
           
           options = asset_options(action_name)
 
@@ -214,14 +208,11 @@ module Noodall
           @tags.sort!{|a,b| a.name <=> b.name }
           
           @assets = Asset.search(params[:query], :per_page => 10, :page => params[:page])
-
-
           respond_to do |format|
             format.html { render :index }
             format.js { render :index }
             format.xml  { render :xml => @assets }
           end
-          
         end
       end
 
