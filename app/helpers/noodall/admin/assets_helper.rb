@@ -11,4 +11,18 @@ module Noodall::Admin::AssetsHelper
     image_tag icon, :title => "#{asset.title} - #{asset.file.name}"
   end
 
+  def system_image(asset, options)
+    image_tag(system_image_url(asset, options), :alt => "#{truncate(asset.file.name, :length => 80)}")
+  end
+
+  def system_image_url(asset, options)
+
+    if [:amazon_s3, :filesystem].include? Noodall::UI::Assets.storage
+      unless asset.send(options[:image]).nil?
+        return asset.send(options[:image]).remote_url
+      end
+    end
+
+    asset.url('70x70', asset.web_image_extension)
+  end
 end

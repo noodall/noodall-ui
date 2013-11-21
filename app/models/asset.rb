@@ -7,7 +7,16 @@ class Asset
   extend Dragonfly::ActiveModelExtensions
   register_dragonfly_app(:asset_accessor, Dragonfly::App[:noodall_assets])
 
-  asset_accessor :file
+  asset_accessor :file do
+
+    Noodall::UI::Assets.system_image_sizes.each do |name, size|
+      copy_to(name.to_sym) { |file| file.thumb(size) }
+    end
+
+    Noodall::UI::Assets.image_sizes.each do |name, size|
+      copy_to(name.to_sym) { |file| file.thumb(size) }
+    end
+  end
 
   # Dragonfly fields
   key :file_uid, String #For dragonfly file uid
@@ -16,6 +25,22 @@ class Asset
   key :file_size, Integer
   key :file_mime_type, String
   key :video_thumbnail_offset, Integer, :default => 10
+
+  # Setup additional image sizes if we're using Amazon S3 or local storage
+  if [:amazon_s3, :filesystem].include? Noodall::UI::Assets.storage
+
+    # System thumbnails used by Noodall
+    Noodall::UI::Assets.system_image_sizes.each do |name, size|
+      asset_accessor name
+      key "#{name}_uid".to_sym, String
+    end
+
+    # Images used configured by the user
+    Noodall::UI::Assets.image_sizes.each do |name, size|
+      asset_accessor name
+      key "#{name}_uid".to_sym, String
+    end
+  end
 
   key :title, String
   key :description, String
