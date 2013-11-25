@@ -42,13 +42,14 @@
 <% end %>
 
 <% unless @asset.new_record? %>
-<div id="sub-form">
-  <div id="image">
-  <% if @asset.image? or @asset.video? %>
-    <%= image_tag( @asset.url('260x', @asset.web_image_extension), :alt => @asset.description, :id => "asset-#{@asset.id}" ) %>
-    <% else -%>
-    <%= link_to( @asset.file.name, @asset.url, :title => @asset.description, :id => "asset-#{@asset.id}" ) %>
-  <% end -%>
+  <div id="sub-form">
+    <div id="image">
+      <% if @asset.image? or @asset.video? %>
+        <%#= system_image(@asset, :size => '260x', :image => :system_thumb) %>
+        <%= image_tag( @asset.url('260x', @asset.web_image_extension), :alt => @asset.description, :id => "asset-#{@asset.id}" ) %>
+      <% else -%>
+        <%= link_to(@asset.file.name, @asset.url, :title => @asset.description, :id => "asset-#{@asset.id}") %>
+      <% end -%>
+    </div>
   </div>
-</div>
 <% end -%>
