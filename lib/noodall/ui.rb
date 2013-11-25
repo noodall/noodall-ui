@@ -22,7 +22,7 @@ module Noodall
       end
 
       self.storage = :mongo_gridfs
-      self.system_image_sizes = { :system_thumb => '70x70' }
+      self.system_image_sizes = { :system_thumb => '260x' }
       self.image_sizes = {}
     end
   end
