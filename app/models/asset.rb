@@ -8,13 +8,14 @@ class Asset
   register_dragonfly_app(:asset_accessor, Dragonfly::App[:noodall_assets])
 
   asset_accessor :file do
+    if [:amazon_s3, :filesystem].include? Noodall::UI::Assets.storage
+      Noodall::UI::Assets.system_image_sizes.each do |name, size|
+        copy_to(name.to_sym) { |file| file.thumb(size) }
+      end
 
-    Noodall::UI::Assets.system_image_sizes.each do |name, size|
-      copy_to(name.to_sym) { |file| file.thumb(size) }
-    end
-
-    Noodall::UI::Assets.image_sizes.each do |name, size|
-      copy_to(name.to_sym) { |file| file.thumb(size) }
+      Noodall::UI::Assets.image_sizes.each do |name, size|
+        copy_to(name.to_sym) { |file| file.thumb(size) }
+      end
     end
   end
 
