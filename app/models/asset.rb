@@ -63,13 +63,21 @@ class Asset
   end
 
   def url(*args)
-    if args.blank?
-      # Use the transparent url just the file is required with no processing
-      file.url
-    elsif video?
-      file.encode(:tiff, { :offset => "#{video_thumbnail_offset}%" }).thumb(*args).url
+    if Noodall::UI::Assets.storage == :amazon_s3
+      if args.blank?
+        file.remote_url
+      else
+        self.send(image_size_from_dimensions(args.first)).remote_url
+      end
     else
-      file.thumb(*args).strip.convert('-colorspace RGB').url
+      if args.blank?
+        # Use the transparent url just the file is required with no processing
+        file.url
+      elsif video?
+        file.encode(:tiff, { :offset => "#{video_thumbnail_offset}%" }).thumb(*args).url
+      else
+        file.thumb(*args).strip.convert('-colorspace RGB').url
+      end
     end
   end
 
@@ -106,6 +114,12 @@ class Asset
   end
 
   protected
+
+  def image_size_from_dimensions(dimensions)
+    # Return an image size which matches the given dimensions
+    # Fall back to the default
+    Noodall::UI::Assets.image_sizes.invert[dimensions].try(:to_s) || :file
+  end
 
   def set_title
     self.title = file_name.gsub(/\.[\w\d]{3,4}$/,'').titleize if title.blank?
