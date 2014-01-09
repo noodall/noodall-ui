@@ -13,5 +13,5 @@
 //= require plupload/jquery.plupload.queue/jquery.plupload.queue
 //= require admin/assets
 //= require admin/asset_edit
-//= require tiny_mce/jquery.tinymce
+//= require_tree ./tiny_mce/
 //= require admin/tiny_mce_config

@@ -4,17 +4,17 @@ source 'http://gems.github.com'
 gemspec
 
 # Required for running as demo rails app
-gem 'rails', '~> 3.1.0'
-gem 'dragonfly', '~> 0.9.4'
-gem 'mm-versionable', '0.2.5'
+gem 'rails'
+gem 'dragonfly'
+gem 'mm-versionable'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.1.4'
-  gem 'coffee-rails', '~> 3.1.1'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'compass', '~> 0.12.alpha'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
+  gem 'compass'
 end
 
 # Bundle gems for the local environment. Make sure to
