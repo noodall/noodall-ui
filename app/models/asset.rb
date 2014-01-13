@@ -48,7 +48,6 @@ class Asset
   timestamps!
 
   validates_presence_of :file, :title, :description
-  validates_length_of :tags, :minimum => 1, :message => "must have at least 1 item"
 
   # Set up video format
   cattr_accessor :video_extensions
