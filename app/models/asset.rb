@@ -10,11 +10,11 @@ class Asset
   asset_accessor :file do
     if [:amazon_s3, :filesystem].include? Noodall::UI::Assets.storage
       Noodall::UI::Assets.system_image_sizes.each do |name, size|
-        copy_to(name.to_sym) { |file| file.thumb(size) }
+        copy_to(name.to_sym) { |file| file.thumb(size) if file.image? }
       end
 
       Noodall::UI::Assets.image_sizes.each do |name, size|
-        copy_to(name.to_sym) { |file| file.thumb(size) }
+        copy_to(name.to_sym) { |file| file.thumb(size) if file.image? }
       end
     end
   end
