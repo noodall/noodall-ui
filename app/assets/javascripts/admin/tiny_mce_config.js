@@ -8,7 +8,7 @@ lite_tiny_mce_config = {
     editor_selector : "lite-editor",
     strict_loading_mode : 1,
     convert_urls : false,
-    plugins : "safari,inlinepopups,xhtmlxtras,paste,media,advimage,table,addvideo",
+    plugins : "safari,inlinepopups,xhtmlxtras,paste,media,advimage,table,addvideo,tinymcehelp",
     //"safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking",
     // Theme options
     theme_advanced_blockformats : "h2,h3,h4,p",
@@ -36,7 +36,7 @@ tiny_mce_config = {};
 $.extend(tiny_mce_config, lite_tiny_mce_config, {
     editor_selector : "editor",
     theme_advanced_buttons1 : "bold,italic,underline,|,formatselect,removeformat ,|,bullist,numlist,|,link,unlink,anchor,|,outdent,indent,blockquote,|,justifyleft,justifycenter,justifyright,justifyfull",
-    theme_advanced_buttons2 : "table,delete_table,tablecontrols,col_before,col_after,row_before,row_after,delete_col,delete_row,|,code,attribs,image,media, assetbrowser,nodebrowser,addvideo",
+    theme_advanced_buttons2 : "table,delete_table,tablecontrols,col_before,col_after,row_before,row_after,delete_col,delete_row,|,code,attribs,image,media, assetbrowser,nodebrowser,addvideo,tinymcehelp",
 
     setup : function(ed) {
       // Add a custom button
