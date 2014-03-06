@@ -13,5 +13,18 @@ module Noodall
 
     self.app_name = "Noodall"
     self.system_name = "Content Management System"
+
+    module Assets
+      class << self
+        attr_accessor :storage
+        attr_accessor :system_image_sizes
+        attr_accessor :image_sizes
+      end
+
+      self.storage = :mongo_gridfs
+      self.system_image_sizes = { :system_thumb => '260x' }
+      self.image_sizes = {}
+    end
   end
 end
+

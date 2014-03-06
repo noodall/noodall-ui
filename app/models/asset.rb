@@ -7,7 +7,17 @@ class Asset
   extend Dragonfly::ActiveModelExtensions
   register_dragonfly_app(:asset_accessor, Dragonfly::App[:noodall_assets])
 
-  asset_accessor :file
+  asset_accessor :file do
+    if [:amazon_s3, :filesystem].include? Noodall::UI::Assets.storage
+      Noodall::UI::Assets.system_image_sizes.each do |name, size|
+        copy_to(name.to_sym) { |file| file.thumb(size) if file.image? }
+      end
+
+      Noodall::UI::Assets.image_sizes.each do |name, size|
+        copy_to(name.to_sym) { |file| file.thumb(size) if file.image? }
+      end
+    end
+  end
 
   # Dragonfly fields
   key :file_uid, String #For dragonfly file uid
@@ -17,12 +27,27 @@ class Asset
   key :file_mime_type, String
   key :video_thumbnail_offset, Integer, :default => 10
 
+  # Setup additional image sizes if we're using Amazon S3 or local storage
+  if [:amazon_s3, :filesystem].include? Noodall::UI::Assets.storage
+
+    # System thumbnails used by Noodall
+    Noodall::UI::Assets.system_image_sizes.each do |name, size|
+      asset_accessor name
+      key "#{name}_uid".to_sym, String
+    end
+
+    # Images used configured by the user
+    Noodall::UI::Assets.image_sizes.each do |name, size|
+      asset_accessor name
+      key "#{name}_uid".to_sym, String
+    end
+  end
+
   key :title, String
   key :description, String
   timestamps!
 
   validates_presence_of :file, :title, :description
-  validates_length_of :tags, :minimum => 1, :message => "must have at least 1 item"
 
   # Set up video format
   cattr_accessor :video_extensions
@@ -37,13 +62,21 @@ class Asset
   end
 
   def url(*args)
-    if args.blank?
-      # Use the transparent url just the file is required with no processing
-      file.url
-    elsif video?
-      file.encode(:tiff, { :offset => "#{video_thumbnail_offset}%" }).thumb(*args).url
+    if Noodall::UI::Assets.storage == :amazon_s3
+      if args.blank?
+        file.remote_url
+      else
+        self.send(image_size_from_dimensions(args.first)).remote_url
+      end
     else
-      file.thumb(*args).strip.convert('-colorspace RGB').url
+      if args.blank?
+        # Use the transparent url just the file is required with no processing
+        file.url
+      elsif video?
+        file.encode(:tiff, { :offset => "#{video_thumbnail_offset}%" }).thumb(*args).url
+      else
+        file.thumb(*args).strip.convert('-colorspace RGB').url
+      end
     end
   end
 
@@ -80,6 +113,12 @@ class Asset
   end
 
   protected
+
+  def image_size_from_dimensions(dimensions)
+    # Return an image size which matches the given dimensions
+    # Fall back to the default
+    Noodall::UI::Assets.image_sizes.invert[dimensions].try(:to_s) || :file
+  end
 
   def set_title
     self.title = file_name.gsub(/\.[\w\d]{3,4}$/,'').titleize if title.blank?

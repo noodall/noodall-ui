@@ -18,7 +18,11 @@
     <tr id="asset-<%= asset.id %>" class="<%=cycle('odd', 'even')%>">
       <td><%= link_to h( asset.title ), edit_noodall_admin_asset_path(asset), :class => 'edit', :title => 'Edit this asset' %></td>
       <td class="file">
-        <%= (asset.image? or asset.video?) ? image_tag( asset.url('70x70', asset.web_image_extension), :alt => "#{truncate(asset.file.name, :length => 80)}")  : link_to( asset_icon(asset) ) %>
+        <% if asset.image? or asset.video? %>
+          <%= system_image(asset, size: '70x70', image: :system_thumb) %>
+        <% else %>
+          <%= link_to(asset_icon(asset)) %>
+        <% end %>
         <%= link_to 'Show', noodall_admin_asset_path(asset), :class => 'show', :title => 'View this asset' %>
       </td>
       <td><%=h asset.created_at.to_formatted_s(:short_ordinal) %></td>
