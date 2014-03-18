@@ -8,7 +8,7 @@ lite_tiny_mce_config = {
     editor_selector : "lite-editor",
     strict_loading_mode : 1,
     convert_urls : false,
-    plugins : "safari,inlinepopups,xhtmlxtras,paste,media,advimage,table,addvideo",
+    plugins : "safari,inlinepopups,xhtmlxtras,paste,media,advimage,table",
     //"safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking",
     // Theme options
     theme_advanced_blockformats : "h2,h3,h4,p",
